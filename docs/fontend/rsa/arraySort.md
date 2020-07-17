@@ -16,26 +16,26 @@ title: 数组排序
 
 ::: details 点击即可查看数组快排
 
-```
-var ary = [21,8,4,32,5];
-function quickSort(ary){
-   if(ary.length <= 1){
-	   return ary;
-   }
+```js
+var ary = [21, 8, 4, 32, 5];
+function quickSort(ary) {
+  if (ary.length <= 1) {
+    return ary;
+  }
 
-   var num = Math.floor(ary.length/2);
-   var numValue = ary.splice(num,1)[0];
-   var left = [];
-   var right = [];
-   for(var i = 0;i<ary.length;i++){
-       var cur = ary[i];
-       if(cur<numValue){
-		      left.push(cur);
-       }else{
-		      right.push(cur);
-       }
-   }
-   return quickSort(left).concat([numValue],quickSort(right))
+  var num = Math.floor(ary.length / 2);
+  var numValue = ary.splice(num, 1)[0];
+  var left = [];
+  var right = [];
+  for (var i = 0; i < ary.length; i++) {
+    var cur = ary[i];
+    if (cur < numValue) {
+      left.push(cur);
+    } else {
+      right.push(cur);
+    }
+  }
+  return quickSort(left).concat([numValue], quickSort(right));
 }
 console.log(quickSort(ary)); // [4, 5, 8, 21, 32]
 ```
@@ -48,23 +48,23 @@ console.log(quickSort(ary)); // [4, 5, 8, 21, 32]
 
 ::: details 点击即可查看数组插入排序
 
-```
-var ary = [21,8,4,32,5];
-function insertSort(ary){
-  var left = ary.splice(0,1);
-  for(var i = 0;i < ary.length;i++){
-	  var cur = ary[i];
-       for(var j = left.length-1;j>=0;){
-          var nex = left[j];
-          if(cur<nex){
-		          j--;
-          if(j===-1){
-			        left.unshift(cur);
-         }
-       }else {
-            left.splice(j+1,0,cur);
-            break;
-       }
+```js
+var ary = [21, 8, 4, 32, 5];
+function insertSort(ary) {
+  var left = ary.splice(0, 1);
+  for (var i = 0; i < ary.length; i++) {
+    var cur = ary[i];
+    for (var j = left.length - 1; j >= 0; ) {
+      var nex = left[j];
+      if (cur < nex) {
+        j--;
+        if (j === -1) {
+          left.unshift(cur);
+        }
+      } else {
+        left.splice(j + 1, 0, cur);
+        break;
+      }
     }
   }
   return left;
@@ -79,26 +79,24 @@ console.log(insertSort(ary)); // [4, 5, 8, 21, 32]
 **原理**:从第一项开始,与它后面的每一项进行比较,如果大于后面的项,则交换位置
 ::: details 点击即可查看数组冒泡排序
 
-```
-var ary = [43,5,82,21];
-function buddleSort(data){
-   var temp = "";
-   for(var i = data.length;i > 0;i--){
-       for(var j = 0;j < i-1;j++){
-		     if(data[j] > data[j+1]){
-				    temp = data[j];
-            data[j] = data[j+1];
-            data[j+1] = temp;
-          }
-       }
-   }
-   return data;
+```js
+var ary = [43, 5, 82, 21];
+function buddleSort(data) {
+  var temp = '';
+  for (var i = data.length; i > 0; i--) {
+    for (var j = 0; j < i - 1; j++) {
+      if (data[j] > data[j + 1]) {
+        temp = data[j];
+        data[j] = data[j + 1];
+        data[j + 1] = temp;
+      }
+    }
+  }
+  return data;
 }
 console.log(buddleSort(ary)); // [5, 21, 43, 82]
 ```
 
 :::
-
-<iframe-lineTestCode />
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />

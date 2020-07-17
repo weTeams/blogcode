@@ -10,6 +10,7 @@ title:目录
 
 练习算法,确实会掉不少头发,但很锻炼逻辑
 
-- [找出数组中重复次数最多的元素](./findMostReEl)
 - [数组的排序](./arraySort)
 - [数组的去重](./array-unique)
+- [找出数组中重复次数最多的元素](./array-findMostReEl)
+- [找出数组中最大和最小的元素](./array-max-min-el)

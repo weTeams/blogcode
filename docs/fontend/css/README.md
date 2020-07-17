@@ -13,6 +13,7 @@ title:目录
 
 - [文字超出末尾显示省略号](./ellipsis)
 - [文字水平及垂直方向显示排布](./text-display-layout)
+- [表单聚焦时输入框变化](./input-focus-animate.md)
 
 ## 移动端相关
 
