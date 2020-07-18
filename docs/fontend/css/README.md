@@ -13,7 +13,9 @@ title:目录
 
 - [文字超出末尾显示省略号](./ellipsis)
 - [文字水平及垂直方向显示排布](./text-display-layout)
-- [表单聚焦时输入框变化](./input-focus-animate.md)
+- [表单聚焦时输入框变化](./input-focus-animate)
+- [css 实现表单 switch 开关 ](./input-switch)
+- [css 实现鼠标经过元素下划线由左向右或由中间向两侧展开](./hover-underline-sides)
 
 ## 移动端相关
 

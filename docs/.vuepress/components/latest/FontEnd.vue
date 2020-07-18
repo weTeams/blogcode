@@ -4,7 +4,13 @@
       <div v-for="item in FontEndData" class="item">
         <p class="list">
           <a :href="item.href" target="_blank" :title="item.alt">
-            <img width="100" height="44" class="img-pic" :src="item.imgSrc" :alt="item.alt" />
+            <img
+              width="100"
+              height="44"
+              class="img-pic"
+              :src="item.imgSrc"
+              :alt="item.alt"
+            />
           </a>
         </p>
         <p class="text">{{ item.text }}</p>
@@ -15,46 +21,53 @@
 
 <script>
 export default {
-  name: "FontEnd",
+  name: 'FontEnd',
   data() {
     return {
       FontEndData: [
         {
-          href: "/fontend/css/",
-          imgSrc: "/images/latest/css.svg",
-          alt: "CSS技术/实用案例解析",
-          text: "CSS"
+          href: '/fontend/css/',
+          imgSrc: '/images/latest/css.svg',
+          alt: 'CSS技术/实用案例解析',
+          text: 'CSS',
         },
         {
-          href: "/fontend/js/",
-          imgSrc: "/images/latest/JS.svg",
-          alt: "JavaScript技术/实用案例解析",
-          text: "JavaScript"
-        },
-
-        {
-          href: "/fontend/framework/",
-          imgSrc: "/images/latest/framework.svg",
-          alt: "React/Vue...",
-          text: "前端框架"
+          href: '/fontend/js/',
+          imgSrc: '/images/latest/JS.svg',
+          alt: 'JavaScript技术/实用案例解析',
+          text: 'JavaScript',
         },
 
         {
-          href: "/fontend/framework/",
-          imgSrc: "/images/latest/rsa.svg",
-          alt: "前端算法",
-          text: "前端算法"
+          href: '/fontend/framework/',
+          imgSrc: '/images/latest/framework.svg',
+          alt: 'React/Vue...',
+          text: '前端框架',
         },
 
         {
-          href: "/fontend/tools/",
-          imgSrc: "/images/latest/tools.svg",
-          alt: "开发工具/Vscode/git/markdown",
-          text: "开发工具"
-        }
-      ]
+          href: '/fontend/framework/',
+          imgSrc: '/images/latest/rsa.svg',
+          alt: '前端算法',
+          text: '前端算法',
+        },
+
+        {
+          href: '/fontend/tools/',
+          imgSrc: '/images/latest/tools.svg',
+          alt: '开发工具',
+          text: '开发工具',
+        },
+
+        {
+          href: '/fontend/tools/',
+          imgSrc: '/images/latest/collection.svg',
+          alt: '网址收藏',
+          text: '网址收藏',
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 
