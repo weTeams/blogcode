@@ -6,7 +6,7 @@ title: css 实现鼠标经过元素下划线由左向右或由中间向两侧展
 
 <TOC />
 
-## css 实现鼠标经过元素下划线由中间向两边展开
+## css 实现鼠标经过元素下划线由中间向两侧展开
 
 <hover-hoverBorderSide />
 
@@ -37,10 +37,10 @@ css 代码
   width: 0; // 宽度为0
   height: 2px; // 高度为2px
   background: #42b983;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transition: all 0.8s;
+  position: absolute; // 绝对定位
+  top: 100%; // 距离顶部top1-100%
+  left: 50%; // 距离左边的距离50%
+  transition: all 0.8s; // 平缓过渡
 }
 
 .underline:hover:after {
@@ -53,7 +53,7 @@ css 代码
 
 :::
 
-## css 实现鼠标经过元素下划线由作向右展开
+## css 实现鼠标经过元素下划线由左向右展开
 
 <hover-hoverBorderLeft />
 
@@ -123,6 +123,7 @@ css 代码
 }
 
 .underline:hover:after {
+  // 伪元素 :after 还可以配合伪类使用
   top: 0%; // 鼠标滑过后,距离定位的位置是0%
   height: 100%; // 高度变为100%,这里填写父元素的具体高度也是可以的
   transition: all 0.8s; // 过度
@@ -134,6 +135,10 @@ css 代码
 ## 分析
 
 根据示例效果,下划线动态变化是**宽度**,或者**高度**,给鼠标要经过的元素添加一个伪元素,然后在给当前元素添加一个伪类`hover`效果,改变`width`,`height`即可实现
+
+只要能实现其中一个,其他的类似
 ::: tip 注意
 给经过的元素添加伪元素时,设置绝对定位,在初始位置时,需要设置`top`,`left`的值,在鼠标经过元素`hover`时,改变`top`的值可以决定滑过的方向
 :::
+
+<footer-FooterLink :isShareLink="true" :isDaShang="true" />

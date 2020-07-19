@@ -101,6 +101,6 @@ input[type='text']:focus::-webkit-input-placeholder {
 
 ## 分析
 
-实现这一效果,主要在于`-webkit-input-placeholder`这个伪类的方式,结合 css 中的变换`transform`,缩小`scale`,与`垂直方向平移`
+实现这一效果,主要在于`-webkit-input-placeholder`这个伪元素的方式,结合 css 中的变换`transform`,缩小`scale`,与`垂直方向平移`
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />

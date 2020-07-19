@@ -1,6 +1,4 @@
 ---
-sidebarDepth: 3
-tag: css
 title: 元素水平垂直居中
 ---
 

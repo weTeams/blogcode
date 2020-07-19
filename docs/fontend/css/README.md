@@ -7,6 +7,8 @@ title:目录
 关于自己 CSS 学习过程中的一些总结,踩坑和记录,巩固知识,建立自己的搜索引擎
 
 - [元素水平垂直居中](./elem-center)
+- [css 中的伪类与伪元素](./css-pseudo-class-pseudo-el)
+- [重置默认样式](./css-resset)
 - [弹性盒模型](./flexible-box)
 
 ## CSS 常见实例技巧
@@ -19,5 +21,6 @@ title:目录
 
 ## 移动端相关
 
-- [meta 标签](./meta)
-- [设备类型判断-移动端/PC 端](./mobile/device-type)
+- [meta 标签](./mobile-meta)
+- [设备类型判断-移动端/PC 端](./mobile-device-type)
+- [移动端页面适配](./mobile-adapt)

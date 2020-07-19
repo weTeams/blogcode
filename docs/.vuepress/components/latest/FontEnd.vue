@@ -60,7 +60,7 @@ export default {
         },
 
         {
-          href: '/fontend/tools/',
+          href: '/fontend/websitecol/',
           imgSrc: '/images/latest/collection.svg',
           alt: '网址收藏',
           text: '网址收藏',

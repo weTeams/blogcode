@@ -339,7 +339,7 @@ D: position:static
 
 如下代码所示:
 
-```
+```css
 <div style="width: 100px; padding: 10px; margin: 10px;box-sizing: border-box;background: red"></div>
 
 A: 80px
@@ -349,6 +349,7 @@ D: 140px
 ```
 
 请问背景色为红色区域的宽度是多少呢?
+
 ::: details 点击即可查看
 答案: B
 解析: 盒子模型,设置了 box-sizing: border-box;属性后,表示遵循 IE 盒模型的计算方式,增加 border,以及 padding 大小,不会让盒子溢出，给元素添加边框(border)和内边距(padding),都不会影响元素盒子的总尺寸

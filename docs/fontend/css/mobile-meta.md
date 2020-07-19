@@ -1,5 +1,6 @@
 ---
 title: meta标签
+autoGroup-1: 移动端
 ---
 
 ## 快速导航
@@ -10,7 +11,7 @@ title: meta标签
 
 在 `head` 头部常常需要添加额外的一些`meta`标签对网页进行限制
 
-::: details 点击即可查看常见 meta 标签
+::: details 点击即可查看常见 `meta` 标签
 
 ```html
 <!-- 声明文档使用的字符编码 -->

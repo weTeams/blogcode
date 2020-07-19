@@ -165,3 +165,5 @@ em {
 `大小`,及`按钮`的背景色,以及它应有的两个状态`true`,`false`
 
 样式可以通过 css 去控制,这些动态可改变的都是该组件的接口属性
+
+<footer-FooterLink :isShareLink="true" :isDaShang="true" />
