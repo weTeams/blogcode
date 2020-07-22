@@ -1,5 +1,6 @@
 ---
 title: 伪类与伪元素
+autoGroup-1: css基础
 ---
 
 ## 伪类与伪元素
@@ -65,7 +66,7 @@ title: 伪类与伪元素
 ::first-letter/:first-letter 匹配元素中文本的首字母。被修饰的首字母不在文档树中
 ::first-line/:first-line 匹配元素中第一行的文本。这个伪元素只能用在块元素中，不能用在内联元素中。
 ::selection 匹配用户被用户选中或者处于高亮状态的部分。在火狐浏览器使用时需要添加`-moz`前缀。该伪元素只支持双冒号的形式。
-::placeholder 匹配占位符的文本，只有元素设置了`placeholder`属性时，该伪元素才能生效,具体实例可见 [表单输入框聚焦效果](./input-focus-animate)
+::placeholder 匹配占位符的文本，只有元素设置了`placeholder`属性时，该伪元素才能生效,具体实例可见 [表单输入框聚焦效果](./example-input-focus-animate)
 
 ```
 
@@ -81,7 +82,7 @@ content: url('img/icon.png'
 
 伪元素 `:before` 还可以配合伪类使用，这里举经常与 `:before` 配合使用的伪类 `:hover` 为例
 
-具体实例可见[css 实现鼠标经过元素下划线由左向右或由中间向两侧展开](./hover-underline-sides)
+具体实例可见[css 实现鼠标经过元素下划线由左向右或由中间向两侧展开](./example-hover-underline-sides)
 
 ```css
 .before:hover:before{content:'在before之前插入内容'; color:red;}

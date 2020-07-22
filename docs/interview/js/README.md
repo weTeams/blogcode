@@ -12,6 +12,7 @@ title: 目录
 
 - [互联网公司 JS 笔试真题-1](./company-face-1)
 - [互联网公司 JS 笔试真题-2](./company-face-2)
+- [互联网公司 JS 笔试真题-4](./company-face-4)
 
 ## 偏实例性面试题
 

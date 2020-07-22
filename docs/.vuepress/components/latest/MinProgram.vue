@@ -26,13 +26,13 @@ export default {
     return {
       MinProgramData: [
         {
-          href: '/fontend/css/',
+          href: '/wechat/minprogram/',
           imgSrc: '/images/latest/vxminprgoram.svg',
           alt: '微信小程序技术',
           text: '微信小程序',
         },
         {
-          href: '/fontend/js/',
+          href: '/wechat/cloudev/',
           imgSrc: '/images/latest/clouddev.svg',
           alt: '云开发/无服务serverless',
           text: '云开发',

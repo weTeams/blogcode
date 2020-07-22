@@ -1,5 +1,6 @@
 ---
 title: PC与移动端重置默认样式
+autoGroup-1: css基础
 ---
 
 ## 快速导航
