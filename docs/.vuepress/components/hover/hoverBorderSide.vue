@@ -1,16 +1,3 @@
-<!--
- * @LineStart: -------------------------------------------
- * @Copyright: © 2020, itclanCoder. All rights reserved.
- * @LineEnd: ----------------------------------------------
- * @Product: 
- * @Mode Name: 
- * @Autor: vxPublic:itclanCoder
- * @Date: 2020-07-18 21:43:35
- * @Version: xxx.v1.0
- * @LastEditors: 川川
- * @LastEditTime: 2020-07-18 22:49:43
- * @Description: 
--->
 <template>
   <div>
     <div class="underline">下划线由中间向两侧展开</div>

@@ -4,11 +4,13 @@ title: CSS笔试真题
 
 <TOC />
 
-### 前言
+## 互联网公司 css 笔试真题
+
+## 前言
 
 以下一些题,均来各大小公司现场的真实笔试题,所有面试题都经过笔者一一验证,如有不足之处,谢谢读者指正和完善
 
-### 第 1 题. 画一下盒子模型
+## 第 1 题. 画一下盒子模型
 
 它是所有布局控制的基础,虽然如今的前端是组件化开发模式,组件是一种对`html` 元素数据的封装
 
@@ -75,7 +77,7 @@ box-sizing: content-box | border-box | inherit | padding-box
 而在标准盒模型下,一旦修改了元素的边框和内边距,就会影响元素的盒子尺寸,不得不重新计算元素的盒子尺寸大小,会影响到整个页面的布局
 :::
 
-### 第 2 题 如何让一个长度未知的图片水平和垂直方向均居中
+## 第 2 题 如何让一个长度未知的图片水平和垂直方向均居中
 
 元素水平垂直居中是 web 开发中常见遇到的问题
 ::: details 点击即可查看
@@ -85,26 +87,29 @@ box-sizing: content-box | border-box | inherit | padding-box
 这个组合，常用于图片的居中显示，子元素设置绝对定位,父级元素相对定位,也可以将父元素 `wrapper`的相对定位，移入子元素`img`中，替换掉绝对定位。效果也是一样的,
 html 示例代码
 
-```
+```html
 <div class="wrapper">
-    <img src="test.png">
+  <img src="test.png" />
 </div>
 ```
 
 css 示例代码
 
-```
+```css
 .wrapper {
-    width: 100%;
-    height: 300px;
-    border: 1px solid #ccc;
-    position: relative;
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  position: relative;
 }
 .wrapper > img {
-    position: absolute;  // 子元素绝对定位
-    left: 50%;           // left值50%
-    top: 50%;            // top值50%
-    transform: translate(-50%, -50%);  // 利用transform变换,translate平移,水平,垂直方向上
+  position: absolute; // 子元素绝对定位
+  left: 50%; // left值50%
+  top: 50%; // top值50%
+  transform: translate(
+    -50%,
+    -50%
+  ); // 利用transform变换,translate平移,水平,垂直方向上
 }
 ```
 
@@ -112,23 +117,22 @@ css 示例代码
 
 利用 `table`的单元格居中效果展示。与 `flex`一样，需要写在父级元素上
 
-```
+```html
 <div class="wrapper">
-    <p>itclanCoder元素水平垂直居中</p>
+  <p>itclanCoder元素水平垂直居中</p>
 </div>
-
 ```
 
-css 代码
+`css` 代码
 
-```
+```css
 .wrapper {
-    width: 100%;
-    height: 300px;
-    border: 1px solid #ccc;
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
 }
 ```
 
@@ -138,52 +142,54 @@ css 代码
 
 html 标签
 
-```
+```html
 <div class="wrapper flex-center">
-    <p>itclanCoder元素水平垂直居中</p>
+  <p>itclanCoder元素水平垂直居中</p>
 </div>
 ```
 
 css 层叠样式
 
-```
+```css
 .wrapper {
-    width: 100%;
-    height: 300px;
-    border: 1px solid #ccc;
+  width: 100%;
+  height: 300px;
+  border: 1px solid #ccc;
 }
 
-.flex-center {     //在父级元素中,添加如下代码即可
-    display: flex;
-    justify-content: center;  // 水平居中
-    align-items: center;      // 垂直居中
+.flex-center {
+  //在父级元素中,添加如下代码即可
+  display: flex;
+  justify-content: center; // 水平居中
+  align-items: center; // 垂直居中
 }
 ```
 
 具体更详细元素水平垂直居中方法可参考[元素水平垂直居中]("../../fontend/css/elem-center.md")
 :::
 
-### 第 3 题-实现一个三列布局-两侧两列宽 100px-中间一列自适应
+## 第 3 题-实现一个三列布局-两侧两列宽 100px-中间一列自适应
 
 两列固定,中间自适应,或左边固定,右边自适应,都是属于圣杯布局
 ::: details 点击即可查看详情
 html 元素
 
-```
+```html
 <div class="wrapper">
-    <div class="left"></div>
-    <div class="middle"></div>
-    <div class="right"></div>
+  <div class="left"></div>
+  <div class="middle"></div>
+  <div class="right"></div>
 </div>
 ```
 
 css 代码示例
 
-```
+```css
 .wrapper {
   display: flex;
 }
-.left,.right {
+.left,
+.right {
   width: 100px;
   height: 300px;
   background: blue;
@@ -201,39 +207,39 @@ css 代码示例
 具体更多圣杯布局内容可以[圣杯布局]("../../fontend/css/elem-center.md")
 :::
 
-### 第 4 题-两个 float 的盒子,都是左浮动,外边距问题
+## 第 4 题-两个 float 的盒子,都是左浮动,外边距问题
 
 两个`float`的盒子,都是左浮动,盒子 A 的`margin-right`为 100px,盒子 B 的`margin-left`为 `200px`,问盒子 A 与盒子 B 之间的间距是多少
 
 ::: details 点击即可查看详情
 html 代码
 
-```
+```html
 <div class="wrapper">
-    <div class="box-a">A</div>
-    <div class="box-b">B</div>
+  <div class="box-a">A</div>
+  <div class="box-b">B</div>
 </div>
 ```
 
 css 代码
 
-```
-.box-a, .box-b {
+```css
+.box-a,
+.box-b {
   width: 100px;
   height: 100px;
-  float: left;     // 两个盒子都浮动
+  float: left; // 两个盒子都浮动
 }
 
 .box-a {
   background: pink;
-  margin-right: 100px;  // 盒子A右外边距100px
+  margin-right: 100px; // 盒子A右外边距100px
 }
 
 .box-b {
-  background:#abcdef;
+  background: #abcdef;
   margin-left: 200px; // 盒子B左外边距
 }
-
 ```
 
 具体测试结果
@@ -245,24 +251,25 @@ css 代码
 **结论**:当元素横向方向外边距时,不会出现外边距迭代的问题
 :::
 
-### 第 5 题-外边距叠加的问题
+## 第 5 题-外边距叠加的问题
 
 两个普通的盒子,盒子 A 的`margin-bottom`为`100px`，盒子 B 的`margin-top`为`200px`,问 A 盒子与 B 之间的距离是多少
 ::: details 点击即可查看详情
 
 html 代码
 
-```
+```html
 <div class="wrapper">
-    <div class="box-a">A</div>
-    <div class="box-b">B</div>
+  <div class="box-a">A</div>
+  <div class="box-b">B</div>
 </div>
 ```
 
 css 代码
 
-```
-.box-a, .box-b {
+```css
+.box-a,
+.box-b {
   width: 100px;
   height: 100px;
 }
@@ -273,7 +280,7 @@ css 代码
 }
 
 .box-b {
-  background:#abcdef;
+  background: #abcdef;
   margin-top: 200px;
 }
 ```
@@ -287,7 +294,7 @@ css 代码
 **结论**:当元素在垂直方向,两个相邻的元素之间增加上下外边距时,会出现外边距的叠加
 :::
 
-### 第 6 题 以下哪些设置可以使 z-index 生效?
+## 第 6 题 以下哪些设置可以使 z-index 生效?
 
 考察点:css 中的定位结合`z-index`的使用
 
@@ -313,11 +320,11 @@ D: position:static
 解析：`Z-index`仅能在定位元素上奏效,z-index 默认值是 0,仍然占据文档流的位置
 :::
 
-### 第 7 题 选择器优先级问题
+## 第 7 题 选择器优先级问题
 
 如下示例代码,分别在行内样式 id,class 设置高度,最终`div`的高度是多少
 
-```
+```css
 // html
 <div id="boxWrap" class="box-wrap" style="height: 100px"></div>
 // css
@@ -335,7 +342,7 @@ D: position:static
 解析: 行间元素样式>内部样式>外部样式,id 选择器的优先级大于 class 选择器
 :::
 
-### 第 8 题 盒子模型相关问题
+## 第 8 题 盒子模型相关问题
 
 如下代码所示:
 

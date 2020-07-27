@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     <div id="menu">
       <li>1</li>
       <li>2</li>
@@ -28,10 +28,16 @@ export default {
   margin: 0;
 }
 
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #menu {
   width: 400px;
   height: 400px;
-  margin: 30px auto;
+  margin-top: 20px;
 }
 
 ul, li {
@@ -59,6 +65,7 @@ li {
 
 li:nth-of-type(1), li:nth-of-type(2), li:nth-of-type(3), li:nth-of-type(4), li:nth-of-type(5), li:nth-of-type(6), li:nth-of-type(7), li:nth-of-type(8) {
   transform-origin: 20px 220px;
+  margin-left: 120px;
 }
 
 li:nth-of-type(1) {
