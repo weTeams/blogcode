@@ -10,6 +10,7 @@ title: 目录
 - [深度理解闭包](./understand-closure)
 - [JavaScript 中的浅拷贝 VS 深拷贝](./shallow-vs-deep-copy)
 - [Js 之选择控制语句及很重要的表达式真与假](./choice-statement)
+- [js 数组中一些实用的方法(forEach,map,filter,find)](./array-methods)
 
 ## JS 实用正则表达式
 

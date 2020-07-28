@@ -52,25 +52,42 @@ autoPrev: README
 
 对于`wxml`与`wxss`,大家可以自行任意修改,本文重点在于图片安全的校验
 
-```
+```html
 <view class="image-list">
-   <!-- 显示图片 -->
-   <block wx:for="{{images}}" wx:key="*this"><view class="image-wrap">
-       <image class="image" src="{{item}}" mode="aspectFill" bind:tap="onPreviewImage" data-imgsrc="{{item}}"></image><i class="iconfont icon-shanchu" bind:tap="onDelImage" data-index="{{index}}"></i></view>
-   </block>
-   <!-- 选择图片 -->
-   <view class="image-wrap selectphoto" hidden="{{!selectPhoto}}" bind:tap="onChooseImage">
-        <i class="iconfont icon-add"></i>
-   </view>
+  <!-- 显示图片 -->
+  <block wx:for="{{images}}" wx:key="*this"
+    ><view class="image-wrap">
+      <image
+        class="image"
+        src="{{item}}"
+        mode="aspectFill"
+        bind:tap="onPreviewImage"
+        data-imgsrc="{{item}}"
+      ></image
+      ><i
+        class="iconfont icon-shanchu"
+        bind:tap="onDelImage"
+        data-index="{{index}}"
+      ></i
+    ></view>
+  </block>
+  <!-- 选择图片 -->
+  <view
+    class="image-wrap selectphoto"
+    hidden="{{!selectPhoto}}"
+    bind:tap="onChooseImage"
+  >
+    <i class="iconfont icon-add"></i>
+  </view>
 </view>
 <view class="footer">
-    <button class="send-btn"  bind:tap="send">发布</button>
- </view>
+  <button class="send-btn" bind:tap="send">发布</button>
+</view>
 ```
 
 对应的`wxss` 代码
 
-```
+```css
 .footer {
   display: flex;
   align-items: center;
@@ -152,19 +169,18 @@ button::after {
 
 对应的`JS`代码
 
-```
+```js
 /*
-* 涉及到的API:wx.chooseImage 从本地相册选择图片或使用相机拍照
-*(https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)
-*
-*
-*/
+ * 涉及到的API:wx.chooseImage 从本地相册选择图片或使用相机拍照
+ *(https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)
+ *
+ *
+ */
 // 最大上传图片数量
 const MAX_IMG_NUM = 9;
 
 const db = wx.cloud.database(); // 初始化云数据库
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -176,9 +192,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad: function(options) {},
 
   // 选择图片
   onChooseImage() {
@@ -188,35 +202,37 @@ Page({
       count: max, // count表示最多可以选择的图片张数
       sizeType: ['original', 'compressed'], // 所选的图片的尺寸
       sourceType: ['album', 'camera'], // 选择图片的来源
-      success: (res) => { // 接口调用成功的回调函数console.log(res)
-        this.setData({ // tempFilePath可以作为img标签的src属性显示图片,下面是将后添加的图片与之前的图片给追加起来
-          images: this.data.images.concat(res.tempFilePaths)
-        })
-        // 还能再选几张图片
-        max = MAX_IMG_NUM - this.data.images.length
+      success: (res) => {
+        // 接口调用成功的回调函数console.log(res)
         this.setData({
-          selectPhoto: max <= 0 ? false : true  // 当超过9张时,加号隐藏
-        })
+          // tempFilePath可以作为img标签的src属性显示图片,下面是将后添加的图片与之前的图片给追加起来
+          images: this.data.images.concat(res.tempFilePaths),
+        });
+        // 还能再选几张图片
+        max = MAX_IMG_NUM - this.data.images.length;
+        this.setData({
+          selectPhoto: max <= 0 ? false : true, // 当超过9张时,加号隐藏
+        });
       },
-    })
+    });
   },
 
   // 点击右上方删除图标,删除图片操作
   onDelImage(event) {
     const index = event.target.dataset.index;
     // 点击删除当前图片,用splice方法,删除一张,从数组中移除一个
-    this.data.images.splice(index, 1)
+    this.data.images.splice(index, 1);
     this.setData({
-      images: this.data.images
-    })
+      images: this.data.images,
+    });
     // 当添加的图片达到设置最大的数量时,添加按钮隐藏,不让新添加图片
     if (this.data.images.length == MAX_IMG_NUM - 1) {
       this.setData({
         selectPhoto: true,
-      })
+      });
     }
   },
-})
+});
 ```
 
 最终实现的前端 UI 效果如下所是:
@@ -256,7 +272,7 @@ https://api.weixin.qq.com/wxa/img_sec_check?access_token=ACCESS_TOKEN
 
 并在该目录下创建`config.json`,配置参数如下所示
 
-```
+```js
 {
   "permissions": {
     "openapi": [
@@ -268,51 +284,49 @@ https://api.weixin.qq.com/wxa/img_sec_check?access_token=ACCESS_TOKEN
 
 配置完后,在主入口`index.js`中,如下所示,通过`security.imgSecCheck`接口,并传入`media`对象
 
-```
+```js
 // 云函数入口文件
 const cloud = require('wx-server-sdk');
 cloud.init({
-  env: cloud.DYNAMIC_CURRENT_ENV
-})
+  env: cloud.DYNAMIC_CURRENT_ENV,
+});
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  const wxContext = cloud.getWXContext()
+  const wxContext = cloud.getWXContext();
   try {
     const result = await cloud.openapi.security.imgSecCheck({
       media: {
         contentType: 'image/png',
-        value: Buffer.from(event.img) // 这里必须要将小程序端传过来的进行Buffer转化,否则就会报错,接口异常
-      }
-
-    })
+        value: Buffer.from(event.img), // 这里必须要将小程序端传过来的进行Buffer转化,否则就会报错,接口异常
+      },
+    });
 
     if (result && result.errCode.toString() === '87014') {
-      return { code: 500, msg: '内容含有违法违规内容', data: result }
+      return { code: 500, msg: '内容含有违法违规内容', data: result };
     } else {
-      return { code: 200, msg: '内容ok', data: result }
+      return { code: 200, msg: '内容ok', data: result };
     }
   } catch (err) {
     // 错误处理
-   if (err.errCode.toString() === '87014') {
-      return { code: 500, msg: '内容含有违法违规内容', data: err }
+    if (err.errCode.toString() === '87014') {
+      return { code: 500, msg: '内容含有违法违规内容', data: err };
     }
-    return { code: 502, msg: '调用imgSecCheck接口异常', data: err }
+    return { code: 502, msg: '调用imgSecCheck接口异常', data: err };
   }
-}
+};
 ```
 
 您会发现在云函数端,就这么几行代码,就完成了图片安全校验
 而在小程序端,代码如下所示
 
-```
+```js
 // miniprogram/pages/imgSecCheck/imgSecCheck.js
 // 最大上传图片数量
 const MAX_IMG_NUM = 9;
 
-const db = wx.cloud.database() // 云数据库初始化
+const db = wx.cloud.database(); // 云数据库初始化
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -324,77 +338,76 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad: function(options) {},
   // 选择图片
   onChooseImage() {
     // const that = this; // 如果下面用了箭头函数,那么这行代码是不需要的,直接用this就可以了的
-// 还能再选几张图片,初始值设置最大的数量-当前的图片的长度
+    // 还能再选几张图片,初始值设置最大的数量-当前的图片的长度
     let max = MAX_IMG_NUM - this.data.images.length;
     wx.chooseImage({
       count: max,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: (res) => { // 这里若不是箭头函数,那么下面的this.setData的this要换成that上面的临时变量,作用域的问题,不清楚的,可以看下this指向相关的知识
-        console.log(res)
-       // tempFilePath可以作为img标签的src属性显示图片
+      success: (res) => {
+        // 这里若不是箭头函数,那么下面的this.setData的this要换成that上面的临时变量,作用域的问题,不清楚的,可以看下this指向相关的知识
+        console.log(res);
+        // tempFilePath可以作为img标签的src属性显示图片
         const tempFiles = res.tempFiles;
         this.setData({
-          images: this.data.images.concat(res.tempFilePaths)
-        })
+          images: this.data.images.concat(res.tempFilePaths),
+        });
         // 在选择图片时,对本地临时存储的图片,这个时候,进行图片的校验,当然你放在最后点击发布时,进行校验也是可以的,只不过是一个前置校验和后置校验的问题,我个人倾向于在选择图片时就进行校验的,选择一些照片时,就应该在选择时阶段做安全判断的, 小程序端请求云函数方式// 图片转化buffer后，调用云函数
         console.log(tempFiles);
-        tempFiles.forEach(items => {
+        tempFiles.forEach((items) => {
           console.log(items);
           // 图片转化buffer后，调用云函数
           wx.getFileSystemManager().readFile({
             filePath: items.path,
-            success: res => {
+            success: (res) => {
+              console.log(res);
+              wx.cloud
+                .callFunction({
+                  // 请求imgSecCheck云函数
+                  name: 'imgSecCheck',
+                  data: {
+                    img: res.data, // 传入要检测的值
+                  },
+                })
+                .then((res) => {
                   console.log(res);
-                   wx.cloud.callFunction({ // 请求imgSecCheck云函数
-                    name: 'imgSecCheck',
-                    data: {
-                      img: res.data // 传入要检测的值
-                    }
-            })
-            .then(res => {
-               console.log(res);
-               let { errCode } = res.result.data;
-               switch(errCode) {
-                 case 87014:
-                   this.setData({
-                      resultText: '内容含有违法违规内容'
-                   })
-                   break;
-                 case 0:
-                   this.setData({
-                     resultText: '内容OK'
-                   })
-                   break;
-                 default:
-                   break;
-               }
-
-            })
-            .catch(err => {
-               console.error(err);
-            })
+                  let { errCode } = res.result.data;
+                  switch (errCode) {
+                    case 87014:
+                      this.setData({
+                        resultText: '内容含有违法违规内容',
+                      });
+                      break;
+                    case 0:
+                      this.setData({
+                        resultText: '内容OK',
+                      });
+                      break;
+                    default:
+                      break;
+                  }
+                })
+                .catch((err) => {
+                  console.error(err);
+                });
             },
-            fail: err => {
+            fail: (err) => {
               console.error(err);
-            }
-          })
-        })
-
+            },
+          });
+        });
 
         // 还能再选几张图片
-        max = MAX_IMG_NUM - this.data.images.length
+        max = MAX_IMG_NUM - this.data.images.length;
         this.setData({
-          selectPhoto: max <= 0 ? false : true  // 当超过9张时,加号隐藏
-        })
+          selectPhoto: max <= 0 ? false : true, // 当超过9张时,加号隐藏
+        });
       },
-    })
+    });
   },
 
   // 删除图片操作
@@ -403,16 +416,16 @@ Page({
     // 点击删除当前图片,用splice方法,删除一张,从数组中移除一个
     this.data.images.splice(index, 1);
     this.setData({
-      images: this.data.images
-    })
+      images: this.data.images,
+    });
     // 当添加的图片达到设置最大的数量时,添加按钮隐藏,不让新添加图片
-   if (this.data.images.length == MAX_IMG_NUM - 1) {
+    if (this.data.images.length == MAX_IMG_NUM - 1) {
       this.setData({
         selectPhoto: true,
-      })
+      });
     }
   },
-})
+});
 ```
 
 示例效果如下所示:
@@ -427,7 +440,7 @@ Page({
 <img class="medium-zoom lazy" loading="lazy" alt="限制图片大小" src="../images/img-security-check/limt-img-size-.png" >
 具体实例代码如下所示
 
-```
+```js
 // 选择图片
 onChooseImage() {
   // 还能再选几张图片,初始值设置最大的数量-当前的图片的长度
@@ -528,49 +541,54 @@ onChooseImage() {
 
 那如何保证上传的图片不被覆盖呢？其实文件不重名的情况下就不会被覆盖，而在选择图片的时候,不应该上传,因为用户可能有删除等操作,如果直接上传的话会造成资源的浪费，应该在点发布按钮的时候,才执行上传操作,文件不重名覆盖的示例代码如下所示
 
-```
-    let promiseArr = []
-    let fileIds = []     // 将图片的fileId存放到一个数组中
-    let imgLength = this.data.images.length;
-    // 图片上传,循环遍历
-    for (let i = 0; i < imgLength; i++) {
-      let p = new Promise((resolve, reject) => {
-      let item = this.data.images[i]
-        // 文件扩展名
-        let suffix = /\.\w+$/.exec(item)[0]; // 取文件后拓展名
-        wx.cloud.uploadFile({     // 利用官方提供的上传接口
-          cloudPath: 'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix, // 云存储路径,您也可以使用es6中的模板字符串进行拼接的
-          filePath: item,   // 要上传文件资源的路径
-          success: (res) => {
-            console.log(res);
-            console.log(res.fileID)
-            fileIds = fileIds.concat(res.fileID)       // 将新上传的与之前上传的给拼接起来
-            resolve()
-          },
-          fail: (err) => {
-            console.error(err)
-            reject()
-          }
-        })
+```js
+let promiseArr = [];
+let fileIds = []; // 将图片的fileId存放到一个数组中
+let imgLength = this.data.images.length;
+// 图片上传,循环遍历
+for (let i = 0; i < imgLength; i++) {
+  let p = new Promise((resolve, reject) => {
+    let item = this.data.images[i];
+    // 文件扩展名
+    let suffix = /\.\w+$/.exec(item)[0]; // 取文件后拓展名
+    wx.cloud.uploadFile({
+      // 利用官方提供的上传接口
+      cloudPath: 'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix, // 云存储路径,您也可以使用es6中的模板字符串进行拼接的
+      filePath: item, // 要上传文件资源的路径
+      success: (res) => {
+        console.log(res);
+        console.log(res.fileID);
+        fileIds = fileIds.concat(res.fileID); // 将新上传的与之前上传的给拼接起来
+        resolve();
+      },
+      fail: (err) => {
+        console.error(err);
+        reject();
+      },
+    });
+  });
+  promiseArr.push(p);
+}
+// 存入到云数据库,其中这个Promise.all(),等待里面所有的任务都执行之后,在去执行后面的任务,也就是等待上传所有的图片上传完后,才能把相对应的数据存到数据库当中,具体与promise相关问题,可自行查漏
+Promise.all(promiseArr)
+  .then((res) => {
+    db.collection('blog')
+      .add({
+        // 查找blog集合,将img,时间等数据添加到这个集合当中
+        data: {
+          img: fileIds,
+          createTime: db.serverDate(), // 服务端的时间
+        },
       })
-      promiseArr.push(p)
-    }
-    // 存入到云数据库,其中这个Promise.all(),等待里面所有的任务都执行之后,在去执行后面的任务,也就是等待上传所有的图片上传完后,才能把相对应的数据存到数据库当中,具体与promise相关问题,可自行查漏
-    Promise.all(promiseArr).then((res) => {
-        db.collection('blog').add({ // 查找blog集合,将img,时间等数据添加到这个集合当中
-          data: {
-            img: fileIds,
-            createTime: db.serverDate(), // 服务端的时间
-          }
-        }).then((res) => {
-          console.log(res);
-          this._hideToastTip();
-          this._successTip();
-        })
-      })
-      .catch((err) => {
-        // 发布失败console.error(err);
-      })
+      .then((res) => {
+        console.log(res);
+        this._hideToastTip();
+        this._successTip();
+      });
+  })
+  .catch((err) => {
+    // 发布失败console.error(err);
+  });
 ```
 
 上面通过利用当前时间+随机数的方式进行了一个区分,规避了上传文件同名的问题：
@@ -597,216 +615,232 @@ onChooseImage() {
 
 如下是完整的小程序端逻辑示例代码
 
-```
+```js
 // miniprogram/pages/imgSecCheck/imgSecCheck.js
 // 最大上传图片数量
 const MAX_IMG_NUM = 9;
-const db = wx.cloud.database()
+const db = wx.cloud.database();
 Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    images: [],
+    selectPhoto: true, // 添加图片元素是否显示
+  },
 
-/**
-  * 页面的初始数据
-  */
-data: {
-  images: [],
-  selectPhoto: true, // 添加图片元素是否显示
-},
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {},
 
-/**
-  * 生命周期函数--监听页面加载
-  */
-onLoad: function (options) {
-
-},
-
-// 选择图片
-onChooseImage() {
-  // 还能再选几张图片,初始值设置最大的数量-当前的图片的长度
-  let max = MAX_IMG_NUM - this.data.images.length;
-  wx.chooseImage({
-    count: max,
-    sizeType: ['original', 'compressed'],
-    sourceType: ['album', 'camera'],
-    success: (res) => {
-      console.log(res)
-      const tempFiles = res.tempFiles;
-      this.setData({
-        images: this.data.images.concat(res.tempFilePaths) // tempFilePath可以作为img标签的src属性显示图片
-      })
-      // 在选择图片时,对本地临时存储的图片,这个时候,进行图片的校验,当然你放在最后点击发布时,进行校验也是可以的,只不过是一个前置校验和后置校验的问题,我个人倾向于在选择图片时就进行校验的,选择一些照片时,就应该在选择时阶段做安全判断的, 小程序端请求云函数方式
-      // 图片转化buffer后，调用云函数
-      console.log(tempFiles);
-      tempFiles.forEach(items => {
-        if (items && items.size > 1 * (1024 * 1024)) {
-          wx.showToast({
-            icon: 'none',
-            title: '上传的图片超过1M,禁止用户上传',
-            duration: 4000
-          })
-          // 超过1M的图片,禁止上传
-        }
-        console.log(items);
+  // 选择图片
+  onChooseImage() {
+    // 还能再选几张图片,初始值设置最大的数量-当前的图片的长度
+    let max = MAX_IMG_NUM - this.data.images.length;
+    wx.chooseImage({
+      count: max,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        console.log(res);
+        const tempFiles = res.tempFiles;
+        this.setData({
+          images: this.data.images.concat(res.tempFilePaths), // tempFilePath可以作为img标签的src属性显示图片
+        });
+        // 在选择图片时,对本地临时存储的图片,这个时候,进行图片的校验,当然你放在最后点击发布时,进行校验也是可以的,只不过是一个前置校验和后置校验的问题,我个人倾向于在选择图片时就进行校验的,选择一些照片时,就应该在选择时阶段做安全判断的, 小程序端请求云函数方式
         // 图片转化buffer后，调用云函数
-        wx.getFileSystemManager().readFile({
-          filePath: items.path,
-          success: res => {
-            console.log(res);
-            this._checkImgSafe(res.data); // 检测图片安全校验
-          },
-          fail: err => {
-            console.error(err);
+        console.log(tempFiles);
+        tempFiles.forEach((items) => {
+          if (items && items.size > 1 * (1024 * 1024)) {
+            wx.showToast({
+              icon: 'none',
+              title: '上传的图片超过1M,禁止用户上传',
+              duration: 4000,
+            });
+            // 超过1M的图片,禁止上传
           }
-        })
-      })
+          console.log(items);
+          // 图片转化buffer后，调用云函数
+          wx.getFileSystemManager().readFile({
+            filePath: items.path,
+            success: (res) => {
+              console.log(res);
+              this._checkImgSafe(res.data); // 检测图片安全校验
+            },
+            fail: (err) => {
+              console.error(err);
+            },
+          });
+        });
 
+        // 还能再选几张图片
+        max = MAX_IMG_NUM - this.data.images.length;
+        this.setData({
+          selectPhoto: max <= 0 ? false : true, // 当超过9张时,加号隐藏
+        });
+      },
+    });
+  },
 
-      // 还能再选几张图片
-      max = MAX_IMG_NUM - this.data.images.length
-      this.setData({
-        selectPhoto: max <= 0 ? false : true // 当超过9张时,加号隐藏
-      })
-    },
-  })
-},
-
-// 删除图片
-onDelImage(event) {
-  const index = event.target.dataset.index;
-  // 点击删除当前图片,用splice方法,删除一张,从数组中移除一个
-  this.data.images.splice(index, 1);
-  this.setData({
-    images: this.data.images
-  })
-  // 当添加的图片达到设置最大的数量时,添加按钮隐藏,不让新添加图片
-  if (this.data.images.length == MAX_IMG_NUM - 1) {
+  // 删除图片
+  onDelImage(event) {
+    const index = event.target.dataset.index;
+    // 点击删除当前图片,用splice方法,删除一张,从数组中移除一个
+    this.data.images.splice(index, 1);
     this.setData({
-      selectPhoto: true,
-    })
-  }
-},
-
-// 点击发布按钮,将图片上传到云数据库当中
-send() {
-  const images = this.data.images.length;
-  if (images) {
-    this._showToastTip();
-    let promiseArr = []
-    let fileIds = []
-    let imgLength = this.data.images.length;
-    // 图片上传
-    for (let i = 0; i < imgLength; i++) {
-      let p = new Promise((resolve, reject) => {
-        let item = this.data.images[i]
-        // 文件扩展名
-        let suffix = /\.\w+$/.exec(item)[0]; // 取文件后拓展名
-        wx.cloud.uploadFile({   // 上传图片至云存储,循环遍历,一张张的上传
-          cloudPath: 'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix,
-          filePath: item,
-          success: (res) => {
-            console.log(res);
-            console.log(res.fileID)
-            fileIds = fileIds.concat(res.fileID)
-            resolve()
-
-          },
-          fail: (err) => {
-            console.error(err)
-            reject()
-          }
-        })
-      })
-      promiseArr.push(p)
+      images: this.data.images,
+    });
+    // 当添加的图片达到设置最大的数量时,添加按钮隐藏,不让新添加图片
+    if (this.data.images.length == MAX_IMG_NUM - 1) {
+      this.setData({
+        selectPhoto: true,
+      });
     }
-    // 存入到云数据库
-    Promise.all(promiseArr).then((res) => {
-        db.collection('blog').add({ // 查找blog集合,将数据添加到这个集合当中
-          data: {
-            img: fileIds,
-            createTime: db.serverDate(), // 服务端的时间
-          }
-        }).then((res) => {
-          console.log(res);
-          this._hideToastTip();
-          this._successTip();
+  },
+
+  // 点击发布按钮,将图片上传到云数据库当中
+  send() {
+    const images = this.data.images.length;
+    if (images) {
+      this._showToastTip();
+      let promiseArr = [];
+      let fileIds = [];
+      let imgLength = this.data.images.length;
+      // 图片上传
+      for (let i = 0; i < imgLength; i++) {
+        let p = new Promise((resolve, reject) => {
+          let item = this.data.images[i];
+          // 文件扩展名
+          let suffix = /\.\w+$/.exec(item)[0]; // 取文件后拓展名
+          wx.cloud.uploadFile({
+            // 上传图片至云存储,循环遍历,一张张的上传
+            cloudPath:
+              'blog/' + Date.now() + '-' + Math.random() * 1000000 + suffix,
+            filePath: item,
+            success: (res) => {
+              console.log(res);
+              console.log(res.fileID);
+              fileIds = fileIds.concat(res.fileID);
+              resolve();
+            },
+            fail: (err) => {
+              console.error(err);
+              reject();
+            },
+          });
+        });
+        promiseArr.push(p);
+      }
+      // 存入到云数据库
+      Promise.all(promiseArr)
+        .then((res) => {
+          db.collection('blog')
+            .add({
+              // 查找blog集合,将数据添加到这个集合当中
+              data: {
+                img: fileIds,
+                createTime: db.serverDate(), // 服务端的时间
+              },
+            })
+            .then((res) => {
+              console.log(res);
+              this._hideToastTip();
+              this._successTip();
+            });
         })
+        .catch((err) => {
+          // 发布失败
+          console.error(err);
+        });
+    } else {
+      wx.showToast({
+        icon: 'none',
+        title: '没有选择任何图片,发布不了',
+      });
+    }
+  },
+
+  // 校验图片的安全
+  _checkImgSafe(data) {
+    wx.cloud
+      .callFunction({
+        name: 'imgSecCheck',
+        data: {
+          img: data,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        let { errCode } = res.result.data;
+        switch (errCode) {
+          case 87014:
+            this.setData({
+              resultText: '内容含有违法违规内容',
+            });
+            break;
+          case 0:
+            this.setData({
+              resultText: '内容OK',
+            });
+            break;
+          default:
+            break;
+        }
       })
       .catch((err) => {
-        // 发布失败
         console.error(err);
-      })
-  } else {
+      });
+  },
+
+  _showToastTip() {
     wx.showToast({
       icon: 'none',
-      title: '没有选择任何图片,发布不了',
-    })
-  }
+      title: '发布中...',
+    });
+  },
 
-},
+  _hideToastTip() {
+    wx.hideLoading();
+  },
 
-// 校验图片的安全
-_checkImgSafe(data) {
-  wx.cloud.callFunction({
-      name: 'imgSecCheck',
-      data: {
-        img: data
-      }
-    })
-    .then(res => {
-      console.log(res);
-      let {
-        errCode
-      } = res.result.data;
-      switch (errCode) {
-        case 87014:
-          this.setData({
-            resultText: '内容含有违法违规内容'
-          })
-          break;
-        case 0:
-          this.setData({
-            resultText: '内容OK'
-          })
-          break;
-        default:
-          break;
-      }
-    })
-    .catch(err => {
-      console.error(err);
-    })
-},
-
-_showToastTip() {
-  wx.showToast({
-    icon: 'none',
-    title: '发布中...',
-  })
-},
-
-_hideToastTip() {
-  wx.hideLoading();
-},
-
-_successTip() {
-  wx.showToast({
-    icon: 'none',
-    title: '发布成功',
-  })
-},
-})
+  _successTip() {
+    wx.showToast({
+      icon: 'none',
+      title: '发布成功',
+    });
+  },
+});
 ```
 
 完整的示例`wxml`,如下所示：
 
-```
+```html
 <view class="image-list">
-<!-- 显示图片 -->
-<block wx:for="{{images}}" wx:key="*this">
-    <view class="image-wrap"><image class="image" src="{{item}}" mode="aspectFill" bind:tap="onPreviewImage" data-imgsrc="{{item}}"></image><i class="iconfont icon-shanchu" bind:tap="onDelImage" data-index="{{index}}"></i>
+  <!-- 显示图片 -->
+  <block wx:for="{{images}}" wx:key="*this">
+    <view class="image-wrap"
+      ><image
+        class="image"
+        src="{{item}}"
+        mode="aspectFill"
+        bind:tap="onPreviewImage"
+        data-imgsrc="{{item}}"
+      ></image
+      ><i
+        class="iconfont icon-shanchu"
+        bind:tap="onDelImage"
+        data-index="{{index}}"
+      ></i>
     </view>
-</block>
-<!-- 选择图片 -->
-<view class="image-wrap selectphoto" hidden="{{!selectPhoto}}" bind:tap="onChooseImage"><i class="iconfont icon-add"></i></view>
+  </block>
+  <!-- 选择图片 -->
+  <view
+    class="image-wrap selectphoto"
+    hidden="{{!selectPhoto}}"
+    bind:tap="onChooseImage"
+    ><i class="iconfont icon-add"></i
+  ></view>
 </view>
 <view class="footer">
   <button class="send-btn" bind:tap="send">发布</button>
@@ -818,38 +852,37 @@ _successTip() {
 
 云函数端的代码
 
-```
+```js
 // 云函数入口文件
 const cloud = require('wx-server-sdk');
 cloud.init({
-env: cloud.DYNAMIC_CURRENT_ENV
-})
+  env: cloud.DYNAMIC_CURRENT_ENV,
+});
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-const wxContext = cloud.getWXContext()
-try {
-  const result = await cloud.openapi.security.imgSecCheck({
-    media: {
-      contentType: 'image/png',
-      value: Buffer.from(event.img)   // 这里必须要将小程序端传过来的进行Buffer转化,否则就会报错,接口异常
+  const wxContext = cloud.getWXContext();
+  try {
+    const result = await cloud.openapi.security.imgSecCheck({
+      media: {
+        contentType: 'image/png',
+        value: Buffer.from(event.img), // 这里必须要将小程序端传过来的进行Buffer转化,否则就会报错,接口异常
+      },
+    });
+
+    if (result && result.errCode.toString() === '87014') {
+      return { code: 500, msg: '内容含有违法违规内容', data: result };
+    } else {
+      return { code: 200, msg: '内容ok', data: result };
     }
-
-  })
-
-  if (result && result.errCode.toString() === '87014') {
-    return { code: 500, msg: '内容含有违法违规内容', data: result }
-  } else {
-    return { code: 200, msg: '内容ok', data: result }
+  } catch (err) {
+    // 错误处理
+    if (err.errCode.toString() === '87014') {
+      return { code: 500, msg: '内容含有违法违规内容', data: err };
+    }
+    return { code: 502, msg: '调用imgSecCheck接口异常', data: err };
   }
-} catch (err) {
-  // 错误处理
-  if (err.errCode.toString() === '87014') {
-    return { code: 500, msg: '内容含有违法违规内容', data: err }
-  }
-  return { code: 502, msg: '调用imgSecCheck接口异常', data: err }
-}
-}
+};
 ```
 
 您可以根据自己的业务逻辑需要,一旦检测到图片违规时,禁用按钮状态,或者给一些用户提示,都是可以的；在发布之前或者点击发布时,进行图片内容安全的校验都可以,一旦发现图片有违规时,就禁止继续后面的操作。

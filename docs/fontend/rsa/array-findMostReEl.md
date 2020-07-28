@@ -126,4 +126,20 @@ console.log(hightFrequency(hotWords)); // 关键词Js,出现了3次
 
 :::
 
+### 方法 3-
+
+::: details 点击即可查看代码
+
+```js
+function countOccurrences(arr, value) {
+  let result = arr.reduce((a, v) => (v === value ? a + 1 : a + 0), 0);
+  return result;
+}
+
+var arrs = [1, 2, 3, 1, 2, 1, 4, 5, 1, 2, 4, 5];
+countOccurrences(arrs, 1); // 4
+```
+
+:::
+
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />

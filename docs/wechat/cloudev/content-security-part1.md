@@ -26,7 +26,7 @@ title: 小程序-云开发-对敏感词进行过滤即内容安全的检测(上)
 对于小程序而言,这一点在审核上是非常严格的,净化言行,做一个知法守法的人很重要...
 
 <div align="center">
- <img class="medium-zoom" src="../images/content-security-part1/content-sercurity1.png" alt="小程序-云开发" />
+ <img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part1/content-sercurity1.png" alt="小程序-云开发" />
 </div>
 接入内容安全检测,规避输入一些违法违规低俗等内容,避免辛辛苦苦开发出来的应用。
 
@@ -69,130 +69,124 @@ title: 小程序-云开发-对敏感词进行过滤即内容安全的检测(上)
 
 小程序前端 wxml 代码示例
 
-```
-<view class="container">
-  <textarea class="content" placeholder="写点文字..." bindinput="onInput" auto-focus bindfocus="onFocus" bindblur="onBlur">
-  </textarea>
+```html
+<view class="container">
+  <textarea
+    class="content"
+    placeholder="写点文字..."
+    bindinput="onInput"
+    auto-focus
+    bindfocus="onFocus"
+    bindblur="onBlur"
+  >
+  </textarea>
 </view>
 
 <view class="footer">
-  <button class="send-btn" size="default" bind:tap="send">发布</button>
+  <button class="send-btn" size="default" bind:tap="send">发布</button>
 </view>
-
 ```
 
 小程序前端 wxss 代码示例
 
-```
+```css
 /* pages/msgSecCheck/msgSecCheck.wxss */
 .container {
-  padding: 20rpx;
+    padding: 20rpx;
 }
 
 .content {
-  width: 100%;
-  height: 360rpx;
-  box-sizing: border-box;
-  font-size: 32rpx;
-  border: 1px solid #ccc;
+    width: 100%;
+    height: 360rpx;
+    box-sizing: border-box;
+    font-size: 32rpx;
+    border: 1px solid #ccc;
 }
 
 .footer {
-  width: 100%;
-  height: 80rpx;
-  line-height: 80rpx;
-  position: fixed;
-  bottom: 0;
-  box-sizing: border-box;
-  background: #34bfa3;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    background: #34bfa3;
 }
 
 .send-btn {
-  width: 100% !important;
-  color: #fff;
-  font-size: 32rpx;
+    width: 100% !important;
+    color: #fff;
+    font-size: 32rpx;
 }
 
 button {
-  width: 100%;
-  background: #34bfa3;
-  border-radius: 0rpx;
+    width: 100%;
+    background: #34bfa3;
+    border-radius: 0rpx;
 }
 
 button::after {
-  border-radius: 0rpx !important;
+    border-radius: 0rpx !important;
 }
-
 ```
 
 经过 wxml 与 wxss 的编写后,UI 最终长成这样
 
 <div align="center">
-<img class="medium-zoom" src="../images/content-security-part1/content-sercurity2.png" alt="小程序-云开发" />
+<img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part1/content-sercurity2.png" alt="小程序-云开发" />
 </div>
 
 ### Step 2: 完成小程序端业务逻辑的处理
 
 小程序端逻辑 JS 代码示例
 
-```
+```js
 // pages/msgSecCheck/msgSecCheck.js
 Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    textareaVal: '', // 页面中需要显示的数据,初始化定义在data下面
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */ onLoad: function(options) {}, // 监听表单时,数据有变化时
+  onInput(event) {
+    let textVal = event.detail.value;
+    this.setData({
+      textareaVal: textVal,
+    });
+  }, // 聚焦焦点时
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    textareaVal: ''   // 页面中需要显示的数据,初始化定义在data下面
-  },
+  onFocus() {
+    console.log('聚焦焦点时');
+  }, // 失去焦点时
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onBlur(event) {
+    console.log('失去焦点时'); // 前端可进行手动的弱校验,也可以在失去焦点时发送请求进行文本的校验,但是每次失去焦点就请求一次,这样是消耗云资源的,在发布时候与失去焦点做校验两者都可以
+  }, // 发布
 
-  },
-  // 监听表单时,数据有变化时
-  onInput(event) {
-    let textVal = event.detail.value;
-    this.setData({
-      textareaVal: textVal
-    })
-    
-  },
-
-  // 聚焦焦点时
-  onFocus() {
-    console.log('聚焦焦点时');
-  },
-
-  // 失去焦点时
-  onBlur(event) {
-    console.log("失去焦点时");
-    // 前端可进行手动的弱校验,也可以在失去焦点时发送请求进行文本的校验,但是每次失去焦点就请求一次,这样是消耗云资源的,在发布时候与失去焦点做校验两者都可以
-
-
-  },
-
-  // 发布
-  send() {
-    console.log("触发发布按钮")
-    wx.cloud.callFunction({ // 请求msgSecCheck1云函数
-      name: 'msgSecCheck1',
-      data: {
-        content: this.data.textareaVal // 需要向云函数msgSecCheck1传入的值
-      }
-
-    }).then(res => { // 成功时的响应返回结果
-      console.log(res);
-    }).catch(err => { // 失败时,返回的结果
-      console.error(err);
-    })
-    
-  }
-
-})
-
+  send() {
+    console.log('触发发布按钮');
+    wx.cloud
+      .callFunction({
+        // 请求msgSecCheck1云函数
+        name: 'msgSecCheck1',
+        data: {
+          content: this.data.textareaVal, // 需要向云函数msgSecCheck1传入的值
+        },
+      })
+      .then((res) => {
+        // 成功时的响应返回结果
+        console.log(res);
+      })
+      .catch((err) => {
+        // 失败时,返回的结果
+        console.error(err);
+      });
+  },
+});
 ```
 
 ### Step 3 ：服务端逻辑处理
@@ -200,12 +194,12 @@ Page({
 在小程序云函数端创建云函数`msgSecCheck1`,这个名字你可以自定义,与小程序前端请求的名字保持一致就可以了的
 
 <div align="center">
-<img class="medium-zoom" src="../images/content-security-part1/content-sercurity3.png" alt="小程序-云开发" />
+<img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part1/content-sercurity3.png" alt="小程序-云开发" />
 </div>
 
 选中云函数,右键并打开命令行终端安装`request`,`request-promise`，因为`request-promise`依赖于`request`,两个都要安装,最后一键上传部署就可以了的
 
-```
+```js
 npm install request
 npm install request-promise
 
@@ -214,7 +208,7 @@ npm install request-promise
 如果遇到在小程序端请求云函数时,遇到类似下面的错误,找不到什么 xxx 模块之类的 先看错误码,然后在官方文档中找到该错误码代表的含义
 
 <div align="center">
-<img class="medium-zoom" src="../images/content-security-part1/content-sercurity4.png" alt="小程序-云开发" />
+<img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part1/content-sercurity4.png" alt="小程序-云开发" />
 </div>
 
 一看错误,没有找到模块,在云函数的目录下的 package.json 中查看是否有安装错误中提示的包的,要是没有的话,就安装一下就可以了的,同时记得每次更改后都要上传部署一下,也可以选择云函数中文件的增量上传
@@ -231,7 +225,7 @@ npm install request-promise
 
 小程序前端逻辑代码
 
-```
+```js
 // 点击发送按钮,对输入的文本内容进行校验
  send() {
     wx.cloud.callFunction({
@@ -258,7 +252,7 @@ npm install request-promise
 
 下面是将请求云函数的部分核心代码
 
-```
+```js
 // 发布
   send() {
     // 请求msgSecCheck1云函数,对文本内容进行校验
@@ -290,7 +284,7 @@ npm install request-promise
 
 接下来就是处理云函数端,使用`request-promise`请求请求微信内容安全接口的示例代码
 
-```
+```js
 /*
  *  Description: 利用第三方库request-promise请求微信内容安全接口
  *
@@ -303,41 +297,38 @@ https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/access-tok
  *
  */
 
-const APPID = "wx21baa58c6180c2eb"; // 注意是你自己小程序的appid
-const APPSECRET = ""; // 你自己小程序的appsecret
+const APPID = 'wx21baa58c6180c2eb'; // 注意是你自己小程序的appid
+const APPSECRET = ''; // 你自己小程序的appsecret
 // 安全校验接口
-const msgCheckURL = `https://api.weixin.qq.com/wxa/msg_sec_check?access_token=`;
+const msgCheckURL = `https://api.weixin.qq.com/wxa/msg_sec_check?access_token=`;
 // 向下面的这个地止发送请求,携带appid和appsecret参数,获取token认证
-const tokenURL = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APPID}&secret=${APPSECRET}`
+const tokenURL = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APPID}&secret=${APPSECRET}`;
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 
-cloud.init()
+cloud.init();
 
 // 引入request-promise
-const rp = require('request-promise');
+const rp = require('request-promise');
 
 // 云函数入口函数
-exports.main = async(event, context) => {
-  try {
-    let tokenResponse = await rp(tokenURL);
-    // 获取token值,因为返回的结果是字符串,需要用JSON.parse转化为json对象
-    let getAccessToken = JSON.parse(tokenResponse).access_token;
-    // 请求微信内容安全接口,post请求,返回最终的校验结果
-    let checkResponse = await rp({
-      method: 'POST',
-      url: `${msgCheckURL}${getAccessToken}`,
-      body: {
-        content: event.content // 这里的event.content是小程序端传过来的值,content是要向内容接口校验的内容
-      },
-      json: true
-    })
-    return checkResponse;
-  } catch (err) {
-      console.error(err);
-  }
-}
-
+exports.main = async (event, context) => {
+  try {
+    let tokenResponse = await rp(tokenURL); // 获取token值,因为返回的结果是字符串,需要用JSON.parse转化为json对象
+    let getAccessToken = JSON.parse(tokenResponse).access_token; // 请求微信内容安全接口,post请求,返回最终的校验结果
+    let checkResponse = await rp({
+      method: 'POST',
+      url: `${msgCheckURL}${getAccessToken}`,
+      body: {
+        content: event.content, // 这里的event.content是小程序端传过来的值,content是要向内容接口校验的内容
+      },
+      json: true,
+    });
+    return checkResponse;
+  } catch (err) {
+    console.error(err);
+  }
+};
 ```
 
 当你在小程序端输入文本,发送请求时,查看控制台下的结果时,功能是没有问题的。
@@ -373,7 +364,7 @@ exports.main = async(event, context) => {
 
 ## 完整文本安全校验示例代码
 
-```
+```js
 /*
  *
  * 相关文档链接:
@@ -385,66 +376,63 @@ https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/access-tok
  *
  */
 
-const APPID = "wx21baa58c6180c2eb";
-const APPSECRET = "";
+const APPID = 'wx21baa58c6180c2eb';
+const APPSECRET = '';
 
-const msgCheckURL = `https://api.weixin.qq.com/wxa/msg_sec_check?access_token=`;
+const msgCheckURL = `https://api.weixin.qq.com/wxa/msg_sec_check?access_token=`;
 // 向下面的这个地止发送请求,携带appid和appsecret参数,获取token认证
-const tokenURL = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APPID}&secret=${APPSECRET}`
+const tokenURL = `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${APPID}&secret=${APPSECRET}`;
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 
-cloud.init()
+cloud.init();
 
 // 引入request-promise
-const rp = require('request-promise');
+const rp = require('request-promise');
 
 // 云函数入口函数
-exports.main = async(event, context) => {
-  try {
-    let tokenResponse = await rp(tokenURL);
-    // 获取token值,因为返回的结果是字符串,需要用JSON.parse转化为json对象
-    let getAccessToken = JSON.parse(tokenResponse).access_token;
-    // 请求微信内容安全接口,post请求,返回最终的校验结果
-    let checkResponse = await rp({
-      method: 'POST',
-      url: `${msgCheckURL}${getAccessToken}`,
-      body: {
-        content: event.content // 这里的event.content是小程序端传过来的值,content是要向内容接口校验的内容
-      },
-      json: true
-    })
+exports.main = async (event, context) => {
+  try {
+    let tokenResponse = await rp(tokenURL); // 获取token值,因为返回的结果是字符串,需要用JSON.parse转化为json对象
+    let getAccessToken = JSON.parse(tokenResponse).access_token; // 请求微信内容安全接口,post请求,返回最终的校验结果
+    let checkResponse = await rp({
+      method: 'POST',
+      url: `${msgCheckURL}${getAccessToken}`,
+      body: {
+        content: event.content, // 这里的event.content是小程序端传过来的值,content是要向内容接口校验的内容
+      },
+      json: true,
+    }); // 有必要根据错误码,确定内容是否违规
 
-    // 有必要根据错误码,确定内容是否违规
-    if (checkResponse.errcode == 87014) {
-      return {
-        code: 500,
-        msg: "内容含有违法违规内容",
-        data: checkResponse
-      }
-    } else {
-      return {
-        code: 200,
-        msg: "内容OK",
-        data: checkResponse
-      }
-    }
-  } catch (err) {
-    if (err.errcode == 87014) {
-      return {
-        code: 500,
-        msg: '内容含有违法违规内容',
-        data: err
-      }
-    } else {
-      return {
-        code: 502,
-        msg: '调用msgCheckURL接口异常',
-        data: err
-      }
-    }
-  }
-}
+    if (checkResponse.errcode == 87014) {
+      return {
+        code: 500,
+        msg: '内容含有违法违规内容',
+        data: checkResponse,
+      };
+    } else {
+      return {
+        code: 200,
+        msg: '内容OK',
+        data: checkResponse,
+      };
+    }
+  } catch (err) {
+    if (err.errcode == 87014) {
+      return {
+        code: 500,
+        msg: '内容含有违法违规内容',
+        data: err,
+      };
+    } else {
+      return {
+        code: 502,
+        msg: '调用msgCheckURL接口异常',
+        data: err,
+      };
+    }
+  }
+};
 ```
 
 在云函数端,经过添加错误码的判断之后,在来看看小程序端发送的请求,返回的结果。
@@ -455,7 +443,7 @@ exports.main = async(event, context) => {
 
 至此,我们在小程序端可以根据这个返回的错误码或成功码,进行一些业务逻辑处理的,比如给一些用户提示,在数据插入数据库之前就做一些判断操作,只有内容合规时,才插入数据库,进入下一步的业务逻辑处理
 
-```
+```js
 _requestCloudMsgCheck() {
     let textareaVal = this.data.textareaVal;
     wx.cloud.callFunction({

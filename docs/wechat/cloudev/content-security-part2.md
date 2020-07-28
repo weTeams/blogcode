@@ -36,131 +36,128 @@ autoPrev: content-security-part1
 
 小程序端 wxml
 
-```
+```html
 <!--pages/msgSecCheck/msgSecCheck.wxml-->
-<view class="container">
-  <textarea class="content" placeholder="写点文字..." bindinput="onInput" auto-focus bindfocus="onFocus" bindblur="onBlur">
-  </textarea>
+<view class="container">
+  <textarea
+    class="content"
+    placeholder="写点文字..."
+    bindinput="onInput"
+    auto-focus
+    bindfocus="onFocus"
+    bindblur="onBlur"
+  >
+  </textarea>
 </view>
 
-<view class="footer">
-  <button class="send-btn" size="default" bind:tap="send">发布</button>
+<view class="footer">
+  <button class="send-btn" size="default" bind:tap="send">发布</button>
 </view>
 ```
 
 小程序端 wxss
 
-```
+```css
 /* pages/msgSecCheck/msgSecCheck.wxss */
 .container {
-  padding: 20rpx;
+    padding: 20rpx;
 }
 
 .content {
-  width: 100%;
-  height: 360rpx;
-  box-sizing: border-box;
-  font-size: 32rpx;
-  border: 1px solid #ccc;
+    width: 100%;
+    height: 360rpx;
+    box-sizing: border-box;
+    font-size: 32rpx;
+    border: 1px solid #ccc;
 }
 
 .footer {
-  width: 100%;
-  height: 80rpx;
-  line-height: 80rpx;
-  position: fixed;
-  bottom: 0;
-  box-sizing: border-box;
-  background: #34bfa3;
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    background: #34bfa3;
 }
 
 .send-btn {
-  width: 100% !important;
-  color: #fff;
-  font-size: 32rpx;
+    width: 100% !important;
+    color: #fff;
+    font-size: 32rpx;
 }
 
 button {
-  width: 100%;
-  background: #34bfa3;
-  border-radius: 0rpx;
+    width: 100%;
+    background: #34bfa3;
+    border-radius: 0rpx;
 }
 
 button::after {
-  border-radius: 0rpx !important;
+    border-radius: 0rpx !important;
 }
-
 ```
 
 最终呈现的 UI 如下所示
 
 <div align="center">
- <img class="medium-zoom" src="../images/content-security-part2/content-part1.png" alt="小程序-云开发" />
+ <img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part2/content-part1.png" alt="小程序-云开发" />
 </div>
 
 小程序端的 JS 逻辑代码
 
-```
+```js
 // pages/msgSecCheck/msgSecCheck.js
 Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    textareaVal: '',
+  }, // 监听表单时,数据有变化时
+  onInput(event) {
+    let textVal = event.detail.value;
+    this.setData({
+      textareaVal: textVal,
+    });
+  }, // 聚焦点时
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    textareaVal: ''
-  },
-  // 监听表单时,数据有变化时
-  onInput(event) {
-    let textVal = event.detail.value;
-    this.setData({
-      textareaVal: textVal
-    })
+  onFocus() {
+    console.log('聚焦点时');
+  }, // 失去焦点时
 
-  },
+  onBlur(event) {
+    console.log('失去焦点时'); // 前端可进行手动的弱校验,也可以在失去焦点时发送请求进行文本的校验,但是每次失去焦点就请求一次,这样是消耗云请求的,其实在发布时候与失去焦点做校验两者都可以
+  }, // 发布
 
-  // 聚焦点时
-  onFocus() {
-    console.log('聚焦点时');
-  },
+  send() {
+    // 请求msgSecChec2云函数,对文本内容进行校验
+    this._requestCloudMsgCheck();
+  },
 
-  // 失去焦点时
-  onBlur(event) {
-    console.log("失去焦点时");
-    // 前端可进行手动的弱校验,也可以在失去焦点时发送请求进行文本的校验,但是每次失去焦点就请求一次,这样是消耗云请求的,其实在发布时候与失去焦点做校验两者都可以
-
-
-  },
-
-  // 发布
-  send() {
-    // 请求msgSecChec2云函数,对文本内容进行校验
-    this._requestCloudMsgCheck();
-  },
-
-  _requestCloudMsgCheck() {
-    let textareaVal = this.data.textareaVal;
-    wx.cloud.callFunction({
-      name: 'msgSecCheck2', // 只是把这个云函数名替换了一下的,其他并没有什么变化
-      data: {
-        content: textareaVal
-      }
-    }).then(res => {
-      console.log(res);
-      
-    }).catch(err => {
-      // 失败时,也就是违规做一些用户提示,或者禁止下一步操作等之类的业务逻辑操作
-      console.error(err);
-    })
-  }
-
-})
-
+  _requestCloudMsgCheck() {
+    let textareaVal = this.data.textareaVal;
+    wx.cloud
+      .callFunction({
+        name: 'msgSecCheck2', // 只是把这个云函数名替换了一下的,其他并没有什么变化
+        data: {
+          content: textareaVal,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        // 失败时,也就是违规做一些用户提示,或者禁止下一步操作等之类的业务逻辑操作
+        console.error(err);
+      });
+  },
+});
 ```
 
 在小程序云函数端`msgSecCheck2`目录下创建`config.json`文件,这个文件名称是固定的,添加如下配置即可,若是其他接口支持云函数的,也是如法炮制
 
-```
+```js
 {
   "permissions": {
     "openapi": [
@@ -173,24 +170,23 @@ Page({
 
 在主入口`index.js`文件中,按照官方文档,填写下面几行代码就可以了。
 
-```
+```js
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 
-cloud.init()
+cloud.init();
 
 // 云函数入口函数
-exports.main = async(event, context) => {
-  try {
-    const result = await cloud.openapi.security.msgSecCheck({
-      content: event.content // 小程序端传过来的值,content字段接收
-    })
-    return result;
-  } catch (err) {
-    return err;
-  }
-}
-
+exports.main = async (event, context) => {
+  try {
+    const result = await cloud.openapi.security.msgSecCheck({
+      content: event.content, // 小程序端传过来的值,content字段接收
+    });
+    return result;
+  } catch (err) {
+    return err;
+  }
+};
 ```
 
 你会发现在小程序端检测一段文本是否违规,就这么几行云函数代码,就完成了这个文本内容校验功能。
@@ -199,59 +195,58 @@ exports.main = async(event, context) => {
 
 最终会返回一个成功与失败的结果,当然跟上节一样,仍需要对错误码进行处理的,无论是在云函数端还是小程序端,代码如下所示
 
-```
+```js
 // 云函数入口文件
-const cloud = require('wx-server-sdk')
+const cloud = require('wx-server-sdk');
 
-cloud.init()
+cloud.init();
 
 // 云函数入口函数
-exports.main = async(event, context) => {
-  try {
-    const result = await cloud.openapi.security.msgSecCheck({
-      content: event.content
-    })
+exports.main = async (event, context) => {
+  try {
+    const result = await cloud.openapi.security.msgSecCheck({
+      content: event.content,
+    });
 
-    if (result.errCode === 87014) {
-      return {
-        code: 500,
-        msg: '内容含有违法违规内容',
-        data: result
-      }
-    } else {
-      return {
-        code: 200,
-        msg: '内容ok',
-        data: result
-      }
-    }
-  } catch (err) {
-    // 错误处理
-    if (err.errCode === 87014) {
-      return {
-        code: 500,
-        msg: '内容含有违法违规内容',
-        data: err
-      }
-    }
-    return {
-      code: 502,
-      msg: '调用msgSecCheck接口异常',
-      data: err
-    }
-  }
-}
-
+    if (result.errCode === 87014) {
+      return {
+        code: 500,
+        msg: '内容含有违法违规内容',
+        data: result,
+      };
+    } else {
+      return {
+        code: 200,
+        msg: '内容ok',
+        data: result,
+      };
+    }
+  } catch (err) {
+    // 错误处理
+    if (err.errCode === 87014) {
+      return {
+        code: 500,
+        msg: '内容含有违法违规内容',
+        data: err,
+      };
+    }
+    return {
+      code: 502,
+      msg: '调用msgSecCheck接口异常',
+      data: err,
+    };
+  }
+};
 ```
 
 当您在小程序端进行测试,输入一段违规的文本进行测试,如下所示,将会返回违规的状态码与信息提示
 
 <div align="center">
- <img class="medium-zoom" src="../images/content-security-part2/content-part2.png" alt="小程序-云开发" />
+ <img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part2/content-part2.png" alt="小程序-云开发" />
 </div>
 当您输入符合规则的文本时,便会返回成功时的状态码,以及对应合规的信息提示。
 <div align="center">
- <img class="medium-zoom" src="../images/content-security-part2/content-part3.png" alt="小程序-云开发" />
+ <img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part2/content-part3.png" alt="小程序-云开发" />
 </div>
 至此,通过云调用小程序提供的内置安全接口,非常简单容易的实现文本内容安全的校验
 
@@ -263,14 +258,14 @@ exports.main = async(event, context) => {
   _ 强制用户不能输入,发布,或者评论等
   _ 针对敏感词汇,用\*号进行替代
   <div align="center">
-   <img class="medium-zoom" src="../images/content-security-part2/content-part4.png" alt="小程序-云开发" />
+   <img class="medium-zoom lazy" loading="lazy" src="../images/content-security-part2/content-part4.png" alt="小程序-云开发" />
   </div>
 
 那这个究竟是怎么实现的呢?
 
 事件的触发应该是在失去焦点的时候,就进行常规自定义文本内容校验
 
-```
+```js
 /**
  *
  * 您也是可以单独将自定义的违规词汇放到一个utils文件,单独js文件当中,通过export的方式导出来,在想要使用的地方引入进去也是可以的
@@ -310,92 +305,83 @@ const g_reg = /好贱|操|杀|贱|傻|疯|炮|奸|猪|笨|屁|麻痹|滚犊子
 
 以下是完整的示例代码
 
-```
+```js
 /**
- *
- * 你也是可以单独将自定义的文本放到一个js文件当中,通过export的方式导出来,在想要使用的地方引入进去也是可以的
- */
-const g_reg = /操|杀|贱|傻|疯|炮|奸|猪|笨|屁|麻痹|滚犊子|婊/gm
-
+ *
+ * 你也是可以单独将自定义的文本放到一个js文件当中,通过export的方式导出来,在想要使用的地方引入进去也是可以的
+ */
+const g_reg = /操|杀|贱|傻|疯|炮|奸|猪|笨|屁|麻痹|滚犊子|婊/gm;
 
 // pages/msgSecCheck/msgSecCheck.js
 Page({
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    textareaVal: '',
+    hasSensitiveWords: '',
+  }, // 监听表单时,数据有变化时
+  onInput(event) {
+    let textVal = event.detail.value;
+    this.setData({
+      textareaVal: textVal,
+    });
+  }, // 聚焦焦点时
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    textareaVal: '',
-    hasSensitiveWords: ''
-  },
-  // 监听表单时,数据有变化时
-  onInput(event) {
-    let textVal = event.detail.value;
-    this.setData({
-      textareaVal: textVal
-    })
+  onFocus() {
+    console.log('聚焦焦点时');
+  }, // 失去焦点时
 
-  },
+  onBlur(event) {
+    console.log('失去焦点时'); // 前端可进行手动的弱校验,也可以在失去焦点时发送请求进行文本的校验,但是每次失去焦点就请求一次,这样是消耗云资源的,其实在发布时候与失去焦点做校验两者都可以
+    const textVal = event.detail.value;
+    if (this._hasSensitiveWords(textVal)) {
+      wx.showToast({
+        title: '含有敏感词,敏感词将会用***号处理',
+      });
+      this.setData({
+        hasSensitiveWords: textVal.replace(g_reg, '***'),
+      });
+      console.log(this.data.textareaVal);
+    } else {
+      this.setData({
+        hasSensitiveWords: textVal,
+      });
+      console.log(this.data.textareaVal);
+    }
+  }, // 发布
 
-  // 聚焦焦点时
-  onFocus() {
-    console.log('聚焦焦点时');
-  },
+  send() {
+    // 请求msgSecCheck1云函数,对文本内容进行校验
+    this._requestCloudMsgCheck();
+  },
 
-  // 失去焦点时
-  onBlur(event) {
-    console.log("失去焦点时");
-    // 前端可进行手动的弱校验,也可以在失去焦点时发送请求进行文本的校验,但是每次失去焦点就请求一次,这样是消耗云资源的,其实在发布时候与失去焦点做校验两者都可以
-    const textVal = event.detail.value;
-    if (this._hasSensitiveWords(textVal)) {
-      wx.showToast({
-        title: '含有敏感词,敏感词将会用***号处理',
-      })
-      this.setData({
-        hasSensitiveWords: textVal.replace(g_reg, "***")
-      })
-      console.log(this.data.textareaVal);
-    } else {
-      this.setData({
-        hasSensitiveWords: textVal
-      })
-      console.log(this.data.textareaVal);
-    }
+  _requestCloudMsgCheck() {
+    let textareaVal = this.data.textareaVal;
+    wx.cloud
+      .callFunction({
+        name: 'msgSecCheck2',
+        data: {
+          content: textareaVal,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        // 失败时,也就是违规做一些用户提示,或者禁止下一步操作等之类的业务逻辑操作
+        console.error(err);
+      });
+  }, // 手动对敏感词检测
 
-  },
-
-  // 发布
-  send() {
-    // 请求msgSecCheck1云函数,对文本内容进行校验
-    this._requestCloudMsgCheck();
-  },
-
-  _requestCloudMsgCheck() {
-    let textareaVal = this.data.textareaVal;
-    wx.cloud.callFunction({
-      name: 'msgSecCheck2',
-      data: {
-        content: textareaVal
-      }
-    }).then(res => {
-      console.log(res);
-
-    }).catch(err => {
-      // 失败时,也就是违规做一些用户提示,或者禁止下一步操作等之类的业务逻辑操作
-      console.error(err);
-    })
-  },
-
-  // 手动对敏感词检测
-  _hasSensitiveWords(str) {
-    if (str == '' || str == 'undefined') return false;
-    if (g_reg.test(str)) { // 如果检测有违规,就返回true
-      return true;
-    }
-  }
-
-})
-
+  _hasSensitiveWords(str) {
+    if (str == '' || str == 'undefined') return false;
+    if (g_reg.test(str)) {
+      // 如果检测有违规,就返回true
+      return true;
+    }
+  },
+});
 ```
 
 而`wxml`只是新增加了一个字段`hasSensitiveWords`而已,这里只是用于学习演示

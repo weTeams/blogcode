@@ -14,3 +14,5 @@ title:目录
 - [数组的去重](./array-unique)
 - [找出数组中重复次数最多的元素](./array-findMostReEl)
 - [找出数组中最大和最小的元素](./array-max-min-el)
+- [对比两个数组并且返回其中不同的元素](./array-compare-two-diff-ele)
+- [返回两个数组中相同的元素](./array-same-two-array)
