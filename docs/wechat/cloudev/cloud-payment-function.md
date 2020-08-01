@@ -2,6 +2,8 @@
 title: 小程序-云开发-实现微信云支付功能
 ---
 
+## 小程序-云开发-实现微信云支付功能
+
 ## 快速导航
 
 <TOC />
@@ -21,7 +23,11 @@ title: 小程序-云开发-实现微信云支付功能
 - 随机生成商品订单号,订单号不能重复
 - 实现云支付的功能
 
-## 前提条件
+<div align="center">
+ <img class="medium-zoom lazy" loading="lazy" src="../images/cloud-payment-function/05-pay-animate.gif" alt="小程序-云开发" />
+</div>
+
+> ## 前提条件
 
 **资质:** 小程序主体开通微信支付(**微信支付不支持个人小程序,需要企业账户才可以**)的能力,并且已绑定商户号(**绑定开通商户号**)的小程序
 
@@ -30,7 +36,7 @@ title: 小程序-云开发-实现微信云支付功能
   <img class="medium-zoom lazy" loading="lazy" src="../images/cloud-payment-function/02-payment.png" alt="小程序-云开发" />
 </div>
 
-## 开通
+> ## 开通
 
 开通微信支付云调用,在云控制台 -> 设置 -> 全局设置中开通,如下所示
 
@@ -42,14 +48,14 @@ title: 小程序-云开发-实现微信云支付功能
 
 点击模板消息会弹出服务商助手小程序,确认授权之后就可以在云开发控制台看到绑定状态为“已绑定”，而`JS API`权限也会显示“已授权”
 
-## 微信支付流程
+> ## 微信支付流程
 
 1. 在小程序端:用户在小程序端点击支付时,使用`wx.cloud.callFunction`调用云函数(例如:支付云函数名为`questionPay`),并将商品描述(`body`),商品订单号`outTradeNo`,子商户号`subMchId`,总金额`totalFee`等信息参数传递给`questionPay`云函数
 2. 在云函数端: 在`questionPay`云函数中调用统一下单接口`cloud.cloudPay.unifiedOrder()`,该函数接收一对象,包含的参数有,商品描述(`body`),商品订单号(`outTradeNo`),云坏境的 Id,以及需要填写结果通知回调函数(如:`wechatpay`),它是用来接收异步支付的结果,`questionPay`云函数会返回成功结果的对象中会包含`payment`字段(包含:`appId`,`nonceStr`,`package`,`paySign`,`signType(MD5)`,`timeStamp`)参数,会唤起微信支付的界面
 3. 在小程序端`wx.cloudFunction`的`success`回调函数(即调用`questionPay`云函数返回的对象)里调用`wx.requestPayment`接口发起支付请求,而从`questionPay`云函数返回的`payment`对象,参数,包含这个接口所需要的所有信息(参数),会弹出微信支付的界面
 4. 用户在小程序端支付成功,`questionPay`就会接收到异步的支付结果
 
-## 微信支付小程序端代码
+> ## 微信云支付-小程序端代码
 
 以下是小程序端的示例代码
 
@@ -182,6 +188,79 @@ Page({
 });
 ```
 
+wxml 代码
+
+```html
+<view class="wrap">
+  <form bindsubmit="questionPay">
+    <view hidden="{{showSlide}}">
+      <slider
+        bindchange="sliderChange"
+        block-size="15"
+        activeColor="#34bfa3"
+        value="5"
+        min="5"
+        name="sliderVal"
+        max="200"
+        block-color="#34bfa3"
+        show-value="{{false}}"
+      />
+      <view>￥<text>{{slideVal}}</text></view>
+    </view>
+    <view class="show-input-wrap" hidden="{{ showInput }}">
+      <text>￥</text>
+      <input
+        class="show-input"
+        placeholder="1.00-200.00元"
+        maxlength="3"
+        type="number"
+        focus="{{true}}"
+        confirm-hold="{{true}}"
+        name="value"
+        value=""
+      />
+    </view>
+    <view class="other-pay-count" bindtap="onOtherPayTap">
+      <text>{{showSlide === false? "其他金额": "取消"}}</text>
+    </view>
+    <button class="pay-btn" form-type="submit">支付</button>
+  </form>
+</view>
+```
+
+wxss 代码
+
+```css
+/* miniprogram/pages/testpay/testpay.wxss */
+.wrap {
+  height: auto;
+  background: #fff;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+.show-input-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.other-pay-count {
+  font-size: 30rpx;
+  color: #34bfa3;
+  margin: 40rpx 0;
+}
+
+.pay-btn {
+  outline: none;
+  border: none;
+  background: #d43c33;
+  color: #fff;
+  font-size: 32rpx;
+  border-radius: 0;
+}
+```
+
 :::
 
 上面完成了在小程序端的支付的功能,触发支付操作,请求云函数,并且携带一些参数给该云函数,在云函数返回成功的结果中,拿到返回的参数,然后调用`wx.requestPayment`唤起微信支付.
@@ -246,9 +325,10 @@ wx.requestPayment({
 });
 ```
 
-## 云函数端支付代码
+> ## 云函数端支付代码
 
-在云函数根目录文件夹`cloudfunctions右键`，选择“新建 Nodejs 云函数”，新建一个云函数`questionPay`，然后再在`index.js`里输入以下代码，然后进行一些修改（注意参数名称是固定的，大小写也要原样写）
+在云函数根目录文件夹`cloudfunctions右键`，选择“新建 Nodejs 云函数”，新建一个云函数`questionPay`，然后再在`index.js`里输入以下代码，然后进行一些修改（注意参数名称是固定的，大小写也要原样写,不要写错）
+
 ::: details 点击即可查看云函数端支付代码
 
 ```js
@@ -267,7 +347,7 @@ exports.main = async (event, context) => {
     spbillCreateIp: '127.0.0.1', // 终端IP，必填
     subMchId: event.subMchId, // 子商户号,微信支付商户号,必填
     totalFee: event.payVal, // 总金额,必填
-    envId: 'jiahaoruisen-release-845ui6', // 结果通知回调云函数环境,你自己小程序的坏境id
+    envId: 'xxx', // 结果通知回调云函数环境,你自己小程序的坏境id
     functionName: 'wechatpay', // 结果通知回调云函数名,非必填参数,即使为空,也不影响支付,但是官方文档里写的是必填参数,表示已醉
   });
   return res;
@@ -291,13 +371,20 @@ exports.main = async (event, context) => {
 最后就可以在开发者工具的模拟器里点击"发起支付"的按钮了，这时会弹出支付的二维码，扫码支付就可以了；也可以使用预览或真机调试
 
 <div align="center">
- <img class="medium-zoom lazy" loading="lazy" src="../images/cloud-payment-function/04-cloud-pay-result.png" alt="小程序-云开发" />
+ <img class="medium-zoom lazy" loading="lazy" src="../images/cloud-payment-function/04-cloud-pay-result.png" alt="小程序-云开发" width="348" height="578" />
 </div>
 
-## 结语
+> ## 结语
 
 你会发现用云开发的云支付实现微信支付功能,非常便捷,没有几行代码,你只需要专注自己的业务逻辑开发就可以了的,无需关心证书、签名、也无需依赖第三方模块，免去了泄漏证书，支付等敏感信息的风险
 
 简直是太方便了的
+
+> ## 相关文档
+
+- [微信支付-统一下单云开发官方文档](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/reference-sdk-api/open/pay/CloudPay.unifiedOrder.html)
+- [云开发-微信支付](https://developers.weixin.qq.com/miniprogram/dev/wxcloud/guide/wechatpay.html)
+- [发起微信支付 wx.requestPayment](https://developers.weixin.qq.com/miniprogram/dev/api/open-api/payment/wx.requestPayment.html)
+- [微信支付接口文档](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&index=1)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />

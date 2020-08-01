@@ -22,6 +22,8 @@ title: 目录
 - [css 实现表单 switch 开关 ](./example-input-switch)
 - [css 实现鼠标经过元素下划线由左向右或由中间向两侧展开](./example-hover-underline-sides)
 - [css 实现圆环形布局-并沿着圆环缓慢滚动](./example-rolls-slowly)
+- [css 实现炫酷丝带特殊标签效果](./example-special-label-effect)
+- [css 实现三角形](./example-triangle)
 
 ## css3 动效
 
