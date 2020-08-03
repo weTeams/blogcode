@@ -19,3 +19,7 @@ title: 目录
 - ### 站长工具
 
 <webmaster-webTool />
+
+- ## 软件工具下载
+
+<webmaster-webDownLoadTool />
