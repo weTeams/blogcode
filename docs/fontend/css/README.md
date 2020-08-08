@@ -24,6 +24,7 @@ title: 目录
 - [css 实现圆环形布局-并沿着圆环缓慢滚动](./example-rolls-slowly)
 - [css 实现炫酷丝带特殊标签效果](./example-special-label-effect)
 - [css 实现三角形](./example-triangle)
+- [css 实现加载 loading 动画](./example-css-animate-loading)
 
 ## css3 动效
 
