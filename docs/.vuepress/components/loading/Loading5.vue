@@ -42,7 +42,7 @@
 
 <script>
 export default {
-  name: "load5",
+  name: "loading5",
   data() {
     return {};
   }
