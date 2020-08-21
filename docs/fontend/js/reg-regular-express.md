@@ -147,6 +147,7 @@ console.log(checkTel(tel)); // 010-60440426
 
 ```js
 //let emailReg = /^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$/; // 邮箱的正则
+//let emailregex = /^[a-zA-Z0-9_-]+@([A-Za-z0-9_-]+\.)+(com|cn|net|org)$/; // 这个限制指定的邮箱
 let emailReg = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/g; // 邮箱的正则
 if (!emailReg.test(str)) {
   // 邮箱有误
@@ -157,4 +158,113 @@ if (!emailReg.test(str)) {
 
 :::
 
+## 校验合法身份证的正确性
+
+校验用户输入身份证的正确性
+
+<regular-regExpress :label="`输入身份证`" :type="`ID`" :input="`360481199910232763`" :btntext="`立即校验`" />
+
+::: details 点击即可查看代码
+
+```js
+function checkID(textval) {
+  const reg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|(X|x))$/;
+  return reg.test(textval);
+}
+```
+
+:::
+
+## 校验合法密码 6-20 位字母与数字组合
+
+<regular-regExpress :label="`输入密码`" :type="`password`" :input="`itclan2020_821itclanCoder`" :btntext="`立即校验`" />
+
+::: details 点击即可查看代码
+
+```js
+function checkPwd(textval) {
+  const pwdregex = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+  return pwdregex.test(textval);
+}
+```
+
+:::
+
+## 校验小写字母
+
+校验小写字母
+
+<regular-regExpress :label="`输入小字母`" :type="`lowercase`" :input="`abcdef`" :btntext="`立即校验`" />
+::: details 点击即可查看代码
+```js
+ function validateLowerCase(str) {
+    const reg = /^[a-z]+$/;
+    return reg.test(str);
+}
+```
+:::
+
+## 校验大写字母
+
+校验大写字母
+
+<regular-regExpress :label="`输入大写字母`" :type="`uppercase`" :input="`ABCDEF`" :btntext="`立即校验`" />
+
+::: details 点击即可查看
+
+```js
+function validateUpperCase(str) {
+  const reg = /^[A-Z]+$/;
+  return reg.test(str);
+}
+```
+
+:::
+
+## 校验大小写字母
+
+校验大小写字母
+
+<regular-regExpress :label="`输入大小写字母`" :type="`lowerUppercase`" :input="`abcdefABCDEF`" :btntext="`立即校验`" />
+
+::: details 点击即可查看代码
+
+```js
+function validatAlphabets(str) {
+  const reg = /^[A-Za-z]+$/;
+  return reg.test(str);
+}
+```
+
+:::
+
+## 校验大小写字母及数字
+
+校验大小写字母及数字
+<regular-regExpress :label="`输入大小写字母`" :type="`alphabetssndnumber`" :input="`abcdefABCDEF`" :btntext="`立即校验`" />
+
+::: details 点击即可查看代码
+
+```js
+function validatAlphabetsAndNumber(str) {
+  const reg = /^[A-Za-z0-9]+$/;
+  return reg.test(str);
+}
+```
+
+:::
+
+## 校验数字
+
+校验数字
+
+<regular-regExpress :label="`输入数字`" :type="`number`" :input="`123456`" :btntext="`立即校验`" />
+::: details 点击即可查看代码
+```js
+function validatNumber(str) {
+    const reg = /^[0-9]+$/;
+    return reg.test(str);
+}
+```
+:::
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />

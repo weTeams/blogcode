@@ -64,6 +64,79 @@ export default {
       }
     },
 
+    // 校验身份证合法性
+    checkID(str) {
+      const reg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|(X|x))$/;
+      if (!reg.test(str)) {
+        this.errMessage("您输入的身份证有误,请重新输入");
+      } else {
+        this.result = str;
+        this.inputVal = "";
+      }
+    },
+
+    // 合法密码 6-20位字母与数字组合
+    checkPassword(str) {
+      const pwdregex = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+      if (!pwdregex.test(str)) {
+        this.errMessage("您输入的密码太简单,6-20位字母与数字组合,请重新输入");
+      } else {
+        this.result = str;
+        this.inputVal = "";
+      }
+    },
+
+    // 小写字母
+    validateLowerCase(str) {
+      const reg = /^[a-z]+$/;
+      if (!reg.test(str)) {
+        this.errMessage("您输入的不是小写字母,请重新输入");
+      } else {
+        this.result = str;
+        this.inputVal = "";
+      }
+    },
+
+    validateUpperCase(str) {
+      const reg = /^[A-Z]+$/;
+      if (!reg.test(str)) {
+        this.errMessage("您输入的不是大写字母,请重新输入");
+      } else {
+        this.result = str;
+        this.inputVal = "";
+      }
+    },
+
+    validatAlphabets(str) {
+      const reg = /^[A-Za-z]+$/;
+      if (!reg.test(str)) {
+        this.errMessage("您输入的不是大小写字母,请重新输入");
+      } else {
+        this.result = str;
+        this.inputVal = "";
+      }
+    },
+
+    validatAlphabetsAndNumber(str) {
+      const reg = /^[A-Za-z0-9]+$/;
+      if (!reg.test(str)) {
+        this.errMessage("您输入的不是大小写字母及数字,请重新输入");
+      } else {
+        this.result = str;
+        this.inputVal = "";
+      }
+    },
+
+    validatNumber(str) {
+      const reg = /^[0-9]+$/;
+      if (!reg.test(str)) {
+        this.errMessage("您输入的不是数字,请重新输入");
+      } else {
+        this.result = str;
+        this.inputVal = "";
+      }
+    },
+
     errMessage(errtext) {
       this.$message({
         showClose: true,
@@ -84,6 +157,29 @@ export default {
         case "email":
           // 邮箱
           this.checkEmail(str);
+          break;
+        case "ID":
+          // 身份证
+          this.checkID(str);
+          break;
+        case "password":
+          this.checkPassword(str);
+          break;
+        case "lowercase":
+          this.validateLowerCase(str);
+          break;
+        case "uppercase":
+          this.validateUpperCase(str);
+          break;
+        case "lowerUppercase":
+          this.validatAlphabets(str);
+          break;
+        case "alphabetssndnumber":
+          this.validatAlphabetsAndNumber(str);
+          break;
+        case "number":
+          this.validatNumber(str);
+          break;
         default:
           break;
       }
