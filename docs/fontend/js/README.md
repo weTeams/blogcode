@@ -22,4 +22,9 @@ title: 目录
 
 - [用户姓名-手机号-中间位数用\*替代](./utils-name-mobile-encrye)
 
+### 代码规范
+
+- [JavaScript 企业级编程规范(1)-文件命名-注释规范-id 与 class](./program-rules1)
+- [JavaScript 企业级编程规范(2)-常量-变量-函数-事件-操作符](./program-rules2)
+
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
