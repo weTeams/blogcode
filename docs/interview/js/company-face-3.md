@@ -130,6 +130,23 @@ console.log(queryString(baseUrlStr)); //{name: "itclanCoder",study: ["css", "js"
 主要在中间做了一下处理,判断是不是数组,这个有点虐心,虽然平常遇到的场景不是特别多,但是也是有这种情况的,有次面试就被折腾得不行的,回来脑补了一下的
 :::
 
+## 第2题-var let const的区别
+
+共同点:定义声明变量
+不同点:var声明的变量可以重复声明,当出现相同的变量名时,后者会覆盖前者
+
+
+## 第3题-JavaScript中的window.onload事件和jQuery的ready函数有何区别
+
+## 第4题-通过什么方法可以实现-检测页面DOM变化
+
+## 第5题-如何监控js对象属性的变化?
+
+## 第6题-介绍几个场景会用到canvas
+
+## 第7题-骨架屏是什么,如何实现?
+
+
 ## 在线测试
 
 <iframe-lineTestCode />

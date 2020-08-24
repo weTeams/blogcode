@@ -25,6 +25,7 @@ title: 目录
 - [css 实现炫酷丝带特殊标签效果](./example-special-label-effect)
 - [css 实现三角形](./example-triangle)
 - [css 实现加载 loading 动画](./example-css-animate-loading)
+- [css图片闪光效果](./example-picture-flash)
 
 ## css3 动效
 

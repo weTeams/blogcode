@@ -116,3 +116,10 @@ http://localhost/home
 - `abstract`: 支持所有 `JavaScript` 运行环境，如 `Node.js` 服务器端。如果发现没有浏览器的 `API`，路由会自动强制进入这个模式
 
 `base`为应用的基础路径,例如:整个单页面应用服务在`/app/`下,那么`base`就应该设为`/app/`,当你在`HTML5 history`模式下使用`base`选项之后,所有的`to`属性都不需要写基础路径了
+
+## 第3题-写一下vue2实例的生命周期
+
+
+## 第4题-vue.js DOM渲染性能为什么比jQuery快?
+
+## 第5题-vue脚手架编译后,如果存在过大的js文件怎么处理?

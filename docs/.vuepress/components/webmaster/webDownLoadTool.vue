@@ -52,7 +52,15 @@ export default {
           imgSrc: "/images/webmaster/wexindev.svg",
           alt: "微信开发者工具",
           text: "微信开发者工具"
-        }
+        },
+
+         {
+          href:
+            "https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html",
+          imgSrc: "/images/webmaster/wexindev.svg",
+          alt: "微信开发者工具",
+          text: "微信开发者工具"
+        },
       ]
     };
   }
