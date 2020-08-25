@@ -1,16 +1,3 @@
-<!--
- * @LineStart: -------------------------------------------
- * @Copyright: © 2020, itclanCoder. All rights reserved.
- * @LineEnd: ----------------------------------------------
- * @Product: 
- * @Mode Name: 
- * @Autor: vxPublic:itclanCoder
- * @Date: 2020-07-06 14:44:07
- * @Version: xxx.v1.0
- * @LastEditors: 川川
- * @LastEditTime: 2020-07-15 17:22:16
- * @Description: 标签属性操作
--->
 <template>
   <div>
     <div
