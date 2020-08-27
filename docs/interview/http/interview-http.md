@@ -63,9 +63,7 @@ HTTP1.1 新增了五种请求方法: `OPTIONS`,`PUT`,`DELETE`,`TRACR`,`CONNECT`�
 浏览器第一次请求时
 
 <!-- <div align="center">
-
- <img class="medium-zoom lazy" loading="lazy" src="../images/http-interview-imgs/http-cache-01.png" alt="缓存" />
-
+ <img class="medium-zoom lazy" loading="lazy" src="../images/http-interview/http-cache-01.png" alt="缓存" />
 </div> -->
 
 浏览器后续在进行请求时
@@ -121,4 +119,41 @@ Server: 服务器
 2. `cache-control`: `max-age=number`,这是`http1.1`时出现的`header`信息,主要利用该字段的`max-age`值来进行判断,它是一个相对值,资源第一次请求时间和`Cache-Control`设定有效期,计算出一个资源过期时间,在拿这个过期时间跟当前的请求时间比较,如果请求时间在过期时间之前,就能命中缓存,否则就不行,`cache-control`除了该字段外,还有下面几个比较常用的设置值
 
 - `no-cache`: 不使用本地缓存,需要使用协商缓存,先与服务器确认返回的响应是否被更改,如果之前中存在`ETag`,那么请求的时候会与服务器验证,如果资源未被更改,则可以避免重新下载
--
+- `no-store`: 直接禁止浏览器缓存数据,每次用户请求该资源,都会向服务器发送一个请求,每次都会下载完整的资源
+- public: 可以被所有的用户缓存,包括终端用户和 cdn 等中间代理服务器
+- private: 只能被终端用户的浏览器缓存,不允许 cdn 等中缓存服务器对其缓存
+
+::: tip 注意
+如果`cache-control`与`expires`同时存在的话,`cache-control`的优先级高于`expires`
+:::
+
+**协商缓存相关的 header 字段**
+
+协商缓存都是由服务器来确定缓存资源是否可用的,所以客户端与服务器端需要某种标识来进行通信,从而让服务器判断请求资源是否可以缓存访问,这主要涉及到下面两组 header 字段
+
+这两组搭档都是成对出现的,即第一次请求的响应头带上某个字段(Last-Modified 或 Etag),则后续请求则会带上对应的请求字段(If-Modified-Since 或 If-Node-Match),若响应头没有`Last-Modified`或`Etag`字段,则请求头也不会由对应的字段
+
+1. Last-Modified/If-Modified-Since
+   二者的值都是 GMT 格式的时间字符串,具体过程
+
+- 浏览器第一次跟服务器请求一个资源,服务器在返回这个资源的同时,在`response`的`header`加上`Last-Modified`的`header`,这个`header`表示这个资源在服务器上的最后修改时间
+- 浏览器再次跟服务器请求这个资源时,在`request`的`header`上加上`If-Modified-Since`的`header`,这个`header`的值就是上一次请求时返回的`Last-Modified`的值
+- 服务器再次收到资源请求时,根据浏览器传过来的`If-Modified-Since`和资源在服务器上的最后修改时间判断资源是否有变化,如果没有变化则返回 304 Not Modified,但是不会返回资源内容,如果有变化,就正常返回资源内容,当服务器返回 304 Not Modified 的响应时,response header 中不会再添加 Last-Modified 的 header,因为既然资源没有变化,那么`Last-Modified`也就不会改变,这是服务器返回 304 的 response header
+- 浏览器收到 304 的响应后,就会从缓存中加载资源
+- 如果协商缓存没有命中,浏览器直接从服务器加载资源时,Last-Modified 的 Header 在重新加载的时候会被更新,下次请求时,If-Modified-Since 会启用上次返回的 Last-Modifed 的值
+
+2. Etag/If-None-Match
+
+这两个值是由服务器生成的每个资源的唯一标识符,只要资源有变化,这个值就会改变,其判断过程与`Last-Modified/If-Modified-Since`类似,与`Last-Modified`不一样的是,当服务器返回`304 Not Modified`的响应时,由于`ETag`重新生成过,`response header`中还会把这个`ETag`返回,即使这个`ETag`跟之前没有变化
+
+既有`Last-Modified`又为何有`ETag`
+
+使用`Last-Modified`已经足以让浏览器知道本地的缓存副本是否足够新,那为什么还需要`Etag`呢，HTTP1.1 中`ETag`的出现主要时为了解决几个`Last-Modified`比较难解决的问题
+
+- 一些文件也许会周期性的更改,但是他的内容并不改变(仅仅改变的修改时间),这个时候,我们并不希望客户端认为这个文件被修改了,而重新 get
+- 某些文件修改非常频繁,比如在秒以下的时间内进行修改(比方说 1s 内修改了 N 次),`If-Modified-Since`能检查到的粒度时 s 级的,这种修改无法判断(或者说 UNIX 记录 MTIME 只能精确到秒)
+- 某些服务器不能精确得到的文件的最后修改时间
+
+这时,利用`ETag`能够更加准确的控制缓存,因为`ETag`时服务器自动生成或由开发者生成对应资源在服务器端的唯一的标识符
+
+Last-Modified 与 ETag 是可以一起使用的,服务器会优先验证`ETag`,一致的情况下,才会继续比对`Last-Modified`,最后才决定是否返回`304`

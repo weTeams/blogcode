@@ -206,7 +206,7 @@ css 代码示例
 示例效果如下所示
 <img class="medium-zoom lazy" loading="lazy"  src ="../images/css-interview-imgs/company-face/line-center.png" alt="圣杯布局" />
 
-具体更多圣杯布局内容可以[圣杯布局]("../../fontend/css/elem-center.md")
+具体更多圣杯布局内容可以[圣杯布局](/fontend/css/elem-center.md)
 :::
 
 ## 第 4 题-两个 float 的盒子,都是左浮动,外边距问题
