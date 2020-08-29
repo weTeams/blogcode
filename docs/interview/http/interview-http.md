@@ -22,7 +22,7 @@ HTTP1.1 新增了五种请求方法: `OPTIONS`,`PUT`,`DELETE`,`TRACR`,`CONNECT`�
 
 携带数据的方式
 
-1. `get`请求将数据放在`url`地止中,也就是 http 请求协议头中
+1. `get`请求将数据放在`url`地止中,也就是 `http` 请求协议头中
 2. `post`请求将数据放在`body`请求体中
 3. `get`方式提交的数据大概是 1`M`,而`post`没有限制
 
@@ -36,7 +36,7 @@ HTTP1.1 新增了五种请求方法: `OPTIONS`,`PUT`,`DELETE`,`TRACR`,`CONNECT`�
 
 `HTTPS` 协议主要作用可以分为两种:一种是建立一个信息安全通道,来保证数据传输的安全,另一种就是确认网站的真实性
 
-**区别:** HTTP 协议传输的数据都是未加密的,也就是明文的
+**区别:** `HTTP` 协议传输的数据都是未加密的,也就是明文的
 
 **HTTPS:** 该协议是由`SSL+HTTP`协议构建的可进行加密传输,身份认证的网络协议,要比 `http` 协议安全
 
@@ -62,15 +62,15 @@ HTTP1.1 新增了五种请求方法: `OPTIONS`,`PUT`,`DELETE`,`TRACR`,`CONNECT`�
 
 浏览器第一次请求时
 
-<!-- <div align="center">
- <img class="medium-zoom lazy" loading="lazy" src="../images/http-interview/http-cache-01.png" alt="缓存" />
-</div> -->
+<div align="center">
+ <img class="medium-zoom lazy" loading="lazy" src="../images/http-interview-imgs/http-interview/http-cache-01.png" alt="缓存" />
+</div>
 
 浏览器后续在进行请求时
 
-<!-- <div align="center">
- <img class="medium-zoom lazy" loading="lazy" src="../images/http-interview-imgs/02-http-cache.png" alt="缓存" />
-</div> -->
+<div align="center">
+ <img class="medium-zoom lazy" loading="lazy" src="../images/http-interview-imgs/http-interview/http-cache-02.png" alt="缓存" />
+</div>
 
 从上图可以知道,浏览器缓存包括两种类型,即强缓存(本地缓存)和协商缓存,浏览器在第一次请求发生后,再次请求时
 
@@ -157,3 +157,5 @@ Server: 服务器
 这时,利用`ETag`能够更加准确的控制缓存,因为`ETag`时服务器自动生成或由开发者生成对应资源在服务器端的唯一的标识符
 
 Last-Modified 与 ETag 是可以一起使用的,服务器会优先验证`ETag`,一致的情况下,才会继续比对`Last-Modified`,最后才决定是否返回`304`
+
+<footer-FooterLink :isShareLink="true" :isDaShang="true" />
