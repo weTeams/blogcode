@@ -1,5 +1,5 @@
 ---
-title: React进阶(6)-react-redux的使用
+title: React学习(5)-React中组件的数据-props
 collapsable: true
 autoGroup-1: React基础
 ---
