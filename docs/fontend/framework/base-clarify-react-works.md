@@ -1,6 +1,5 @@
 ---
 title: React基础(4)-理清React的工作方式
-collapsable: true
 autoGroup-1: React基础
 ---
 

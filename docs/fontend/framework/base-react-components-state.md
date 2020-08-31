@@ -1,6 +1,5 @@
 ---
 title: React学习(6)-React中组件的数据-state
-collapsable: true
 autoGroup-1: React基础
 ---
 

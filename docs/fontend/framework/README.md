@@ -9,7 +9,8 @@ title: 目录
 - [React 基础(3)-不可不知的 JSX](./base-the-indispensable-jsx)
 - [React 基础(4)-理清 React 的工作方式](./base-clarify-react-works)
 - [React 基础(5)-React 中组件的数据-props](./base-react-components-props)
-- [React 学习(6)-React 中组件的数据-state](./base-react-components-state)
+- [React 基础(6)-React 中组件的数据-state](./base-react-components-state)
+- [React 基础(7)-React 中的事件处理](./base-react-event-handle)
 
 ### React 进阶
 

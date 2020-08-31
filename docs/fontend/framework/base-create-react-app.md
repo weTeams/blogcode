@@ -1,6 +1,5 @@
 ---
 title: React基础(1)-cretate-react-app
-collapsable: true
 autoGroup-1: React基础
 ---
 
