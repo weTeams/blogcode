@@ -11,6 +11,7 @@ title: 目录
 - [React 基础(5)-React 中组件的数据-props](./base-react-components-props)
 - [React 基础(6)-React 中组件的数据-state](./base-react-components-state)
 - [React 基础(7)-React 中的事件处理](./base-react-event-handle)
+- [React 基础(8)-React 中组件的生命周期](./base-react-component-lifecycle)
 
 ### React 进阶
 
