@@ -43,7 +43,7 @@ HTTP1.1 新增了五种请求方法: `OPTIONS`,`PUT`,`DELETE`,`TRACR`,`CONNECT`�
 1. `https`协议需要 `ca` 申请证书,一般免费的证书较少,因而需要一定的费用
 2. `http`是超文本传输协议,信息是明文传输,`https`则是具有安全性的`ssl`加密传输协议
 3. `http`和`https`使用的是完全不同的连接方式,用的端口也不一样,`http`是`80`,`https`是 443
-4. http 的连接很简单,是无状态的,`https`协议是由`ssl+http`协议构建的课进行加密传输,身份认证的网络协议,比`http`协议安全
+4. `http` 的连接很简单,是无状态的,`https`协议是由`ssl+http`协议构建的课进行加密传输,身份认证的网络协议,比`http`协议安全
 
 ## 第 4 题-强缓存与协商缓存
 
@@ -89,7 +89,7 @@ HTTP1.1 新增了五种请求方法: `OPTIONS`,`PUT`,`DELETE`,`TRACR`,`CONNECT`�
 
 来自缓存的响应头的信息
 
-```
+```js
 Accept-Ranges: bytes
 Cache-Control: max-age= xxxx
 Content-Encoding: gzip
@@ -108,7 +108,7 @@ Server: 服务器
 
 |          | 获取资源形式 | 状态码 |
 | -------- | ------------ | ------ |
-| 强缓存   | 从缓存取     | 200    | 单元格 |
+| 强缓存   | 从缓存取     | 200    |
 | 协商缓存 | 从缓存取     | 304    |
 
 强缓存相关的`header`字段

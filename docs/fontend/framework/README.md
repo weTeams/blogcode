@@ -12,6 +12,8 @@ title: 目录
 - [React 基础(6)-React 中组件的数据-state](./base-react-components-state)
 - [React 基础(7)-React 中的事件处理](./base-react-event-handle)
 - [React 基础(8)-React 中组件的生命周期](./base-react-component-lifecycle)
+- [React 基础(9)-React 中发送 Ajax 请求以及 Mock 数据](./base-send-ajax-mock)
+- [React 基础(10)-React 中编写样式 CSS(styled-components)](./base-authoring-styled-components)
 
 ### React 进阶
 
