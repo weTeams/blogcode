@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 20:49:41
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-07-19 13:28:00
+ * @LastEditTime: 2020-09-08 16:15:40
  * @Description: 所有外部插件配置,入口在当前目录下config.js,本文件通过module.exports暴露,而在config.js中通过require方式引入
  * 集中管理外部插件配置
  *
@@ -95,28 +95,28 @@ const plugins = [
     },
   ],
 
-  [
-    'vuepress-plugin-comment', // valine留言插件
-    {
-      choosen: 'valine',
-      // options选项中的所有参数，会传给Valine的配置,配置选项见文档:https://valine.js.org/configuration.html#appId
-      options: {
-        el: '#valine-vuepress-comment',
-        appId: secret.appId, // 引入密钥appId
-        appKey: secret.appKey, // 引入密钥appKey
-        placeholder: '据说评论几句,结果会一鸣惊人~互相学习哈',
-        path: `window.location.href`,
-        avatar: 'robohash', // 非自定义头像
-        meta: ['nick', 'mail'],
-        requiredFields: ['nick', 'email'],
-        pageSize: 10,
-        visitor: true, // 对访问量进行统计
-        // emojiCDN:
-        //   "https://www.jsdelivr.com/package/gh/GamerNoTitle/ValineCDN?path=bilibilitv",
-        // emojiMaps
-      },
-    },
-  ],
+  // [
+  //   'vuepress-plugin-comment', // valine留言插件
+  //   {
+  //     choosen: 'valine',
+  //     // options选项中的所有参数，会传给Valine的配置,配置选项见文档:https://valine.js.org/configuration.html#appId
+  //     options: {
+  //       el: '#valine-vuepress-comment',
+  //       appId: secret.appId, // 引入密钥appId
+  //       appKey: secret.appKey, // 引入密钥appKey
+  //       placeholder: '据说评论几句,结果会一鸣惊人~互相学习哈',
+  //       path: `window.location.href`,
+  //       avatar: 'robohash', // 非自定义头像
+  //       meta: ['nick', 'mail'],
+  //       requiredFields: ['nick', 'email'],
+  //       pageSize: 10,
+  //       visitor: true, // 对访问量进行统计
+  //       // emojiCDN:
+  //       //   "https://www.jsdelivr.com/package/gh/GamerNoTitle/ValineCDN?path=bilibilitv",
+  //       // emojiMaps
+  //     },
+  //   },
+  // ],
   // default、lowercase、uppercase、capitalize、camelcase、kebabcase、titlecase 自动生成侧边栏管理插件,如果使用这个插件后,就不必手动的去维护侧边栏了的,可以前往themeConfig.js中将slidebar去掉,交给这个插件去管理
   // 文档地址: https://shanyuhai123.github.io/vuepress-plugin-auto-sidebar/features/plugin-options.html#%E6%A6%82%E8%A7%88
   [

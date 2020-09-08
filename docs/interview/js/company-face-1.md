@@ -20,9 +20,9 @@ collapsable: true
 
 直接写出下边程序的输出结果
 
-```
+```js
 console.log(foo);
-var foo = "test"
+var foo = 'test';
 ```
 
 ::: details 点击即可查看
@@ -35,12 +35,12 @@ var foo = "test"
 
 写出下面一段代码输出结果
 
-```
+```js
 var temp = 123;
 function f() {
   console.log(temp);
-  if(false) {
-    var temp = 456
+  if (false) {
+    var temp = 456;
   }
 }
 f();
@@ -59,13 +59,13 @@ f();
 
 写出下面一段代码输出的结果
 
-```
+```js
 var temp = 123;
 function f() {
   console.log(temp);
-  if(true) {
-     console.log(temp);
-     let temp = 456;
+  if (true) {
+    console.log(temp);
+    let temp = 456;
   }
 }
 f();
@@ -81,14 +81,14 @@ f();
 
 写出下面一段程序的输出的结果
 
-```
-new Promise(resolve => {
-    console.log(1);
-    setTimeout(() => console.log(2),0)
-    Promise.resolve().then(() => console.log(3))
-    resolve();
-}).then(() => console.log(4))
-console.log(5)
+```js
+new Promise((resolve) => {
+  console.log(1);
+  setTimeout(() => console.log(2), 0);
+  Promise.resolve().then(() => console.log(3));
+  resolve();
+}).then(() => console.log(4));
+console.log(5);
 ```
 
 ::: details 点击可查看详情
@@ -127,15 +127,15 @@ console.log(5)
 
 如下示例所示
 
-```
-let str="itclanCoder";
-console.log(str.match("C"));
+```js
+let str = 'itclanCoder';
+console.log(str.match('C'));
 ```
 
 输出结果
 
-```
-["C", index: 6, input: "itclanCoder", groups: undefined]
+```js
+['C', (index: 6), (input: 'itclanCoder'), (groups: undefined)];
 ```
 
 该数组的第 0 个元素存放的是匹配文本，而其余的元素存放的是与正则表达式的子表达式匹配的文本。除了这些常规的数组元素之外，返回的数组还含有两个对象属性。 `index`属性声明的是匹配文本的起始字符在 `stringObject`中的位置，`input` 属性声明的是对 `stringObject` 的引用
@@ -150,28 +150,28 @@ console.log(str.match("C"));
 
 - 不带修饰符 g
 
-```
+```js
 var url = 'http://www.baidu.com?a=1&b=2&c=3';
 var reg = /([^?&=]+)=([^?&=])*/;
 var result = url.match(reg);
-console.log(result);//["a=1", "a", "1", index: 21, input: "http://www.baidu.com?a=1&b=2&c=3", groups: undefined]
-console.log(result.index);  // 21
-console.log(result.input);  // http://www.baidu.com?a=1&b=2&c=3
-
+console.log(result); //["a=1", "a", "1", index: 21, input: "http://www.baidu.com?a=1&b=2&c=3", groups: undefined]
+console.log(result.index); // 21
+console.log(result.input); // http://www.baidu.com?a=1&b=2&c=3
 ```
 
 - 带修饰符的 g
 
-```
+```js
 var url = 'http://www.baidu.com?a=1&b=2&c=3';
 var reg = /([^?&=]+)=([^?&=])*/g;
 var result = url.match(reg);
-console.log(result);    //["a=1", "b=2", "c=3"]
-console.log(result.index);  //undefined
-console.log(result.input);  //undefined
+console.log(result); //["a=1", "b=2", "c=3"]
+console.log(result.index); //undefined
+console.log(result.input); //undefined
 ```
 
-有全局 g 匹配和无 g,是不一样的
+有全局 `g` 匹配和无`g`,是不一样的
+
 :::
 而在本题中的`"123456789".match(/\d{3,5}?/g)`,从`123456789`字符传中第 3 个位置查找,结束位置在第 5 个位置,全局匹配查找,最终会返回一个数组`[123, 456, 789]`
 
@@ -183,12 +183,12 @@ console.log(result.input);  //undefined
 
 ::: details 点击即可查看详情
 
-```
-var str = "2018-11-03";
+```js
+var str = '2018-11-03';
 var arrs = str.split('-'); // 经果 split 的分割,返回结果是一个数组,arrs 的结果为["2018", "11", "03"]
 var result = arrs.map((item, index, arr) => {
-return arr[1]+'/'+arr[2]+'/'+arr[0]; // 当然也是可以通过 join 方法进行拼接的["11", "03","2018"].join('/')
-})
+  return arr[1] + '/' + arr[2] + '/' + arr[0]; // 当然也是可以通过 join 方法进行拼接的["11", "03","2018"].join('/')
+});
 var tranResult = Array.from(new Set(result)); // 数组去重.这里也可以使用拓展运算符 [...new Set(result)]
 console.log(tranResult[0]); // 11/03/2018
 ```
@@ -251,13 +251,13 @@ function.bind(thisArg[, arg1[, arg2[, ...]]])
 只要将这些参数（如果有的话）作为 bind() 的参数写在 this 后面。当绑定函数被调用时，这些参数会被插入到目标函数的参数列表的开始位置，传递给绑定函数的参数会跟在它们后面,如下所示
 ::: details 点击即可查看
 
-```
+```js
 function list() {
-  return Array.prototype.slice.call(arguments);  // 将类数组转换成真正的数组
+  return Array.prototype.slice.call(arguments); // 将类数组转换成真正的数组
 }
 
 function addArguments(arg1, arg2) {
-    return arg1 + arg2
+  return arg1 + arg2;
 }
 
 var list1 = list(1, 2, 3); // [1, 2, 3]
@@ -272,7 +272,7 @@ var addThirtySeven = addArguments.bind(null, 37);
 var list2 = leadingThirtysevenList(); // [37]
 var list3 = leadingThirtysevenList(1, 2, 3); // [37, 1, 2, 3]
 var result2 = addThirtySeven(5); // 37 + 5 = 42
-var result3 = addThirtySeven(5, 10);// 37 + 5 = 42 ，第二个参数会被忽略
+var result3 = addThirtySeven(5, 10); // 37 + 5 = 42 ，第二个参数会被忽略
 ```
 
 :::
@@ -284,7 +284,7 @@ var result3 = addThirtySeven(5, 10);// 37 + 5 = 42 ，第二个参数会被忽�
 也就是说,当使用类的方法时需要`this`指向类实例，就可以使用`bind()`将 this 绑定到回调函数来管理实例
 ::: details 点击即可查看详情
 
-```
+```js
 function Bloomer() {
   this.petalCount = Math.ceil(Math.random() * 12) + 1;
 }
@@ -299,7 +299,7 @@ Bloomer.prototype.declare = function() {
 };
 
 var flower = new Bloomer();
-flower.bloom();   // 1秒后输出 我有 11 朵花瓣
+flower.bloom(); // 1秒后输出 我有 11 朵花瓣
 ```
 
 :::
@@ -316,25 +316,26 @@ this 会被忽略，但是传入的参数仍然可用
 如下实例代码所示
 ::: details 点击即可查看
 
-```
-function Point(x, y) {   // 声明构造器Point函数
+```js
+function Point(x, y) {
+  // 声明构造器Point函数
   this.x = x;
   this.y = y;
 }
 
-Point.prototype.toString = function() {   // 构造器Point方法原型下添加toString
+Point.prototype.toString = function() {
+  // 构造器Point方法原型下添加toString
   return this.x + ',' + this.y;
 };
 
 var p = new Point(1, 2);
 p.toString(); // '1,2'
 
-
 var emptyObj = {};
-var YAxisPoint = Point.bind(emptyObj, 0/*x*/);
+var YAxisPoint = Point.bind(emptyObj, 0 /*x*/);
 // 实现中的例子不支持,
 // 原生bind方法支持
-var YAxisPoint = Point.bind(null, 0/*x*/);
+var YAxisPoint = Point.bind(null, 0 /*x*/);
 
 var axisPoint = new YAxisPoint(5);
 axisPoint.toString(); // '0,5'
@@ -359,7 +360,7 @@ slice.call(arguments);
 
 如果使用 bind()的话，情况变得更简单
 
-```
+```js
 // // 与前一段代码的 "slice" 效果相同,下面使用了bind
 var unboundSlice = Array.prototype.slice;
 var slice = Function.prototype.call.bind(unboundSlice);
@@ -373,23 +374,23 @@ slice(arguments);
 
 ::: details 点击即可查看实现模拟 bind 方法
 
-```
-  //在Function的原型上自定义myBind()方法
-  Function.prototype.myBind = function myBind(context){
-       //获取要操作的函数
-       var _this=this;
-       //获取实参（context除外）
-      var args=Array.prototype.slice.call(arguments,1);
-      //判断当前浏览器是否兼容bind()方法
-     if('bind' in Function.prototype){
-         //如果浏览器兼容bind()方法，则使用bind()方法，并返回bind()方法执行后的结果
-         return _this.bind(context,args);
-      }
-      //如果不兼容bind()方法，则返回一个匿名函数
-      return function(){
-           _this.apply(context,args);
-       }
- }
+```js
+//在Function的原型上自定义myBind()方法
+Function.prototype.myBind = function myBind(context) {
+  //获取要操作的函数
+  var _this = this;
+  //获取实参（context除外）
+  var args = Array.prototype.slice.call(arguments, 1);
+  //判断当前浏览器是否兼容bind()方法
+  if ('bind' in Function.prototype) {
+    //如果浏览器兼容bind()方法，则使用bind()方法，并返回bind()方法执行后的结果
+    return _this.bind(context, args);
+  }
+  //如果不兼容bind()方法，则返回一个匿名函数
+  return function() {
+    _this.apply(context, args);
+  };
+};
 ```
 
 :::
@@ -401,48 +402,47 @@ slice(arguments);
 
 ::: details 点击即可查看
 
-```
+```html
 <!DOCTYPE html>
- <html>
-      <head>
-          <meta charset="UTF-8">
-          <title></title>
-          <script type="text/javascript">
-            window.onload = function() {
-                  var btn1 = document.getElementById("btn1");
-                  bind(btn1, "click", function() {
-                     alert(this);
-                 });
-             };
-             //定义一个函数bind()，用来为指定元素绑定事件响应函数
-             /*
-             * 参数：
-              *  obj 要绑定事件的对象
-              *  eventStr 事件的字符串
-              *  func 回调函数
-              */
-             function bind(obj, eventStr, func) {
-                 //判断是否有addEventListener()方法
-                 if(obj.addEventListener) {
-                     //大部分浏览器兼容的方式,addEventListener是标准浏览器支持的
-                     obj.addEventListener(eventStr, func, false);
-                 } else {
-                      //IE8及以下,注意使用的是on,绑定事件使用的是attachEvent
-                     //obj.attachEvent("on"+eventStr, func);//此方法this为window下面提供解决方法
-                     //统一this 不直接调用func而是在匿名函数内调用
-                     obj.attachEvent("on" + eventStr, function() {
-                         //在匿名函数内调用回调函数 利用call()方法将this改为obj
-                         func.call(obj);
-                     });
-                 }
-             };
-         </script>
-     </head>
-     <body>
-        <button id="btn1">btn1</button>
-    </body>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+      window.onload = function() {
+        var btn1 = document.getElementById('btn1');
+        bind(btn1, 'click', function() {
+          alert(this);
+        });
+      };
+      //定义一个函数bind()，用来为指定元素绑定事件响应函数
+      /*
+       * 参数：
+       *  obj 要绑定事件的对象
+       *  eventStr 事件的字符串
+       *  func 回调函数
+       */
+      function bind(obj, eventStr, func) {
+        //判断是否有addEventListener()方法
+        if (obj.addEventListener) {
+          //大部分浏览器兼容的方式,addEventListener是标准浏览器支持的
+          obj.addEventListener(eventStr, func, false);
+        } else {
+          //IE8及以下,注意使用的是on,绑定事件使用的是attachEvent
+          //obj.attachEvent("on"+eventStr, func);//此方法this为window下面提供解决方法
+          //统一this 不直接调用func而是在匿名函数内调用
+          obj.attachEvent('on' + eventStr, function() {
+            //在匿名函数内调用回调函数 利用call()方法将this改为obj
+            func.call(obj);
+          });
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <button id="btn1">btn1</button>
+  </body>
 </html>
-
 ```
 
 :::
@@ -452,11 +452,12 @@ slice(arguments);
 ## 第 8 题-简单实现一下对象的深拷贝
 
 **考察点**:基本数据类型的拷贝是赋值,而对象复杂数据类型的拷贝是赋止
+
 **解决**: 递归实现深拷贝
 
 ::: details 点击即可查看
 
-```
+```js
 /*
   *  *
   *  @description:把一个对象递归拷贝给另外一个对象
@@ -507,29 +508,28 @@ console.log(obj1, obj2);
 重复上面的步骤到项数小于等于 1 为止,最后把所获得的项进行拼接
 ::: details 点击即可查看
 
-```
-var ary = [21,8,4,32,5];
-function quickSort(ary){
-   if(ary.length<=1){
-	   return ary;
-   }
+```js
+var ary = [21, 8, 4, 32, 5];
+function quickSort(ary) {
+  if (ary.length <= 1) {
+    return ary;
+  }
 
-   var num = Math.floor(ary.length/2);
-   var numValue = ary.splice(num,1)[0];
-   var left = [];
-   var right = [];
-   for(var i = 0;i<ary.length;i++){
-       var cur = ary[i];
-       if(cur<numValue){
-		      left.push(cur);
-       }else{
-		      right.push(cur);
-       }
-   }
-   return quickSort(left).concat([numValue],quickSort(right))
+  var num = Math.floor(ary.length / 2);
+  var numValue = ary.splice(num, 1)[0];
+  var left = [];
+  var right = [];
+  for (var i = 0; i < ary.length; i++) {
+    var cur = ary[i];
+    if (cur < numValue) {
+      left.push(cur);
+    } else {
+      right.push(cur);
+    }
+  }
+  return quickSort(left).concat([numValue], quickSort(right));
 }
 console.log(quickSort(ary));
-
 ```
 
 :::
@@ -539,23 +539,23 @@ console.log(quickSort(ary));
 **原理**:取出数组的第一项放到新数组里,让剩余的每一项与新数组的每一项进行比较,小的放左边,大的放右边
 ::: details 点击即可查看
 
-```
-var ary = [21,8,4,32,5];
-function insertSort(ary){
-  var left = ary.splice(0,1);
-  for(var i = 0;i<ary.length;i++){
-	var cur = ary[i];
-       for(var j = left.length-1;j>=0;){
-          var nex = left[j];
-          if(cur<nex){
-		          j--;
-          if(j===-1){
-			        left.unshift(cur);
-         }
-       }else {
-            left.splice(j+1,0,cur);
-            break;
-       }
+```js
+var ary = [21, 8, 4, 32, 5];
+function insertSort(ary) {
+  var left = ary.splice(0, 1);
+  for (var i = 0; i < ary.length; i++) {
+    var cur = ary[i];
+    for (var j = left.length - 1; j >= 0; ) {
+      var nex = left[j];
+      if (cur < nex) {
+        j--;
+        if (j === -1) {
+          left.unshift(cur);
+        }
+      } else {
+        left.splice(j + 1, 0, cur);
+        break;
+      }
     }
   }
   return left;
@@ -570,20 +570,20 @@ console.log(insertSort(ary));
 **原理**:从第一项开始,与它后面的每一项进行比较,如果大于后面的项,则交换位置
 ::: details 点击即可查看
 
-```
-var ary = [43,5,82,21];
-function buddleSort(data){
-   var temp = "";
-   for(var i = data.length;i>0;i--){
-       for(var j = 0;j<i-1;j++){
-		     if(data[j]>data[j+1]){
-				    temp = data[j];
-            data[j] = data[j+1];
-            data[j+1] = temp;
-          }
-       }
-   }
-   return data;
+```js
+var ary = [43, 5, 82, 21];
+function buddleSort(data) {
+  var temp = '';
+  for (var i = data.length; i > 0; i--) {
+    for (var j = 0; j < i - 1; j++) {
+      if (data[j] > data[j + 1]) {
+        temp = data[j];
+        data[j] = data[j + 1];
+        data[j + 1] = temp;
+      }
+    }
+  }
+  return data;
 }
 console.log(buddleSort(ary));
 ```
@@ -594,7 +594,7 @@ console.log(buddleSort(ary));
 
 考察点:条件表达式中,有哪些结果值是 false 的
 
-```
+```js
 A. 0 == ''            // true
 B. null == undefined  // true
 C: NaN == NaN         // false

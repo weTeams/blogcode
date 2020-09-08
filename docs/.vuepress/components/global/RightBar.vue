@@ -17,7 +17,7 @@
           height="30"
           class="medium-zoom lazy"
           loading="lazy"
-          src="/images/person-code.jpg"
+          src="/images/other-author-code.jpg"
           alt="二维码"
         />
       </div>
@@ -42,18 +42,18 @@
 
 <script>
 export default {
-  name: 'RightBar',
+  name: "RightBar",
   data() {
     return {
-      isRightBar: false,
+      isRightBar: false
     };
   },
   mounted() {
-    window.addEventListener('scroll', this.scroll);
+    window.addEventListener("scroll", this.scroll);
   },
 
   destroyed() {
-    window.removeEventListener('scroll', this.scroll);
+    window.removeEventListener("scroll", this.scroll);
   },
 
   methods: {
@@ -69,8 +69,8 @@ export default {
       } else {
         that.isRightBar = false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1064,4 +1064,5 @@ export default debounce;
 对于函数的节流与防抖是前端提升性能的手段,虽然就几行代码,但是面试时,常问不衰,让你手写,很多时候,拍拍胸脯,不借助搜索引擎,还真不一定能立马写得出来
 
 在实际的开发中,函数的节流与函数防抖也是用得比较频繁的,可见它的重要性不言而喻
+
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />

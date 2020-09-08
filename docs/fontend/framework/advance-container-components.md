@@ -1,5 +1,5 @@
 ---
-title: React进阶(6)-react-redux的使用
+title: React进阶(5)-分离容器组件,UI组件(无状态组件
 autoGroup-2: React进阶
 ---
 

@@ -21,7 +21,7 @@
           扫二维码 备注
           <span>加群</span>
         </p>
-        <img class="medium-zoom lazy" loading="lazy" src="/images/person-code.jpg" alt />
+        <img class="medium-zoom lazy" loading="lazy" src="/images/other-author-code.jpg" alt />
       </div>
     </div>
   </div>

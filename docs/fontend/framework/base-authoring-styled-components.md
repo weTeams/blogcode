@@ -1,9 +1,9 @@
 ---
-title: React学习(9)-React中发送Ajax请求以及Mock数据
+title: React学习(9)-React中编写样式css(styled-components)
 autoGroup-1: React基础
 ---
 
-## React 中发送 Ajax 请求以及 Mock 数据
+## React 学习(9)-React 中编写样式 css(styled-components)
 
 ## 快速导航
 
