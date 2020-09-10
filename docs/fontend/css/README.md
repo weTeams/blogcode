@@ -26,6 +26,8 @@ title: 目录
 - [css 实现三角形](./example-triangle)
 - [css 实现加载 loading 动画](./example-css-animate-loading)
 - [css 图片闪光效果](./example-picture-flash)
+- [css 实现按钮霓虹效果](./example-button-neon-effect)
+- [css 鼠标移到边框效果](./example-border-effect)
 
 ## css3 动效
 
