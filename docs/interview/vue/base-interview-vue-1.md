@@ -1,5 +1,6 @@
 ---
 title: vue基础面试题
+autoGroup-1: vue基础面试题
 ---
 
 ## vue 基础面试题
@@ -391,8 +392,107 @@ const compression = require('compression');
 app.use(compression()); // 要放在所有其他中间件注册之前
 ```
 
-- 首屏内容可以做静态缓存
-- 首屏内联 css 渲染
-- 图片懒加载
+- 首屏内容可以做静态缓存(`hash+`强缓存的一个方案。比如`hash+ cache control: max-age=1`年)
+- 首屏内联 `css` 渲染
+- 图片懒加载(可以通过给`img`标签上添加`loading=lazy`)来开启懒加载模式
 - 使用字体图标代替小图片
 - 图片尺寸大小控制适当
+- 利用好`script`标签的`async`和`defer`这两个属性,功能独立且不要求马上执行的`js`文件,可以加入`async`属性,如果是优先级低且没有依赖的`js`,可以加入`defer`属性
+- 前端做一些接口的缓存:缓存的位置有两个: 一个是内存,即赋值给运行时的变量,另一个是`localStorage`,比如签到日历(展示用户是否签到),可以缓存这样的接口到`localStorage`,有效期是当天,或者有个列表页,我们总是缓存上次的列表内容到本地,下次加载时,我们先从本地读取缓存,并同时发起请求到服务器获取最新列表
+
+* 页面使用骨架屏(元素进行占位)
+* 使用`ssr`渲染:服务器性能一般都很好,那么可以在服务器先把`vdom`计算完后,在输出给前端
+* 引入`http2.0`,`http2.0`对比`http1.1`最主要的是提升是传输性能,在接口小而多的时候更加明显
+* 选择先进的图片格式:使用`webP`的图片格式来代替现有的`jpeg`和`png`,当页面图片较多时,这点作用非常明显
+* 利用好`http`压缩:即使是最普通的`gzip`,也能把文件大小压缩不小
+
+## 第 9 题-`new Vue()`发生了什么?
+
+`new Vue()`是创建了`vue`实例,它内部执行了根实例的初始化过程
+
+具体包括以下操作
+
+- 选项合并
+- `$children`,`$refs`,`$slots`,`$createElement`等
+- 自定义事件处理
+- 数据响应式处理
+- 生命周期钩子调用(`beforecreate created`)
+- 挂载
+
+`new Vue()`创建了根实例并准备好数据和方法,未来执行挂载时,此过程还会递归的应用于它的子组件上,最终形成了一个有紧密关系的组件实例树
+
+## 第 10 题-Vue.use 是干什么的,原理是什么?
+
+`Vue.use`是用来使用插件的,我们可以在插件中**拓展全局组件**,**指令**,**原型方法**等
+
+1. 检查插件是否注册,若已注册,则直接跳出
+2. 处理入参,将第一个参数之后的参数归集,并在首部塞入`this`上下文
+3. 执行注册方法,调用定义好的`install`方法,传入处理的参数,若没有`install`方法并且插件本身为`function`则直接进行注册
+
+::: tip 注意
+
+1. 插件不能重复的加载
+2. install 方法的第一个参数是`vue`的构造函数,其他参数是`vue.set`中除了第一个参数的其他参数,代码:`args.unshift(this)`
+3. 调用插件的`install`方法,代码: `typeof plugin.install === 'function'`
+4. 插件本身是一个函数,直接让函数执行,代码:`plugin.apply(null, args)`
+5. 缓存插件:代码:`installedPlguins.push(plugin)`
+
+:::
+
+## 第 11 题-说一下响应式数据的理解
+
+根据数据类型来做不同的处理,数组和对象类型当值变化时如何劫持
+
+1. 对象内部通过`defineReactive`方法,使用`Object.defineProperty()`监听数据属性的`get`来进行数据依赖收集,在通过`set`来完成数据更新的派发
+2. 数组则通过重写数组方法来实现的,拓展它的 7 个变更方法,通过监听这些方法可以做到依赖收集和派发更新(`push/pop/shift/unshift/splice/reverse/sort`)
+3. 在`vue3`中是使用`proxy`来实现响应式数据
+
+内部依赖收集是怎么做到的,每个属性都拥有自己的`dep`属性,存放它所依赖的`watcher`,当属性变化后会通知自己对应的`watcher`去更新
+
+响应式流程:
+
+1. `defineReactive`把数据定义成响应式的
+2. 给属性增加一个`dep`,用来收集对应的那些`watcher`
+3. 等数据变化进行更新
+4. `dep.depend()` // get 取值,进行依赖收集
+5. `dep.notify()` // set 设置时,通知视图更新
+
+这里可以引出性能优化相关的内容:
+
+1. 对象层级过深,性能就会差
+2. 不需要响应式数据的内容不要放在`data`中
+3. `object.freeze()`可以冻结数据
+
+## 第 12 题-Vue 如何检测数组变化?
+
+没有考虑数组原因是有用`defineProperty`对数组的每一项进行拦截,而是选择重写数组方法以进行重写,当数组调用到这 `7` 个方法的时候,执行`obj.dep.notify()`进行派发通知`watcher更新`，重写数组方法:`push/pop/shift/unshift/splice/reverse/sort`
+
+在`Vue`中修改数组的索引和长度是无法监控到的。需要通过以下 7 种变异方法修改数组才会触发数组对应的`wacther`进行更新。
+
+数组中如果是对象数据类型也会进行递归劫持。
+
+那如果想要改索引更新数据怎么办？
+
+可以通过`Vue.set()`来进行处理 =》 核心内部用的是 `splice` 方法
+
+```js
+// 取出原型方法；
+const arrayProto = Array.prototype
+// 拷贝原型方法；
+export const arrayMethods = Object.create(arrayProto)
+// 重写数组方法；
+def(arrayMethods, method, function mutator (...args) { }
+ob.dep.notify()  // 调用方法时更新视图；
+```
+
+## 第 13 题-Vue.set 方法是如何实现的?
+
+为什么`$set`可以触发更新,我们给对象和数组本身都增加了`dep`属性,当给对象新增不存在的属性则触发对象依赖的`watcher`去更新,当修改数组索引时我们调用数组本身的`splice`方法去更新数组
+
+**官方定义**: Vue.set(object, key, value)
+
+如果是数组,调用重写`splice`方法
+代码: `target.splice(key, 1, val)`
+
+2. 如果不是响应式的也不需要将其定义成响应式属性
+3. 如果是对象,将属性定义成响应式的`defineReactive(ob.value,key,val)`,通知视图更新`ob.dep.notify()`
