@@ -1,5 +1,5 @@
 ---
-title: vue基础面试题
+title: vue基础面试题1
 autoGroup-1: vue基础面试题
 ---
 
@@ -165,7 +165,7 @@ http://localhost/home
 
 2. `destoryed阶段`: 实例销毁后调用,调用后所有事件监听器会被移除,所有的子实例都会被销毁,当前阶段组件被拆解,数据绑定被卸除,监听被移出,子实例也统统被销毁
 
-## vue 的父组件和子组件声明周期钩子执行顺序
+## 第 4 题-vue 的父组件和子组件声明周期钩子执行顺序
 
 第一次页面加载时会触发`beforeCreate`,`created`,`beforeMount`,`mounted`
 

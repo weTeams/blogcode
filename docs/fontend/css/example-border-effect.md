@@ -140,3 +140,74 @@ button:hover {
 ```
 
 :::
+
+## 鼠标经过元素抖动效果
+
+<exampleskill-shake />
+
+## 具体实现
+
+::: details 点击即可查看`html`代码
+
+```
+<span class="shake">弹</span>
+```
+
+:::
+::: details 点击即可查看`css`代码
+
+```css
+.shake {
+  width: 40px;
+  height: 40px;
+  display: block;
+  background: lightgreen;
+  border-radius: 50%;
+  margin: 5px;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  -webkit-transition: all 0.25s;
+}
+
+.shake:hover {
+  -webkit-animation: shake 0.25s;
+  background: lightblue;
+}
+
+@keyframes shake {
+  0%,
+  10%,
+  55%,
+  90%,
+  94%,
+  98%,
+  100% {
+    -webkit-transform: scale(1, 1);
+  }
+
+  30% {
+    -webkit-transform: scale(1.14, 0.86);
+  }
+
+  75% {
+    -webkit-transform: scale(0.92, 1.08);
+  }
+
+  92% {
+    -webkit-transform: scale(1.04, 0.96);
+  }
+
+  96% {
+    -webkit-transform: scale(1.02, 0.98);
+  }
+
+  99% {
+    -webkit-transform: scale(1.01, 0.99);
+  }
+}
+```
+
+:::
