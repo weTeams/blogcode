@@ -154,3 +154,11 @@ HTML5 推出的`history API`,由`pushState()`记录操作历史,监听`popstate`
 `nextTick`的回调是在下次 DOM 更新循环结束之后执行的延迟回调,在修改数据之后立即使用这个方法,获取更新后的`DOM`,`nextTick`主要使用了`宏任务和微任务`,原理就是异步方法(`promise`,`multationObserver,setImmediate,setTimeout`)
 
 `vue`多次更新数据,最终会进行批处理更新,内部调用就是`nextTick`实现了延迟更新,用户自定义的`nextTick`中的回调会被延迟更新完成后调用,从而可以获取更新后的`DOM`
+
+## 第 11 题-Vue 为什么需要虚拟 DOM?虚拟 DOM 的优劣如何?
+
+`Virtual DOM`就是用`js对象描述真实的DOM`,是对真实`DOM`的抽象,由于直接操作`DOM`性能低,但是`js`层的操作效率高,可以将`DOM`操作转化成对象操作,最终通过`diff算法比对差异进行更新DOM`(减少了对真实 DOM 的操作),虚拟`DOM`不依赖真实平台坏境从而可以实现跨平台
+
+虚拟`DOM`的实现就是普通对象包含`tag`,`data`,`children`等属性对真实节点的描述(本质上就是`js`和`DOM`之间的一个缓存)
+
+`virtualDOM`映射到真实`DOM`要经历`VNode`的`create,diff,patch`等阶段
