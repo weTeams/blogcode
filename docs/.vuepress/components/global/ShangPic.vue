@@ -1,47 +1,26 @@
-<!--
- * @LineStart: -------------------------------------------
- * @Copyright: © 2020, itclanCoder. All rights reserved.
- * @LineEnd: ----------------------------------------------
- * @Product: 
- * @Mode Name: 
- * @Autor: vxPublic:itclanCoder
- * @Date: 2020-07-01 15:46:03
- * @Version: xxx.v1.0
- * @LastEditors: 川川
- * @LastEditTime: 2020-07-07 20:42:44
- * @Description: 
--->
 <template>
   <div class="shang-wrap">
-    <a
-      target="_blank"
-      href="https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813"
-    >
-      <img
-        height="80"
-        v-if="shangeFlag"
-        class="shange"
-        src="/images/itclanCoder-shang.png"
-      />
+    <a target="_blank" href="https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813">
+      <img height="80" v-if="shangeFlag" class="shange" src="/images/shang-pic.png" />
     </a>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ShangPic',
+  name: "ShangPic",
   data() {
     return {
-      shangeFlag: false,
+      shangeFlag: false
     };
   },
 
   mounted() {
-    window.addEventListener('scroll', this.isShangImg);
+    window.addEventListener("scroll", this.isShangImg);
   },
 
   destroyed() {
-    window.removeEventListener('scroll', this.isShangImg);
+    window.removeEventListener("scroll", this.isShangImg);
   },
 
   methods: {
@@ -58,8 +37,8 @@ export default {
       } else {
         that.shangeFlag = false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
