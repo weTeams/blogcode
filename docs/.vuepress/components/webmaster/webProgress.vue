@@ -59,14 +59,6 @@ export default {
           img {
             display: inline-block;
             vertical-align: center;
-            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
-
-            &:hover {
-              width: 200px;
-              height: 75px;
-              box-shadow: 0px 0px 50px 15px rgba(0, 0, 0, 0.9);
-              transition: box-shadow 0.5s;
-            }
           }
         }
       }

@@ -54,13 +54,13 @@ export default {
           text: "微信开发者工具"
         },
 
-         {
+        {
           href:
             "https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html",
           imgSrc: "/images/webmaster/wexindev.svg",
           alt: "微信开发者工具",
           text: "微信开发者工具"
-        },
+        }
       ]
     };
   }
@@ -89,14 +89,6 @@ export default {
           img {
             display: inline-block;
             vertical-align: center;
-            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
-
-            &:hover {
-              width: 200px;
-              height: 75px;
-              box-shadow: 0px 0px 50px 15px rgba(0, 0, 0, 0.9);
-              transition: box-shadow 0.5s;
-            }
           }
         }
       }

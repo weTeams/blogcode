@@ -1,5 +1,5 @@
 ---
-title: React学习(6)-React中组件的数据-state
+title: React基础(6)-React中组件的数据-state
 autoGroup-1: React基础
 ---
 

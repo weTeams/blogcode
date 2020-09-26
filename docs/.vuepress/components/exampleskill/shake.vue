@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="shake">弹</span>
+    <span class="shake">抖</span>
   </div>
 </template>
 
@@ -24,6 +24,7 @@ export default {
   line-height: 40px;
   cursor: pointer;
   -webkit-transition: all 0.25s;
+  margin: 0 auto;
 }
 
 .shake:hover {

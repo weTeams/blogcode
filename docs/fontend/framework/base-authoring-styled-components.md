@@ -1,9 +1,9 @@
 ---
-title: React学习(9)-React中编写样式css(styled-components)
+title: React基础(10)-React中编写样式css(styled-components)
 autoGroup-1: React基础
 ---
 
-## React 学习(9)-React 中编写样式 css(styled-components)
+## React 中编写样式 css(styled-components)
 
 ## 快速导航
 

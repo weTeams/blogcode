@@ -1,5 +1,5 @@
 ---
-title: React学习(5)-React中组件的数据-props
+title: React基础(5)-React中组件的数据-props
 autoGroup-1: React基础
 ---
 

@@ -4,6 +4,7 @@ title: 目录
 
 ## 离您最近的表示是最新的
 
+- [小程序-云开发-实现生成小程序码](../wechat/cloudev/cloud-create-small-code)
 - [小程序-云开发-实现微信云支付功能](../wechat/cloudev/cloud-payment-function)
 - [理解 Es6 中 Symbol 类型](../fontend/js/understand-symbol)
 - [微信小程序 setData 详解](../wechat/minprogram/setdata-detail)

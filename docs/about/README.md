@@ -113,9 +113,12 @@ title: 关于作者
 
 - 微信小程序:搜索`搞清亲戚称谓关系`
 - 微信小程序:搜索`佳豪瑞森装饰`
+- 微信小程序:搜索`轻记账`
 
   <div align="center">
   <img class="medium-zoom lazy" loading="lazy" src="./images/jiahaoruisen-min-code.jpg" alt="佳豪瑞森装饰" width="200" height="200" />
+  <p>扫码即可体验,还有待完善</p>
+   <img class="medium-zoom lazy" loading="lazy" src="./images/qing-jizhang-min-code.png" alt="佳豪瑞森装饰" width="200" height="200" />
   <p>扫码即可体验,还有待完善</p>
   </div>
 
