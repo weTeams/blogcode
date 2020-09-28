@@ -57,7 +57,7 @@ follow us on **weixin:suibichuanji**
 :::
 
 <div align="center">
-<footer-ArticleAdvertiSpace  width="650" height="120"  />
+<footer-ArticleAdvertiSpace  width="600" height="140"  />
 
 </div>
 
@@ -65,14 +65,14 @@ follow us on **weixin:suibichuanji**
  @media (min-width: 960px) {
     .admessage {
          width:600px;
-         height: 500px;
+         height: 140px;
     }
  }
 
 @media screen and (max-width: 768px) {
 .admessage {
 width:600px;
-height: 300px;
+height: 140px;
 }
 }
 

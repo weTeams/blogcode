@@ -34,7 +34,7 @@ export default {
     return {
       carouses: [
         {
-          imgUrl: "/images/admessage1.png",
+          imgUrl: "/images/adslo.png",
           text: "广告位招租",
           id: "1",
           href: "javascript:;",

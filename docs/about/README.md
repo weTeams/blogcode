@@ -164,5 +164,5 @@ title: 关于作者
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <div align="center">
-<footer-ArticleAdvertiSpace   width="330" height="120" />
+<footer-ArticleAdvertiSpace   width="600" height="120" />
 </div>
