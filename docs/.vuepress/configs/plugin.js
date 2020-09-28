@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 20:49:41
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-09-08 16:15:40
+ * @LastEditTime: 2020-09-28 00:16:24
  * @Description: 所有外部插件配置,入口在当前目录下config.js,本文件通过module.exports暴露,而在config.js中通过require方式引入
  * 集中管理外部插件配置
  *
@@ -154,6 +154,7 @@ const plugins = [
         'global-ShangPic',
         'global-Cat',
         'global-Copy',
+        'global-AdvertiSpace',
       ],
     },
   ],

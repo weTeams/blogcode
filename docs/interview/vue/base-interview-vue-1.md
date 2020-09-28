@@ -127,6 +127,7 @@ http://localhost/home
 ::: tip 注意
 
 在当前阶段`data`,`methods`,`computed`以及`watch`上的数据和方法都不能被访问
+
 **应用场景:**
 
 1. 可以在此时加一些`loading`效果,在`created`时进行移除

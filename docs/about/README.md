@@ -163,3 +163,6 @@ title: 关于作者
 愿每日不负时光不负己...
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<div align="center">
+<footer-ArticleAdvertiSpace   width="330" height="120" />
+</div>

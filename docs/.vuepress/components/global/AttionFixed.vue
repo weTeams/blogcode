@@ -73,7 +73,7 @@ export default {
   .fold-button {
     display: block;
     position: fixed;
-    top: 93px;
+    top: 70px;
     right: 70px;
     cursor: pointer;
   }
@@ -88,7 +88,7 @@ export default {
     display: block;
     position: fixed;
     right: 1px;
-    top: 110px;
+    top: 85px;
     width: 140px;
     padding: 0 10px 10px 10px;
     text-align: center;
