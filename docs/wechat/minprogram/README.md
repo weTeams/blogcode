@@ -5,6 +5,7 @@ title: 目录
 ## 小程序技术目录
 
 - [微信小程序-setData 详解](./setdata-detail)
+- [微信小程序-介绍两种方式获取表单输入框中的值](./get-inputval)
 
 ## 小程序实用案例
 

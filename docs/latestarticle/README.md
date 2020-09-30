@@ -4,6 +4,7 @@ title: 目录
 
 ## 离您最近的表示是最新的
 
+- [小程序-如何获取用户表单控件中的值(即传统 form 与非表单方式获取表单组件的值)](../wechat/minprogram/get-inputval)
 - [小程序-云开发-实现生成小程序码](../wechat/cloudev/cloud-create-small-code)
 - [小程序-云开发-实现微信云支付功能](../wechat/cloudev/cloud-payment-function)
 - [理解 Es6 中 Symbol 类型](../fontend/js/understand-symbol)
