@@ -328,21 +328,21 @@ Page({
 
 **缺点**: 需要添加绑定`bindchange`事件,需要触发`setData`,但频繁的触发`setData`是比较消耗性能,在表单组件不是很多的情况下,可以选用此方式的
 
+::: tip 注意
+传统`form`提交数据时,必须要设置`name`来作为`key`,否则就拿不到表单组件中的值,而非`form`表单形式提交数据,需要给表单组件绑定`bindchang`,通过事件对象的方式获取组件中的数据
+:::
+
 这个是有应用场景的,比如:如下小程序中我的页面中,的就是用非表单方式提交数据的
 
 <div align="center">
      <img class="medium-zoom lazy" loading="lazy" width="200" height="200"  src ="../images/get-inputval/qing-jizhang-min-code.png" alt="轻记账" />
 </div>
 
-<div align="center">
-     <img class="medium-zoom lazy" loading="lazy" width="400" height="800"   src ="../images/get-inputval/qing-pay.jpg" alt="获取表单中的值" />
-</div>
-
 ## 总结
 
 全文总结两段话就是:
 
-1. 小程序中获取表单组件的值有两种方式,一种是通过传统的`form`结合`button`组合的方式,这种方式有局限性,所有的表单组件都需要在`form`内,通过在表单组件内设置`name`值的方式获取表单组件中的值
+1. 小程序中获取表单组件的值有两种方式,一种是通过传统的`form`结合`button`组合的方式,这种方式有局限性,所有的表单组件都需要在`form`内,通过在表单组件内设置`name`值的方式获取表单组件中的值(必须要设置,否则拿到表单组件的值就是`undefined`)
 2. 非表单`form`提交数据的方式是通过在表单组件上绑定`bindchange`事件,通过事件对象的方式,获取`event.detail.value`的方式即可拿到,但同样牺牲性能为代价,需要触发`setData`,从而在最终提交表单时,拿到具体的表单数值
 
 ## 相关参考文档

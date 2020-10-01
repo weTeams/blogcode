@@ -3,7 +3,7 @@
     <div class="carousel">
       <el-carousel trigger="click" height="150px">
         <el-carousel-item v-for="item in carouses" :key="item.id">
-          <a :href="item.href" @click="handleItem" :target="target">
+          <a :href="item.href" @click="handleItem">
             <img :src="item.imgUrl" />
           </a>
         </el-carousel-item>
@@ -36,16 +36,14 @@ export default {
           imgUrl: "/images/ads.png",
           text: "广告位招租",
           id: "1",
-          href: "javascript:;",
-          target: "_blank"
+          href: "javascript:;"
         },
 
         {
           imgUrl: "/images/ads.png",
           text: "广告位招租",
           id: "2",
-          href: "javascript:;",
-          target: "_blank"
+          href: "javascript:;"
         }
       ],
       centerDialogVisible: false
@@ -55,10 +53,8 @@ export default {
     handleItem() {
       this.carouses.forEach(item => {
         if (item.href != "javascript:;") {
-          item.target = "_blank";
           item.href = item.href;
         } else {
-          item.target = "_self";
           this.centerDialogVisible = true;
         }
       });
