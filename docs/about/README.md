@@ -101,10 +101,10 @@ title: 关于作者
 ## 个人录制内容
 
  <div align="center" class="img-wrap">
-  <img class="medium-zoom lazy" loading="lazy" src="./images/react-base1.jpg" alt="React基础" height="250" />
-  <img class="medium-zoom lazy" loading="lazy" src="./images/react-base2.jpg" alt="React进阶" height="250" />
-  <img class="medium-zoom lazy" loading="lazy" src="./images/min-program.jpg" alt="小程序云开发"  height="250" />
-   <img class="medium-zoom lazy" loading="lazy" src="./images/caishang.jpg" alt="财富课"  height="250" />
+  <img class="medium-zoom lazy  code-img" loading="lazy" src="./images/react-base1.jpg" alt="React基础" height="250" />
+  <img class="medium-zoom lazy code-img" loading="lazy" src="./images/react-base2.jpg" alt="React进阶" height="250" />
+  <img class="medium-zoom lazy code-img" loading="lazy" src="./images/min-program.jpg" alt="小程序云开发"  height="250" />
+   <img class="medium-zoom lazy code-img" loading="lazy" src="./images/caishang.jpg" alt="财富课"  height="250" />
   </div>
 
 ## 个人独立作品/运营
@@ -114,9 +114,9 @@ title: 关于作者
 - 微信小程序:搜索`轻记账`
 
   <div align="center">
-  <img class="medium-zoom lazy" loading="lazy" src="./images/jiahaoruisen-min-code.jpg" alt="佳豪瑞森装饰" width="200" height="200" />
+  <img class="medium-zoom lazy" loading="lazy"  src="./images/jiahaoruisen-min-code.jpg" alt="佳豪瑞森装饰" width="200" height="200" />
   <p>扫码即可体验,还有待完善</p>
-   <img class="medium-zoom lazy" loading="lazy" src="./images/qing-jizhang-min-code.png" alt="佳豪瑞森装饰" width="200" height="200" />
+   <img class="medium-zoom lazy" loading="lazy"  src="./images/qing-jizhang-min-code.png" alt="佳豪瑞森装饰" width="200" height="200" />
   <p>扫码即可体验,还有待完善</p>
   </div>
 
@@ -172,7 +172,7 @@ title: 关于作者
   just-content: space-between;
 }
 
-img {
+.code-img {
   width: 25%;
   margin-bottom: 5px;
 }

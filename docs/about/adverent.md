@@ -65,14 +65,14 @@ follow us on **weixin:suibichuanji**
  @media (min-width: 960px) {
     .admessage {
          width:600px;
-         height: 140px;
+         height: 500px;
     }
  }
 
 @media screen and (max-width: 768px) {
 .admessage {
 width:600px;
-height: 140px;
+height: 280px;
 }
 }
 
