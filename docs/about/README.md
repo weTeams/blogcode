@@ -100,13 +100,11 @@ title: 关于作者
 
 ## 个人录制内容
 
- <div align="center">
-  <img class="medium-zoom lazy" loading="lazy" src="./images/react-base1.jpg" alt="React基础" width="180" height="200" />
-  <img class="medium-zoom lazy" loading="lazy" src="./images/react-base2.jpg" alt="React进阶" width="180" height="200" />
-  <img class="medium-zoom lazy" loading="lazy" src="./images/min-program.jpg" alt="小程序云开发" width="180" height="200" />
-   <img class="medium-zoom lazy" loading="lazy" src="./images/caishang.jpg" alt="财富课" width="180" height="200" />
-  <p>扫码即可看详情</p>
-  <p>更多内容,正在筹备中...</p>
+ <div align="center" class="img-wrap">
+  <img class="medium-zoom lazy" loading="lazy" src="./images/react-base1.jpg" alt="React基础" height="250" />
+  <img class="medium-zoom lazy" loading="lazy" src="./images/react-base2.jpg" alt="React进阶" height="250" />
+  <img class="medium-zoom lazy" loading="lazy" src="./images/min-program.jpg" alt="小程序云开发"  height="250" />
+   <img class="medium-zoom lazy" loading="lazy" src="./images/caishang.jpg" alt="财富课"  height="250" />
   </div>
 
 ## 个人独立作品/运营
@@ -164,5 +162,18 @@ title: 关于作者
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <div align="center">
-<footer-ArticleAdvertiSpace   width="600" height="120" />
+<footer-ArticleAdvertiSpace   width="600" height="140" />
 </div>
+
+<style>
+.img-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  just-content: space-between;
+}
+
+img {
+  width: 25%;
+  margin-bottom: 5px;
+}
+</style>
