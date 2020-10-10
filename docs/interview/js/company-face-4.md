@@ -131,3 +131,46 @@ async function fnAsync02() {
   console.log('10');
 }
 ```
+
+## 第 12 题-async-promise 的执行顺序
+
+请说一下以下代码打印的结果,并说明原因
+
+```js
+async function async1() {
+  console.log('async1 start');
+
+  await async2();
+  console.log('async1 end');
+}
+
+await function async2() {
+  console.log('async2');
+};
+
+console.log('script start');
+setTimeout(function () {
+  console.log('setTimeout');
+}, 0);
+
+async1();
+
+new Promise(function (resolve) {
+  console.log('promise1');
+  resolve();
+}).then(function () {
+  console.log('promise2');
+});
+```
+
+## 第 12 题-假如我们是一个广告平台接收外部的标准的 url 链接-我们需要在这个 url 的 search 的参数上添加一个 m_id="xxx"如何处理?
+
+## 第 13 题-自己手动实现一个`getElementById`
+
+## 第 14 题-一个函数,将数值类型的值,格式化成千位分隔符格式化数值例如:123456 => 123,456
+
+## 第 15 题-实现一个`formatDate`方法,接收参数为时间戳-timeStamp-和分割方式 gap
+
+例如：formatData('1574624629') => 2019-11-01
+
+## 第 16 题-给你一个时间戳你如何得到这个时间戳对应月的最大天数？

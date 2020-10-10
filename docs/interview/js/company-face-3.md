@@ -130,6 +130,8 @@ console.log(queryString(baseUrlStr)); //{name: "itclanCoder",study: ["css", "js"
 主要在中间做了一下处理,判断是不是数组,这个有点虐心,虽然平常遇到的场景不是特别多,但是也是有这种情况的,有次面试就被折腾得不行的,回来脑补了一下的
 :::
 
+<parseurl-parseUrl :url="`https://coder.itclan.cn?name=itclanCoder&study=css&study=js&study=react`" />
+
 ## 第 2 题-var let const 的区别
 
 共同点:定义声明变量
@@ -171,11 +173,11 @@ let name;
 **编写个数:** `window.onload`不能同时编写多个,而`$(document).ready()`能同时编写多个
 
 ```js
-window.onload = function() {
+window.onload = function () {
   alert('test1`');
 };
 
-window.onload = function() {
+window.onload = function () {
   alert('test2');
 };
 // 结果只会输出test2
@@ -184,32 +186,166 @@ window.onload = function() {
 而`$(document).ready()`能同时编写多个
 
 ```js
-$(document).ready(function() {
+$(document).ready(function () {
   alert('Hello world');
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
   alert('hello itclanCoder');
 });
 // 结果会两次输出
 // 可以简写成
-$(function() {
+$(function () {
   //..
 });
 ```
 
 ## 第 5 题-通过什么方法可以实现-检测页面 DOM 变化
 
+在`MVVM`框架中,一是监听数据的变化,数据驱动视图
+
+- 通过`Object.defineProperties()`来监听数据的变化,或使用`proxy`来代理和反射
+- 通过某个`API`来监听`DOM`的变化(利`用MutationObserver`)来监听`DOM`的变化
+
+::: tip 注意
+当通过`JS`操作了`DOM`之后,我们需要通知到`DOM`来更新视图,在`vue2.0`中是用的`Object.defineProperies()`来劫持对象,而`vue3.0`中是使用`proxy`,维持了一个异步的队列,并不是修改了`DOM`就会立即更新到视图上面
+:::
+
+`Mutaion Observer API`是用来监视`DOM`变动,`DOM`的任何变动,比如节点的增减,属性的变动,文本内容的变动
+
+这个`API`都可以得到通知,`Mutation Observer`则是异步触发,`DOM`的变动并不会马上触发,而是要等到当前所有`DOM`操作都结束才触发,这样是为了应付`DOM`变动频繁的特点
+
+::: warning 提示
+假设文档中连续插入 1000 个`li`元素,就会连续触发 1000 个插入事件,执行每个事件的回调函数,这很可能会造成浏览器的卡顿,而`mutation Observer`则完全不同,只在 1000 个段落都插入结束后才会触发,而且只会触发一次
+:::
+`Mutation Observer`有以下特点
+
+- 等待所有脚本任务完成后,才会运行,采用异步方式
+- 把`DOM`变动记录封装成一个数组进行处理,而不是单独处理个别的`DOM`变动
+- 可以观察发生在`DOM`节点的所有变动,可以观察某一类变动
+
+使用实例
+:::details 点击即可查看代码
+
+```js
+// 选择需要观察变动的节点
+var targetNode = document.getElementById('app');
+// 观察器的配置（需要观察什么变动）
+const config = { attributes: true, childList: true, subtree: true };
+
+/ 创建一个观察器实例并监听`targetNode`元素的变动
+const observer = new MutationObserver(targetNode,config);
+```
+
+:::
+
+实例:
+`MutationObserver`的`callback`的回调函数是异步的,只有在全部`DOM`操作完成之后才会调用`callback`
+
+```html
+<div id="target" class="block" name="target">
+  target的第一个子节点
+  <p>
+    <span>target的后代</span>
+  </p>
+</div>
+```
+
+以下是`js`代码
+
+```js
+var targetNode = document.getElementById('target');
+var i = 0;
+var observe = new MutationObserver(function (mutations, observe) {
+  i++;
+});
+observe.observe(targetNode, { childList: true });
+targetNode.appendChild(docuemnt.createTextNode('1'));
+targetNode.appendChild(docuemnt.createTextNode('2'));
+targetNode.appendChild(docuemnt.createTextNode('3'));
+console.log(i); //1 callback的回调次数
+```
+
+**应用**
+
+有时候,`MutationObserver API`都可以派上用场
+
+- 通知`web`应用程序访问者,监测当前所在页面发生了一些更改,变化
+- 正在开发一个新的`javaScript`框架,需要根据`DOM`的变化动态加载`javaScript`模块
+
+**结论**
+
+- `MutationObserver`提供了监视`DOM`树所做更改的能力,它被设计为旧的`Mutation Events`功能的替代品,该功能是`DOM3 events`规范的一部分(来自 MDN)
+- `MutationObserver`在不影响浏览器性能的情况下响应`DOM`更改
+- `MutationObserver`会等待所有脚本任务完成后,才会运行,采用异步方式
+
+* [MDN-MutatonObserver 介绍](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver)
+
 ## 第 6 题-如何监控 js 对象属性的变化?
+
+- 方式 1:通过`Object.defineProperty()`来监听
+
+```js
+var obj = {
+  name: 'itclanCoder',
+  phone: 13711767328,
+};
+
+Object.defineProperty(obj, 'phone', {
+  configurable: true, // 属性可配置
+  set: function (v) {
+    console.log('phone发生了变化');
+    this.phone = v;
+  },
+
+  get: function () {
+    return this.phone;
+  },
+});
+obj.phone = 15213467443;
+```
+
+要想监听属性的变化,首先需要通过`Object.defineProperty()`为需要监听的属性设置一个代理,通过代理的值,触发`set`和`get`的方法
+在这个方法中编写自己想要的逻辑操作
+
+- 方法 2-使用 proxy 代理实现
+
+```js
+var obj = {
+  name: 'itclanCoder',
+  phone: 13711767328,
+};
+
+var handler = {
+  set: function (target, name, value) {
+    console.log('phone发生了变化');
+    // 改变被代理对象的值,使之保持一致
+    target[name] = value;
+  },
+};
+
+var proxy = new Proxy(obj, handler);
+proxy.phone = 1371123765;
+```
+
+上面执行完后,会更新 phone 的值
 
 ## 第 7 题-介绍几个场景会用到 canvas
 
+1. 绘制动画,画图
+2. 移动端校验码,红包雨等
+3. 游戏场景开发
+
 ## 第 8 题-骨架屏是什么,如何实现?
 
-## 在线测试
+骨架屏也可以称为占位符,是在内容没有出现之前页面骨架的填充,以免留白
 
-<iframe-lineTestCode />
+具体实现:
 
-<parseurl-parseUrl :url="`https://coder.itclan.cn?name=itclanCoder&study=css&study=js&study=react`" />
+**方案 1:在模板中实现骨架屏**
+
+这种方案是在现有的页面中,写好骨架,等程序渲染后就会替换掉骨架
+
+**方案 2:使用 base64 的图片来作为骨架屏**
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />

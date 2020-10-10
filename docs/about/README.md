@@ -171,9 +171,22 @@ title: 关于作者
   flex-wrap: wrap;
   just-content: space-between;
 }
+ @media (min-width: 960px)  {
+  .code-img {
+    width: 25%;
+    margin-bottom: 5px;
+    height: 300px;
+  }
+ }
 
-.code-img {
-  width: 25%;
-  margin-bottom: 5px;
-}
+ @media screen and (max-width: 768px) {
+   .code-img {
+    width: 25%;
+    margin-bottom: 5px;
+    height: 120px;
+  }
+ }
+
+
+
 </style>

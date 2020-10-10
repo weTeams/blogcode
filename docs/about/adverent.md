@@ -1,6 +1,4 @@
----
-title: 广告位接受赞助
----
+## title: 广告位接受赞助
 
 ## 广告位接受赞助
 
@@ -62,7 +60,7 @@ follow us on **weixin:suibichuanji**
 </div>
 
 <style>
- @media (min-width: 960px) {
+     {
     .admessage {
          width:600px;
          height: 500px;
