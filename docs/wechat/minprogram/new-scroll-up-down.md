@@ -1,6 +1,6 @@
 ---
 title: 小程序-实现类似新浪头条新闻上下间歇性滚动
-autoPrev: README
+autoGroup-2: 小程序实用案例
 ---
 
 <div id="container">

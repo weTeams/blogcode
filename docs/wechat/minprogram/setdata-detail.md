@@ -1,7 +1,6 @@
 ---
 title: 微信小程序中 setData 详解
-autoNext: new-scroll-up-down
-sidebarDepth: 3
+autoGroup-1: 小程序技术
 ---
 
 ## 微信小程序中 setData 详解
