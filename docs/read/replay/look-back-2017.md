@@ -3,6 +3,7 @@ sidebarDepth: 3
 title: 不负时光不负已,回眸 2017
 autoNext: link-accompany-growth
 collapsable: true
+autoGroup-2: 年终总结
 ---
 
 # 不负时光不负已,回眸 2017

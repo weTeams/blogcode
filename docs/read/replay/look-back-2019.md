@@ -2,6 +2,7 @@
 title: 2019 已落幕,2020 再出发
 autoNext: link-accompany-growth
 collapsable: true
+autoGroup-2: 年终总结
 ---
 
 # 2019 已落幕,2020 再出发

@@ -10,6 +10,7 @@ title: 目录
 
 ### 生活思考
 
+- [在自己身上寻求发现更多的可能](./find-more-possible)
 - [链接关系,相互陪伴,见证成长](./link-accompany-growth)
 - [关于社交圈子的一点思考](./on-social-circle)
 
