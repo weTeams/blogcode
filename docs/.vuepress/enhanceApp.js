@@ -14,6 +14,8 @@
  * 具体使用见文档: https://www.vuepress.cn/zh/guide/basic-config.html#%E5%BA%94%E7%94%A8%E7%BA%A7%E5%88%AB%E7%9A%84%E9%85%8D%E7%BD%AE
  */
 import ElementUI from 'element-ui';
+import Vant from 'vant';
+import 'vant/lib/index.css';
 import './public/css/element-variables.scss';
 // import Clipboard from './components/Clipboard';
 import Copy from './components/global/Copy';
@@ -31,4 +33,5 @@ export default ({
   // Vue.component('Clipboard', Clipboard);
   Vue.component('Copy', Copy);
   Vue.use(ElementUI);
+  Vue.use(Vant);
 };

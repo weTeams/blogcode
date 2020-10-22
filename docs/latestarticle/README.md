@@ -5,6 +5,8 @@ title: 目录
 ## 离您最近的表示是最新的
 
 - [置顶-广告位接受赞助](../about/adverent.md)
+- [小程序-实现小程序与小程序之间的跳转](../wechat/minprogram/jump-between-apples)
+- [小程序-实现自定义动画弹框/提示框果](../wechat/minprogram/custom-alert-box)
 - [小程序-实现折叠面板-手风琴效果](../wechat/minprogram/accordion-effect)
 - [小程序-实现怎么打开网页链接(跳转至公众号文章)](../wechat/minprogram/usewebview-open-webpage)
 - [小程序-实现 tab-及多个列表选项切换](../wechat/minprogram/tab-list-change)
