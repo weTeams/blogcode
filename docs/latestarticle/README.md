@@ -5,6 +5,7 @@ title: 目录
 ## 离您最近的表示是最新的
 
 - [置顶-广告位接受赞助](../about/adverent.md)
+- [小程序-实现自定义组件以及自定义组件间的通信](../wechat/minprogram/custom-components)
 - [小程序-实现小程序与小程序之间的跳转](../wechat/minprogram/jump-between-apples)
 - [小程序-实现自定义动画弹框/提示框果](../wechat/minprogram/custom-alert-box)
 - [小程序-实现折叠面板-手风琴效果](../wechat/minprogram/accordion-effect)
@@ -13,7 +14,6 @@ title: 目录
 - [小程序-如何获取用户表单控件中的值(即传统 form 与非表单方式获取表单组件的值)](../wechat/minprogram/get-inputval)
 - [小程序-云开发-实现生成小程序码](../wechat/cloudev/cloud-create-small-code)
 - [小程序-云开发-实现微信云支付功能](../wechat/cloudev/cloud-payment-function)
-- [理解 Es6 中 Symbol 类型](../fontend/js/understand-symbol)
 - [微信小程序 setData 详解](../wechat/minprogram/setdata-detail)
 - [解析 super 关键字](../fontend/js/resolve-super-keyword)
 - [用户名-手机号加密特殊处理](/fontend/js/utils-name-mobile-encrye)

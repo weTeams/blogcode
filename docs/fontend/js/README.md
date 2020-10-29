@@ -18,6 +18,10 @@ title: 目录
 - [js 中的正则表达式(1)](./reg-learn-1)
 - [js 中的正则表达式(2)](./reg-learn-2)
 
+## JS 常见特效
+
+- [JS 实现烟花特效](./fireWorkEffect)
+
 ### JS 实用案例技巧
 
 - [用户姓名-手机号-中间位数用\*替代](./utils-name-mobile-encrye)
