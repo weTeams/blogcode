@@ -27,7 +27,7 @@ title: 广告位接受赞助
 3. 通过添加微信:`suibichuanji`
 
 <div align="center">
-     <img class="medium-zoom lazy" src="/images/person-code.jpg" width="150" height="150" />
+     <img class="medium-zoom lazy" src="/images/rightBarImgs/person-code.jpg" width="150" height="150" />
 </div>
 
 If you have any question, please contact us immediately for free:

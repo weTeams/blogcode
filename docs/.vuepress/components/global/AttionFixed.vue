@@ -13,7 +13,7 @@
       <div class="public-code">
         <h4>关注公众号</h4>
         <p>一个走心,有温度的号,同千万同行一起交流学习</p>
-        <img class="medium-zoom lazy" loading="lazy" src="/images/itclancoder-code.jpg" alt />
+        <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/itclancoder-code.jpg" alt />
       </div>
       <div class="person-code">
         <h4>加作者微信</h4>
@@ -21,7 +21,14 @@
           扫二维码 备注
           <span>加群</span>
         </p>
-        <img class="medium-zoom lazy" loading="lazy" src="/images/other-author-code.jpg" alt />
+        <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/other-author-code.jpg" alt />
+      </div>
+       <div class="person-code">
+        <h4>扫码易购</h4>
+        <p>
+          福利推荐
+        </p>
+        <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/xiaoshangdian.jpg" alt />
       </div>
     </div>
   </div>
@@ -73,7 +80,7 @@ export default {
   .fold-button {
     display: block;
     position: fixed;
-    top: 70px;
+    top: 60px;
     right: 70px;
     cursor: pointer;
   }
@@ -88,7 +95,7 @@ export default {
     display: block;
     position: fixed;
     right: 1px;
-    top: 85px;
+    top: 75px;
     width: 140px;
     padding: 0 10px 10px 10px;
     text-align: center;
@@ -98,7 +105,7 @@ export default {
     h4 {
       font-size: 15px;
       color: #42b983;
-      margin: 16px 0;
+      margin: 8px 0;
     }
 
     p {
@@ -108,7 +115,7 @@ export default {
 
     img {
       cursor: pointer;
-      width: 140px;
+      width: 90px;
     }
   }
 }

@@ -3,13 +3,23 @@
     <div class="right-bar-wrap" v-show="isRightBar">
       <div>
         <a href="#">
-          <img width="30" height="30" src="/images/up-arrow.png" alt="置顶" />
+          <img width="30" height="30" src="/images/rightBarImgs/up-arrow.png" alt="置顶" />
         </a>
       </div>
       <div>
         <a href="/latestarticle/">
-          <img width="30" height="30" src="/images/new.png" alt="最新" />
+          <img width="30" height="30" src="/images/rightBarImgs/new.png" alt="最新" />
         </a>
+      </div>
+       <div>
+        <img
+          width="30"
+          height="30"
+          class="medium-zoom lazy"
+          loading="lazy"
+          src="/images/rightBarImgs/xiaoshangdian.jpg"
+          alt="小程序码"
+        />
       </div>
       <div>
         <img
@@ -17,7 +27,7 @@
           height="30"
           class="medium-zoom lazy"
           loading="lazy"
-          src="/images/other-author-code.jpg"
+          src="/images/rightBarImgs/other-author-code.jpg"
           alt="二维码"
         />
       </div>
@@ -27,13 +37,13 @@
           height="30"
           class="medium-zoom lazy"
           loading="lazy"
-          src="/images/itclancoder-code.jpg"
+          src="/images/rightBarImgs/itclancoder-code.jpg"
           alt="公众号"
         />
       </div>
       <div>
         <a href="#bottom">
-          <img width="30" height="30" src="/images/down-arrow.png" alt="置底" />
+          <img width="30" height="30" src="/images/rightBarImgs/down-arrow.png" alt="置底" />
         </a>
       </div>
     </div>
@@ -85,7 +95,7 @@ export default {
   .right-bar-wrap {
     position: fixed;
     right: 0.2rem;
-    top: 35%;
+    top: 30%;
     display: flex;
     flex-direction: column;
     z-index: 888;
