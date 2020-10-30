@@ -32,6 +32,7 @@ title: 目录
 ## css3 动效
 
 - [css 实现小鸟旋转](./animate-effect-brid)
+- [css 实现动画箭头](./animated-arrow)
 
 ## 移动端相关
 
