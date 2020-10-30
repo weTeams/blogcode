@@ -15,6 +15,7 @@ title: 目录
 
 ## CSS 常见实例技巧
 
+- [css 展示各种手型](./example-handle-shape-show)
 - [文字超出末尾显示省略号](./example-skill-ellipsis)
 - [文字水平及垂直方向显示排布](./example-text-display-layout)
 - [表单聚焦时输入框变化](./example-input-focus-animate)
