@@ -181,3 +181,6 @@ border-right: 3px solid #42b983;
 ```
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<div align="center">
+<footer-ArticleAdvertiSpace   width="600" height="140" />
+</div>
