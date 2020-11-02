@@ -23,21 +23,21 @@ autoGroup-2: 小程序技术
 
 通过上面一个简单的数字加减输入框组件,阅读完本文后,您将收获到
 
-● 在小程序中如何自定义组件
+⒈ 在小程序中如何自定义组件
 
-● 在小程序页面中如何使用自定义组件
+⒉ 在小程序页面中如何使用自定义组件
 
-● 父(外部)组件如何向子组件传值
+⒊ 父(外部)组件如何向子组件传值
 
-● 子组件如何接受父组件传递过来的值,同时渲染组件
+⒋ 子组件如何接受父组件传递过来的值,同时渲染组件
 
-● 子组件内如何进行事件交互,如何向父组件传递数据,影响父组件定义的数据
+⒌ 子组件内如何进行事件交互,如何向父组件传递数据,影响父组件定义的数据
 
-● 另一种方法父组件获取子组件的数据(非`triggerEvent`方式,即`selectComponent`)
+⒍ 另一种方法父组件获取子组件的数据(非`triggerEvent`方式,即`selectComponent`)
 
-● 达到某些条件时,如何禁止`view`的`bindtap`事件
+⒎ 达到某些条件时,如何禁止`view`的`bindtap`事件
 
-● 数字加减输入框代码的优化
+⒏ 数字加减输入框代码的优化
 
 ## 为什么要自定义组件?
 
@@ -51,20 +51,23 @@ autoGroup-2: 小程序技术
 
 例如:在`components`目录下创建了一个`count`文件夹,然后在新建`Component`,组件名称命名为`count`,微信开发者工具会自动的创建`count`组件
 
-如下所示:
-::: details 点击即可查看数字加减 wxml 代码
+自定义组件如下代码所示:
+
+:::: el-tabs
+::: el-tab-pane label=wxml
 
 ```html
 <view>
   <view class="count-container">
-    <view bindtap="reduce" class="{{count == 1? 'btn-disabled': ''}}}">-</view>
+    <view bindtap="reduce" class="{{count == 1? 'btn-disabled': ''}}">-</view>
     <input bindinput="handleInput" type="number" value="{{count}}" />
     <view bindtap="add">+</view>
   </view>
 </view>
 ```
 
-如下是 css 代码
+:::
+::: el-tab-pane label=wxss
 
 ```css
 /* components/count/count.wxss */
@@ -99,9 +102,10 @@ autoGroup-2: 小程序技术
 }
 ```
 
-如下是 js 逻辑代码
+:::
+::: el-tab-pane label=javaScript
 
-```js
+```javascript
 // components/count/count.js
 Component({
   /**
@@ -155,6 +159,8 @@ Component({
 ```
 
 :::
+::::
+
 自定义组件定义好了,那么如何使用呢
 
 在`pages`目录下,这里我创建了一个`customComponents`页面
@@ -186,15 +192,40 @@ Component({
 
 你可以将自定义组件看作为自定义的标签,对原生`wxml`中的`view`的一种拓展,在自定义组件上可以添加自定义属性,绑定自定义事件.
 
-如下示例代码所示
+父组件`customComponents`-页面的示例代码如下所示
+
+:::: el-tabs
+::: el-tab-pane label=wxml
 
 ```html
 <count count="{{countNum}}" bind:changeCount="handleCount"></count>
 <view class="parentText">父组件count:{{countNum}}</view>
 ```
 
-而在`customComponents`自定义页面中的逻辑代码中,如下所示
-::: details 点击即可查看逻辑代码
+:::
+::: el-tab-pane label=wxss
+
+```css
+.parentText {
+  text-align: center;
+}
+```
+
+:::
+::: el-tab-pane label=json
+
+```js
+// 页面配置文件
+{
+  "usingComponents": {
+    "count":"../../components/count/count"
+  }
+}
+
+```
+
+:::
+::: el-tab-pane label=javaScript
 
 ```js
 // pages/customComponents/customComponents.js
@@ -221,6 +252,8 @@ Page({
 ```
 
 :::
+
+::::
 
 在微信小程序中,使用组件就是这么简单,想要在哪个页面使用,就在哪个页面的`xxx.json`中声明组件,就可以了的
 
@@ -700,6 +733,13 @@ methods: {
 
 - [组件间通信与事件](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/events.html)
 - [小程序中的事件](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxml/event.html)
+
+## 视频学习
+
+- [1-小程序-自定义组件-加减数字输入框布局(上)](https://www.zhihu.com/zvideo/1306322188631429120)
+- [2-小程序-自定义组件-父组件向子组件传递数据(中)](https://www.zhihu.com/zvideo/1306323034652504064)
+- [3-小程序-自定义组件-子组件如何向父组件传递数据(下)](https://www.zhihu.com/zvideo/1306323294304628736)
+- [4-小程序-自定义组件-父组件获取子组件数据的第 2 中方式(结尾)](https://www.zhihu.com/zvideo/1306323618129874944)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 

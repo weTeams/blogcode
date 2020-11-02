@@ -3,6 +3,8 @@ sidebarDepth: 3
 title: markdown使用速查
 ---
 
+## markdown 使用速查
+
 ## 快速导航
 
 <TOC :include-level="[1, 4]" />
@@ -124,6 +126,637 @@ module.exports = {
 这是一个详情块，在 IE / Edge 中不生效
 :::
 ```
+
+## markdwon 中引入 element-ui 插件
+
+在`vuepress`中可以自定义组件,可以引入官方的`element-ui`组件,然后在通过编写自定义组件方式在`md`文件中引入
+
+这是一种方法,但有没有更简便的方式,直接在`md`中就支持引入`element-ui`当中的一些组件呢
+
+`vuepress-plugin-element-ui`这个第三方插件很好的支持了的
+
+### 安装`vuepress-plugin-element-ui`
+
+:::: el-tabs
+::: el-tab-pane label=安装插件
+
+```css
+yarn add vuepress-plugin-element-ui -D
+```
+
+:::
+::: el-tab-pane label=配置文件
+
+```js
+//.vuepress/config.js
+module.exports = {
+  plugins: ['element-ui'],
+};
+```
+
+:::
+::::
+
+::: warning 注意
+vuepress 的版本需要大于 1.0.0,你可以安装最新的`vuepress`
+
+```
+yarn add vuepress@next -D
+```
+
+:::
+
+### el-tabs
+
+```
+:::: el-tabs
+::: el-tab-pane label=markdown
+
+- vue
+  - vue-cli
+  - nuxt
+  - vuepress
+- react
+  - create-react-app
+  - nest
+:::
+
+::: el-tab-pane label=javascript
+
+() => {
+console.log('Javascript code example');
+};
+
+:::
+::::
+
+```
+
+:::: el-tabs
+::: el-tab-pane label=markdown
+
+- vue
+  - vue-cli
+  - nuxt
+  - vuepress
+- react
+  - create-react-app
+  - nest
+
+:::
+::: el-tab-pane label=javascript
+
+```javascript
+() => {
+  console.log('Javascript code example');
+};
+```
+
+:::
+::::
+
+### el-collapses 折叠手风琴
+
+```js
+:::: el-collapse
+::: el-collapse-item title="一致性 Consistency"
+与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
+在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+:::
+::: el-collapse-item title="反馈 Feedback"
+控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
+页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。
+:::
+::: el-collapse-item title="效率 Efficiency"
+简化流程：设计简洁直观的操作流程；
+清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；
+帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。
+:::
+::: el-collapse-item title="可控 Controllability"
+用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
+结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
+:::
+::::
+```
+
+:::: el-collapse
+::: el-collapse-item title="一致性 Consistency"
+与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；
+在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。
+:::
+::: el-collapse-item title="反馈 Feedback"
+控制反馈：通过界面样式和交互动效让用户可以清晰的感知自己的操作；
+页面反馈：操作后，通过页面元素的变化清晰地展现当前状态。
+:::
+::: el-collapse-item title="效率 Efficiency"
+简化流程：设计简洁直观的操作流程；
+清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；
+帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。
+:::
+::: el-collapse-item title="可控 Controllability"
+用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
+结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
+:::
+::::
+
+### All Componenets 所有组件
+
+你可以用`element-ui`中的所有组件
+
+::: details 点击即可查看所有组件
+
+```js
+'el-collapse-transition',
+  'el-pagination',
+  'el-dialog',
+  'el-autocomplete',
+  'el-dropdown',
+  'el-dropdown-menu',
+  'el-dropdown-item',
+  'el-menu',
+  'el-submenu',
+  'el-menu-item',
+  'el-menu-item-group',
+  'el-input',
+  'el-input-number',
+  'el-radio',
+  'el-radio-group',
+  'el-radio-button',
+  'el-checkbox',
+  'el-checkbox-button',
+  'el-checkbox-group',
+  'el-switch',
+  'el-select',
+  'el-option',
+  'el-option-group',
+  'el-button',
+  'el-button-group',
+  'el-table',
+  'el-table-column',
+  'el-date-picker',
+  'el-time-select',
+  'el-time-picker',
+  'el-popover',
+  'el-tooltip',
+  'el-breadcrumb',
+  'el-breadcrumb-item',
+  'el-form',
+  'el-form-item',
+  'el-tabs',
+  'el-tab-pane',
+  'el-tag',
+  'el-tree',
+  'el-alert',
+  'el-slider',
+  'el-icon',
+  'el-row',
+  'el-col',
+  'el-upload',
+  'el-progress',
+  'el-spinner',
+  'el-badge',
+  'el-card',
+  'el-rate',
+  'el-steps',
+  'el-step',
+  'el-carousel',
+  'el-scrollbar',
+  'el-carousel-item',
+  'el-collapse',
+  'el-collapse-item',
+  'el-cascader',
+  'el-color-picker',
+  'el-transfer',
+  'el-container',
+  'el-header',
+  'el-aside',
+  'el-main',
+  'el-footer',
+  'el-timeline',
+  'el-timeline-item',
+  'el-link',
+  'el-divider',
+  'el-image',
+  'el-calendar',
+  'el-backtop',
+  'el-page-header',
+  'el-cascader-panel',
+  'el-avatar',
+  'el-drawer',
+  'el-popconfirm';
+```
+
+:::
+
+你也可以用`element-ui`官方提供的一些组件,直接在`md`中使用
+
+```html
+<el-tag>标签一</el-tag>
+<el-tag type="success">标签二</el-tag>
+<el-tag type="info">标签三</el-tag>
+<el-tag type="warning">标签四</el-tag>
+<el-tag type="danger">标签五</el-tag>
+```
+
+<el-tag>标签一</el-tag>
+<el-tag type="success">标签二</el-tag>
+<el-tag type="info">标签三</el-tag>
+<el-tag type="warning">标签四</el-tag>
+<el-tag type="danger">标签五</el-tag>
+
+### 插件文档
+
+- [vuepress-plugin-element-ui](https://github.com/lq782655835/vuepress-plugin-element-ui)
+- [vuepress-plugin-element-ui 使用文档](https://lq782655835.github.io/vuepress-plugin-element-ui/#all-componenets)
+
+## md 中画流程图
+
+有时,需要描述做一件事情的先后顺序,借用流程图,会让复杂的东西变得简单化,在文档中需要插入流程图,要么借用第三方的一些`processOn`或者一些绘图工具(`picPick`)等画流程图的
+
+通过截图的方式,然后在插入到文档中,这样不是不可以,但比较麻烦,在`vuepress`中提供了一个插件工具`vuepress-plugin-flowchart`
+
+可以让你的流程图,更好看,优雅
+
+### 安装 vuepress-plugin-flowchart
+
+:::: el-tabs
+::: el-tab-pane label=安装插件
+
+```js
+yarn add vuepress-plugin-flowchart -D
+```
+
+:::
+::: el-tab-pane label=配置文件
+
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: ['flowchart'],
+};
+```
+
+:::
+::::
+
+### 语法
+
+```js
+@flowstart [preset]
+
+<!-- 你的图表代码在这里. -->
+
+@flowend
+```
+
+其中,`preset`展示有两种形式,`vue`渲染(默认)以及`ant`
+
+### 开始与结束
+
+- `[Variable]->start: [Text]`
+- `[Variable]->end: [Text]`
+
+```
+@flowstart
+st=>start: 开始
+e=>end: 结束
+
+st->e
+@flowend
+```
+
+@flowstart
+
+st=>start: 开始
+e=>end: 结束
+
+st->e
+@flowend
+
+### 操作
+
+- `[Variable]->operation: [Text]`
+
+```
+@flowstart
+process=>operation: 操作
+e=>end: 结束
+
+process->e
+@flowend
+```
+
+@flowstart
+process=>operation: 操作
+e=>end: 结束
+
+process->e
+@flowend
+
+### inputoutput 输入与输出
+
+- `[Variable]->inputoutput: [Text]`
+
+```
+@flowstart
+process=>inputoutput: 输入
+e=> end: 结束
+
+process->e
+@flowend
+```
+
+@flowstart
+process=>inputoutput: 输入
+e=>end: 结束
+
+process->e
+@flowend
+
+### 子程序
+
+- `[Variable]->subroutine: [Text]`
+
+```js
+@flowstart
+process=>subroutine: 子程序
+e=>end: 结束
+
+process->e
+@flowend
+```
+
+@flowstart
+process=>subroutine: 子程序
+e=>end: 结束
+
+process->e
+@flowend
+
+### 条件
+
+- `[Variable]->condition: [Text]`
+- `[Variable]([yesText])->[Position]`
+- `[Variable]([noText])->[Position]`
+
+```
+@flowstart
+cond=>condition: 男人?
+process=>operation: 汉子
+e=>end: 妹子
+
+cond(yes)->process->e
+cond(no)->e
+@flowend
+```
+
+@flowstart
+cond=>condition: 男人?
+process=>operation: 汉子
+e=>end: 妹子
+
+cond(yes)->process->e
+cond(no)->e
+@flowend
+
+### 平行
+
+- `[Variable]->parallel: [Text]`
+- `[Variable](path1, direction)->[Position]`
+- `[Variable](path1, direction)->[Position]`
+
+```
+@flowstart
+para=>parallel: vue
+process=>operation: VuePress
+e=>end: 小右
+
+para(path1, bottom)->process->e
+para(path2)->e
+@flowend
+```
+
+@flowstart
+para=>parallel: vue
+process=>operation: VuePress
+e=>end: 小右
+
+para(path1, bottom)->process->e
+para(path2)->e
+@flowend
+
+### 顺序结构
+
+```
+@flowstart
+stage1=>operation: 步骤 1
+stage2=>operation: 步骤 2
+stage3=>operation: 步骤 3
+
+stage1->stage2->stage3
+@flowend
+```
+
+@flowstart
+stage1=>operation: 步骤 1
+stage2=>operation: 步骤 2
+stage3=>operation: 步骤 3
+
+stage1->stage2->stage3
+@flowend
+
+### 复杂选择结构
+
+```
+@flowstart
+st=>start: Start|past:>http://itclan.cn/
+e=>end: End|future:>https://www.zhihu.com/people/itclan
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes
+or No?|approved:>[https:](https://space.bilibili.com/267957620)
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|future
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e
+@flowend
+```
+
+@flowstart
+st=>start: 开始|past:>http://itclan.cn/
+e=>end: 结束|future:>https://www.zhihu.com/people/itclan
+op1=>operation: 操作|past
+op2=>operation: 子操作|current
+sub1=>subroutine: 子进程|invalid
+cond=>condition: 是
+or 否?|approved:>[https:](https://space.bilibili.com/267957620)
+c2=>condition: 好主意|rejected
+io=>inputoutput: 一起干...|future
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e
+@flowend
+
+### 相关文档
+
+- [vuepress-plugin-flowchart](https://github.com/ulivz/vuepress-plugin-flowchart)
+- [vuepress-plugin-flowchart 使用文档](https://flowchart.vuepress.ulivz.com/#usage)
+
+## vuepress-plugin-demo-code
+
+有时候,在编写一些案例时,想要增加 `vue` ,`react`, `原生js 示例`,截动图比较费时,要是能直接在线运行实现就完美了的
+
+在`vuepress`中提供了类似的插件`vuepress-plugin-demo-code`,直接在`md`中编写,也不用单独的去编写个组件,在`md`中引入的
+
+### 安装配置选项
+
+:::: el-tabs
+::: el-tab-pane label=安装
+
+```js
+$ npm i -D vuepress-plugin-demo-code
+# OR
+$ yarn add -D vuepress-plugin-demo-code
+```
+
+:::
+::: el-tab-pane label=插件配置
+
+```js
+module.exports = {
+  plugins: ['demo-code'],
+};
+```
+
+:::
+::: el-tab-pane label=插件选项配置
+
+```js
+module.exports = {
+    plugins: [
+        ['demo-code', {
+            jsLibs: [
+                // umd
+                'https://unpkg.com/tua-storage/dist/TuaStorage.umd.js',
+            ],
+            cssLibs: [
+                'https://unpkg.com/animate.css@3.7.0/animate.min.css',
+            ],
+            showText: 'show code',
+            hideText: 'hide',
+            styleStr: 'text-decoration: underline;',
+            minHeight: 200,
+            onlineBtns: {
+                codepen: true,
+                jsfiddle: true,
+                codesandbox: true,
+            },
+            codesandbox: {
+                deps: { 'lodash': 'latest' },
+                json: '',
+                query: '',
+                embed: '',
+            },
+            demoCodeMark: 'demo-code',
+            copyOptions: { ... },
+        }]
+    ],
+}
+```
+
+:::
+::::
+::: demo
+<template>
+
+  <div class="el-button-wrap">
+    <el-button type="danger" class="animated shake infinite" @click="onClick"
+      >点击我!</el-button
+    >
+  </div>
+</template>
+
+<script>
+  export default {
+    methods: {
+      onClick: () => {
+        window.alert('欢迎来到itclanCoder的网站');
+      },
+    },
+  };
+</script>
+<style>
+  .el-button-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
+:::
+
+### 相关文档
+
+- [vuepress-plugin-demo-code](https://github.com/BuptStEve/vuepress-plugin-demo-code)
+- [vuepress-plugin-demo-code 中文文档](https://buptsteve.github.io/vuepress-plugin-demo-code/zh/example/)
+
+## vuepress-plugin-demo-block
+
+除了上面那个`vuepress-plugin-demo-code`插件能够在`md`中直接写`vue`,`React`组件,还有另外一个插件`vuepress-plugin-demo-block`可以在`md`中直接编写演示示例
+
+:::: el-tabs
+::: el-tab-pane label=安装
+
+```
+
+npm i vuepress-plugin-demo-block
+
+```
+
+:::
+::: el-tab-pane label=插件配置
+
+```js
+// config.js
+module.exports = {
+  head: [
+    [
+      'script',
+      { src: 'https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js' },
+    ],
+    [
+      'script',
+      {
+        src:
+          'https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js',
+      },
+    ],
+    ['script', { src: 'https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js' }],
+    [
+      'script',
+      { src: 'https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js' },
+    ],
+  ],
+  plugins: ['demo-block'],
+};
+```
+
+:::
+
+::::
+
+### 相关文档
+
+- [vuepress-plugin-demo-block](https://github.com/xiguaxigua/vuepress-plugin-demo-block)
+- [vuepress-plugin-demo-block 文档](https://daxigua.me/vuepress-plugin-demo-block/zh/#%E5%AE%89%E8%A3%85)
 
 ## 常见问题
 
@@ -1420,3 +2053,7 @@ module.exports = {
 :::
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+
+<div align="center">
+<footer-ArticleAdvertiSpace   width="600" height="140" />
+</div>
