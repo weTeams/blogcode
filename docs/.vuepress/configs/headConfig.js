@@ -8,7 +8,7 @@
  * @Date: 2020-06-02 07:29:20
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-04 19:45:35
+ * @LastEditTime: 2020-11-04 21:47:22
  * @Description:头部html中head需要引入的标签,当前文件通过module.exports导出,在config.js主入口文件中通过require导入
  */
 const baidu = require('./secretKey'); // 引入百度统计密钥ID
@@ -65,7 +65,7 @@ const headConfig = [
     'meta', // 添加谷歌站点搜素
     {
       name: 'google-site-verification',
-      content: 'Fkk864Tk1vxVjnBEyH8_rkUDKQez6CpnQdDd1jaHcs4',
+      content: 'Lp5bo-dr1R5gCVE_3iUI6KXr8tNhN5pyUxPYYKCZkO4',
     },
   ],
   [
@@ -90,7 +90,7 @@ const headConfig = [
     'script', // 插入谷歌广告
     {
       charset: 'utf-8',
-      'data-ad-client': 'ca-pub-7859255637833979',
+      'data-ad-client': 'ca-pub-7281692919682421',
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
     },
   ],
