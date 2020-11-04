@@ -25,8 +25,8 @@ autoGroup-2: 常见实例技巧
 
 <exampleskill-glassEffectBefore />
 
-::: details 点击即可查看图片叠加实现代码
-html 代码
+:::: tabs type:border-card
+::: tab html lazy
 
 ```html
 <div class="filter">
@@ -38,7 +38,8 @@ html 代码
 </div>
 ```
 
-css 代码
+:::
+::: tab css lazy
 
 ```css{10,38,39,40,41,42}
 .filter {
@@ -93,6 +94,8 @@ css 代码
 ```
 
 :::
+
+::::
 
 ::: warning 提示
 

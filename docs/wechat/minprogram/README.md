@@ -4,6 +4,7 @@ title: 目录
 
 ## 小程序技术
 
+- [微信小程序-页面间如何进行传递数据(通信)](./page-between-transdata)
 - [微信小程序-自定义组件以及自定义组件间的通信](./custom-components)
 - [微信小程序-setData 详解](./setdata-detail)
 - [微信小程序-介绍两种方式获取表单输入框中的值](./get-inputval)

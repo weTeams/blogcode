@@ -5,6 +5,7 @@ title: 目录
 ## 离您最近的表示是最新的
 
 - [置顶-广告位接受赞助](../about/adverent.md)
+- [小程序-页面间如何进行传递数据(通信)](../wechat/minprogram/page-between-transdata)
 - [小程序-实现自定义组件以及自定义组件间的通信](../wechat/minprogram/custom-components)
 - [小程序-实现小程序与小程序之间的跳转](../wechat/minprogram/jump-between-apples)
 - [小程序-实现自定义动画弹框/提示框果](../wechat/minprogram/custom-alert-box)
@@ -18,7 +19,6 @@ title: 目录
 - [解析 super 关键字](../fontend/js/resolve-super-keyword)
 - [用户名-手机号加密特殊处理](/fontend/js/utils-name-mobile-encrye)
 - [小程序-实现类似新浪头条新闻上下间歇性滚动](../wechat/minprogram/new-scroll-up-down)
-- [手把手教你用 vuepress 搭建网站](../fontend/tools/vuepress-build-blog)
 - [小程序-云开发-多图片安全内容检测](../wechat/cloudev/img-security-check)
 
 ## 前端

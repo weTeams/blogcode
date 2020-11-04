@@ -369,6 +369,79 @@ console.log('Javascript code example');
 - [vuepress-plugin-element-ui](https://github.com/lq782655835/vuepress-plugin-element-ui)
 - [vuepress-plugin-element-ui 使用文档](https://lq782655835.github.io/vuepress-plugin-element-ui/#all-componenets)
 
+## vuepress-plugin-element-tabs
+
+有时候想要同时展示`html`,`css`,`js`代码,能够切换,除了上面的`vuepress-plugin-element-ui`能做到
+这个`vuepress-plugin-element-tabs`也能做到
+:::: tabs type:border-card
+::: tab 安装插件
+
+```js
+yarn add vuepress-plugin-element-tabs -D
+```
+
+:::
+::: tab 配置插件
+
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: ['vuepress-plugin-element-tabs'],
+};
+```
+
+:::
+::::
+
+带边框的卡片,在`md`中直接插入
+
+```js
+:::: tabs type:border-card
+::: tab markdown lazy
+**markdown content**
+:::
+::: tab javascript lazy
+javaScript;
+:::
+::::
+```
+
+:::: tabs type:border-card
+::: tab markdown lazy
+**markdown content**
+:::
+::: tab javascript lazy
+javaScript;
+:::
+::::
+
+无边框的卡片`tab`
+
+```js
+:::: tabs type:card
+::: tab java lazy
+**java content**
+:::
+::: tab MySql lazy
+MySql
+:::
+::::
+```
+
+:::: tabs type:card
+::: tab java lazy
+**java content**
+:::
+::: tab MySql lazy
+MySql
+:::
+::::
+
+## 相关文档
+
+- [vuepress-plugin-tabs 文档](https://superbiger.github.io/vuepress-plugin-tabs/#preview)
+- [vuepress-plugin-tab](https://github.com/superbiger/vuepress-plugin-tabs)
+
 ## md 中画流程图
 
 有时,需要描述做一件事情的先后顺序,借用流程图,会让复杂的东西变得简单化,在文档中需要插入流程图,要么借用第三方的一些`processOn`或者一些绘图工具(`picPick`)等画流程图的

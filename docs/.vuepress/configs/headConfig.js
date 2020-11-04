@@ -8,7 +8,7 @@
  * @Date: 2020-06-02 07:29:20
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-02 19:57:21
+ * @LastEditTime: 2020-11-04 19:45:35
  * @Description:头部html中head需要引入的标签,当前文件通过module.exports导出,在config.js主入口文件中通过require导入
  */
 const baidu = require('./secretKey'); // 引入百度统计密钥ID
@@ -24,6 +24,10 @@ const headConfig = [
     },
   ],
   ['meta', { name: 'Author', content: '随笔川迹' }],
+  [
+    'meta',
+    { 'http-equiv': 'Content-Type', content: 'text/html', charset: 'UTF-8' },
+  ],
   ['link', { rel: 'manifest', href: '/js/manifest.json' }],
   ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -58,6 +62,13 @@ const headConfig = [
     },
   ],
   [
+    'meta', // 添加谷歌站点搜素
+    {
+      name: 'google-site-verification',
+      content: 'Fkk864Tk1vxVjnBEyH8_rkUDKQez6CpnQdDd1jaHcs4',
+    },
+  ],
+  [
     // 添加百度统计代码
     'script',
     {},
@@ -75,6 +86,14 @@ const headConfig = [
   ['script', { charset: 'utf-8', src: '/js/disable-user-zoom.js' }], // 移动端,禁止用户缩放,引入你写的js
   ['script', { charset: 'utf-8', src: '/js/readmore.js' }],
   ['script', { charset: 'utf-8', src: '/js/btwplugin.js' }],
+  [
+    'script', // 插入谷歌广告
+    {
+      charset: 'utf-8',
+      'data-ad-client': 'ca-pub-7859255637833979',
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+    },
+  ],
   [
     'script',
     {

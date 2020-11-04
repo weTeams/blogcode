@@ -24,85 +24,81 @@ autoPrev: README
 
 简单做一下对比
 
-### Jekyll
+:::: tabs type:border-card
+::: tab Jekyll lazy
 
-::: details 点击即可查看详情
-
-- 特点:Github 自带的,您不用部署静态页面,您只要往 GitHub 上推 md 文件就能产生 blog
-- 问题:
-  - 当 md 文件多了之后,排序是一个很头疼的问题,纯体力手工劳动,无法实现自动化,速度很是极具考验
-  - 后端基于 Ruby 语言
-  - 我早期的博客就是用 `jekyll` 搭建的,但是后来因为管理确实麻烦,就没打理了的
+- **特点**:Github 自带的,您不用部署静态页面,您只要往 GitHub 上推 md 文件就能产生 blog
+- **问题**:
+  1. 当 md 文件多了之后,排序是一个很头疼的问题,纯体力手工劳动,无法实现自动化,速度很是极具考验
+  2. 后端基于 Ruby 语言
+  3. 我早期的博客就是用 `jekyll` 搭建的,但是后来因为管理确实麻烦,就没打理了的
 - [Jekyll 官方文档](http://jekyllcn.com/)
-  :::
 
-### Hexo
+:::
 
-::: details 点击即可查看详情
+::: tab Hexo lazy
 
-- 特点:比`Jekyll`要先进一点,先生成文件,在部署
+- **特点**:比`Jekyll`要先进一点,先生成文件,在部署
 
 * 基于 `Node.js`的静态网站生成器
 * 主题很丰富,在`vuepress`之前很多博客,文档网站都是基于`Hexo`搭建的,是用`jekyll`还是`Hexo`搭建的,基本上做 IT 的小伙伴,也能辨别出来
-* 问题:
+* **问题**:
   - 每次都需要把生成的静态页面推上去,md 若出现错误,编译会出错,配置的不是特别灵活
 
 - [Hexo 官方文档](https://hexo.io/)
   :::
 
-### GitBook
+::: tab GitBook lazy
+**问题**
 
-::: details 点击即可查看详情
-
-- 问题
-  - 默认主题有限制,随着文档的增加,每次加载的时间会很长,也不是 Vue 驱动的
-  - 官方团队专注于打造一个商业产品,而并非开源工具
+- 默认主题有限制,随着文档的增加,每次加载的时间会很长,也不是 Vue 驱动的
+- 官方团队专注于打造一个商业产品,而并非开源工具
 - [GitBook 官方文档](https://www.gitbook.com/)
   :::
 
-### Docsify-Docute
-
-::: details 点击即可查看详情
+::: tab Docsify-Docute lazy
 
 - 两者都是基于`Vue`,在运行时驱动
 - `Docsify`由于只用于解析`Markdown`文件并生成网站,不会生成静态 html 文件,所以它是不利于搜索引擎,百度,谷歌等是难以被收录的,即使做了网站统计,也很爬取到你的内容,但是简单,你只需专注 md 编写就可以
 - `Docute`,是`Docsify`的升级,没有构建过程,将 `md`文件呈现为单页面应用程序,会生成静态 `HTML`,对 SEO 很友好,利于百度蜘蛛的抓取
 - [Docsify 官方文档](https://docsify.js.org/#/),
 - [Docute 官方文档](https://docute.org/#what-is-docute)
-  :::
 
-### Nuxt
+:::
 
-::: details 点击即可查看详情
+::: tab Nuxt lazy
 
 - 更偏向于构建应用程序,SSR 服务端渲染框架,适合构建复杂的系统应用程序,对于开发人员要求是有门槛的,如果自己只专注于内容创作,而耗费精力去搭建一个静态博客,个人觉得,有种大材小用
 - [NuxtJS 官方文档](https://zh.nuxtjs.org/)
   :::
 
-### 比较
+::: tab 比较 lazy
 
-- 阅读体验上:`gitBook` > `Docsify/Docute` = `vuepress` = `HEXO` > `Jekyll`
-- 配置上:`Jekyll == Docsify`< `Docute` < `Hexo` < `vuepress`,其中`Jekyll` 和 `Docsify`配置是最简单的,如果只用于专注内容创作,挺合适的,但是功能很弱,拓展性差
-- 性能/seo 上:`VuePress`是最好的,虽然 `docsify`,`docute`都是基于 vue,但是他们是在运行时解析,而 `vuepress`是预先解析 `HTML`,体验上会更好,而用`Docsify`搭建的网站,是很难被浏览器,搜索引擎录取的,百度,谷歌抓取不到,无人问津状况
-- 灵活上: `Vuepress`更加灵活,可实现定制化,网站风格并非千篇一律,熟悉`Vue`组件化开发的,上手也不难
-- 代码上: 文件结构非常清晰,可维护性,可拓展性好
+1. 阅读体验上:`gitBook` > `Docsify/Docute` = `vuepress` = `HEXO` > `Jekyll`
+2. 配置上:`Jekyll == Docsify`< `Docute` < `Hexo` < `vuepress`,其中`Jekyll` 和 `Docsify`配置是最简单的,如果只用于专注内容创作,挺合适的,但是功能很弱,拓展性差
+3. 性能/seo 上:`VuePress`是最好的,虽然 `docsify`,`docute`都是基于 vue,但是他们是在运行时解析,而 `vuepress`是预先解析 `HTML`,体验上会更好,而用`Docsify`搭建的网站,是很难被浏览器,搜索引擎录取的,百度,谷歌抓取不到,无人问津状况
+4. 灵活上: `Vuepress`更加灵活,可实现定制化,网站风格并非千篇一律,熟悉`Vue`组件化开发的,上手也不难
+5. 代码上: 文件结构非常清晰,可维护性,可拓展性好
+   :::
+
+::::
 
 ## 为什么推荐选择-VuePress
 
 ::: details 点击即可查看详情
 
 - VuePress
-  - `Vue` 驱动,强大的插件生态系统,官方文档详细
-  - 支持搜索引擎优化(SEO),单页面应用,按需加载,支持 PWA(无网络情况下照样能访问)
-  - 为技术文档而优化内置 markdown 拓展
-  - 在 md(Markdown) 中可以写 vue 组件,甚至写原生 `JS`,`Ts`,`HTML`,`CSS`,无任何压力阻碍,更加的灵活,可定制化
-  - 可以自定义开发主题,任意修改,网站风格不在千篇一律
-  - 支持 `PWA`(自动生成 Service Worker),像 app 应用一样添加到手机桌面上
-  - 集成了 `Google Analytics` 集成,也支持百度统计
-  - 基于 git 的最后上传更新时间
-  - 支持国际化,多语言,只需配置一下就好
-  - 响应式布局,手机端,PC 端网站友好的用户体验
-  - 远不止于用来搭建博客,可以开发公司企业官网等网站应用,也可结合`boostrap`,`Element UI`等技术进行二次开发,构建更复杂的应用
+  1. `Vue` 驱动,强大的插件生态系统,官方文档详细
+  2. 支持搜索引擎优化(SEO),单页面应用,按需加载,支持 PWA(无网络情况下照样能访问)
+  3. 为技术文档而优化内置 markdown 拓展
+  4. 在 md(Markdown) 中可以写 vue 组件,甚至写原生 `JS`,`Ts`,`HTML`,`CSS`,无任何压力阻碍,更加的灵活,可定制化
+  5. 可以自定义开发主题,任意修改,网站风格不在千篇一律
+  6. 支持 `PWA`(自动生成 Service Worker),像 app 应用一样添加到手机桌面上
+  7. 集成了 `Google Analytics` 集成,也支持百度统计
+  8. 基于 git 的最后上传更新时间
+  9. 支持国际化,多语言,只需配置一下就好
+  10. 响应式布局,手机端,PC 端网站友好的用户体验
+  11. 远不止于用来搭建博客,可以开发公司企业官网等网站应用,也可结合`boostrap`,`Element UI`等技术进行二次开发,构建更复杂的应用
   - ....
   - [vuepress 官方文档](https://www.vuepress.cn/)
     :::
@@ -1531,6 +1527,8 @@ doc.itclan.cn
 * [百度统计](https://tongji.baidu.com/)
 * [百度站点 sitemapt 添加](https://ziyuan.baidu.com/)
 * [逼格徽章在线生成地止](https://shields.io/)
+* [google 广告](https://www.google.com/intl/zh-CN_cn/adsense/start/)
+* [google-search](https://search.google.com/)
 
 :::
 
