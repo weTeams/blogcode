@@ -1528,7 +1528,8 @@ doc.itclan.cn
 * [百度站点 sitemapt 添加](https://ziyuan.baidu.com/)
 * [逼格徽章在线生成地止](https://shields.io/)
 * [google 广告](https://www.google.com/intl/zh-CN_cn/adsense/start/)
-* [google-search](https://search.google.com/)
+* [google-search](https://search.google.com/search-console)
+* [carbonads](https://www.carbonads.net/)
 
 :::
 

@@ -92,8 +92,10 @@ export default {
 
 @media (min-width: 960px) {
   .fixed-container {
+    background: #fff;
     display: block;
     position: fixed;
+    z-index: 8888;
     right: 1px;
     top: 75px;
     width: 140px;

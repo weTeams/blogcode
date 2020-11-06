@@ -8,7 +8,7 @@
  * @Date: 2020-06-02 07:29:20
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-04 21:47:22
+ * @LastEditTime: 2020-11-06 14:17:59
  * @Description:头部html中head需要引入的标签,当前文件通过module.exports导出,在config.js主入口文件中通过require导入
  */
 const baidu = require('./secretKey'); // 引入百度统计密钥ID
@@ -84,16 +84,18 @@ const headConfig = [
   ],
   ['link', { rel: 'stylesheet', href: '/css/style.css' }], // 这种方式也可以覆盖默认样式
   ['script', { charset: 'utf-8', src: '/js/disable-user-zoom.js' }], // 移动端,禁止用户缩放,引入你写的js
-  ['script', { charset: 'utf-8', src: '/js/readmore.js' }],
-  ['script', { charset: 'utf-8', src: '/js/btwplugin.js' }],
+  // ['script', { charset: 'utf-8', src: '/js/readmore.js' }],
+  // ['script', { charset: 'utf-8', src: '/js/btwplugin.js' }],
   [
     'script', // 插入谷歌广告
     {
+      async: 'async',
       charset: 'utf-8',
       'data-ad-client': 'ca-pub-7281692919682421',
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
     },
   ],
+
   [
     'script',
     {

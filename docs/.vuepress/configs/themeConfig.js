@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 21:07:05
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-06-26 16:54:43
+ * @LastEditTime: 2020-11-06 11:35:37
  * @Description: 当前默认主题的一些配置参数,这些选项依赖于你正在使用的主题
  * 主入口在config.js中,本文件通过module.exports导出,在config.js中通过require的方式引入
  * 默认主题的一些配置参数选项,便于集中管理
