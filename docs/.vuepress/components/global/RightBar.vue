@@ -42,6 +42,11 @@
         />
       </div>
       <div>
+        <a  target="_blank" href="http://itclancoder.mikecrm.com/z1zXWvz">
+          <img width="30" height="30" src="/images/rightBarImgs/ad.png" alt="广告" />
+        </a>
+      </div>
+      <div>
         <a href="#bottom">
           <img width="30" height="30" src="/images/rightBarImgs/down-arrow.png" alt="置底" />
         </a>

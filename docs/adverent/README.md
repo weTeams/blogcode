@@ -1,8 +1,9 @@
 ---
-title: 广告位接受赞助
+title: 广告位接受投放
+sidebarDepth: 3
 ---
 
-## 广告位接受赞助
+## 广告位接受投放
 
 ## 快速导航
 
@@ -36,7 +37,7 @@ send email to **itclanCode@163.com**
 
 follow us on **weixin:suibichuanji**
 
-## 接受广告赞助
+## 接受广告投放
 
 为了维持网站的正常运行,本站接受付费广告服务,凡是获取到的收益都将用于建设网站,从而提供更优质的服务
 
@@ -56,24 +57,31 @@ follow us on **weixin:suibichuanji**
 移动端设备下,只展示`广告位展示 2`,`广告位展示 3`,PC 端下`广告位展示 1 不受影响`,正常在右侧底部展示
 :::
 
+## 广告价位
+
+<form-adverentTable />
+
+## 最后
+
+当您选择适宜的广告位进行投放时,付完款后,请截图联系站长,我们将进行广告的投放,祝您生活愉快,期待我们合作共赢
+
 <div align="center">
 <footer-ArticleAdvertiSpace  width="600" height="140"  />
 
 </div>
 
 <style>
-     {
-    .admessage {
+
+.admessage {
          width:600px;
          height: 500px;
-    }
- }
+}
 
 @media screen and (max-width: 768px) {
-.admessage {
-width:600px;
-height: 280px;
-}
+    .admessage {
+     width:600px;
+     height: 280px;
+     }
 }
 
 </style>

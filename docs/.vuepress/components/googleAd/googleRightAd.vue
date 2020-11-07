@@ -26,7 +26,6 @@
   .googleRightAd-container {
     width: 140px;
     height: 300px;
-    border: 1px solid #ccc;
     position: fixed;
     z-index: 1;
     right: 18px;
