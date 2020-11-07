@@ -44,7 +44,7 @@ export default {
           imgUrl: "/images/adslocation.png",
           text: "广告位招租",
           id: "2",
-          href: "/about/adverent"
+          href: "/adverent/"
         }
       ],
       centerDialogVisible: false,
