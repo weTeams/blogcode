@@ -25,6 +25,12 @@
     </el-table-column>
     <el-table-column
       align="center"
+      prop="dayprice"
+      label="RMB/天"
+      width="120">
+    </el-table-column>
+    <el-table-column
+      align="center"
       prop="desc"
       label="描述"
       show-overflow-tooltip>
@@ -56,6 +62,7 @@
           date: "1个月",
           step: 1,
           price: '599',
+          dayprice: "19.9",
           max: 12,
           showTimeTxt: null,
           desc: '文章右下角区域'
@@ -64,6 +71,7 @@
           step: 6,
           max: 36,
           price: '2699',
+          dayprice: "14.9",
           showTimeTxt: null,
           desc: '文章尾部区域'
         }, {
@@ -71,6 +79,7 @@
           step: 12,
           max: 60,
           price: '3649',
+          dayprice: "9.9",
           showTimeTxt: null,
           desc: '文章顶部区域'
         }],
@@ -93,7 +102,6 @@
         }
       },
       handleSelectionChange(val) {
-        console.log(val);
         var sum = 0;
         var totalSum = this.totalPrice;
         this.multipleSelection = val;

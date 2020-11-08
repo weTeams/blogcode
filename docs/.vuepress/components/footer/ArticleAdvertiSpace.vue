@@ -37,7 +37,8 @@ export default {
           imgUrl: "/images/adslo.png",
           text: "广告位招租",
           id: "1",
-          href: "javascript:;"
+          target: "_blank",
+          href: "http://itclancoder.mikecrm.com/z1zXWvz"
         },
 
         {

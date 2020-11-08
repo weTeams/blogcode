@@ -607,9 +607,185 @@ Page({
 
 ## 使用本地缓存
 
+在微信小程序都可以有自己的本地缓存
+
+- `wx.setStorageSync`:同步设置本地存储某个指定的`key`数据
+- `wx.setStorage`: 异步设置本地所有存储某个`key`数据
+- `wx.getStorage`: 异步获取本地所有存储数据
+- `wx.getStorageSync`:同步获取本地存储某个指定`key`的数据
+- `wx.clearStorage`:一次性清除所有本地存储(缓存)数据,不需要参数
+- `wx.clearStorageSync`:一次性清除同步所有本地存储,不需要参数
+- `wx.removeStorage`:从本地缓存中异步移除指定 `key`,需要指定某个`key`
+- `wx.removeStorageSync`:从本地存储中同步移除指定的`key`，需要指定某个`key`
+
+上面的方法可以对本地缓存进行读写和清理的操作,读与写都是一一对应的
+
+使用本地缓存,可以作为页面间数据传递,但是仍然需要注意一些实用情况,如下所示
+
+:::: tabs type:border-card
+::: tab 隔离策略 lazy
+同一个微信用户，同一个小程序 `storage`上限为 `10MB`,一般可以作为缓存临时一些小的数据,比如用户登录信息之类的
+
+`storage` 以用户维度隔离，同一台设备上，A 用户无法读取到 B 用户的数据；不同小程序之间也无法互相读写数据
+:::
+::: tab 存储大小限制 lazy
+除非用户主动删除或因存储空间原因被系统清理，否则数据都一直可用。单个 `key` 允许存储的最大数据长度为 1MB，所有数据存储上限为 `10MB`
+:::
+
+::: tab 插件隔离限制 lazy
+
+1. 同一小程序使用不同插件：不同插件之间，插件与小程序之间 `storage` 不互通。
+2. 不同小程序使用同一插件：同一插件`storage`不互通
+3. `storage`只是针对当前用户,不同用户,使用不同的插件,他们之间`storage`是无法实现数据共用的
+   :::
+
+::: tab 清理策略 lazy
+本地缓存的清理时机跟代码包一样，只有在代码包被清理的时候本地缓存才会被清理
+:::
+::::
+
+::: warning 注意事项
+将数据存储在本地缓存中指定的 key 中。会覆盖掉原来该 key 对应的内容
+
+也就是说,如果是相同的`key`，后面的会覆盖掉原来该 `key` 对应的内容
+:::
+
+### 设置/获取/删除存储
+
+使用的是`wx.setStorageSync()`,`wx.getStorageSync`方法
+:::: tabs type:border-card
+::: tab 如何设置本地存储数据
+
+```js
+wx.setStorage({
+  key: 'key',
+  data: 'value',
+});
+```
+
+或如下简写方式
+
+```js
+wx.setStorageSync('key', 'value');
+```
+
+:::
+::: tab 如何获取本地存储数据
+
+```js
+wx.getStorageSync({
+  key: 'key',
+  success(res) {
+    console.log(res.data);
+  },
+});
+```
+
+或如下简写
+
+```js
+var value = wx.getStorageSync('key');
+```
+
+:::
+::: tab 如何删除本地存储数据
+清除小程序当中的本地存储分为一次性全部删除所有存储,与删除存储中某指定的存储`key`
+
+```js
+wx.clearStorage(); // 一次性删除小程序中的所有存储数据
+```
+
+删除存储中某指定的存储`key`,一定要注意这两者的区别,有的小伙伴只知道`wx.clearStorage()`
+
+```js
+wx.removeStorageSync('key'); // 删除小程序中指定的key的存储
+```
+
+同样等价于
+
+```js
+wx.removeStorageSync({
+  key: 'key',
+  success(res) {
+    console.log(res);
+  },
+});
+```
+
+注意:`wx.removeStorageSync`方法,不同于`wx.clearStorageSync()`方法,它同样也是删除小程序中所有同步存储的数据,
+前者需要指定删除存储对应的`key`值,而后者不需要指定`key`,它是一次性删除所有同步存储的代码
+
+```js
+wx.clearStorageSync(); // 一次性删除小程序中所有同步存储的数据
+```
+
+:::
+
+::::
+
+关于小程序中本地存储的方法确实容易让人晕,搞混淆,理解它们的区别,还是要在开发者工具中,自行调试,才知道每个方法之间区别差异的
+
+**光看文字,不动手写代码测试,是无法理解他们之间的差异的,很容易搞混,在使用时容易乱套**
+
+::: tip 提示
+凡是带`sync`结尾的都是同步的,而凡是带`clear`开头的都是一次性清除同步/异步的存储,而带·`remove`开头的都是需要指定删除某个存储的`key`
+:::
+
+### 解决相同 key 覆盖问题
+
+在小程序中,当出现同名`key`,后者`key`覆盖前者是一个让人头疼的问题
+
+**具体解决**
+
+可以将需要存储数据存到一个数组当中,当需要使用时,取最后一个即可
+
+至于若有增删操作,每次删除完某一数据后,重新在设置一次本地存储即可
+
+```js
+let lists = wx.getStorageSync('lists'); // 先获取lists本地存储的数据
+if (!lists) {
+  // 第一次判断缓存中有没有lists数据
+  lists = []; // 若没有,则存储设置一个空数组
+}
+lists.push(data); // 这里的data是要存储到本地中的数据
+wx.setStorageSync('lists', lists); // 设置本地存储key:val
+```
+
+通过上面的操作,就解决了存储 key 值覆盖的问题,那么如何取最新的呢
+
+```js
+const storageList = wx.getStorageSync('lists');
+const listData = storageList[storageList.length - 1]; // 获取到最后一个
+this.setData({
+  // 重新setData数据即可
+  lists: listData,
+});
+```
+
+### 是使用同步存储还是异步存储
+
+带有`Sync`,这个表示的**同步**的操作,与之相对的不带后缀就是**异步**”。
+
+同步与异步是指的消息通讯机制。就是信息传来传去的时候是同步还异步。重点强调的是通讯这个动作。
+
+很容易混淆,在计算机里,他们两是对立,相反的，同步代码是顺序执行,会形成阻塞,而异步代码不会阻塞,它是等待主线程执行完后,可以在回过头来执行
+
+比如要请求用户信息的时候，需要从缓存中获取`username`这个变量，那只有先获取到这个变量才能进行下一步。那就应该使用同步,使用`wx.getStorageSync`。这样能确保一定能获取到这个变量,所有在第一次获取缓存中的数据时
+
+我们往往先要判断一下缓存中是否有我们想要的那一数据的,否则若没有,在代码中使用了,就会报错
+
+打电话就是一个同步的例子,必须先打完上一个,然后才能在打下一个,而发短信就是一个异步的例子,你可以跟 A 同学发,发完后不用等待,也可以更 B 同学发
+
+在相同的时间内,使用同步只能干一件事情,必须得一件,一件的干完,而异步则在同一段时间内,可以同时干多件事情
+
+`JavaScript` 是单线程的,但是浏览器是多线程的.它的异步是借助事件实现的.具体可自行查看多线程与单线程相关知识的
+
+## 使用`eventChannel`向被打开页面传送数据(高级用法)
+
 ## 相关文档
 
 - [小程序-页面路由](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/route.html)
+- [小程序-本地存储](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.setStorage.html)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 

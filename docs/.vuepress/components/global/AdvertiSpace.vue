@@ -2,7 +2,7 @@
   <div>
     <div class="carousel">
       <el-carousel trigger="click" height="150px">
-        <el-carousel-item v-for="item in carouses" :key="item.id">
+        <el-carousel-item  v-for="item in carouses" :key="item.id">
           <a :href="item.href" @click="handleItem">
             <img :src="item.imgUrl" />
           </a>
@@ -43,7 +43,8 @@ export default {
           imgUrl: "/images/ads.png",
           text: "广告位招租",
           id: "2",
-          href: "javascript:;"
+          target: '_blank',
+          href: "http://itclancoder.mikecrm.com/z1zXWvz"
         }
       ],
       centerDialogVisible: false
