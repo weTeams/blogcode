@@ -40,15 +40,16 @@
         <div>合计<span>{{totalPrice}}(元)</span></div>
         <div v-show="totalPrice > 0? true: false"><el-button @click="handlePayBtn" type="danger">立即支付</el-button></div> 
   </div>
-  <div class="pay-code-box" v-show="payCodeStatus">
-       <div>
-         <img width="200" height="200" class="medium-zoom lazy zhifuPay" loading="lazy" src="/images/paycode/zhifubao-code.jpg" alt="">
-       </div>
-       <div>
-           <img  width="200" height="200" class="medium-zoom lazy weXinPay" loading="lazy" src="/images/paycode/wexinpay.jpg"  alt="">
-       </div>
-  </div>
-
+  <el-collapse-transition>
+    <div class="pay-code-box" v-show="payCodeStatus">
+        <div>
+          <img width="200" height="200" class="medium-zoom lazy zhifuPay" loading="lazy" src="/images/paycode/zhifubao-code.jpg" alt="">
+        </div>
+        <div>
+            <img  width="200" height="200" class="medium-zoom lazy weXinPay" loading="lazy" src="/images/paycode/wexinpay.jpg"  alt="">
+        </div>
+    </div>
+  </el-collapse-transition>
   </div>
 </template>
 

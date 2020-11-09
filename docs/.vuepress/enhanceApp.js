@@ -19,6 +19,7 @@ import 'vant/lib/index.css';
 import './public/css/element-variables.scss';
 // import Clipboard from './components/Clipboard';
 import Copy from './components/global/Copy';
+import VueClipboard from 'vue-clipboard2'; // 引入复制粘贴组件
 
 // 使用异步函数也是可以的
 export default ({
@@ -34,4 +35,5 @@ export default ({
   Vue.component('Copy', Copy);
   Vue.use(ElementUI);
   Vue.use(Vant);
+  Vue.use(VueClipboard);
 };

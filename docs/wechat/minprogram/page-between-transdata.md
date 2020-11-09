@@ -22,8 +22,8 @@ autoGroup-2: 小程序技术
 1. 页面间跳转携带参数(通过`url`的方式)传递数据
 2. 如何返回上一级页面,并刷新页面呢
 3. 使用全局`app`页面定义的变量实现数据的传递
-4. 使用本地缓存
-5. 使用`eventChannel`向被打开页面传送数据(高级用法)
+4. 使用本地缓存数据
+5. 使用 `eventChannel` 向被打开页面传送数据(`wx.navigateTo`高级用法)
 
 ## 页面间通过 `url` 方式传递数据
 
@@ -135,7 +135,9 @@ Page({
 
 ::::
 
-切换`tab`选项就可以查看对应的代码,在上面示例中,从一个页面跳转到另一个页面是使用`wx.navigateTo()`这个方法,如果想要将该页面的数据传递到子页面中,可以通过`url`拼接参数的方式进行传递,多个参数之间使用`&`符号拼接
+切换`tab`选项就可以查看对应的代码,在上面示例中,从一个页面跳转到另一个页面是使用`wx.navigateTo()`这个方法,如果想要将该页面的数据传递到子页面中,可以通过`url`拼接参数的方式进行传递,多个参数之间使用`&`符号相连
+
+路径后可以带参数,参数与路径之间使用 `?` 分隔，参数键与参数值用 `=` 相连，不同参数用 `&` 分隔；如`path?key=value&key2=value2`
 
 上面示例代码中使用了`es6`的模板字符串,参数之间,也可以使用`+`拼接,个人觉得使用`+`真的很难受,不舒服,容易出错
 :::: tabs type:border-card
@@ -780,11 +782,220 @@ this.setData({
 
 `JavaScript` 是单线程的,但是浏览器是多线程的.它的异步是借助事件实现的.具体可自行查看多线程与单线程相关知识的
 
-## 使用`eventChannel`向被打开页面传送数据(高级用法)
+## 使用`eventChannel`向被打开页面传送数据(`wx.navigateTo`高级用法)
+
+对于页面与页面之间的数据通信,一种方式是,可以通过`url`携带参数的方式跳转到指定的页面,在跳转的指定页面中的`onLoad`生命周期函数中的`options`中可以拿到数据
+
+但是这种传递数据的方式是有限的,不适合数据多的情况下
+
+另一种方式是可以传递数据没有限制,`wx.navigateTo`提供了一种更加高级的用法,通过`eventChannel`向被打开页面传送数据
+
+### 父(当前)页面向子(目标)页面传递数据
+
+@flowstart
+process=>operation: 父(当前)页面
+e=>end: 跳转(目标)页面
+process->e
+@flowend
+:::: tabs type:border-card
+::: tab 被打开(上/父级)页面 lazy
+
+```js
+Page({
+  data: {
+    parentPageData: {
+      name: '川川',
+      url: 'http://coder.itclan.cn',
+      vx: 'itclanCoder',
+    },
+  },
+
+  onEventChannel() {
+    const parentPageData = this.data.parentPageData; // 当前页面的数据
+    wx.navigateTo({
+      url: `/pages/listDetail/listDetail`, // 打开的目标页面
+      success: (res) => {
+        // 通过eventChannel向被打开页面传送数据,目标页面是listDetail,这个data名字是你自己取的任意,在目标页面中有个参数接收就可以
+        res.eventChannel.emit('parentPageEmit', { data: parentPageData });
+      },
+    });
+  },
+});
+```
+
+被打开(上/父级)页面的`wxml`,绑定事件
+
+```html
+<view bindtap="onEventChannel">打开跳转到目标页面</view>
+```
+
+:::
+
+::: tab 打开(目标)页面 lazy
+在目标打开页面中通过`getOpenerEventChange`方法,用`on`进行监听被跳转页面的方法,就可以拿到被跳转页面中通过`emit`方法传递过来的数据,其中使用`on`监听的方法名与被跳转页面的名字保持一致就可以,这样实现了两个不同页面之间的数据通信传递
+
+```js
+Page({
+  data: {
+    acceptParentData: {},
+  },
+
+  onLoad: function(options) {
+    // 通过getOpenerEventChannel对象,对`parentPageEmit`进行监听
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on('parentPageEmit', (data) => {
+      console.log(data);
+      this.setData({
+        acceptParentData: data,
+      });
+    });
+  },
+});
+```
+
+:::
+::: tab 说明 lazy
+将某整个父页面的数据传递给跳转到的子页面,是一个比较常见的需求操作
+
+比如在商品详情页面中,跳到到下单页面,需要将详情页面的一些数据
+
+传递给跳转的子页面,那么这个时候,用`url`的方式传递数据就不时很合适,选用`eventChannel`的方式就比价适合
+
+在`wx.navigateTo`的成功`success`回调中,通过`emit`进行触发,`emit`接收两个参数,第一个是监听事件的名称,第二个参数是需要向目标页面传递的数据
+
+```js
+res.eventChannel.emit(`监听的事件名称parentPageEmit`, { data: '数据' });
+```
+
+在跳转的目标页面中,通过调用`getOpenerEventChannel`方法,然后进行`on`的绑定
+
+```js
+const eventChannel = this.getOpenerEventChannel();
+eventChannel.on('监听的事件名称parentPageEmit', (data) => {
+  console.log(data);
+  this.setData({
+    acceptParentData: data,
+  });
+});
+```
+
+:::
+::::
+
+当前页面`-->`目标页面是利用`wx.navigateTo` 中的 `success` 回调中使用 `emit` 触发,目标跳转页面用 `on` 监听
+
+实现将当前页面的数据传递给目标页面中
+
+那当前页面又如何获取目标页面的数据呢
+
+### 父(当前)页面如何获取跳转(子/目标)页面中的数据
+
+@flowstart
+process=>operation: 父(当前)页面
+e=>end: 获取跳转(目标)页面数据
+process->e
+@flowend
+
+知道了当前页面向目标跳转页面传递数据,那么反过来,当前页面又如何接收跳转页面传递过来的数据?
+:::: tabs type:border-card
+::: tab 当前页面 lazy
+
+```js
+Page({
+  data: {
+    parentPageData: {
+      name: '川川',
+      url: 'http://coder.itclan.cn',
+      vx: 'itclanCoder',
+    },
+    subdetailData: {},
+  },
+
+  onEventChannel() {
+    const parentPageData = this.data.parentPageData; // 当前页面的数据
+    wx.navigateTo({
+      url: `/pages/listDetail/listDetail`, // 打开的目标页面
+      events: {
+        // 页面间通信接口，用于监听被打开页面发送到当前页面的数据
+        // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
+        subPageEmit: (data) => {
+          console.log(data);
+          this.setData({
+            subdetailData: data,
+          });
+        },
+      },
+    });
+  },
+});
+```
+
+:::
+::: tab wxml lazy
+
+```html
+<view class="subdetail-box">
+  <block wx:for="{{subdetailData}}" wx:key="index">
+    <view>姓名:{{item.name}}</view>
+    <view>站点:{{item.url}}</view>
+    <view>微信:{{item.vx}}</view>
+  </block>
+</view>
+```
+
+:::
+::: tab 子页面目标页面 lazy
+
+```js
+Page({
+  data: {
+    subdetailData: {
+      name: '轻记账小程序-我是子页面传递过来的数据',
+      url: 'http://itclan.cn/',
+      vx: 'itclanCoder',
+    },
+  },
+
+  onLoad: function(options) {
+    this.returnSubPagePrev();
+  },
+
+  returnSubPagePrev() {
+    const subdetailData = this.data.subdetailData;
+    const eventChannel = this.getOpenerEventChannel();
+    // 通过emit的方式进行触发,将子页面/目标页面中的数据传递给当前页面
+    eventChannel.emit('subPageEmit', { data: subdetailData });
+  },
+});
+```
+
+:::
+::: tab 说明 lazy
+在当前页面中获取子页面的数据,是借助`wx.navigateTo`中提供的`event`这个参数接口,它可以用于监听被打开页面发送到当前页面的数据
+
+换言之,也就是当前页面可以获取监听到子页面传递过来的数据,在子页面中通过`emit`的方式进行触发,同样,`emit`方法接收两个参数
+
+第一个是监听的事件名称,第二个参数对象是具体要传递的数据
+:::
+::::
+
+## 结语
+
+本文主要介绍 4 种在小程序当中页面与页面之间的传递数据常见方法,其中如何返回上一级页面,这些都是实际开发中经常会遇到的问题
+
+每一种方法都有与之对应的应用场景,`url` 方式比较适合跳转,携带少量的数据,当多个页面需要共享同一个数据对象时,可以使用全局`globalData`对象,也可以使用本地缓存数据
+
+以及最后一种使用 `eventChannel` 向被打开页面传送数据(`wx.navigateTo`高级用法)
+
+它适合一种传递复杂的数据.
+
+关于页面之间数据传递就介绍这么多,如果您有问题,欢迎补充,给我留言,一起学习成长
 
 ## 相关文档
 
+- [wx.navigateTo 跳转](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateTo.html)
 - [小程序-页面路由](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/route.html)
+- [小程序-页面间通信](https://developers.weixin.qq.com/miniprogram/dev/api/route/EventChannel.html)
 - [小程序-本地存储](https://developers.weixin.qq.com/miniprogram/dev/api/storage/wx.setStorage.html)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
@@ -794,3 +1005,5 @@ this.setData({
 </div>
 
 <googleAd-googleBottomAd />
+
+<footer-FeedBack />
