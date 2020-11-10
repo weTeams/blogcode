@@ -192,3 +192,4 @@ App({
 也知道了怎么将其中一个坏境中的数据集合导入到另一个坏境当中去的
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

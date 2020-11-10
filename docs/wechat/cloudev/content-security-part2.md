@@ -437,3 +437,4 @@ Page({
 当遇到敏感词汇时,进行特殊符号处理,最后就是感受到了云开发带来的方便。
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

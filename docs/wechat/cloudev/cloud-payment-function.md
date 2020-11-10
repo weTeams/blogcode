@@ -388,3 +388,4 @@ exports.main = async (event, context) => {
 - [微信支付接口文档](https://pay.weixin.qq.com/wiki/doc/api/wxa/wxa_api.php?chapter=7_3&index=1)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

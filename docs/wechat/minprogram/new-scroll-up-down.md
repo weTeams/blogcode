@@ -1,6 +1,6 @@
 ---
 title: 小程序-实现类似新浪头条新闻上下间歇性滚动
-autoGroup-2: 小程序实用案例
+autoGroup-1: 小程序实用案例
 ---
 
 <div id="container">
@@ -410,3 +410,4 @@ _formatTimeDetail(); // 3小时前,上面的传入的是可控制的
 </div>
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

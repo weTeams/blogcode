@@ -18,3 +18,4 @@ title: 目录
 - [云开发社区](https://club.cloudbase.net/)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

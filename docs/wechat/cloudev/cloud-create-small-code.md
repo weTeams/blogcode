@@ -137,3 +137,4 @@ exports.main = async (event, context) => {
 在小程序端发起请请求生成小程序码的云函数,云函数端借用云调用根据`wxcode.getUnlimited`这个接口生成小程序码,然后上传到云存储中,返回云存储中的图片的`fileID`,在小程序端就可以拿到云函数端返回`fileID`,根据这个`fileID`把小程序码展示出来的
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

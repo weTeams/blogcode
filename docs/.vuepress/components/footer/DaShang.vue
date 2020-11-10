@@ -73,7 +73,8 @@ export default {
   text-decoration: none;
   border-radius: 100%;
   -webkit-animation: shangBtn 2s alternate infinite;
-  margin-top: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   font-weight: 500;
   border: none;
   outline: none;

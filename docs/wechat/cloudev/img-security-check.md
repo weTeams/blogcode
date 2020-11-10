@@ -897,3 +897,4 @@ exports.main = async (event, context) => {
 如果小可爱们有对文本内容安全校验以及图片安全校验仍然有什么问题,可以在下方留言,一起探讨
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

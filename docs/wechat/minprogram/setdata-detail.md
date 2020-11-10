@@ -1,6 +1,6 @@
 ---
 title: 微信小程序中 setData 详解
-autoGroup-1: 小程序技术
+autoGroup-2: 小程序技术
 ---
 
 ## 微信小程序中 setData 详解
@@ -261,3 +261,4 @@ setData 将数据从逻辑层发送到视图层是异步,同时改变对应的`t
 - [setData 官方文档解析](https://developers.weixin.qq.com/miniprogram/dev/framework/performance/tips.html)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />
