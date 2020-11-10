@@ -42,3 +42,4 @@ title: 目录
 <latest-ReadBook />
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />
