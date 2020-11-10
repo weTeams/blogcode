@@ -23,7 +23,6 @@
 <style lang="scss" scoped>
 .googleAd-container {
   width: 100%;
-  height: auto;
 }
 /* 宽度不超过 500 像素的屏幕: 宽度100%x100 广告单元 */
 .adrespose { width: 100%; height: 100px; cursor: pointer;}

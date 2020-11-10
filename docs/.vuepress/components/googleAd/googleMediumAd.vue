@@ -20,6 +20,5 @@
 <style lang="scss" scoped>
 .googleAd-container {
   width: 100%;
-  min-height: 200px;
 }
 </style>
