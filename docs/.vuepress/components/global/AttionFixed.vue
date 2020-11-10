@@ -95,7 +95,7 @@ export default {
     background: #fff;
     display: block;
     position: fixed;
-    z-index: 8888;
+    z-index: 888;
     right: 1px;
     top: 75px;
     width: 140px;

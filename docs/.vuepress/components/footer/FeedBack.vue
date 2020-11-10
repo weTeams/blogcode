@@ -2,26 +2,10 @@
   <div>
        <div class="feedback-box">
           <div @click="handleShareCopy"><img src="/images/feedback/icon-share.png" />分享</div>
-          <div @click="handleFeedBack"><img src="/images/feedback/icon-experiense.png" /></img>留言</div>
-          <div @click="handleAnswer"><img src="/images/feedback/icon-dspel.png" />解答</div>
+          <div @click="handleFeedBack('http://itclancoder.mikecrm.com/WkvRFA4')"><img src="/images/feedback/icon-experiense.png" />留言</div>
+          <div @click="handleAnswer('http://itclancoder.mikecrm.com/wkgblhv')"><img src="/images/feedback/icon-dspel.png" />解答</div>
           <div @click="handleColect"><img src="/images/feedback/icon-collect.png" />收藏</div>
        </div>
-       <el-collapse-transition>
-          <div class="feedback-content" v-show="feedbackStatus">
-              <div class="close-content" @click="handleCloseContent">
-                  <img width="20" height="20" src="/images/feedback/icon-close.png" alt="">
-              </div>
-              <iframe height="600" allowTransparency="true" scrolling="no" style="display:block;min-width:100%;width:100px;border:none;overflow:auto;" frameborder="0" src="http://itclancoder.mikecrm.com/WkvRFA4"></iframe>
-          </div>
-       </el-collapse-transition>
-       <el-collapse-transition>
-          <div class="answer-content" v-show="answerStatus">
-              <div class="close-content" @click="handleCloseContent">
-                  <img width="20" height="20" src="/images/feedback/icon-close.png" alt="">
-              </div>
-              <iframe height="600" allowTransparency="true" scrolling="no" style="display:block;min-width:100%;width:100px;border:none;overflow:auto;" frameborder="0" src="http://itclancoder.mikecrm.com/WkvRFA4"></iframe>
-          </div>
-       </el-collapse-transition>
   </div>
 </template>
 
@@ -31,9 +15,7 @@
     name: "FeedBack",
     data() {
       return {
-        msgpath: this.$route.path,
-        feedbackStatus: false,
-        answerStatus: false
+        msgpath: `http://coder.itclan.cn${this.$route.path}`,
       }
     },
 
@@ -41,8 +23,6 @@
       // 复制分享
       handleShareCopy() {
          this.$copyText(this.msgpath).then((e)=> {
-          console.log(e)
-          const copyUrl = e.text;
           this.$message({
              message: `恭喜您已成功复制到剪切板,试试与他人分享吧`,
              type: 'success',
@@ -51,26 +31,44 @@
           });
         }, function (e) {
           alert('Can not copy')
-          console.log(e)
         })
       },
       // 留言
-      handleFeedBack() {
-         this.feedbackStatus = true;
+      handleFeedBack(openUrl) {
+        this.$dialog.confirm({
+          title: '温馨提示',
+          message: '亲,您即将前往留言,是时候开始你真正的表达了',
+          theme: 'round-button',
+          showCancelButton: true,
+          cancelButtonColor: "#ccc",
+        }).then(() => {
+          // on confirm 确认
+           window.open(openUrl, "_blank");
+        })
+         .catch(() => {
+           // on cancel // 取消
+        })
       },
 
-      handleAnswer() {
-         this.answerStatus = true;
-      },
-      
-      handleCloseContent() {
-        this.feedbackStatus = false;
-        this.answerStatus = false;
+      handleAnswer(openUrl) {
+         this.$dialog.confirm({
+          title: '温馨提示',
+          message: '亲,此项为付费解答服务,我在等风,也在等你',
+          theme: 'round-button',
+          showCancelButton: true,
+          cancelButtonColor: "#ccc",
+        }).then(() => {
+          // on confirm 确认
+           window.open(openUrl, "_blank");
+        })
+         .catch(() => {
+           // on cancel // 取消
+        })
       },
 
       handleColect() {
         this.$message({
-             message: `键盘侠不能只有ctrl+c,ctrl+v,还有ctrl+D,以及点击右上角`,
+             message: `键盘侠不止有ctrl+c,ctrl+v,还有ctrl+D`,
              type: 'success',
              duration: 4000,
              center: true
