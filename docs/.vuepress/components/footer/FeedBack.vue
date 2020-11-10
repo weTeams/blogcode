@@ -86,8 +86,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 15px;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin-top: 20px;
   div {
     cursor: pointer;
     img {

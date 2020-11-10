@@ -41,10 +41,8 @@
           alt="公众号"
         />
       </div>
-      <div>
-        <a  target="_blank" href="http://itclancoder.mikecrm.com/z1zXWvz">
+      <div  @click="handleAd('http://itclancoder.mikecrm.com/z1zXWvz')">
           <img width="30" height="30" src="/images/rightBarImgs/ad.png" alt="广告" />
-        </a>
       </div>
       <div>
         <a href="#bottom">
@@ -84,6 +82,23 @@ export default {
       } else {
         that.isRightBar = false;
       }
+    },
+
+    handleAd(openUrl) {
+       this.$dialog.confirm({
+          title: '温馨提示',
+          message: '亲,这里接受广告主投放,可前往了解一下',
+          theme: 'round-button',
+          showCancelButton: true,
+          confirmButtonColor: "#42b983",
+          cancelButtonColor: "#ccc",
+        }).then(() => {
+          // on confirm 确认
+           window.open(openUrl, "_blank");
+        })
+         .catch(() => {
+           // on cancel // 取消
+        })
     }
   }
 };
