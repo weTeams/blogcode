@@ -103,7 +103,7 @@ export default {
     text-align: center;
     background-color: #fff;
     box-shadow: -1px 0 2px 0.5px #42b983;
-
+    color: #42b983;
     h4 {
       font-size: 15px;
       color: #42b983;

@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 20:49:41
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-13 20:26:05
+ * @LastEditTime: 2020-11-13 23:12:11
  * @Description: 所有外部插件配置,入口在当前目录下config.js,本文件通过module.exports暴露,而在config.js中通过require方式引入
  * 集中管理外部插件配置
  *
@@ -174,36 +174,36 @@ const plugins = [
     },
   ],
 
-  [
-    '@vuepress-yard/vuepress-plugin-window',
-    {
-      title: '公告',
-      windowStyle: {
-        left: '20px',
-        top: '70px',
-        width: '260px',
-      },
-      contentInfo: {
-        title: '欢迎加入itclanCoder QQ交流群 🎉',
-        imgUrl: '/images/rightBarImgs/itclancode-qq.jpg',
-        needImg: false,
-        content: 'QQ群1: 643468880',
-        contentStyle: {
-          textAlign: 'center',
-          paddingTop: '10px',
-          lineHeight: '40px',
-        },
-      },
-      bottomInfo: {
-        btnText: '打赏',
-        linkTo:
-          'https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813',
-        target: '_blank',
-      },
-      delayMount: 500,
-      closeOnce: true,
-    },
-  ],
+  // [
+  //   '@vuepress-yard/vuepress-plugin-window',
+  //   {
+  //     title: '公告',
+  //     windowStyle: {
+  //       left: '20px',
+  //       top: '70px',
+  //       width: '260px',
+  //     },
+  //     contentInfo: {
+  //       title: '欢迎加入itclanCoder QQ交流群 🎉',
+  //       imgUrl: '/images/rightBarImgs/itclancode-qq.jpg',
+  //       needImg: false,
+  //       content: 'QQ群1: 643468880',
+  //       contentStyle: {
+  //         textAlign: 'center',
+  //         paddingTop: '10px',
+  //         lineHeight: '40px',
+  //       },
+  //     },
+  //     bottomInfo: {
+  //       btnText: '打赏',
+  //       linkTo:
+  //         'https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813',
+  //       target: '_blank',
+  //     },
+  //     delayMount: 500,
+  //     closeOnce: true,
+  //   },
+  // ],
 
   [
     'meting',
