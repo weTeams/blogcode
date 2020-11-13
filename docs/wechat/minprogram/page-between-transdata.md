@@ -605,7 +605,7 @@ Page({
 3. 不要在 `App.onLaunch` 的时候调用 `getCurrentPages()`，此时 `page` 还没有生成
 4. 通过`getApp()`获取到全局页面的实例后,就不要私自调用生命周期函数了的
 
-<googleAd-googleMediumAd />
+<!-- <googleAd-googleMediumAd /> -->
 
 ## 使用本地缓存
 
@@ -1004,6 +1004,6 @@ Page({
 <footer-ArticleAdvertiSpace   width="600" height="140" />
 </div>
 
-<googleAd-googleBottomAd />
+<!-- <googleAd-googleBottomAd /> -->
 
 <footer-FeedBack />

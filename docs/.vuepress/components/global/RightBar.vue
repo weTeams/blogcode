@@ -90,7 +90,6 @@ export default {
           message: '亲,这里接受广告主投放,可前往了解一下',
           theme: 'round-button',
           showCancelButton: true,
-          confirmButtonColor: "#42b983",
           cancelButtonColor: "#ccc",
         }).then(() => {
           // on confirm 确认

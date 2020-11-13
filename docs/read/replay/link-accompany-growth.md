@@ -2,6 +2,7 @@
 sidebarDepth: 3
 title: 链接关系,相互陪伴,见证成长
 collapsable: true
+autoGroup-2: 生活思考
 ---
 
 # 链接关系,相互陪伴,见证成长

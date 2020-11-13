@@ -2,7 +2,7 @@
 title: 复盘年中事-2018
 autoPrev: README
 collapsable: true
-autoGroup-2: 年终总结
+autoGroup-1: 年终总结
 ---
 
 # 复盘年中事

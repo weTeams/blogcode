@@ -1,6 +1,6 @@
 <template>
-  <div>
-       <div class="feedback-box">
+  <div class="feedback-box">
+       <div class="feedback-content">
           <div @click="handleShareCopy"><img src="/images/feedback/icon-share.png" />分享</div>
           <div @click="handleFeedBack('http://itclancoder.mikecrm.com/WkvRFA4')"><img src="/images/feedback/icon-experiense.png" />留言</div>
           <div @click="handleAnswer('http://itclancoder.mikecrm.com/wkgblhv')"><img src="/images/feedback/icon-dspel.png" />解答</div>
@@ -81,34 +81,26 @@
 
 <style lang="scss" scoped>
 .feedback-box {
-  display: flex;
-  color: #42b983;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 15px;
-  margin-top: 20px;
-  div {
-    cursor: pointer;
-    img {
-      display: inline-block;
-      vertical-align: middle;
-      width: 22px;
-      height: 22px;
-      margin-right:5px;
+  .feedback-content {
+    width: 100%;
+    display: flex;
+    color: #42b983;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    margin-top: 20px;
+    div {
+      cursor: pointer;
+      img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 22px;
+        height: 22px;
+        margin-right:5px;
+      }
     }
-  }
+   }
   
 }
 
-.feedback-content, .answer-content {
-   box-shadow: 0 0 3px solid rgba(0,0,0,0.5);
-   border: 1px solid #ccc;
-   position: relative;
-   .close-content {
-     position: absolute;
-     right: 20px;
-     top: 20px;
-     cursor: pointer;
-   }
-}
 </style>

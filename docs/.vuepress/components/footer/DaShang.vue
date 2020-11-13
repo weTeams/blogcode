@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <a
-      class="shang-btn"
-      target="_blank"
-      href="https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813"
-    >赞</a>
+  <div  class="shang-btn" @click="handleShangBtn('https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813')">
+       赞
   </div>
 </template>
 
@@ -13,6 +9,12 @@ export default {
   name: "DaShang",
   data() {
     return {};
+  },
+
+  methods: {
+    handleShangBtn(openUrl) {
+      window.open(openUrl, "_blank");
+    }
   }
 };
 </script>
@@ -78,5 +80,6 @@ export default {
   font-weight: 500;
   border: none;
   outline: none;
+  cursor pointer;
 }
 </style>
