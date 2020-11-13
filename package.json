@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/itclanCode/blogcode#readme",
   "devDependencies": {
+    "@vuepress-yard/vuepress-plugin-window": "^1.0.10",
     "@vuepress/plugin-active-header-links": "^1.6.0",
     "@vuepress/plugin-back-to-top": "^1.6.0",
     "@vuepress/plugin-google-analytics": "^1.6.0",
@@ -52,6 +53,7 @@
     "vuepress": "^1.6.0",
     "vuepress-plugin-auto-sidebar": "^1.5.0",
     "vuepress-plugin-baidu-autopush": "^1.0.1",
+    "vuepress-plugin-boxx": "^0.0.7",
     "vuepress-plugin-clean-urls": "^1.1.2",
     "vuepress-plugin-comment": "^0.7.3",
     "vuepress-plugin-demo-code": "^0.5.2",
@@ -59,8 +61,10 @@
     "vuepress-plugin-element-ui": "^1.1.0",
     "vuepress-plugin-flowchart": "^1.4.3",
     "vuepress-plugin-img-lazy": "^1.0.4",
+    "vuepress-plugin-meting": "^0.1.1",
     "vuepress-plugin-reading-progress": "^1.0.10",
     "vuepress-plugin-smooth-scroll": "^0.0.10",
-    "vuepress-plugin-table-of-contents": "^1.1.7"
+    "vuepress-plugin-table-of-contents": "^1.1.7",
+    "vuepress-theme-yuu": "^2.3.0"
   }
 }

@@ -65,6 +65,8 @@ follow us on **weixin:suibichuanji**
 
 当您选择适宜的广告位进行投放时,付完款后,请截图联系站长,我们将进行广告的投放,祝您生活愉快,期待我们合作共赢
 
+<Boxx  />
+
 <div align="center">
 <footer-ArticleAdvertiSpace  width="600" height="140"  />
 

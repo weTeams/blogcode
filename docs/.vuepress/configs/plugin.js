@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 20:49:41
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-09 21:40:09
+ * @LastEditTime: 2020-11-13 20:26:05
  * @Description: 所有外部插件配置,入口在当前目录下config.js,本文件通过module.exports暴露,而在config.js中通过require方式引入
  * 集中管理外部插件配置
  *
@@ -56,6 +56,7 @@ const plugins = [
   'flowchart', // 流程图表
   'demo-code', // 在线写demo
   'vuepress-plugin-element-tabs', // tab切换
+  'vuepress-plugin-boxx', // 可以为博客文章自动随机添加名人名言或其他，可自定义样式和内容
   [
     '@vuepress/active-header-links',
     {
@@ -170,6 +171,76 @@ const plugins = [
       normalSuffix: '/',
       indexSuffix: '/',
       notFoundPath: '/404.html',
+    },
+  ],
+
+  [
+    '@vuepress-yard/vuepress-plugin-window',
+    {
+      title: '公告',
+      windowStyle: {
+        left: '20px',
+        top: '70px',
+        width: '260px',
+      },
+      contentInfo: {
+        title: '欢迎加入itclanCoder QQ交流群 🎉',
+        imgUrl: '/images/rightBarImgs/itclancode-qq.jpg',
+        needImg: false,
+        content: 'QQ群1: 643468880',
+        contentStyle: {
+          textAlign: 'center',
+          paddingTop: '10px',
+          lineHeight: '40px',
+        },
+      },
+      bottomInfo: {
+        btnText: '打赏',
+        linkTo:
+          'https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813',
+        target: '_blank',
+      },
+      delayMount: 500,
+      closeOnce: true,
+    },
+  ],
+
+  [
+    'meting',
+    {
+      // metingApi: 'https://meting.sigure.xyz/api/music',
+      meting: {
+        // 网易
+        server: 'netease',
+        // 读取歌单
+        type: 'playlist',
+        mid: '2539599584',
+      },
+      // 不配置该项的话不会出现全局播放器
+      aplayer: {
+        // 是否开启吸底模式
+        fixed: true,
+        // 是否开启迷你模式
+        mini: true,
+        // 自动播放
+        autoplay: false,
+        // 设置播放器的初始循环模式
+        loop: 'All',
+        // 歌曲栏折叠
+        listFolded: true,
+        // 设置播放器默认主题颜色
+        theme: '#42b983',
+        // 播放顺序为随机
+        order: 'random',
+        // 初始音量
+        volume: 0.1,
+        // 关闭歌词显示
+        lrcType: 0,
+      },
+      mobile: {
+        // 手机端去掉cover图
+        cover: false,
+      },
     },
   ],
 ];

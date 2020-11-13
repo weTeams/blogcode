@@ -20,7 +20,7 @@ import 'echarts/lib/component/title'  // 标题
       return {
         pie: {
           title: {
-          text: '饼图程序调用高亮示例',
+          text: '圆饼图示例',
           x: 'center'
         },
         tooltip: {
@@ -30,7 +30,7 @@ import 'echarts/lib/component/title'  // 标题
         legend: {
           orient: 'vertical',
           left: 'left',
-          data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+          data: ['前端', '后端', '小程序', '面试题解', '读书']
         },
         series: [
           {
@@ -39,11 +39,11 @@ import 'echarts/lib/component/title'  // 标题
             radius: '55%',
             center: ['50%', '60%'],
             data: [
-              { value: 335, name: '直接访问' },
-              { value: 310, name: '邮件营销' },
-              { value: 234, name: '联盟广告' },
-              { value: 135, name: '视频广告' },
-              { value: 1548, name: '搜索引擎' }
+              { value: 335, name: '前端' },
+              { value: 310, name: '后端' },
+              { value: 234, name: '小程序' },
+              { value: 135, name: '面试题解' },
+              { value: 1548, name: '读书' }
             ],
             itemStyle: {
               emphasis: {

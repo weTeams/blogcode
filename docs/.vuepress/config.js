@@ -8,7 +8,7 @@
  * @Date: 2020-05-28 16:57:06
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-06-03 21:10:13
+ * @LastEditTime: 2020-11-13 16:16:12
  * @Description:.
  *
  */
@@ -24,6 +24,7 @@ module.exports = {
   head, // head头部配置,额外的需要被注入到当前页面的 HTML <head> 中的标签
   lastUpdated: '上次更新', // 显示更新时间,设置true，开启最后更新时间
   markdown, //  markdown相关配置
+  theme: 'yuu', // vuepress-theme-yuu主题
   themeConfig, // 导入默认主题的一些选项配置文件,便于集中管理配置
-  plugins // 外部插件配置,config.js里面写得太长了,阅读,修改起来,真的好恶心,有必要考虑拆分出去的
+  plugins, // 外部插件配置,config.js里面写得太长了,阅读,修改起来,真的好恶心,有必要考虑拆分出去的
 };

@@ -9,7 +9,11 @@ title: 关于作者
 <TOC :include-level="[2, 3]" />
 <!-- md中的语法 -->
 <!-- [[toc]] -->
-
+<Meting server="netease"
+        type="playlist"
+        mid="2539599584"
+        :lrc-type="3"/>
+        
 ## 关于我
 
 网名:随笔川迹，别名"川川"，微信同号(`suibichuanji`)，用笔尖下的文字随性而写，不拘泥于技术，希望能在岁月的侵蚀中留下自己一点足迹，让成长有迹可寻，努力成为一个有故事的人。

@@ -82,7 +82,7 @@
 <style lang="scss" scoped>
 .feedback-box {
   .feedback-content {
-    width: 100%;
+    width: 96%;
     display: flex;
     color: #42b983;
     justify-content: space-between;

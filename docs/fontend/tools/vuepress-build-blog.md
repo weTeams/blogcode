@@ -1530,6 +1530,15 @@ doc.itclan.cn
 * [google 广告](https://www.google.com/intl/zh-CN_cn/adsense/start/)
 * [google-search](https://search.google.com/search-console)
 * [carbonads](https://www.carbonads.net/)
+* [主题配色选择](https://vuepress-theme-yuu.netlify.app/)
+* [主题浅色与深色切换](https://tolking.github.io/vuepress-theme-default-prefers-color-scheme/zh/#%E9%85%8D%E7%BD%AE)
+* [vuepress-plugin-nuggets-style-copy-复制代码](https://www.npmjs.com/package/vuepress-plugin-nuggets-style-copy)
+* [vuepress-plugin-boxx-为博客文章自动随机添加名人名言](https://www.npmjs.com/package/vuepress-plugin-boxx)
+* [vuepress-plugin-window-公告弹窗](https://www.npmjs.com/package/@vuepress-yard/vuepress-plugin-window)
+* [vuepress-plugin-meting 音乐插件-支持在 markdown 中直接插入](https://moefyit.github.io/moefy-vuepress/packages/meting.html)
+* [vuepress-plugin-music-bar](https://github.com/PentaTea/B-Tree.studio/tree/master/docs/.vuepress/plugin/vuepress-plugin-music-bar#vuepress-plugin-music-bar)
+* [vuepress-plugin-bgm-player](https://www.npmjs.com/package/@vuepress-reco/vuepress-plugin-bgm-player)
+* [音乐外链网](http://music.xf1433.com/)
 
 :::
 
