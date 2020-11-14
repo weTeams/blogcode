@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tab-box">
       <van-tabs animated swipeable>
         <van-tab v-for="tab in tabs" :title="tab" >
             <div class="tab-list">{{ tab }}</div>
@@ -34,6 +34,9 @@
 </script>
 
 <style lang="scss" scoped>
+.tab-box {
+  margin: 20px 0 0 0;
+}
 .tab-list {
   padding: 40px 0 0 0;
   height: 40px;
