@@ -1,5 +1,5 @@
 window.onload = function() {
-  const themeDefaultContent = $(
+  themeDefaultContent = $(
     '#app > .theme-container>.page > .theme-default-content'
   );
 

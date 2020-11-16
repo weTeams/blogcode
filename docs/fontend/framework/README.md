@@ -32,9 +32,3 @@ title: 目录
 ### Vue3.0 核心源码
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
-<script>
-   window.onload = function() {
-      $("#"+container).reomve();
-   }
-
-</script>

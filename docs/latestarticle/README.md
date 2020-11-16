@@ -44,9 +44,3 @@ title: 目录
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <footer-FeedBack />
-<script>
-   window.onload = function() {
-      $("#"+container).reomve();
-   }
-
-</script>
