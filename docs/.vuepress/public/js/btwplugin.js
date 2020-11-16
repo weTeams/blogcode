@@ -4,7 +4,6 @@ window.onload = function() {
   );
 
   themeDefaultContent.attr('id', 'container');
-  themeDefaultContent.css('height', '1500px');
   btw = new BTWPlugin();
   btw.init({
     id: 'container',
