@@ -36,4 +36,11 @@ export default ({
   Vue.use(ElementUI);
   Vue.use(Vant);
   Vue.use(VueClipboard);
+  Vue.mixin({
+    mounted() {
+      import('./public/js/btwplugin').then(function(m) {
+        Vue.use(m.default);
+      });
+    },
+  });
 };

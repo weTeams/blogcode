@@ -199,3 +199,4 @@ $time_each_hour
 ## 常见问题
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

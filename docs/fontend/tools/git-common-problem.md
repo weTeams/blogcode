@@ -237,3 +237,4 @@ fatal: Authentication failed for 'https://xxx.git'
   git clone http://账户名:密码@192.168.0.00/xxxx/xxxx.git
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

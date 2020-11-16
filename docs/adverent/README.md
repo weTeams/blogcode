@@ -88,9 +88,3 @@ follow us on **weixin:suibichuanji**
 }
 
 </style>
-<script>
-   window.onload = function() {
-      $("#"+container).reomve();
-   }  
-
-</script>
