@@ -9,28 +9,30 @@
       <span></span>
       <span></span>
     </div>
-    <div class="fixed-container" v-show="fixContainerShow">
-      <div class="public-code">
-        <h4>关注公众号</h4>
-        <p>一个走心,有温度的号,同千万同行一起交流学习</p>
-        <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/itclancoder-code.jpg" alt />
+    <transition name="el-zoom-in-center">
+      <div class="fixed-container" v-show="fixContainerShow">
+        <div class="public-code">
+          <h4>关注公众号</h4>
+          <p>一个走心,有温度的号,同千万同行一起交流学习</p>
+          <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/itclancoder-code.jpg" alt />
+        </div>
+        <div class="person-code">
+          <h4>加作者微信</h4>
+          <p>
+            扫二维码 备注
+            <span>加群</span>
+          </p>
+          <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/other-author-code.jpg" alt />
+        </div>
+        <div class="person-code">
+          <h4>扫码易购</h4>
+          <p>
+            福利推荐
+          </p>
+          <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/xiaoshangdian.jpg" alt />
+        </div>
       </div>
-      <div class="person-code">
-        <h4>加作者微信</h4>
-        <p>
-          扫二维码 备注
-          <span>加群</span>
-        </p>
-        <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/other-author-code.jpg" alt />
-      </div>
-       <div class="person-code">
-        <h4>扫码易购</h4>
-        <p>
-          福利推荐
-        </p>
-        <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/xiaoshangdian.jpg" alt />
-      </div>
-    </div>
+     </transition>
   </div>
 </template>
 <script>
