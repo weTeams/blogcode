@@ -23,6 +23,7 @@ title: 目录
 - [React 进阶(4)-拆分 Redux-将 store,Reducer,action,actionTypes 独立管理](./advance-split-redux)
 - [React 进阶(5)-分离容器组件,UI 组件(无状态组件)](./advance-container-components)
 - [React 进阶(6)-react-redux 的使用](./base-react-components-props)
+- [React 进阶(7)-高阶函数与高阶组件](./advance-highfun-and-component)
 
 ### Vue 基础
 
@@ -31,3 +32,9 @@ title: 目录
 ### Vue3.0 核心源码
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<script>
+   window.onload = function() {
+      $("#"+container).reomve();
+   }
+
+</script>

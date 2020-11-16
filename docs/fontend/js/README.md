@@ -33,3 +33,9 @@ title: 目录
 - [JavaScript 企业级编程规范(3)-换行与缩进-空格约束-语句格式-常见技巧](./program-rules3)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<script>
+   window.onload = function() {
+      $("#"+container).reomve();
+   }
+
+</script>

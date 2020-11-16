@@ -44,6 +44,9 @@
       <div  @click="handleAd('http://itclancoder.mikecrm.com/z1zXWvz')">
           <img width="30" height="30" src="/images/rightBarImgs/ad.png" alt="广告" />
       </div>
+      <div @click="handleShange('https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813')">
+            <img width="30" height="30" src="/images/rightBarImgs/shang.png" alt="赏" />
+      </div>
       <div>
         <a href="#bottom">
           <img width="30" height="30" src="/images/rightBarImgs/down-arrow.png" alt="置底" />
@@ -98,6 +101,22 @@ export default {
          .catch(() => {
            // on cancel // 取消
         })
+    },
+
+    handleShange(openUrl) {
+       this.$dialog.confirm({
+          title: '打赏鼓励',
+          message: '如果您喜欢本站或本站内容对您有所帮助,您的支持就是我的动力',
+          theme: 'round-button',
+          showCancelButton: true,
+          cancelButtonColor: "#ccc",
+        }).then(() => {
+          // on confirm 确认
+           window.open(openUrl, "_blank");
+        })
+         .catch(() => {
+           // on cancel // 取消
+        })
     }
   }
 };
@@ -113,8 +132,8 @@ export default {
 @media screen and (max-width: 768px) {
   .right-bar-wrap {
     position: fixed;
-    right: 0.2rem;
-    top: 30%;
+    right: 0.15rem;
+    top: 28%;
     display: flex;
     flex-direction: column;
     z-index: 888;

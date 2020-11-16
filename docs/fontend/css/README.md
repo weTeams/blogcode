@@ -49,3 +49,9 @@ title: 目录
 ## 常见问题
 
 - [移动端页面滑动事件穿透问题(父子窗体滑动相互影响)及解决方案](./common-problem-mobile-side-event-pie-through)
+
+<script>
+   window.onload = function() {
+      $("#"+container).reomve();
+   }
+</script>

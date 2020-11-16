@@ -5,6 +5,7 @@ title: 目录
 ## 离您最近的表示是最新的
 
 - [置顶-广告位接受投放](../adverent/)
+- [小程序-如何引入 echarts 图表-画圆形饼图](../wechat/minprogram/import-pie-echart)
 - [小程序-页面间如何进行传递数据(通信)](../wechat/minprogram/page-between-transdata)
 - [小程序-实现自定义组件以及自定义组件间的通信](../wechat/minprogram/custom-components)
 - [小程序-实现小程序与小程序之间的跳转](../wechat/minprogram/jump-between-apples)
@@ -43,3 +44,9 @@ title: 目录
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <footer-FeedBack />
+<script>
+   window.onload = function() {
+      $("#"+container).reomve();
+   }
+
+</script>
