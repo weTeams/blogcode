@@ -7,9 +7,9 @@ window.onload = function() {
   btw = new BTWPlugin();
   btw.init({
     id: 'container',
-    blogId: '15005-1605528910159-988',
+    blogId: '15005-1605572762161-455',
     name: 'itclanCoder',
-    qrcode: 'http://ii066.cn/rEDDQY',
+    qrcode: 'http://pic.yupoo.com/itclan/7c9fd976/bccf3846.jpg',
     keyword: '验证码',
   });
 };
