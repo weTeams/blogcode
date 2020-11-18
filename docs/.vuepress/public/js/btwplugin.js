@@ -7,7 +7,7 @@ window.onload = function() {
   btw = new BTWPlugin();
   btw.init({
     id: 'container',
-    blogId: '15005-1605572762161-455',
+    blogId: '15005-1605711320163-146',
     name: 'itclanCoder',
     qrcode: 'http://pic.yupoo.com/itclan/7c9fd976/bccf3846.jpg',
     keyword: '验证码',
