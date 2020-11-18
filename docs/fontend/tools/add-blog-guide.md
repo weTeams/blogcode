@@ -22,6 +22,20 @@ title: 如何在 vuepress 上添加博客导流公众号-即输入验证码解�
 
 至于`Hexo`,`wordpress`网上一搜也能搜到,`npm`仓库也有相对应的包,可自行查阅
 
+## 视频链接
+
+如果您觉得读文章理解起来有些难度,希望以下视频能给你带来一些帮助
+
+⒈ [视频讲解-vuepress 解锁文章-引流到公众号-添加博客导流工具引言(前)](https://www.zhihu.com/zvideo/1312527959053000704)
+
+⒉ [视频讲解-vuepress 添加博客导流工具-添加博客设置(上)](https://www.zhihu.com/zvideo/1312526313929437184)
+
+⒊ [视频讲解-vuepress 添加博客导流工具-实现单篇文章隐藏与整站文章隐藏(中)](https://www.zhihu.com/zvideo/1312526506603184128)
+
+⒋ [视频讲解-vuepress 添加博客导流工具-可能会遇到的一些问题-结束(下)](https://www.zhihu.com/zvideo/1312526793459286016)
+
+⒌ [视频讲解-B 站 itclanCoder-Up主-不定期更新获取新技能](https://space.bilibili.com/267957620)
+
 ## 使用 openWrite 导流工具
 
 这里借用[openWrite 导流工具](https://my.openwrite.cn/)
