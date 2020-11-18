@@ -38,9 +38,7 @@ export default ({
   Vue.use(VueClipboard);
   Vue.mixin({
     mounted() {
-      import('./public/js/btwplugin').then(function(m) {
-        Vue.use(m.default);
-      });
+      import('./public/js/btwplugin');
     },
   });
 };

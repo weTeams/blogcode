@@ -1,23 +1,20 @@
 <template>
   <div>
-    
+
   </div>
 </template>
 
 <script>
- const btwPlugin = require('../../public/js/btwplugin')
   export default {
-    name: 'HideArticle',
+    name: "showArticle",
     data() {
       return {
-
+        
       }
     },
 
     mounted() {
-     btwPlugin()  
-    //  import('../../public/js/btwplugin')
-
+      import('../../public/js/showArticle');
     }
   }
 </script>

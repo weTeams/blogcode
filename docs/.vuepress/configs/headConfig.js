@@ -8,7 +8,7 @@
  * @Date: 2020-06-02 07:29:20
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-17 00:30:55
+ * @LastEditTime: 2020-11-18 00:31:40
  * @Description:头部html中head需要引入的标签,当前文件通过module.exports导出,在config.js主入口文件中通过require导入
  */
 const baidu = require('./secretKey'); // 引入百度统计密钥ID
