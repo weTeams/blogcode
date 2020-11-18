@@ -10,17 +10,23 @@ title: 如何在 vuepress 上添加博客导流公众号-即输入验证码解�
 
 ## 前言
 
-如今,打开一些网站,发现阅读文章前,先要关注公众号,获取验证码,才能解锁文章,这波操作虽然有点“流氓”,但是白嫖的适当付出一点也没有什么,毕竟写文章输出是真的费时间,尊重作者的劳动成果.不信,自己去践行下就知道了的
+如今,打开一些网站,发现阅读文章前,先要关注公众号,获取验证码,才能解锁文章,这波操作虽然有点“流氓”,但是白嫖的适当付出一点也没有什么,毕竟写文章输出是真的费时间,尊重作者的劳动成果.况且赏杯咖啡,我觉得也是一种激励.
 
-在互联网时代,有流量,一切皆有可能,在如今竞争激烈的情况下,尽管微信公众号阅读量出现下滑,但不得不承认,它仍然是一个非常强劲有生命力的产品,其价值重视程度不言而喻,凡是离用户有多近的东西都值得深耕细作
+不信,自己去践行下就知道了的
 
-今天跟大家分享一下在`vuepress`中怎么进行配置实现导流到公众号,至于`Hexo`,`wordpress`网上一搜也能搜到,`npm`仓库也有相对应的包,可自行查阅的
+在互联网时代,有流量,一切皆有可能,在如今竞争激烈的情况下,尽管微信公众号阅读量日渐下滑,但不得不承认,它仍然是一个非常强劲有生命力的产品,其价值重视程度不言而喻,凡是离用户有多近的东西都值得深耕细作
+
+现如今一些自媒体大佬,很多在公众号里赚了不少,论当今自媒体平台,公众号的商业价值是最大的,很少有听到抖音,快手等独立的个体融资的,但公众号就有,依靠它活得洒脱,而凭借它实现融资的还真不少. 自己不行,不代表别人也不行,贫穷会限制想象.
+
+今天跟大家分享一下在`vuepress`中怎么进行配置实现导流到公众号,实现自动增粉,让每一个阅读转化为粉丝,与用户做朋友,从此在也不用互推了的,只需专心做好内容创作.
+
+至于`Hexo`,`wordpress`网上一搜也能搜到,`npm`仓库也有相对应的包,可自行查阅
 
 ## 使用 openWrite 导流工具
 
 这里借用[openWrite 导流工具](https://my.openwrite.cn/)
 
-1. 进入网站,找到导航菜单栏下的**免费涨粉神器**,添加博客列表
+⒈ 进入 openWrite 网站,找到导航菜单栏下的**免费涨粉神器**,添加博客列表
 
 输入博客信息以及微信公众号信息,保存即可
 
@@ -30,22 +36,22 @@ title: 如何在 vuepress 上添加博客导流公众号-即输入验证码解�
    <img class="medium-zoom lazy"  loading="lazy"  src="../images/tools-article-imgs/add-blog-guide/openwrite.png" alt="openWrite" />
 </div>
 
-1. 返回博客列表中,点击使用
+⒉ 返回博客列表中,点击使用
 
    <div align="center">
       <img class="medium-zoom lazy"  loading="lazy"  src="../images/tools-article-imgs/add-blog-guide/useopenwrite.png" alt="openWrite" />
    </div>
 
-2. 阅读使用文档
+⒊ 阅读使用文档
 
-这里就不搬运了的,直接读文档就好了的,下面的介绍才是重点
+这里就不搬运了的,直接读文档就好,下面的介绍才是重点
 
 ::: tip 注意
-文档中值得注意的是最后一句:
+文档中需要注意最后一句:
 
 其中`id`中设置的`container`需要用户根据文章页面中的文章容器来调整，或者直接将文章最外面的容器设置为该 id
 
-文档中的`readmore.js`用链接的也行,直接下载到本地,在头部全局方式引入也可以
+文档中的`readmore.js`用 openWrite 的链接也行,直接下载到本地,在头部全局方式引入也可以
 :::
 
 ## 博客设置
@@ -57,27 +63,27 @@ title: 如何在 vuepress 上添加博客导流公众号-即输入验证码解�
 ```js
 <script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
 <script>
-    const btw = new BTWPlugin();
-    btw.init({
-        id: 'container',
-        blogId: 'xxxx你自己的博客ID',
-        name: 'itclanCoder',
-        qrcode: '你自己的公众号二维码xxx.jpg',
-        keyword: '验证码',
+    const btw = new BTWPlugin();  // 实例化btw插件对象
+    btw.init({                    // 初始化设置,接收一些参数
+        id: 'container',          // 文章最外层的id
+        blogId: 'xxxx你自己的博客ID', // 博客网站的id,openWrite会自动生成
+        name: 'itclanCoder',         // 博客的名称
+        qrcode: '你自己的公众号二维码xxx.jpg', // 二维码
+        keyword: '验证码',                    // 设置的解锁关键字
     });
 </script>
 ```
 
-当你插入这段代码后,发现报错了
+当你插入这段代码后,发现控制台报错了
 
 ```js
 ReferenceError: BTWPlugin is not defined
 ```
 
 **解决办法**
-你需要在外面用`window.onload`包裹起来,必须等待 DOM 网页中所有内容加载完毕后执行这段代码,用`$(funciton() {})`或`$(document).ready(function(){})`是不行的
+你需要在外面用`window.onload`包裹起来,必须等待 `DOM` 网页中所有内容加载完毕后执行这段代码,用`$(funciton() {})`或`$(document).ready(function(){})`是不行的
 
-前者是等网页中的所有 DOM 包扩图片加载完毕后执行,而后者是所有 DOM 结构绘制完毕后,边加载边执行,可能 DOM 元素关联的东西并没有加载完
+前者是等网页中的所有 `DOM` 包扩图片加载完毕后执行,而后者是所有 `DOM` 结构绘制完毕后,边加载边执行,可能 `DOM` 元素关联的东西并没有加载完
 
 ```js
 window.onload = function() {
@@ -94,19 +100,29 @@ window.onload = function() {
 
 解决完报错后,文章依旧没有隐藏起来,根据 openWrite 文章中最后一句设置文章容器的`id`属性`container`
 
-现在就是要添加给文章容器添加属性了,给 DOM 添加属性,可以用原生 js,也可以使用 JQ
+现在就是要给文章容器添加 id 属性了,可以用原生 `js`,也可以使用 `JQ`动态的添加属性
 
-可以控制台中审查元素,找到文章最外层的那个容器,实在不知道,你找个已经实现了解锁文章的博客,没有添加解锁文章的博客,是没有那个`id="container"`属性的
+::: tip 提示
+直接在`md`中用`div`将想要隐藏的部分包裹起来,并在`div`上添加`id="container"`难道不行么
 
-下面我使用 jQ 查找元素,给页面最外层的容器添加 id 属性,为啥不用原生 js,因为 jQ 方便,简单快哈
+这种方式我有试过,但不靠谱,实现不了:joy:,即使能实现,每篇文章都要手动的添加 id,那不是一个懒的程序员应该做的事情
+:::
+
+可以在控制台中审查元素,找到文章最外层的那个容器,实在不知道,你找个已经实现了解锁文章的博客作为参照:例如[itclanCoder 网站](http://coder.itclan.cn/)
+
+没有添加解锁文章的博客,是没有那个`id="container"`属性的
+
+下面我使用 jQ 查找元素,给页面最外层的容器添加 `id` 属性,为啥不用原生 `js`,因为 `jQ` 写得更少,做得更多哈:100:
+
+此刻,不要动不动满口的`vue`,`React`,`Angular`...JQ 真香,小弟还停留在 JQ 时代:rofl:,其实 JQ 也很牛逼的,也没有它实现不了的,只是现在,有负往日盛景,风水轮流转嘛
 
 ```js
 window.onload = function() {
   themeDefaultContent = $(
-    '#app > .theme-container>.page > .theme-default-content'
+    '#app > .theme-container>.page > .theme-default-content' // 获取最外层的元素
   );
 
-  themeDefaultContent.attr('id', 'container');
+  themeDefaultContent.attr('id', 'container'); // 设置id属性,就是这么牛逼,搞定
   const btw = new BTWPlugin();
   btw.init({
     id: 'container',
@@ -118,7 +134,7 @@ window.onload = function() {
 };
 ```
 
-但经自己测试,发现无论是使用 vue 的写法,将上面的代码放到 monted 中,或使用`this.$nextTick`,发现不是报`btw is not defined`就是`BTWPlugin is not defined`
+但经自己测试,发现无论是使用 vue 的写法,将上面的代码放到 `monted` 中,或使用`this.$nextTick`,发现不是报`btw is not defined`就是`BTWPlugin is not defined`
 
 但是页面中的`id="container"`确实已经加上去了的,但就是隐藏不了文章,经过排查,查看了一下`readmore.js`源码,里面使用了`document.querySelectorAll`以及`window`等一些方法,当然里面也用了`jQ`,估计是这个脚本加载顺序有问题
 
@@ -194,7 +210,9 @@ module.exports = {
 
 ```
 
-然后在`md`文档中以组件的方式在文章末尾引入`<HideArticle />`
+然后在`md`文档中以组件的方式在文章末尾引入`<HideArticle />`组件
+
+整个过程没有几行代码
 
 果然成功了...
 
@@ -221,13 +239,13 @@ export default {
 
 :::
 
-以上就完成了单篇文章的隐藏,如下所示
+以上就实现了单篇文章的隐藏,如下所示
 
 <div align="center">
     <img class="medium-zoom lazy"  loading="lazy"  src="../images/tools-article-imgs/add-blog-guide/hideArticle.png" alt="openWrite" />
 </div>
 
-那博客里很多文章,每篇`md`文件末尾都引入该组件,挺麻烦的
+那博客里有很多文章,每篇`md`文件末尾都引入该组件,挺麻烦的
 
 在`vuepress`中提供了全局注入组件,这里介绍两种方式全局注入组件的,一种是以插件的形式注入,另一种是在`enhanceApp.js`中全局注入
 
@@ -271,6 +289,7 @@ export default ({
   // 全局注入组件
   Vue.use(ElementUI);
   Vue.mixin({
+    // 混合注入,加载全局文件
     mounted() {
       import('./public/js/btwplugin');
     },
@@ -282,20 +301,20 @@ export default ({
 
 以上同样能够全局注入,实现全站文章的隐藏
 
-## 怎么实现某篇文章不隐藏
+## 怎么实现某单篇文章不隐藏
 
 其实上面第一种方式,实现单篇文章的隐藏,那实现指定某一篇文章的不隐藏,同样也很简单,只需要去除`id="container"`这个属性就可以了的
 
 你可以在`md`下面直接写`js`,找那个最外层的元素,直接去掉`id`属性即可
 
-你也可以封装成一个组件,在全站中哪一篇不想要隐藏,直接调用该组件即可,这里就不重复了的,直接提供核心显现代码
+你也可以封装成一个组件,在全站中哪一篇不想要隐藏,直接调用该组件即可,这里就不重复了的,直接提供核心代码
 
 ```js
 window.onload = function() {
   const themeDefaultContent = $(
     '#app > .theme-container>.page > .theme-default-content'
   );
-  themeDefaultContent.removeAttr('id');
+  themeDefaultContent.removeAttr('id'); // 移除掉id属性,就是这么简单,JQ牛逼~
 };
 ```
 
@@ -303,7 +322,7 @@ window.onload = function() {
 
 ## 可能会遇到的问题
 
-### 本地运行没问题打包不通过
+### 本地运行没问题但打包不通过
 
 本地`npm run dev`没有问题,但是构建打包出现`window is not defined`或者`document is not defined`
 
@@ -313,7 +332,7 @@ window.onload = function() {
 
 之所以介绍两种方式,那是我踩坑之后,才发现的,本地运行好好的,一打包就出错.算是一个小坑,我的[itclanCoder 博客](http://coder.itclan.cn)里使用的是`Vue.mixin()`这种方式全局注入组件实现全站文章隐藏的
 
-你可以查看[如何解决 vuepress 编译打包失败即 window/document is not defined 问题](./pack-fail-window-problem)
+你也可以查看[如何解决 vuepress 编译打包失败即 window/document is not defined 问题](./pack-fail-window-problem)
 
 ### 二维码不显示问题
 
@@ -329,13 +348,11 @@ window.onload = function() {
 
 通过这个`openWrite`插件,可以看得出,它只是给最外层添加了一个固定的高度,把超出部分给隐藏了的
 
-视觉上出现隐藏(css 实现的),通过浏览器审查元素就可以看得出,这并非真正的隐藏,对于前端同学,实现隐藏并不陌生
+视觉上出现隐藏(css 实现的),通过浏览器审查元素就可以看得出,这并非真正的隐藏,对于前端同学,实现元素的隐藏并不陌生
 
 不用插件,没有后端服务,也同样可以做到导流到公众号,可以在公众号后台自动回复里添加设置一个固定的值
 
-在`vuepress`中同样编写全局组件的方式
-
-获取最外层的元素,然后如同 openWrite 的,提交时,需要输入从公众号后台拿到的固定的值,输入正确的值才能解锁文章
+在`vuepress`中同样编写全局组件的方式,获取最外层的元素,然后如同 openWrite 的,提交时,需要输入从公众号后台菜单栏拿到的固定的值,输入正确的值才能解锁文章
 
 甚至解锁体验还可以优化得更好,给一些用户提示之类的
 
@@ -347,11 +364,11 @@ window.onload = function() {
 
 想必通过关注个公众号回复一个验证码,就能解锁文章,比自己查看源码的方式拿到验证码,要快得多吧
 
-对于不熟悉后台,仅仅就是为了实现导流这个目的,这种方式是可以完全实现的,而`openWrite`这种方式动态实现文章的解锁
+对于不熟悉后台,仅仅就是为了实现导流这个目的,这种方式完全是可以实现的,而`openWrite`这种方式动态实现文章的解锁
 
-需要一些自己部署服务器,处理前端请求等一些问题.对于后端是一片沙漠的,是有一些复杂的.
+需要自己部署服务器,处理前端请求等一些问题.还得写后端代码,对于后端是一片沙漠的同学,是有一些复杂的.
 
-如果你不想用`openWrite`这种插件方式,可以自行一试的,但话说回来,既然有这么好的工具,那就用吧,虽然配置过程中难免有些坑,但总有人给你填了呀
+如果你不想用`openWrite`这种插件方式,可以自行一试的,但话说回来,既然有这么好的工具,那就用吧,虽然配置过程中难免会遇到一些坑,但总有人会给你填啊
 
 腾出这个精力,解决下个人问题,多陪陪女朋友,不是更好?哈哈哈哈....
 

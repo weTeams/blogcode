@@ -202,11 +202,24 @@ curryingAdd(1)(2); // 3
                   <div>提示</div>
                   <div><i class="el-icon-circle-close icon-close-btn"></i></div>
              </div>
+             <div class="content">
+                     <div class="list">A</div>
+                     <div class="list">B</div>
+                     <div class="list">C</div>
+                     <div class="list">D</div>
+                     <div class="list">E</div>
+             </div>
         </div>
         <div class="pop-box">
               <div class="header">
                   <div>提示</div>
                   <div><i class="el-icon-circle-close icon-close-btn"></i></div>
+             </div>
+             <div class="content2">
+                    <div class="list2">A</div>
+                    <div class="list2">B</div>
+                    <div class="list2">C</div>
+                    <div class="list2">D</div>
              </div>
         </div>
    </div>
@@ -233,6 +246,7 @@ export default {
   width: 300px;
   height: 400px;
   border:1px solid #de3636;
+  border-top: none;
 }
 
 .pop-box:nth-child(1) {
@@ -253,7 +267,289 @@ export default {
   font-size: 25px;
   color:#fff;
 }
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.content2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.list2{
+  width: 100px;
+  height: 100px;
+  border:1px solid #de3636;
+  margin: 10px;
+  text-align: center;
+  line-height: 100px;
+}
+
+.list {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #de3636;
+  margin: 10px 0;
+  text-align:center;
+  line-height: 40px;
+}
 </style>
+
+经过 UI,可以将上面的公共的部分以及不同的部分给提取出来,封装成组件
+
+<template>
+    <div class="demo-wrap">
+        <div class="component-a">
+            <div class="component-header">
+                  <div>提示</div>
+                  <div><i class="el-icon-circle-close icon-close-btn"></i></div>
+             </div>
+        </div>
+        <div class="component-b">
+            <div class="list">A</div>
+            <div class="list">B</div>
+            <div class="list">C</div>
+            <div class="list">D</div>
+            <div class="list">E</div>
+        </div>
+        <div class="component-c">
+              <div class="component-list">A</div>
+              <div class="component-list">B</div>
+              <div class="component-list">C</div>
+              <div class="component-list">D</div>
+        </div>
+    </div>
+</template>
+
+<style>
+.demo-wrap {
+     display: flex;
+     justify-content: center;
+
+}
+
+.component-a {
+width: 300px;
+height: 400px;
+border:1px solid #de3636;
+border-top: none;
+}
+
+.component-b {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.component-b .list {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #de3636;
+  margin: 10px 0;
+  text-align:center;
+  line-height: 40px;
+}
+
+.component-c {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  width: 226px;
+  height: 400px;
+}
+
+.component-c .component-list {
+  width: 100px;
+  height: 100px;
+  border:1px solid #de3636;
+  text-align: center;
+  line-height: 100px;
+  margin-right: 10px;
+  margin-bottom:10px;
+}
+
+.component-header {
+display: flex;
+height: 50px;
+padding: 0 10px;
+justify-content: space-between;
+align-items: center;
+background:#de3636;
+color:#fff;
+}
+</style>
+<template>
+    <div class="footer-component">
+         <div>组件A</div>
+         <div>组件B</div>
+         <div>组件C</div>
+    </div>
+</template>
+<style>
+.footer-component {
+  padding: 15px 0 0 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+</style>
+
+可以用`create-react-app`创建一个项目,在`src`目录下创建一个`components`文件夹,这个文件主要用于存放我们的自定义组件
+
+在`components`中创建一个`highcomponent`,同时在该文件夹内创建`ComponentA.js`,`ComponentB.js`,`ComponentC.js`
+
+:::: tabs type:border-card
+::: tab 组件 A 公共组件 lazy
+
+```js
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import './componentA.css';
+
+// 声明一个函数A组件,返回结果是一个类组件,并接收一个参数WrappendComponent
+function A(WrappendComponent) {
+  return class ComponentA extends Component {
+    render() {
+      return (
+        <div>
+          <div className="pop-box">
+            <div className="header">
+              <div>提示</div>
+              <div>X</div> // 这里为了简便,我直接用一个x替代了的
+            </div>
+            <div className="content">
+              <WrappendComponent /> // 这里是要渲染不同的内容
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+}
+
+export default A; // 导出A函数组件
+```
+
+:::
+::: tab 组件 B lazy
+
+```js
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import './componentB.css';
+import A from './componentA'; // 引入A函数
+
+// 类声明B组件
+class ComponentB extends Component {
+  render() {
+    return (
+      <div>
+        <div className="component-b">
+          <div className="list">A</div>
+          <div className="list">B</div>
+          <div className="list">C</div>
+          <div className="list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default A(ComponentB); // 导出调用A函数,同时将B组件让A组件作为参数调用
+```
+
+:::
+::: tab 组件 C lazy
+
+```js
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import './componentC.css';
+import A from './componentA';
+
+class ComponentC extends Component {
+  render() {
+    return (
+      <div>
+        <div className="component-c">
+          <div className="component-list">A</div>
+          <div className="component-list">B</div>
+          <div className="component-list">C</div>
+          <div className="component-list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default A(ComponentC);
+```
+
+:::
+::: tab App.js 中 lazy
+
+```js
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+import ComponentB from './components/popcomponent/componentB';
+import ComponentC from './components/popcomponent/componentC';
+
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <ComponentB />
+        <ComponentC />
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+:::
+::: tab 说明 lazy
+从上面的示例代码中就可以看出 A 就是一个高阶组件
+
+⒈ 首先高阶组件它是一个函数,并且函数返回一个类组件
+
+⒉ 高阶组件它需要接受一个形参数,作为在想要渲染地方以组件的形式插入
+:::
+::::
+经过上面的代码编写:达到了组件复用的目的
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="../images/framework-article-imgs/advance-highfun-and-component/highcomponent.png" alt="高阶组件" />
+</div>
+
+## 为什么需要高阶组件
+
+多个组件都需要某个相同的功能,使用高阶组件减少重复实现
+
+react-redux 中的`connect`连接器就是一个高阶组件
+
+```js
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+```
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <footer-FeedBack />
