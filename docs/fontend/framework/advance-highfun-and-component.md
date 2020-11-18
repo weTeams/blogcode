@@ -196,8 +196,8 @@ curryingAdd(1)(2); // 3
 例如:如下面的弹出框
 
 <template>
-   <div class="pop">
-        <div class="pop-box">
+   <div class="highfun-component-pop">
+        <div class="highfun-component-pop-box">
              <div class="header">
                   <div>提示</div>
                   <div><i class="el-icon-circle-close icon-close-btn"></i></div>
@@ -210,7 +210,7 @@ curryingAdd(1)(2); // 3
                      <div class="list">E</div>
              </div>
         </div>
-        <div class="pop-box">
+        <div class="highfun-component-pop-box">
               <div class="header">
                   <div>提示</div>
                   <div><i class="el-icon-circle-close icon-close-btn"></i></div>
@@ -237,23 +237,23 @@ export default {
 </script>
 
 <style>
-.pop {
+.highfun-component-pop {
   display: flex;
   justify-content: center;
 }
 
-.pop-box {
+.highfun-component-pop .highfun-component-pop-box {
   width: 300px;
   height: 400px;
   border:1px solid #de3636;
   border-top: none;
 }
 
-.pop-box:nth-child(1) {
+.highfun-component-pop .highfun-component-pop-box:nth-child(1) {
   margin-right: 30px;
 }
 
-.header {
+.highfun-component-pop .highfun-component-pop-box .header {
   display: flex;
   height: 50px;
   padding: 0 10px;
@@ -263,11 +263,11 @@ export default {
   color:#fff;
 }
 
-.icon-close-btn {
+.highfun-component-pop .highfun-component-pop-box .header .icon-close-btn {
   font-size: 25px;
   color:#fff;
 }
-.content {
+.highfun-component-pop .highfun-component-pop-box .content {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -275,13 +275,13 @@ export default {
   align-content: center;
 }
 
-.content2 {
+.highfun-component-pop .highfun-component-pop-box .content2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.list2{
+.highfun-component-pop .highfun-component-pop-box .list2{
   width: 100px;
   height: 100px;
   border:1px solid #de3636;
@@ -290,7 +290,7 @@ export default {
   line-height: 100px;
 }
 
-.list {
+.highfun-component-pop .highfun-component-pop-box .list {
   width: 80%;
   height: 40px;
   border: 1px solid #de3636;
@@ -303,7 +303,7 @@ export default {
 经过 UI,可以将上面的公共的部分以及不同的部分给提取出来,封装成组件
 
 <template>
-    <div class="demo-wrap">
+    <div class="highcompnent-demo-wrap">
         <div class="component-a">
             <div class="component-header">
                   <div>提示</div>
@@ -327,20 +327,20 @@ export default {
 </template>
 
 <style>
-.demo-wrap {
+.highcompnent-demo-wrap {
      display: flex;
      justify-content: center;
 
 }
 
-.component-a {
+.highcompnent-demo-wrap .component-a {
 width: 300px;
 height: 400px;
 border:1px solid #de3636;
 border-top: none;
 }
 
-.component-b {
+.highcompnent-demo-wrap .component-b {
   width: 300px;
   height: 400px;
   display: flex;
@@ -348,7 +348,7 @@ border-top: none;
   flex-wrap: wrap;
 }
 
-.component-b .list {
+.highcompnent-demo-wrap .component-b .list {
   width: 80%;
   height: 40px;
   border: 1px solid #de3636;
@@ -357,7 +357,7 @@ border-top: none;
   line-height: 40px;
 }
 
-.component-c {
+.highcompnent-demo-wrap .component-c {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -367,7 +367,7 @@ border-top: none;
   height: 400px;
 }
 
-.component-c .component-list {
+.highcompnent-demo-wrap .component-c .component-list {
   width: 100px;
   height: 100px;
   border:1px solid #de3636;
@@ -377,7 +377,7 @@ border-top: none;
   margin-bottom:10px;
 }
 
-.component-header {
+.highcompnent-demo-wrap .component-header {
 display: flex;
 height: 50px;
 padding: 0 10px;
@@ -423,7 +423,7 @@ function A(WrappendComponent) {
     render() {
       return (
         <div>
-          <div className="pop-box">
+          <div className="highfun-component-pop-box">
             <div className="header">
               <div>提示</div>
               <div>X</div> // 这里为了简便,我直接用一个x替代了的
@@ -503,8 +503,8 @@ export default A(ComponentC);
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import ComponentB from './components/popcomponent/componentB';
-import ComponentC from './components/popcomponent/componentC';
+import ComponentB from './components/highfun-component-popcomponent/componentB';
+import ComponentC from './components/highfun-component-popcomponent/componentC';
 
 import './App.css';
 
