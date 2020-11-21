@@ -300,7 +300,7 @@ export default {
 }
 </style>
 
-经过 UI,可以将上面的公共的部分以及不同的部分给提取出来,封装成组件
+经过 UI,可以将上面的公共的部分以及不同的部分给提取出来,封装成三个组件,分别为组件 A(公共部分),组件 B,组件 C
 
 <template>
     <div class="highcompnent-demo-wrap">
@@ -405,7 +405,7 @@ color:#fff;
 
 </style>
 
-可以用`create-react-app`创建一个项目,在`src`目录下创建一个`components`文件夹,这个文件主要用于存放我们的自定义组件
+可以用`create-react-app`脚手架工具创建一个项目,在`src`目录下创建一个`components`文件夹,这个文件主要用于存放我们的自定义组件
 
 在`components`中创建一个`highcomponent`,同时在该文件夹内创建`ComponentA.js`,`ComponentB.js`,`ComponentC.js`
 
@@ -545,11 +545,267 @@ export default App;
 
 多个组件都需要某个相同的功能,使用高阶组件减少重复实现
 
-react-redux 中的`connect`连接器就是一个高阶组件
+`react-redux` 中的`connect`连接器就是一个高阶组件
 
 ```js
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
 ```
+
+## 高阶组件的实现
+
+⒈ 如何编写高阶组件
+⒉ 如何使用高阶组件
+⒊ 如在高阶组件中实现传递参数
+
+### 如何编写高阶组件
+
+⒈ 实现一个普通组件
+⒉ 将一个普通组件使用函数包裹
+
+:::: tabs type:border-card
+::: tab 第 1 步实现一个普通组件 lazy
+
+```js
+import React, { Component } from 'react';
+// 用class类声明一个componentD组件继承自Component
+export default class componentD extends Component {
+  render() {
+    return <div></div>;
+  }
+}
+```
+
+:::
+::: tab 第 2 步-将普通组件使用函数包裹 lazy
+
+```js
+import React, { Component } from 'react';
+// 声明一个函数组件ComponentD,同时接收一个形参WrappedComponent
+function ComponentD(WrappedComponent) {
+  return class componentD extends Component {
+    render() {
+      return (
+        <div>
+          <WrappedComponent />
+        </div>
+      );
+    }
+  };
+}
+
+export default ComponentD;
+```
+
+:::
+::: tab 说明 lazy
+编写一个高阶组件,首先要明确高阶组件是一个函数
+
+⒈ 先编写一个普通的类组件
+
+⒉ 声明一个函数,接收一个形参,该函数返回一个类组件
+
+⒊ 最后将该函数给导出
+:::
+::::
+
+### 如何使用高阶组件
+
+⒈ higherOrderComponent(WrappedComponent)
+
+⒉ @highOrderComponent
+
+假设现在我编写了一个组件`compnentF.js`组件,将该组件当做参数传递给组件 componentD,然后渲染到页面上
+
+以下为第一种使用方式,函数调用方式
+:::: tabs type:border-card
+::: tab 组件 F-componentF lazy
+
+```js
+import React, { Component } from 'react';
+import componentD from './componentD'; // 引入函数componentD高阶组件
+
+class componentF extends Component {
+  render() {
+    return <div>我是组件F</div>;
+  }
+}
+
+export default componentD(componentF); // 将类组件componentF作为参数被组件componentD调用并导出
+```
+
+:::
+::::
+使用高阶组件,还有另外一种方式,就是使用装饰器方式,即`@+函数名`,它是一个语法糖,简化了我们的写法
+
+### 方式 1-安装 babel 插件在 babelrc 中配置
+
+在使用这种装饰器方式时,需要对`create-react-app`做一些配置,它默认是不支持装饰器模式的,你需要对项目做一些配置
+
+在`create-react-app`根目录中终端下使用`npm run eject`,这条命令主要是将我们的配置项做一个反向输出,暴露出隐藏的 webpack 配置项,这样可以项目进行修改了的,注意它是不可逆的
+
+使用装饰器模式时:需要安装两个依赖:
+
+```js
+cnpm install -D babel-preset-stage-2
+cnpm install -D babel-preset-react-native-stage-0
+```
+
+然后你需要在根目录下创建一个`.babelrc`文件,对`.babelrc`文件做一些配置
+
+```js
+{
+  "presets": ["react-native-stage-0/decorator-support"]
+}
+```
+
+经过这么配置后,就可以使用装饰器了的
+
+```js
+import React, { Component } from 'react';
+import componentD from './componentD'; // 引入函数componentD高阶组件
+
+@componentD // 直接用@符号+高阶组件componentD就可以了的
+class componentF extends Component {
+  render() {
+    return <div>我是组件F</div>;
+  }
+}
+
+export default componentF;
+```
+
+### 方式 2-经过 eject 后在 package.json 中的 plugins 中配置
+
+当用`eject`将`webpack`一些配置弹射出来以后,会看到根目录下的`package.json`文件下新增了很多文件
+
+在`babel`对象处进行插件的配置,将`@babel/plugin-proposal-decorators`添加到`plugins`后
+
+```js
+{
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+
+    "plugins": [
+        [
+            "@babel/plugin-proposal-decorators",
+            { "legacy": true }
+        ]
+    ]
+
+  }
+}
+```
+
+:::: tabs type:border-card
+
+::: tab 出现警告提示
+当使用装饰器模式时,在 vscode 中会有一警告的提示
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="../images/framework-article-imgs/advance-highfun-and-component/decorator-warn.png" alt="警告提示" />
+</div>
+:::
+::: tab 解决 vscode 警告问题 lazy
+在vscode中的设置中`tsconfig`启动`Experimental Decorators`就可以解决此警告
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="../images/framework-article-imgs/advance-highfun-and-component/removwaring.png" alt="解除提示" />
+</div>
+:::
+::::
+
+经过这么配置后就可以使用装饰模式模式了的-即`@+函数名`简写的方式
+:::: tabs type:border-card
+::: tab 非装饰器普通模式写法 lazy
+
+```js
+import React, { Component } from 'react';
+import './componentB.css';
+import A from './componentA';
+
+class ComponentB extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="component-b">
+          <div className="list">A</div>
+          <div className="list">B</div>
+          <div className="list">C</div>
+          <div className="list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default A(ComponentB); // 需要调用高阶组件
+```
+
+:::
+
+::: tab 装饰器写法 lazy
+
+```js
+import React, { Component } from 'react';
+import './componentB.css';
+import A from './componentA';
+
+@A
+class ComponentB extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="component-b">
+          <div className="list">A</div>
+          <div className="list">B</div>
+          <div className="list">C</div>
+          <div className="list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ComponentB; // 直接导出组件即可
+```
+
+:::
+::: tab 说明 lazy
+在同一个组件中可以组合使用高阶函数,能够无限的嵌套下去,如果不用装饰器函数,你会发现代码将变得非常难以理解,也不好维护
+
+```js
+import React, { Component } from 'react';
+import A from './componentA';
+import componentD from './componentD';
+
+@A
+@comonentD
+class componentF extends Component {
+  render() {
+    return <div>我是组件F</div>;
+  }
+}
+
+export default componentF;
+```
+
+:::
+::::
+
+::: tip 为什么需要 eject 暴露呢
+因为默认`create-react-app`虽然已经内已经安装了 `@babel/plugin-proposal-decorators`插件,但是需要自己进行配置
+
+若不进行配置,它是不支持装饰器模式的
+:::
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <footer-FeedBack />

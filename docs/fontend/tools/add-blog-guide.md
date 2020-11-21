@@ -1,8 +1,8 @@
 ---
-title: 如何在 vuepress 上添加博客导流公众号-即输入验证码解锁全站文章
+title: 如何在 vuepress 上添加博客导流到公众号-即输入验证码解锁全站文章
 ---
 
-## 如何在 vuepress 上添加博客导流公众号-即输入验证码解锁全站文章
+## 如何在 vuepress 上添加博客导流到公众号-即输入验证码解锁全站文章
 
 ## 快速导航
 
@@ -18,7 +18,7 @@ title: 如何在 vuepress 上添加博客导流公众号-即输入验证码解�
 
 现如今一些自媒体大佬,很多在公众号里赚了不少,论当今自媒体平台,公众号的商业价值是最大的,很少有听到抖音,快手等独立的个体融资的,但公众号就有,依靠它活得洒脱,而凭借它实现融资的还真不少. 自己不行,不代表别人也不行,贫穷会限制想象.
 
-今天跟大家分享一下在`vuepress`中怎么进行配置实现导流到公众号,实现自动增粉,让每一个阅读转化为粉丝,与用户做朋友,从此在也不用互推了的,只需专心做好内容创作.
+今天跟大家分享一下在`vuepress`中怎么进行配置实现导流到公众号,实现自动增粉,让每一个阅读产生价值,与用户做朋友,从此在也不用互推了的,只需专心做好内容创作.
 
 至于`Hexo`,`wordpress`网上一搜也能搜到,`npm`仓库也有相对应的包,可自行查阅
 
@@ -34,7 +34,7 @@ title: 如何在 vuepress 上添加博客导流公众号-即输入验证码解�
 
 ⒋ [视频讲解-vuepress 添加博客导流工具-可能会遇到的一些问题-结束(下)](https://www.zhihu.com/zvideo/1312526793459286016)
 
-⒌ [视频讲解-B 站 itclanCoder-Up主-不定期更新获取新技能](https://space.bilibili.com/267957620)
+⒌ [视频讲解-B 站 itclanCoder-Up 主-不定期更新获取新技能](https://space.bilibili.com/267957620)
 
 ## 使用 openWrite 导流工具
 
@@ -139,7 +139,7 @@ window.onload = function() {
   themeDefaultContent.attr('id', 'container'); // 设置id属性,就是这么牛逼,搞定
   const btw = new BTWPlugin();
   btw.init({
-    id: 'container',
+    id: 'container', // 这个id后面的值与上面的设置id属性保持一致就行,不一定非地是container
     blogId: 'xxxx你自己的博客ID',
     name: 'itclanCoder',
     qrcode: '你自己的公众号二维码xxx.jpg',
@@ -313,6 +313,24 @@ export default ({
 
 你也可以通过跟上面一样,`require`的方式引入,在`monted`中调用,这里不再重复多余,这里借用了`Vue.mixin()`全局注册使用混入,[Vue.mixin 的介绍](https://cn.vuejs.org/v2/api/#Vue-mixin)
 
+如果你不使用`Vue.mixin`这种方式:编写了自定义组件,不是在插件中处理,直接将自定义组件引入到`enhanceApp.js`中也是可以的如下所示
+
+```js
+import HideArticle from "./components/HideArticle.vue" // 引入自定义组件
+// 使用异步函数也是可以的
+export default ({
+  Vue, // VuePress 正在使用的 Vue 构造函数
+  options, // 附加到根实例的一些选项
+  router, // 当前应用的路由实例
+  siteData, // 站点元数据
+  isServer, // 当前应用配置是处于 服务端渲染 或 客户端
+}) => {
+  // ...做一些其他的应用级别的优化
+  // 全局注入组件
+  Vue.use(HideArticle);    // 在这里注入全局组件,同样也是可以的
+
+```
+
 以上同样能够全局注入,实现全站文章的隐藏
 
 ## 怎么实现某单篇文章不隐藏
@@ -346,7 +364,7 @@ window.onload = function() {
 
 之所以介绍两种方式,那是我踩坑之后,才发现的,本地运行好好的,一打包就出错.算是一个小坑,我的[itclanCoder 博客](http://coder.itclan.cn)里使用的是`Vue.mixin()`这种方式全局注入组件实现全站文章隐藏的
 
-你也可以查看[如何解决 vuepress 编译打包失败即 window/document is not defined 问题](./pack-fail-window-problem)
+你也可以查看[如何解决 vuepress 编译打包失败即 window/document is not defined 问题](/fontend/tools/pack-fail-window-problem)
 
 ### 二维码不显示问题
 
