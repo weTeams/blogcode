@@ -467,3 +467,4 @@ ReactDOM.render(<Header content="itclanCoder">, container)
 能够以`props`和`state`这种形式顺藤摸瓜,寻本溯源到页面上任何一个 UI 组件,这种`React`的能力可以说非常重要了
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

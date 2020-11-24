@@ -781,3 +781,4 @@ ReactDOM.render(<PropTest />, container);
 以及当知道如何定义组件中的 prop 数据,还有必要对外部组件传给内部组件的 prop 数据类型的校验,通过`prop-types`库来解决,`PropTypes`这个实例属性来对 prop 进行规格的设置,这样可以在运行代码时,可以根据`propTypes`判断外部组件是否整整的使用组件的属性,输入输出的类型是否一一对应，保持一致
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

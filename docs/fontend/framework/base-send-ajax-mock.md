@@ -395,3 +395,4 @@ this.baseUrl =
 这个工具用得不爽,就用另外一个的,总有一个适合自己的
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

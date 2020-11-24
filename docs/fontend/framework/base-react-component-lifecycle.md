@@ -253,3 +253,4 @@ shouldComponentUpdate(nextProps, nextState)
 当组件从页面中移除时,在卸载之前会触发 `componentWillUnmount` 函数,该函数常常用于组件销毁时调用,清理无效的定时器 `timer`，取消未完成的网络(`Ajax`)请求,清理已注册的订阅
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

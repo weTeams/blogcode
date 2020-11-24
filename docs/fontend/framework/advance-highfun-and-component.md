@@ -191,6 +191,7 @@ curryingAdd(1)(2); // 3
 ## 高阶组件
 
 **概念**: 高阶组件就是接收一个组件作为参数并返回一个新组件的函数
+
 **说明**: 高阶组件是一个函数,并不是组件
 
 例如:如下面的弹出框
@@ -414,7 +415,6 @@ color:#fff;
 
 ```js
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import './componentA.css';
 
 // 声明一个函数A组件,返回结果是一个类组件,并接收一个参数WrappendComponent
@@ -441,12 +441,42 @@ function A(WrappendComponent) {
 export default A; // 导出A函数组件
 ```
 
+::: tab componentA.css lazy
+
+```css
+.pop-box {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #de3636;
+  border-top: none;
+}
+
+.header {
+  display: flex;
+  height: 50px;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+  background: #de3636;
+  color: #fff;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+```
+
+:::
+
 :::
 ::: tab 组件 B lazy
 
 ```js
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import './componentB.css';
 import A from './componentA'; // 引入A函数
 
@@ -470,11 +500,32 @@ export default A(ComponentB); // 导出调用A函数,同时将B组件让A组件�
 ```
 
 :::
+::: tab componentB.css lazy
+
+```css
+.component-b {
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.component-b .list {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #de3636;
+  margin: 10px 0;
+  text-align: center;
+  line-height: 40px;
+}
+```
+
+:::
 ::: tab 组件 C lazy
 
 ```js
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import './componentC.css';
 import A from './componentA';
 
@@ -497,11 +548,35 @@ export default A(ComponentC);
 ```
 
 :::
+::: tab componentC.css lazy
+
+```css
+.component-c {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  width: 226px;
+  height: 400px;
+}
+
+.component-c .component-list {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #de3636;
+  text-align: center;
+  line-height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+```
+
+:::
 ::: tab App.js 中 lazy
 
 ```js
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 import ComponentB from './components/highfun-component-popcomponent/componentB';
 import ComponentC from './components/highfun-component-popcomponent/componentC';
@@ -527,6 +602,17 @@ export default App;
 ```
 
 :::
+::: tab App.css lazy
+
+```css
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+```
+
+:::
 ::: tab 说明 lazy
 从上面的示例代码中就可以看出 A 就是一个高阶组件
 
@@ -538,7 +624,7 @@ export default App;
 经过上面的代码编写:达到了组件复用的目的
 
 <div align="center">
-   <img class="medium-zoom lazy"  loading="lazy"  src="../images/framework-article-imgs/advance-highfun-and-component/highcomponent.png" alt="高阶组件" />
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179509239-01-highcomponent.png" alt="高阶组件" />
 </div>
 
 ## 为什么需要高阶组件
@@ -554,7 +640,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(Header);
 ## 高阶组件的实现
 
 ⒈ 如何编写高阶组件
+
 ⒉ 如何使用高阶组件
+
 ⒊ 如在高阶组件中实现传递参数
 
 ### 如何编写高阶组件
@@ -704,13 +792,13 @@ export default componentF;
 当使用装饰器模式时,在 vscode 中会有一警告的提示
 
 <div align="center">
-   <img class="medium-zoom lazy"  loading="lazy"  src="../images/framework-article-imgs/advance-highfun-and-component/decorator-warn.png" alt="警告提示" />
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179580308-02-decorator-warn.png" alt="警告提示" />
 </div>
 :::
 ::: tab 解决 vscode 警告问题 lazy
 在vscode中的设置中`tsconfig`启动`Experimental Decorators`就可以解决此警告
 <div align="center">
-   <img class="medium-zoom lazy"  loading="lazy"  src="../images/framework-article-imgs/advance-highfun-and-component/removwaring.png" alt="解除提示" />
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179629052-03-removwaring.png" alt="解除提示" />
 </div>
 :::
 ::::
@@ -806,6 +894,632 @@ export default componentF;
 
 若不进行配置,它是不支持装饰器模式的
 :::
+
+## React 中高阶组件的应用
+
+### 代理方式的高阶组件
+
+返回的新组件直接继承自`React.Component`类,新组件扮演的角色传入参数组件的一个代理,在新组件的 `render` 函数中,将被包裹组件渲染出来,除了高阶组件自己要做的工作,其余功能全都转手给了被包裹的组件
+
+**应用场景**
+
+:::: tabs type:border-card
+::: tab 应用 1-操做 props lazy
+高阶组件能够改变被包裹组件的`props`,可以对`props`进行任何操做,甚至可以在高阶组件上自定义事件,然后通过 `props` 传递下去
+如下 ComponentB 组件
+
+```js
+import React, { Component } from 'react';
+import './componentB.css';
+import A from './componentA';
+
+@A
+class ComponentB extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="component-b">
+          <div className="list">我的名字是: {this.props.name}</div>
+          <div className="list">我的网站是: {this.props.site}</div>
+          <div className="list">C</div>
+          <div className="list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ComponentB;
+```
+
+如下是调用组件`App.js`
+
+```js
+import React, { Component } from 'react';
+
+import ComponentB from './components/popcomponent/componentB';
+import ComponentC from './components/popcomponent/componentC';
+import ComponentF from './components/popcomponent/componentF';
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <ComponentB name={'川川'} site={'itclanCoder'} />
+        <ComponentC />
+        <ComponentF />
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+这个时候,你会发现在`componentB`组件中的`props`中拿不到`App.js`中传递过来的 name 和 site 属性,原因是,我们属性传递到高阶组件`componentA`里面,但是我们`componentA`组件没有把属性传给被包裹组件,这就导致被包裹的`componentB`组件拿不到`name`和`site`属性
+
+此时,需要在高阶组件`componentA`中进行改写,将传递到高阶组件属性解构出来并传递给被包裹的属性
+
+```js
+import React, { Component } from 'react';
+import './componentA.css';
+
+function A(WrappendComponent) {
+  return class ComponentA extends Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      return (
+        <div>
+          <div className="pop-box">
+            <div className="header">
+              <div>提示</div>
+              <div>X</div>
+            </div>
+            <div className="content">
+              // 要将传递到高阶组件的属性解构出来并传递给被包裹的组件
+              <WrappendComponent {...this.props} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+}
+
+export default A;
+```
+
+这样就可以达到给组件传递属性,渲染结果如下所示
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179697617-04-render-high-daili.png" alt="代理组件" />
+</div>
+同样可以给高阶组件新增或者修改属性
+
+```js
+import React, { Component } from 'react';
+import './componentA.css';
+
+function A(WrappendComponent) {
+  // 高阶组件A
+  return class ComponentA extends Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      // 如何通过高阶组件删除被包裹组件的属性,将属性解构出来
+      const { site, ...getattrs } = this.props; // 获取属性
+      return (
+        <div>
+          <div className="pop-box">
+            <div className="header">
+              <div>提示</div>
+              <div>X</div>
+            </div>
+            <div className="content">
+              // 也可以通过高阶组件给被包裹组件增加属性,例如这里的job
+              <WrappendComponent job={'搬砖'} {...getattrs} /> // 也可以设置属性
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+}
+
+export default A;
+```
+
+渲染出来的结果如下所示
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179747402-05-render-daili.png" alt="代理组件" />
+</div>
+:::
+::: tab 应用 2-访问 ref lazy
+如下是高阶组件componentA.js
+
+```js
+import React, { Component } from 'react';
+import './componentA.css';
+
+function A(WrappendComponent) {
+  return class ComponentA extends Component {
+    constructor(props) {
+      super(props);
+    }
+
+    constrolRef(instance) {
+      instance.getName && instance.getName();
+    }
+
+    render() {
+      // const { site, ...getattrs } = this.props;
+      return (
+        <div>
+          <div className="pop-box">
+            <div className="header">
+              <div>提示</div>
+              <div>X</div>
+            </div>
+            <div className="content">
+              <WrappendComponent
+                ref={this.constrolRef.bind(this)}
+                job={'搬砖'}
+                {...this.props}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+}
+
+export default A;
+```
+
+如下是`componentB`组件
+
+```js
+import React, { Component } from 'react';
+import './componentB.css';
+import A from './componentA';
+
+@A
+class ComponentB extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  getName() {
+    console.log('访问到了的');
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="component-b">
+          <div className="list">我的名字是: {this.props.name}</div>
+          <div className="list">我的网站是: {this.props.site}</div>
+          <div className="list">我的职业是: {this.props.job}</div>
+          <div className="list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ComponentB;
+```
+
+通过以上操作在 componentB 中就能够拿到 ref 的属性了的
+:::
+::: tab 应用 3-抽取状态 lazy
+假如我们的高阶组件包裹的都有同工的一个方法,例如:一个输入框,希望让这个输入框受控此时就要监听这个输入框的`input`
+
+每次输入值就使用一次`setState`让输入框内容也跟着改变,如果在各个组件中都自己实现了这个方法,那么就会造成很多重复的工作,此时可以利用高阶组件帮我们去抽离状态
+commponentA.js
+
+```js
+import React, { Component } from 'react';
+import './componentA.css';
+
+function A(WrappendComponent) {
+  return class ComponentA extends Component {
+    constructor(props) {
+      super(props);
+
+      // 把状态统一抽离到高阶组件里
+      this.state = {
+        value: '',
+      };
+    }
+
+    // 把方法统一抽离到高阶组件里面
+    handleInputChange = (e) => {
+      this.setState({
+        value: e.target.value,
+      });
+    };
+
+    constrolRef(instance) {
+      instance.getName && instance.getName();
+    }
+
+    render() {
+      const newProps = {
+        value: this.state.value,
+        onChange: this.handleInputChange,
+      };
+      return (
+        <div>
+          <div className="pop-box">
+            <div className="header">
+              <div>提示</div>
+              <div>X</div>
+            </div>
+            <div className="content">
+              {/* 把状态和方法传给被包裹组件 */}
+              <WrappendComponent {...newProps} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+}
+
+export default A;
+```
+
+componentB.js
+
+```js
+import React, { Component } from 'react';
+import './componentB.css';
+import A from './componentA';
+
+@A
+class ComponentB extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="component-b">
+          <div className="list">
+            <input {...this.props} />
+          </div>
+          <div className="list">我的名字是: {this.props.name}</div>
+          <div className="list">我的网站是: {this.props.site}</div>
+          <div className="list">我的职业是: {this.props.job}</div>
+          <div className="list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ComponentB;
+```
+
+这是组件 componentC.js
+
+```js
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import './componentC.css';
+import A from './componentA';
+
+class ComponentC extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          <input {...this.props} />
+        </div>
+        <div className="component-c">
+          <div className="component-list">A</div>
+          <div className="component-list">B</div>
+          <div className="component-list">C</div>
+          <div className="component-list">D</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default A(ComponentC);
+```
+
+如下是实例效果
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179796040-06-choulizhuangtai.png" alt="抽离状态" />
+</div>
+
+这样,我们就在高阶组件中把公共的状态给抽离出来了的,提高代码的复用性,相当于是把各个组件的状态放到公共组件管理了的
+
+然后通过 `props` 的方式传给了各个组件
+:::
+::: tab 包装组件 lazy
+所谓包装组件就是添加一些列的标签,让被包裹组件实现想要的样式
+
+```js
+import React, { Component } from 'react';
+
+function A(WrappendComponent) {
+  return class ComponentA extends Component {
+    render() {
+      const newProps = {
+        value: this.state.value,
+        onChange: this.handleInputChange,
+      };
+      return (
+        <div>
+          <div className="pop-box">
+            <div className="header">
+              <div>提示</div>
+              <div>X</div>
+            </div>
+            <div className="content">
+              {/* 把状态和方法传给被包裹组件 */}
+              <WrappendComponent {...newProps} />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+}
+
+export default A;
+```
+
+:::
+::::
+
+总得来说代理方式的高阶组件形式如下所示
+
+```js
+export default () => (wrappedComponent) =>
+  class A extends Component {
+    render() {
+      const { ...otherProps } = this.props;
+      return <WrappendComponent {...otherProps} />;
+    }
+  };
+```
+
+### 继承方式的高阶组件
+
+采用继承关联作为参数的组件和返回的组件,加入传入的参数`wrappedComponent`,那么返回的组件直接继承自`wrappedComponent`
+
+```js
+export default () => (wrappedComponent) =>
+  class A extends wrappedComponent {
+    render() {
+      const { user, ...otherProps } = this.props;
+      this.props = otherProps;
+      return super.render();
+    }
+  };
+```
+
+继承方式的高阶组件,继承方式是参数 wrappedComponent,而代理的高阶组件直接是 component,返回的结果也不同,代理高阶组件的返回值是参数的返回值,而继承方式是直接返回一个`super.render`
+
+⒈ 操作 props
+
+如下是`componentH`继承方式组件,定义了两个组价`componentI`与`componentJ`
+:::: tabs type:border-card
+::: tab 继承组件 componentH lazy
+
+```js
+import React from 'react';
+
+function componentH(wrappedComponent) {
+  return class NewComponent extends wrappedComponent {
+    render() {
+      const element = super.render();
+      const newStyle = {
+        color: element.type == 'div' ? 'red' : 'green',
+      };
+      const newProps = { ...this.props, style: newStyle };
+      return React.cloneElement(element, newProps, element.props.children);
+    }
+  };
+}
+
+export default componentH;
+```
+
+:::
+::: tab componentI 组件 lazy
+
+```js
+import React, { Component } from 'react';
+import componentH from './componentH';
+
+@componentH
+class componentI extends Component {
+  render() {
+    return <div>我是div元素</div>;
+  }
+}
+
+export default componentI;
+```
+
+:::
+::: tab componentJ 组件 lazy
+
+```js
+import React, { Component } from 'react';
+import componentH from './componentH';
+
+@componentH
+class componentJ extends Component {
+  render() {
+    return <span>我是span元素</span>;
+  }
+}
+
+export default componentJ;
+```
+
+:::
+::: tab 使用组件 lazy
+
+```js
+import React, { Component } from 'react';
+
+import ComponentI from './components/popcomponent/componentI';
+import ComponentJ from './components/popcomponent/componentJ';
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <ComponentI />
+        <ComponentJ />
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+:::
+::: tab 输出结果 lazy
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179844550-07-jichengcomponent.png" alt="继承组件" />
+</div>
+:::
+::: tab 说明
+通过以上例子发现,使用继承方式的高阶组件相比代理方式高阶组件,是一件非常麻烦的操作,除非需要通过传入的参数组件来判断性的去修改一些属性,否则就没有必要使用继承方式高阶组件去操作`props`
+:::
+
+::::
+
+⒉ 操纵生命周期函数
+
+继承方式的高阶组件需要修改生命周期函数直接在高阶组件内重写生命周期函数就可以了的,它会覆盖掉参数组件的生命周期函数
+
+**结论**
+
+使用代理方式的高阶组件要优于继承方式的高阶组件,所以应优先使用代理方式的高阶组件
+
+## 如何显示高阶组件名
+
+显示高阶组件名,是为了更好的 debug 调试,如果没有进行设置,只能通过查看源代码的方式
+
+无法在浏览器中非常的直观看到
+:::: tabs type:border-card
+::: tab 未设置高阶组件名 lazy
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606179903082-08-nodisplayname.png" alt="继承组件" />
+</div>
+:::
+::: tab 设置组件名称 lazy
+
+```js
+static displayName = `高阶组件名字(${getDisplayName(参数)})`
+
+function getDisplayName(参数) {
+  return 参数.displayName || 参数.name || 'Component默认名字'
+}
+```
+
+:::
+
+::: tab 完整示例 lazy
+
+```js
+import React, { Component } from 'react';
+import './componentA.css';
+
+function A(WrappendComponent) {
+  return class ComponentA extends Component {
+    constructor(props) {}
+
+    static displayName = `A(${getDisplayName(WrappendComponent)})`;
+
+    render() {
+      return (
+        <div>
+          <div className="pop-box">
+            <div className="header">
+              <div>提示</div>
+              <div>X</div>
+            </div>
+            <div className="content">
+              <WrappendComponent
+                ref={this.constrolRef.bind(this)}
+                job={'搬砖'}
+                {...this.props}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+}
+
+function getDisplayName(WrappendComponent) {
+  return WrappendComponent.displayName || WrappendComponent.name || 'Component';
+}
+
+export default A;
+```
+
+:::
+::: tab 示例结果 lazy
+
+<div align="center">
+   <img class="medium-zoom lazy"  loading="lazy"  src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/highfunComponents/1606180175258-09-setcomponent.png" alt="继承组件" />
+</div>
+:::
+
+::::
+
+## 结语
+
+本节主要讲述了 React 中的高阶函数以及高阶组件的使用,所谓高阶函数就是一个函数可以被当做参数传递,返回值也可以是函数作为输出
+
+而高阶组件,是以接收一个组件作为参数并返回一个新的组件(类)的函数,并有代理式高阶组件,继承式高阶组件
+
+以及装饰器的使用,显示高阶组件名称等
+
+如果您有对 React 中高阶组件以及高阶函数有疑问,欢迎下方留言,一起讨论
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <footer-FeedBack />

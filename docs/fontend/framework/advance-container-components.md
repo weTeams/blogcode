@@ -324,3 +324,4 @@ class TodoList extends Component {
 React 中,对于组件的职责功能划分,并没有严格的条条框框限定,这也并不是 React 独有的功能,在父组件中获取状态数据,而通过自定义属性 props 的方式,在组件内部通过 this.props 或者 props 进行接收,这样能够减少组件的状态分散在各处的
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

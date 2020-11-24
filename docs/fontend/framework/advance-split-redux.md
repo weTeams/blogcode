@@ -849,3 +849,4 @@ D:\公开课\2019\React进阶\lesson2
 
 当然这个代码仍然优化的地方,我们在后续当中,仍会进一步的拆分的
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

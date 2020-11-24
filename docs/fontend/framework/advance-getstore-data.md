@@ -265,3 +265,4 @@ this.state = store.getState(); // getState方法能够获取store中的所有状
 那么如何保持页面的组件与`store`数据同步更新?添加,删除列表怎么实现呢?
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

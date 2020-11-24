@@ -124,7 +124,7 @@ D: 334;
 
 请写出以下返回值
 
-```
+```js
 var a = '123',
     b = String('123'),
     c = new String('123');
@@ -196,11 +196,11 @@ fun2();
 答案:2, 2, fun2 is not a function
 :::
 
-## 第 7 题 for..of 与 for..in 的区别
+## 第 7 题 `for..of` 与 `for..in` 的区别
 
 请写出如下代码的结果
 
-```
+```js
 var arr = ['a', 'b', 'c'];
 Array.prototype.hello = 'd';
 for(item of arr) {

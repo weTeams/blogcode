@@ -72,7 +72,6 @@ follow us on **weixin:suibichuanji**
 
 </div>
 <footer-FeedBack />
-<global-showArticle />
 
 <style>
 

@@ -1066,3 +1066,4 @@ export default debounce;
 在实际的开发中,函数的节流与函数防抖也是用得比较频繁的,可见它的重要性不言而喻
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />

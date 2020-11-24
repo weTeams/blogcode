@@ -441,3 +441,4 @@ React的编程模式是函数式编程来解决用户界面渲染问题的,也�
 并且这种事件的监听,它只作用于原生 HTML 元素上,若放在自定义的组件上时,是不起作用的,具体解决办法,可以引入第三方 `styled-components` 模块的,后续单独拿一篇幅来说也不为过的,涉及到的知识还是挺多的
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />
