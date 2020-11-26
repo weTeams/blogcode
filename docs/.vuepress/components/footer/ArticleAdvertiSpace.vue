@@ -12,7 +12,7 @@
     <el-dialog
       title="提示"
       :visible.sync="centerDialogVisible"
-      closeonclickmodal="false"
+      close-on-click-modal="false"
       width="30%"
       center
       v-if="isDiaLog"

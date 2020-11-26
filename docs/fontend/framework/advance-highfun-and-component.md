@@ -441,6 +441,8 @@ function A(WrappendComponent) {
 export default A; // 导出A函数组件
 ```
 
+:::
+
 ::: tab componentA.css lazy
 
 ```css
@@ -469,8 +471,6 @@ export default A; // 导出A函数组件
   align-content: center;
 }
 ```
-
-:::
 
 :::
 ::: tab 组件 B lazy
@@ -648,6 +648,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Header);
 ### 如何编写高阶组件
 
 ⒈ 实现一个普通组件
+
 ⒉ 将一个普通组件使用函数包裹
 
 :::: tabs type:border-card

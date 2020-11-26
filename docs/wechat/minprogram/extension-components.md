@@ -9,8 +9,6 @@ autoGroup-1: 小程序实用案例
 
 <TOC />
 
-<Boxx/>
-
 ## 前言
 
 在之前[小程序-实现 tab-及多个列表选项切换](./tab-list-change),实现过 tab 选项切换,用 css3 的动画也能实现

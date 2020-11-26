@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 20:49:41
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-23 18:29:51
+ * @LastEditTime: 2020-11-25 15:00:40
  * @Description: 所有外部插件配置,入口在当前目录下config.js,本文件通过module.exports暴露,而在config.js中通过require方式引入
  * 集中管理外部插件配置
  *
@@ -51,12 +51,11 @@ const plugins = [
   'vuepress-plugin-baidu-autopush', // 注入百度url-auto-push脚本，以优化您的百度SEO网站
   'vuepress-plugin-smooth-scroll', // 你的 VuePress 站点中使用平滑滚动
   'vuepress-plugin-table-of-contents', // 为你的 VuePress 站点增加目录组件,支持在md和vue中写<TOC />,生成目录树
-  // 'vuepress-plugin-cat', // 编程猫
   'element-ui', // 添加element-ui组件
   'flowchart', // 流程图表
   'demo-code', // 在线写demo
+  'demo-block', // 在md中支持写vue,react,原生,以及jQ
   'vuepress-plugin-element-tabs', // tab切换
-  'vuepress-plugin-boxx', // 可以为博客文章自动随机添加名人名言或其他，可自定义样式和内容
   [
     '@vuepress/active-header-links',
     {

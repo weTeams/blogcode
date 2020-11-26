@@ -141,6 +141,8 @@ export default {
     img {
       border: 1px solid #3eaf7c;
       border-radius: 4px;
+      width: 30px;
+      height: 30px;
     }
   }
 }

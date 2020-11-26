@@ -8,7 +8,7 @@
  * @Date: 2020-06-02 07:29:20
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-18 00:31:40
+ * @LastEditTime: 2020-11-26 15:58:46
  * @Description:头部html中head需要引入的标签,当前文件通过module.exports导出,在config.js主入口文件中通过require导入
  */
 const baidu = require('./secretKey'); // 引入百度统计密钥ID
@@ -45,6 +45,14 @@ const headConfig = [
   ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
   ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
   ['meta', { name: 'baidu-site-verification', content: 'cShSMbDRHJ' }],
+  [
+    'meta',
+    {
+      name: 'baidu_union_verify',
+      content: '8ccc00b1cf50160356f8b28bbbc33984',
+    },
+  ],
+
   [
     'meta', // 移动端禁止用户缩放
     {
@@ -83,8 +91,11 @@ const headConfig = [
     `,
   ],
   ['link', { rel: 'stylesheet', href: '/css/style.css' }], // 这种方式也可以覆盖默认样式
-  ['script', { charset: 'utf-8', src: '/js/disable-user-zoom.js' }], // 移动端,禁止用户缩放,引入你写的js
-  ['script', { charset: 'utf-8', src: '/js/readmore.js' }],
+  [
+    'script',
+    { charset: 'utf-8', src: 'https://my.openwrite.cn/js/readmore.js' },
+  ],
+  ['script', { charset: 'utf-8', src: '/js/setglobal.js' }],
   [
     'script', // 插入谷歌广告
     {
