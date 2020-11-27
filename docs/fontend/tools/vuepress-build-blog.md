@@ -1529,6 +1529,7 @@ doc.itclan.cn
 * [逼格徽章在线生成地止](https://shields.io/)
 * [google 广告](https://www.google.com/intl/zh-CN_cn/adsense/start/)
 * [google-search](https://search.google.com/search-console)
+* [百度联盟](https://union.baidu.com/bqt/#/)
 * [carbonads](https://www.carbonads.net/)
 * [主题配色选择](https://vuepress-theme-yuu.netlify.app/)
 * [主题浅色与深色切换](https://tolking.github.io/vuepress-theme-default-prefers-color-scheme/zh/#%E9%85%8D%E7%BD%AE)

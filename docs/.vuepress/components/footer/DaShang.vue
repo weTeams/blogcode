@@ -1,6 +1,8 @@
 <template>
-  <div  class="shang-btn" @click="handleShangBtn('https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813')">
-       赞
+  <div  @click="handleShangBtn('https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813')">
+        <el-tooltip class="item" effect="dark" content="如果我的文章对您有任何帮助,欢迎您的任何金额打赏鼓励" placement="top">
+            <el-button class="shang-btn">赞</el-button>
+         </el-tooltip>
   </div>
 </template>
 
@@ -63,11 +65,10 @@ export default {
 }
 
 .shang-btn {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   padding: 10px;
-  line-height: 30px;
-  font-size: 16px;
+  font-size: 14px;
   display: inline-block;
   text-align: center;
   background: rgba(255, 37, 37, 0.6);

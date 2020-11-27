@@ -900,6 +900,8 @@ export default componentF;
 
 ### 代理方式的高阶组件
 
+通过被包裹的`React`组件来操作`props`
+
 返回的新组件直接继承自`React.Component`类,新组件扮演的角色传入参数组件的一个代理,在新组件的 `render` 函数中,将被包裹组件渲染出来,除了高阶组件自己要做的工作,其余功能全都转手给了被包裹的组件
 
 **应用场景**
@@ -1314,6 +1316,8 @@ export default () => (wrappedComponent) =>
 
 ### 继承方式的高阶组件
 
+继承于被包裹的React组件
+
 采用继承关联作为参数的组件和返回的组件,加入传入的参数`wrappedComponent`,那么返回的组件直接继承自`wrappedComponent`
 
 ```js
@@ -1436,6 +1440,8 @@ export default App;
 **结论**
 
 使用代理方式的高阶组件要优于继承方式的高阶组件,所以应优先使用代理方式的高阶组件
+
+它们的一个主要区别是:代理式高阶组件是继承自`React.component`而继承式高阶组件是继承自被包裹的`React`组件
 
 ## 如何显示高阶组件名
 

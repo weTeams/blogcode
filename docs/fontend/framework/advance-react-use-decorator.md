@@ -19,6 +19,10 @@ autoGroup-2: React进阶
 
 ## 为什么要使用装饰器模式?
 
+在设计模式中讲到优先使用对象而不是类继承,动态的给对象添加一些额外的属性或方法，相比与使用继承,装饰器模式更加灵活
+
+在 React 中,高阶组件是一个非常厉害的东西,它最大的特点就是能够:重用组件逻辑.达到精简代码能力
+
 ## 前提条件
 
 在使用这种装饰器方式时,需要对`create-react-app`做一些配置,它默认是不支持装饰器模式的,需要对项目做一些配置
@@ -72,6 +76,20 @@ create-react-app 脚手架中已经安装了 `@babel/plugin-proposal-decorators`
 }
 ```
 
+::: warning 注意
+如果使用的是 vscode, 可以在项目根目录下添加 jsconfig.json 文件来消除代码警告
+
+```js
+{
+  "compilerOptions": {
+    "experimentalDecorators": true
+  }
+}
+```
+
+或者在 vscode 中的设置中`tsconfig`启动`Experimental Decorators`就可以解决此警告
+:::
+
 ### 方式 2-安装 babel 插件在 babelrc 中配置
 
 在使用这种装饰器方式时,需要对`create-react-app`做一些配置,它默认是不支持装饰器模式的,你需要对项目做一些配置
@@ -95,24 +113,147 @@ cnpm install -D babel-preset-react-native-stage-0
 
 经过这么配置后,就可以使用装饰器了的
 
+### 未使用装饰器之前
+
+如下是`componentA.js`一个高阶组件
+
 ```js
 import React, { Component } from 'react';
-import componentD from './componentD'; // 引入函数componentD高阶组件
 
-@componentD // 直接用@符号+高阶组件componentD就可以了的
-class componentF extends Component {
+function A(WrappedComponent) {
+  // 函数接收一个组件为参数,并返回一个类组件,继承自Component
+  return class componentA extends Component {
+    render() {
+      return (
+        <div>
+          <WrappedComponent />
+        </div>
+      );
+    }
+  };
+}
+
+export default A;
+```
+
+如下`componentB.js`一个组件
+
+```js
+import React, { Component } from 'react';
+import A from './componentA'; // 引入高阶组件
+
+class componentB extends Component {
   render() {
-    return <div>我是组件F</div>;
+    return <div>我是组件B</div>;
   }
 }
 
-export default componentF;
+export default A(componentB); // 直接调用A,将组件componentB作为参数传入
 ```
+
+如果嵌套层次很多,会发现这种代码不优雅,很难理解,如果用装饰器,就解决了多层嵌套的问题
+
+### 使用装饰器
+
+在`componentB.js`组件中
+
+```js
+import React, { Component } from 'react';
+import A from './componentA'; // 引入高阶组件
+
+@A // 直接@+函数名就可以了的
+class componentB extends Component {
+  render() {
+    return <div>我是组件B</div>;
+  }
+}
+
+export default componentB; // 这里直接返回componentB组件
+```
+
+你可以给高阶组件添加静态属性,以及实例属性
+
+```js
+import React, { component } from 'react';
+
+function Foo(params) {
+  params.title = 'itclanCoder';
+  params.prototype.decorator =
+    'decorator是装饰器,即@+函数名,用来注释或修改类方法';
+}
+
+@Foo
+class ComponentA extends Component {
+  render() {
+    return (
+      <div>
+        <p>{ComponentA.title}</p>
+        <p>{ComponentA.decorator}</p>
+      </div>
+    );
+  }
+}
+```
+
+在调用装饰器的时候,可以往里面传入实参,则在函数需要`return`一个函数,`return` 返回的函数参数是类的本身,下面的 Foo 函数可以接受参数,这就等于可以修改装饰器的行为
+
+```js
+import React, { component } from 'react';
+
+function Foo(isAble) {
+  return function(target) {
+    target.isAble = isAble;
+  };
+}
+
+@Foo(false)
+class ComponentA extends Component {
+  render() {
+    return <div>{componentA.isAble} // false</div>;
+  }
+}
+```
+
+## TypeScript
+
+如果你的项目已经开始使用`TypeScript`,那我们只需要在`tsconfig.json`文件中的 `experimentalDecorators` 设置为 `true`
+
+就可以使用 ES7 新特性装饰器了
+
+## 解决 vscode 中不支持 decorator 语法警告问题
+
+在项目根目录创建`tsconfig.json`,设置如下所示
+
+```js
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "allowJs": true
+    }
+}
+```
+
+## 注意事项
+
+⒈ 装饰器对类的行为的改变时代码编译时发生的,而不是在运行时,这意味着,装饰器能在编译阶段运行代码,它本身就是编译时执行的函数
+
+⒉ 装饰器只能用于类和类的方法,不能用于函数,因为它存在函数提升
+
+## 结语
+
+高阶组件是函数,参数是组件并返回一个组件的函数,允许向一个现有的对象添加新的功能,增加静态属性于实例属性,又不改变结构,属于包装器模式的一种
+
+因为 Es7 中添加了 decorator 属性,使用`@函数名`表示,在编写 React 组件时,高阶组件是一个非常实用的东西
+
+或许不知不觉中,自己就已经实现了的,很久以前看过设计模式中的装饰器模式,一直云里雾里,不知道这个东西有什么用
+
+直到它在 React 中高阶组件还可以简写,这么用..
+
+如果您有关装饰器问题,欢迎给我留言,一起学习探讨
 
 ## 相关参考文档
 
 - [装饰器-decorator](https://es6.ruanyifeng.com/#docs/decorator)
 
-<!-- - [react 项目中使用装饰器 decorators 和 typeScript](https://blog.csdn.net/Charissa2017/article/details/105853351)
-- [在 create-react-app 中启用装饰器语法](https://juejin.cn/post/6844903800801771534)
-* [在你的React项目中使用Decorator 装饰器](https://alili.tech/archive/a280911b/) -->
+<footer-FooterLink :isShareLink="true" :isDaShang="true" />
+<footer-FeedBack />
