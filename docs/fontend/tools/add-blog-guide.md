@@ -36,6 +36,38 @@ title: 如何在 vuepress 上添加博客导流到公众号-即输入验证码�
 
 ⒌ [视频讲解-B 站 itclanCoder-Up 主-不定期更新获取新技能](https://space.bilibili.com/267957620)
 
+:::: el-collapse
+::: el-collapse-item title="1-添加博客 readmore 导流工具引言"
+<template>
+
+<div>
+    <iframe src="//player.bilibili.com/player.html?aid=585316174&bvid=BV1qz4y1y71H&cid=257271363&page=1" scrolling="no" border="0" width="100%" height="320" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+ </div>
+</template>
+:::
+::: el-collapse-item title="2-添加博客设置(上)"
+<template>
+<div>
+    <iframe src="//player.bilibili.com/player.html?aid=797764232&bvid=BV1Dy4y1z7Qt&cid=257272561&page=1" scrolling="no" border="0" width="100%" height="320" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+ </div>
+</template>
+:::
+::: el-collapse-item title="3-实现单篇文章隐藏与整站文章隐藏(中)"
+<template>
+<div>
+    <iframe src="//player.bilibili.com/player.html?aid=885262942&bvid=BV1VK4y1j7YD&cid=257272953&page=1" scrolling="no" border="0" frameborder="no" width="100%" height="320" framespacing="0" allowfullscreen="true"> </iframe>
+ </div>
+</template>
+:::
+::: el-collapse-item title="4-可能会遇到的一些问题-结束(下)"
+<template>
+<div>
+    <iframe src="//player.bilibili.com/player.html?aid=500295252&bvid=BV1dK411G7jW&cid=257273412&page=1" scrolling="no" border="0" frameborder="no" width="100%" height="320" framespacing="0" allowfullscreen="true"> </iframe>
+ </div>
+</template>
+:::
+::::
+
 ## 使用 openWrite 导流工具
 
 这里借用[openWrite 导流工具](https://my.openwrite.cn/)

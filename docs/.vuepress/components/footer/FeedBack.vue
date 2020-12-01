@@ -15,7 +15,7 @@
     name: "FeedBack",
     data() {
       return {
-        msgpath: `http://coder.itclan.cn${this.$route.path}`,
+        msgpath: `https://coder.itclan.cn${this.$route.path}`,
       }
     },
 
