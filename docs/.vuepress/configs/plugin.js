@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 20:49:41
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-27 18:12:19
+ * @LastEditTime: 2020-12-02 08:00:04
  * @Description: 所有外部插件配置,入口在当前目录下config.js,本文件通过module.exports暴露,而在config.js中通过require方式引入
  * 集中管理外部插件配置
  *
@@ -40,7 +40,7 @@
   ],
  */
 // const emojiMaps = require("./emojiMaps"); // 引入表情包
-const moment = require('moment'); // 引入moment.js  // 不要忘了安装 moment
+// const moment = require('moment'); // 引入moment.js  // 不要忘了安装 moment
 const secret = require('./secretKey'); // 引入密钥信息
 
 const plugins = [
@@ -65,14 +65,14 @@ const plugins = [
     },
   ],
 
-  [
-    {
-      transformer: (timestamp) => {
-        moment.locale('zh-cn');
-        return moment(timestamp).fromat('LLLL');
-      },
-    },
-  ],
+  // [
+  //   {
+  //     transformer: (timestamp) => {
+  //       moment.locale('zh-cn');
+  //       // return moment(timestamp).fromat('LLLL');
+  //     },
+  //   },
+  // ],
 
   [
     '@vuepress/medium-zoom',

@@ -2,6 +2,8 @@
 title: 目录
 ---
 
+<form-Search />
+
 ## 最新文章
 
 <TOC />
