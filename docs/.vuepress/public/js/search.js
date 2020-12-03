@@ -274,6 +274,32 @@ const type = {
       tip: '直接搜索岗位:如小程序云开发',
     },
   ],
+
+  services: [
+    {
+      name: '阿里云',
+      url: 'https://www.aliyun.com/',
+      tip: '国内使用众多的云服务器厂商',
+    },
+
+    {
+      name: '腾讯云',
+      url: 'https://cloud.tencent.com/',
+      tip: '国内云服务器-小程序-云开发-serverless先驱',
+    },
+
+    {
+      name: '西部数码',
+      url: 'https://www.west.cn/',
+      tip: '国内服务器厂商',
+    },
+
+    {
+      name: 'bluehost',
+      url: 'https://cn.bluehost.com/',
+      tip: 'wordpress建站-国外服务器厂商-无需备案',
+    },
+  ],
 };
 
 module.exports = type;

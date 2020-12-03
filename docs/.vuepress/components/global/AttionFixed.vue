@@ -11,37 +11,25 @@
     </div>
     <transition name="el-zoom-in-center">
       <div class="fixed-container" v-show="fixContainerShow">
-        <div class="public-code">
-          <h4>关注公众号</h4>
-          <p>一个走心,有温度的号,同千万同行一起交流学习</p>
-          <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/itclancoder-code.jpg" alt />
-        </div>
-        <div class="person-code">
-          <h4>加作者微信</h4>
-          <p>
-            扫二维码 备注
-            <span>加群</span>
-          </p>
-          <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/other-author-code.jpg" alt />
-        </div>
-        <div class="person-code">
-          <h4>扫码易购</h4>
-          <p>
-            福利推荐
-          </p>
-          <img class="medium-zoom lazy" loading="lazy" src="/images/rightBarImgs/xiaoshangdian.jpg" alt />
+        <div v-for="item in pcslides" :key="item.title">
+          <h4>{{ item.title }}</h4>
+          <p>{{ item.desc }}</p>
+          <img class="medium-zoom lazy" loading="lazy" :src="item.imgUrl" alt />
         </div>
       </div>
-     </transition>
+    </transition>
   </div>
 </template>
 <script>
+import rightbar from "../../public/js/ationfixed";
+
 export default {
   name: "AttionFixed",
   data() {
     return {
       onOff: true, // 默认开关,开启
-      fixContainerShow: true // 默认显示
+      fixContainerShow: true, // 默认显示
+      pcslides: rightbar.pcslides,
     };
   },
   methods: {
@@ -53,8 +41,8 @@ export default {
         this.fixContainerShow = true;
         this.onOff = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="stylus">
@@ -106,6 +94,7 @@ export default {
     background-color: #fff;
     box-shadow: -1px 0 2px 0.5px #42b983;
     color: #42b983;
+
     h4 {
       font-size: 15px;
       color: #42b983;

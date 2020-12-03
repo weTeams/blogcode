@@ -9,7 +9,7 @@ title: 目录
 <TOC />
 
 :::: el-collapse
-::: el-collapse-item title="离您最近的表示是最新的"
+::: el-collapse-item title="离您最近的表示是最新的-点击即可查看"
 
 - [置顶-广告位接受投放](../adverent/)
 - [如何在 React 中使用装饰器-即@修饰符](../fontend/framework/advance-react-use-decorator)

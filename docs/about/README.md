@@ -9,10 +9,10 @@ title: 关于作者
 <TOC :include-level="[2, 3]" />
 <!-- md中的语法 -->
 <!-- [[toc]] -->
-<Meting server="netease"
+<!-- <Meting server="netease"
         type="playlist"
         mid="2539599584"
-        :lrc-type="3"/>
+        :lrc-type="3"/> -->
         
 ## 关于作者
 

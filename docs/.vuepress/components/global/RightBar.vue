@@ -3,21 +3,21 @@
     <div class="right-bar-wrap" v-show="isRightBar">
       <div>
         <a href="#">
-          <img width="30" height="30" src="/images/rightBarImgs/up-arrow.png" alt="置顶" />
+          <img width="30" height="30" :src="rightbar.topImg" alt="置顶" />
         </a>
       </div>
       <div>
         <a href="/latestarticle/">
-          <img width="30" height="30" src="/images/rightBarImgs/new.png" alt="最新" />
+          <img width="30" height="30" :src="rightbar.newImg" alt="最新" />
         </a>
       </div>
-       <div>
+      <div>
         <img
           width="30"
           height="30"
           class="medium-zoom lazy"
           loading="lazy"
-          src="/images/rightBarImgs/xiaoshangdian.jpg"
+          :src="rightbar.buyImg"
           alt="小程序码"
         />
       </div>
@@ -27,7 +27,7 @@
           height="30"
           class="medium-zoom lazy"
           loading="lazy"
-          src="/images/rightBarImgs/other-author-code.jpg"
+          :src="rightbar.codeImg"
           alt="二维码"
         />
       </div>
@@ -37,19 +37,25 @@
           height="30"
           class="medium-zoom lazy"
           loading="lazy"
-          src="/images/rightBarImgs/itclancoder-code.jpg"
+          :src="rightbar.publicodeImg"
           alt="公众号"
         />
       </div>
-      <div  @click="handleAd('http://itclancoder.mikecrm.com/z1zXWvz')">
-          <img width="30" height="30" src="/images/rightBarImgs/ad.png" alt="广告" />
+      <div @click="handleAd('http://itclancoder.mikecrm.com/z1zXWvz')">
+        <img width="30" height="30" :src="rightbar.adImg" alt="广告" />
       </div>
-      <div @click="handleShange('https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813')">
-            <img width="30" height="30" src="/images/rightBarImgs/shang.png" alt="赏" />
+      <div
+        @click="
+          handleShange(
+            'https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813'
+          )
+        "
+      >
+        <img width="30" height="30" :src="rightbar.shangImg" alt="赏" />
       </div>
       <div>
         <a href="#bottom">
-          <img width="30" height="30" src="/images/rightBarImgs/down-arrow.png" alt="置底" />
+          <img width="30" height="30" :src="rightbar.bottomImg" alt="置底" />
         </a>
       </div>
     </div>
@@ -57,11 +63,13 @@
 </template>
 
 <script>
+import rightbar from "../../public/js/ationfixed";
 export default {
   name: "RightBar",
   data() {
     return {
-      isRightBar: false
+      isRightBar: false,
+      rightbar: rightbar.mobileslides,
     };
   },
   mounted() {
@@ -88,37 +96,41 @@ export default {
     },
 
     handleAd(openUrl) {
-       this.$dialog.confirm({
-          title: '温馨提示',
-          message: '亲,这里接受广告主投放,可前往了解一下',
-          theme: 'round-button',
+      this.$dialog
+        .confirm({
+          title: "温馨提示",
+          message: "亲,这里接受广告主投放,可前往了解一下",
+          theme: "round-button",
           showCancelButton: true,
           cancelButtonColor: "#ccc",
-        }).then(() => {
+        })
+        .then(() => {
           // on confirm 确认
-           window.open(openUrl, "_blank");
+          window.open(openUrl, "_blank");
         })
-         .catch(() => {
-           // on cancel // 取消
-        })
+        .catch(() => {
+          // on cancel // 取消
+        });
     },
 
     handleShange(openUrl) {
-       this.$dialog.confirm({
-          title: '打赏鼓励',
-          message: '如果您喜欢本站或本站内容对您有所帮助,您的支持就是我的动力',
-          theme: 'round-button',
+      this.$dialog
+        .confirm({
+          title: "打赏鼓励",
+          message: "如果您喜欢本站或本站内容对您有所帮助,您的支持就是我的动力",
+          theme: "round-button",
           showCancelButton: true,
           cancelButtonColor: "#ccc",
-        }).then(() => {
+        })
+        .then(() => {
           // on confirm 确认
-           window.open(openUrl, "_blank");
+          window.open(openUrl, "_blank");
         })
-         .catch(() => {
-           // on cancel // 取消
-        })
-    }
-  }
+        .catch(() => {
+          // on cancel // 取消
+        });
+    },
+  },
 };
 </script>
 

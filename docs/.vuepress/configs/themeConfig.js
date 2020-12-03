@@ -8,7 +8,7 @@
  * @Date: 2020-06-01 21:07:05
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-13 19:00:35
+ * @LastEditTime: 2020-12-03 10:08:27
  * @Description: 当前默认主题的一些配置参数,这些选项依赖于你正在使用的主题
  * 主入口在config.js中,本文件通过module.exports导出,在config.js中通过require的方式引入
  * 默认主题的一些配置参数选项,便于集中管理
@@ -33,7 +33,7 @@ const themeconfig = {
   nav: navConfig, // Es6语法,相同的值可以省略,头部导航栏配置,通过配置进行管理,nav.js后缀名可以省略
   // sidebar // 配置侧边栏,同上,.js后缀名可省略,统一方便管控
   yuu: {
-    defaultDarkTheme: true,
+    defaultDarkTheme: false,
   },
 };
 

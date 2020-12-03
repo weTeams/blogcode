@@ -9,6 +9,12 @@ friendLinkers = [
     url: 'https://geshanzsq.com/',
     desc: '专注于技术分享的博客平台',
   },
+
+  {
+    name: '平凡的你我',
+    url: 'https://reinness.com/',
+    desc: '理想成为大牛的小陈同学',
+  },
 ];
 function getFriendsLink() {
   return friendLinkers;

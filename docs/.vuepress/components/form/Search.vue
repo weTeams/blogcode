@@ -9,9 +9,7 @@
             :label="item.label"
             :name="item.name"
           >
-            <div
-              class="el-input el-input--medium el-input-group el-input-group--append el-input--prefix el-input--suffix"
-            >
+            <div>
               <el-input
                 :placeholder="item.tip"
                 clearable
@@ -36,9 +34,7 @@
             :label="item.label"
             :name="item.name"
           >
-            <div
-              class="el-input el-input--medium el-input-group el-input-group--append el-input--prefix el-input--suffix"
-            >
+            <div>
               <el-input
                 :placeholder="item.tip"
                 clearable
@@ -63,9 +59,7 @@
             :label="item.label"
             :name="item.name"
           >
-            <div
-              class="el-input el-input--medium el-input-group el-input-group--append el-input--prefix el-input--suffix"
-            >
+            <div>
               <el-input
                 :placeholder="item.tip"
                 clearable
@@ -90,9 +84,7 @@
             :label="item.label"
             :name="item.name"
           >
-            <div
-              class="el-input el-input--medium el-input-group el-input-group--append el-input--prefix el-input--suffix"
-            >
+            <div>
               <el-input
                 :placeholder="item.tip"
                 clearable
@@ -117,9 +109,7 @@
             :label="item.label"
             :name="item.name"
           >
-            <div
-              class="el-input el-input--medium el-input-group el-input-group--append el-input--prefix el-input--suffix"
-            >
+            <div>
               <el-input
                 :placeholder="item.tip"
                 clearable
@@ -139,11 +129,16 @@
       </el-tab-pane>
       <el-tab-pane label="服务器">
         <ul class="servers">
-          <li><a target="_blank" href="https://www.aliyun.com/">阿里云</a></li>
-          <li>
-            <a target="_blank" href="https://cloud.tencent.com/">腾讯云</a>
+          <li v-for="item in services" :key="index">
+            <el-tooltip
+              class="item"
+              effect="dark"
+              :content="item.tip"
+              placement="top"
+            >
+              <a target="_blank" :href="item.url">{{ item.name }}</a>
+            </el-tooltip>
           </li>
-          <li><a target="_blank" href="https://www.west.cn/">西部数码</a></li>
         </ul>
       </el-tab-pane>
     </el-tabs>
@@ -166,6 +161,7 @@ export default {
       communitys: types.communitys,
       codehosts: types.codehosts,
       jobwanteds: types.jobwanteds,
+      services: types.services,
       inputVal: "",
     };
   },
