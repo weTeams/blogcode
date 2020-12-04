@@ -15,7 +15,7 @@
           </li>
         </ul>
       </el-collapse-item>
-      <el-collapse-item title="申请友链" name="2">
+      <el-collapse-item title="申请友链" class="applay-link" name="2">
         <el-button
           @click="handleApplayLink('http://itclancoder.mikecrm.com/thAiyjC')"
           type="danger"
@@ -61,8 +61,13 @@ export default {
     }
   }
 
+  .applay-link {
+    text-align: center;
+  }
+
   .applay-link-btn {
-    margin: 28px 0 0 0;
+    display: inline-block;
+    margin-top: 25px;
   }
 }
 </style>

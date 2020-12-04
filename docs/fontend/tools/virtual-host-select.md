@@ -260,6 +260,10 @@ require_once ABSPATH . 'wp-settings.php';
   - siteOrigin Widgets Bundle
   - Duplicator:上传网站时需要用到的
   - wordpress reset 重置插件
+  - 安装防垃圾邮件插件:Akismet
+  - vantage 主题
+  - astra 主题
+  - elementor Page Builder:最先进的网页构建器
 
 ## Mamip 管理网站
 
@@ -393,7 +397,25 @@ www.itclan.cn
 
 ## 建站准备
 
-1. 域名/空间
+1. 域名/空间:domain(域名/网址),Hosting(主机服务器)+CMS(wordpress)
 2. 安装 wp 及主题
 3. 资料准备
-4. 建站顺序建议 -->
+4. 建站顺序建议
+
+## 安装幻灯片
+
+梅塔幻灯片插件
+
+## 安装页面建立插件
+
+## 添加页面和建立菜单
+
+## 编辑首页
+
+## 网站备份
+
+## 免费无版权网站
+
+1. unsplash.com
+2. pixabay.com
+ -->

@@ -21,7 +21,8 @@
                   slot="append"
                   @click="handleSearch(item.url)"
                   icon="el-icon-search"
-                ></el-button>
+                  >搜索</el-button
+                >
               </el-input>
             </div>
           </el-tab-pane>
@@ -46,7 +47,8 @@
                   slot="append"
                   @click="handleSearch(item.url)"
                   icon="el-icon-search"
-                ></el-button>
+                  >搜索</el-button
+                >
               </el-input>
             </div>
           </el-tab-pane>
@@ -71,7 +73,34 @@
                   slot="append"
                   @click="handleSearch(item.url)"
                   icon="el-icon-search"
-                ></el-button>
+                  >搜索</el-button
+                >
+              </el-input>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </el-tab-pane>
+      <el-tab-pane label="图片搜索">
+        <el-tabs v-model="pictureActiveName">
+          <el-tab-pane
+            v-for="item in pictureAssets"
+            :label="item.label"
+            :name="item.name"
+          >
+            <div>
+              <el-input
+                :placeholder="item.tip"
+                clearable
+                v-model="inputVal"
+                @input="handleInput"
+                @keypress.native.enter="enterSearch(item.url)"
+              >
+                <el-button
+                  slot="append"
+                  @click="handleSearch(item.url)"
+                  icon="el-icon-search"
+                  >搜索</el-button
+                >
               </el-input>
             </div>
           </el-tab-pane>
@@ -96,7 +125,8 @@
                   slot="append"
                   @click="handleSearch(item.url)"
                   icon="el-icon-search"
-                ></el-button>
+                  >搜索</el-button
+                >
               </el-input>
             </div>
           </el-tab-pane>
@@ -121,7 +151,8 @@
                   slot="append"
                   @click="handleSearch(item.url)"
                   icon="el-icon-search"
-                ></el-button>
+                  >搜索</el-button
+                >
               </el-input>
             </div>
           </el-tab-pane>
@@ -156,12 +187,14 @@ export default {
       communActiveName: "MDN",
       codeHostActiveName: "github",
       jobWantedActiveName: "lagou",
+      pictureActiveName: "unsplash",
       searchs: types.searchs,
       tools: types.tools,
       communitys: types.communitys,
       codehosts: types.codehosts,
       jobwanteds: types.jobwanteds,
       services: types.services,
+      pictureAssets: types.pictureAssets,
       inputVal: "",
     };
   },

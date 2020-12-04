@@ -203,6 +203,22 @@ const type = {
     },
   ],
 
+  pictureAssets: [
+    {
+      label: 'unsplash',
+      name: 'unsplash',
+      url: 'https://unsplash.com/s/photos/',
+      tip: '直接输入关键词(英文),在unsplash上搜索免费高质量图片',
+    },
+
+    {
+      label: 'pixabay',
+      name: 'pixabay',
+      url: 'https://pixabay.com/images/search/',
+      tip: '直接输入关键词(英文),在pixabay上搜索免费高质量图片',
+    },
+  ],
+
   codehosts: [
     {
       label: 'github',
@@ -289,15 +305,39 @@ const type = {
     },
 
     {
+      name: 'dnspod',
+      url: 'https://www.dnspod.cn/',
+      tip: 'dnspod-腾讯',
+    },
+
+    {
       name: '西部数码',
       url: 'https://www.west.cn/',
       tip: '国内服务器厂商',
     },
 
     {
+      name: 'cloudleft',
+      url: 'http://www.cloudleft.com/',
+      tip: '云左科技-海外服务器厂商',
+    },
+
+    {
       name: 'bluehost',
       url: 'https://cn.bluehost.com/',
       tip: 'wordpress建站-国外服务器厂商-无需备案',
+    },
+
+    {
+      name: 'us Domain center',
+      url: 'https://www.usdomaincenter.com/',
+      tip: '专门用wordpress(无脑式建站)-域名免费(需要域名和空间购买)',
+    },
+
+    {
+      name: 'siteGround',
+      url: 'https://siteground.com/',
+      tip: '国外服务器厂商',
     },
   ],
 };
