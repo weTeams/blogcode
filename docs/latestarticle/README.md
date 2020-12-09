@@ -12,8 +12,10 @@ title: 目录
 ::: el-collapse-item title="离您最近的表示是最新的-点击即可查看"
 
 - [置顶-广告位接受投放](../adverent/)
+- [如何将代码部署到腾讯云网站静态托管](./fontend/tools/tencent-cloud-website-host)
+- [如何迁移 coding 静态托管-将网站迁移到腾讯云管理](./fontend/tools/transfer-coding-to-tengxun)
 - [如何在 React 中使用装饰器-即@修饰符](../fontend/framework/advance-react-use-decorator)
-- [React 中高阶函数与高阶组件](../fontend/framework/advance-highfun-and-component)
+- [如何在 React 中使用高阶函数与高阶组件](../fontend/framework/advance-highfun-and-component)
 - [如何在 vuepress 中添加博客 readmore 导流工具-即输入验证码解锁全站文章](../fontend/tools/add-blog-guide)
 - [小程序-如何引入 echarts 图表-画圆形饼图](../wechat/minprogram/import-pie-echart)
 - [小程序-页面间如何进行传递数据(通信)](../wechat/minprogram/page-between-transdata)

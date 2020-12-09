@@ -2,7 +2,7 @@
   <div>
     <div class="carousel">
       <el-carousel trigger="click" height="150px">
-        <el-carousel-item  v-for="item in carouses" :key="item.id">
+        <el-carousel-item v-for="item in carouses" :key="item.id">
           <a :href="item.href" @click="handleItem">
             <img :src="item.imgUrl" />
           </a>
@@ -19,7 +19,9 @@
       <span>如需合作:请您联系站长,添加微信:suibichuanji,期待我们合作愉快</span>
       <span slot="footer" class="dialog-footer">
         <el-button @click="centerDialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+        <el-button type="primary" @click="centerDialogVisible = false"
+          >确 定</el-button
+        >
       </span>
     </el-dialog>
   </div>
@@ -33,34 +35,36 @@ export default {
     return {
       carouses: [
         {
-          imgUrl: "/images/ads.png",
+          imgUrl:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/AdvertiSpace/1607499392207-ads.png",
           text: "广告位招租",
           id: "1",
-          href: "javascript:;"
+          href: "javascript:;",
         },
 
         {
-          imgUrl: "/images/ads.png",
+          imgUrl:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/AdvertiSpace/1607499392207-ads.png",
           text: "广告位招租",
           id: "2",
-          target: '_blank',
-          href: "http://itclancoder.mikecrm.com/z1zXWvz"
-        }
+          target: "_blank",
+          href: "http://itclancoder.mikecrm.com/z1zXWvz",
+        },
       ],
-      centerDialogVisible: false
+      centerDialogVisible: false,
     };
   },
   methods: {
     handleItem() {
-      this.carouses.forEach(item => {
+      this.carouses.forEach((item) => {
         if (item.href != "javascript:;") {
           item.href = item.href;
         } else {
           this.centerDialogVisible = true;
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -106,6 +106,32 @@
           </el-tab-pane>
         </el-tabs>
       </el-tab-pane>
+      <el-tab-pane label="工具">
+        <el-tabs v-model="toolsActiveName">
+          <el-tab-pane
+            v-for="item in tools"
+            :label="item.label"
+            :name="item.name"
+          >
+            <div>
+              <el-input
+                :placeholder="item.tip"
+                clearable
+                v-model="inputVal"
+                @input="handleInput"
+                @keypress.native.enter="enterSearch(item.url)"
+              >
+                <el-button
+                  slot="append"
+                  @click="handleSearch(item.url)"
+                  icon="el-icon-search"
+                  >搜索</el-button
+                >
+              </el-input>
+            </div>
+          </el-tab-pane>
+        </el-tabs>
+      </el-tab-pane>
       <el-tab-pane label="代码托管">
         <el-tabs v-model="codeHostActiveName">
           <el-tab-pane
@@ -247,8 +273,10 @@ export default {
 .servers {
   display: flex;
   justify-content: start;
+  flex-wrap: wrap;
   li {
     margin-right: 20px;
+    overflow-x: auto;
   }
 }
 </style>

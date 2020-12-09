@@ -120,6 +120,7 @@ const type = {
       url: `https://github.com/search?q=`,
       tip: '在github内搜索',
     },
+
     {
       label: 'segmentfault',
       name: 'segmentfault',
@@ -219,12 +220,27 @@ const type = {
     },
   ],
 
+  designDraws: [
+    {
+      label: '可画canva',
+      name: 'canva',
+      url: 'canva.com/design/play?category=',
+      tip: '快速通过拖拉拽的方式制作漂亮的设计作品',
+    },
+  ],
+
   codehosts: [
     {
       label: 'github',
       name: 'github',
       url: `https://github.com/search?q=`,
       tip: '在github托管代码',
+    },
+    {
+      label: 'astra',
+      name: 'astralapp',
+      url: `https://astralapp.com/`,
+      tip: '管理github的star',
     },
     {
       label: 'gitee',

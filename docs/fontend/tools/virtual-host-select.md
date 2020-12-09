@@ -263,7 +263,28 @@ require_once ABSPATH . 'wp-settings.php';
   - 安装防垃圾邮件插件:Akismet
   - vantage 主题
   - astra 主题
+  - Futurio:主题 https://futuriowp.com/demos/
   - elementor Page Builder:最先进的网页构建器
+  - metaSlider:幻灯片插件
+  - lightbox:点击打开图片,可实现轮播
+  - contact form 7
+  - social media widget
+ * genesis Favicon Uploader:改变网站的图标
+ * Easy FancyBox:点击图片,显示
+ * Advanced Random Posts Widget
+ * Contextual Related Posts
+ * Better WordPress Recent Comments:这个插件能在指定位置显示访客评论
+ * Wp Super Cache:快速缓存你的网站,减少服务器资源占用
+ * Crayon Syntax Highlighter:如果你想要在网站上展示代码
+ * Wptouch Mobile Plugin
+ * PHP Code For Posts:手动插入相关文章的代码,该插件能在前端运行php代码,也支持小工具的短代码,让你为所欲为
+* divi
+* Ultra
+* Qubery
+
+## 设计
+
+canva.cn
 
 ## Mamip 管理网站
 
@@ -418,4 +439,17 @@ www.itclan.cn
 
 1. unsplash.com
 2. pixabay.com
+
+## 搞笑必备chrome插件
+
+1. 网页截图 注释 & 录屏
+2. Grammarly for chrome:纠词
+3. Google翻译
+4. Infinity新标签页
+5. 1password X - Password Mannager
+
+
+家居装修
+
+
  -->
