@@ -4,7 +4,13 @@
       <div v-for="item in typeData" class="item">
         <p class="list">
           <a :href="item.href" target="_blank" :title="item.text">
-            <img width="100" height="44" class="img-pic" :src="item.imgSrc" :alt="item.alt" />
+            <img
+              width="100"
+              height="44"
+              class="img-pic"
+              :src="item.imgSrc"
+              :alt="item.alt"
+            />
           </a>
         </p>
         <p class="text">{{ item.text }}</p>
@@ -21,60 +27,61 @@ export default {
       typeData: [
         {
           href: "https://mdnice.com/",
-          imgSrc: "/images/operateImgs/md-nice-logo.png",
+          imgSrc:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/operateImgs/1607599252052-md-nice-logo.png",
           alt: "mdnice",
-          text: "公众号/知乎/掘金/排版神器"
+          text: "公众号/知乎/掘金/排版神器",
         },
         {
           href: "https://markdown.lovejade.cn/",
-          imgSrc: "/images/operateImgs/md-pic.png",
+          imgSrc:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/operateImgs/1607599309075-md-pic.png",
           alt: "Arya-在线Markdown编辑器",
-          text: "Arya-在线Markdown编辑器"
+          text: "Arya-在线Markdown编辑器",
         },
 
         {
           href: "http://md.aclickall.com/",
-          imgSrc: "/images/operateImgs/markdwon-logo.png",
+          imgSrc:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/operateImgs/1607599366857-markdwon-logo.png",
           alt: "aclickall-markdwon编辑器",
-          text: "md2All在线markdown编辑器"
+          text: "md2All在线markdown编辑器",
         },
 
         {
           href: "https://www.wxmarkdown.com/",
-          imgSrc: "/images/operateImgs/wx-logo.png",
+          imgSrc:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/operateImgs/1607599400357-wx-logo.png",
           alt: "微信辅助工具",
-          text: "各种辅助工具-插入B站/腾讯视频/等"
-        },
-        {
-          href: "https://urlify.cn/",
-          imgSrc: "/images/operateImgs/short-url.png",
-          alt: "将长链接生成短链接",
-          text: "将长链接网址转为短网址"
+          text: "各种辅助工具-插入B站/腾讯视频/等",
         },
 
         {
           href: "https://imgkr.com/",
-          imgSrc: "/images/operateImgs/imgkr-logo.png",
+          imgSrc:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/operateImgs/1607599489916-imgkr-logo.png",
           alt: "免费图床",
-          text: "图壳图床-免费图床-好用"
+          text: "图壳图床-免费图床-好用",
         },
 
         {
           href: "https://www.picb.cc/",
-          imgSrc: "/images/operateImgs/picbcc-logo.png",
+          imgSrc:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/operateImgs/1607599524373-picbcc-logo.png",
           alt: "picb 免费图床",
-          text: "picb 免费图床"
+          text: "picb 免费图床",
         },
 
         {
           href: "https://imgchr.com/",
-          imgSrc: "/images/operateImgs/imgchr-logo.png",
+          imgSrc:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/operateImgs/1607599559331-imgchr-logo.png",
           alt: "imgchr 免费图床",
-          text: "imgchr 免费图床"
-        }
-      ]
+          text: "imgchr 免费图床",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

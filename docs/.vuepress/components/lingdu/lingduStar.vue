@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
     <div class="list" v-for="item in listData" wx:key="index">
-      <div class="list-name">{{item.list_name}}</div>
+      <div class="list-name">{{ item.list_name }}</div>
       <div class="list-content">
-        <div class="list-content-title">{{item.list_title}}</div>
-        <div>{{item.list_desc}}</div>
+        <div class="list-content-title">{{ item.list_title }}</div>
+        <div>{{ item.list_desc }}</div>
         <div>
           <audio controls class="media">
             <source :src="item.list_source" />
@@ -12,7 +12,13 @@
         </div>
       </div>
       <div>
-        <img class="medium-zoom lazy" :src="item.list_img" width="320" height="302" alt />
+        <img
+          class="medium-zoom lazy"
+          :src="item.list_img"
+          width="320"
+          height="302"
+          alt
+        />
       </div>
     </div>
   </div>
@@ -21,9 +27,6 @@
 <script>
 import chuanchuanSource from "../../public/images/lingduSource/renrenlingdu-source.mp3";
 import fanfanSource from "../../public/images/lingduSource/friendsfan.mp3";
-import starImgChuan from "../../public/images/lingdustar/chuanchuan.png";
-import starImgFan from "../../public/images/lingdustar/fanfan.png";
-import starImgTime from "../../public/images/lingdustar/timg.png";
 
 export default {
   name: "lingduStar",
@@ -36,7 +39,8 @@ export default {
           list_desc:
             "itclan.cn/coder.itclan.cn站长,itclanCoder公众号博主,人人领读公众号发起人,一个具有情怀的技匠,路上正追逐斜杠青年的践行者",
           list_source: chuanchuanSource,
-          list_img: starImgChuan
+          list_img:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/lingdustar/1607597279256-chuanchuan.png",
         },
 
         {
@@ -45,7 +49,8 @@ export default {
           list_desc:
             "全名K诗数十万听众,实习型声控主播,集颜值与才华并存的90后萌妹子一枚,专治各种不高兴",
           list_source: fanfanSource,
-          list_img: starImgFan
+          list_img:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/lingdustar/1607597335044-fanfan.png",
         },
         {
           list_name: "虚位以待",
@@ -53,11 +58,12 @@ export default {
           list_desc:
             "您的个人介绍将在这里尽情展示~快加入我们吧,期待下一个领读者就是你",
           list_source: chuanchuanSource,
-          list_img: starImgTime
-        }
-      ]
+          list_img:
+            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/lingdustar/1607597367275-timg.png",
+        },
+      ],
     };
-  }
+  },
 };
 </script>
 

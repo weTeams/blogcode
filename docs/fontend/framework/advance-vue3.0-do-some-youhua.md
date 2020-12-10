@@ -207,6 +207,7 @@ Vue3.0 中提供了一种新的 API,composition API，它有一个很好的机�
    <img class="medium-zoom lazy"  loading="lazy"  src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/568b0ced69f241d282cf2c512e4e5f33~tplv-k3u1fbpfcp-watermark.image" alt="OptionsAPI" />
    <img class="medium-zoom lazy"  loading="lazy"  src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d05799744a6341fd908ec03e5916d7b6~tplv-k3u1fbpfcp-watermark.image" alt="OptionsAPI" />
     <img class="medium-zoom lazy"  loading="lazy"  src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4146605abc9c4b638863e9a3f2f1b001~tplv-k3u1fbpfcp-watermark.image" alt="OptionsAPI" />
+   <p>图采用掘金的一位大佬</p> 
 </div>
 
 ⒉ 优化逻辑复用
@@ -218,7 +219,6 @@ const mousePositionMixin = {
   data() {
     return {
       x: 0,
-
       y: 0,
     };
   },
@@ -234,7 +234,6 @@ const mousePositionMixin = {
   methods: {
     update(e) {
       this.x = e.pageX;
-
       this.y = e.pageY;
     },
   },
@@ -247,23 +246,15 @@ export default mousePositionMixin;
 
 ```js
 <template>
-
   <div>
-
     Mouse position: x {{ x }} / y {{ y }}
-
   </div>
-
 </template>
-
 <script>
 
 import mousePositionMixin from './mouse'
-
 export default {
-
   mixins: [mousePositionMixin]
-
 }
 
 </script>
@@ -307,13 +298,9 @@ export default function useMousePosition() {
 
 ```js
 <template>
-
   <div>
-
     Mouse position: x {{ x }} / y {{ y }}
-
   </div>
-
 </template>
 
 <script>

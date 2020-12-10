@@ -33,6 +33,7 @@ title: 目录
 ### Vue3.0 核心源码
 
 - [Vue3.0 做了哪些优化](./advance-vue3.0-do-some-youhua)
+- [Vue3.0 组件的实现](./advance-vue3.0-implem-component)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <footer-FeedBack />
