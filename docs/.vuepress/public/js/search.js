@@ -243,6 +243,12 @@ const type = {
       tip: '管理github的star',
     },
     {
+      label: 'BitBucket',
+      name: 'BitBucket',
+      url: 'https://bitbucket.org/',
+      tip: '免费无限的代码托管-支持jira与Trello',
+    },
+    {
       label: 'gitee',
       name: 'gitee',
       url: `https://search.gitee.com/?skin=rec&type=repository&q=`,
@@ -354,6 +360,18 @@ const type = {
       name: 'siteGround',
       url: 'https://siteground.com/',
       tip: '国外服务器厂商',
+    },
+
+    {
+      name: 'netlify',
+      url: 'https://www.netlify.com/',
+      tip: '免费托管前端服务应用',
+    },
+
+    {
+      name: 'vercel',
+      url: 'https://vercel.com/',
+      tip: '免费托管前端服务应用',
     },
   ],
 };
