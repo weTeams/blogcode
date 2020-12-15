@@ -88,20 +88,33 @@ autoPrev: README
 ::: details 点击即可查看详情
 
 - VuePress
-  1. `Vue` 驱动,强大的插件生态系统,官方文档详细
-  2. 支持搜索引擎优化(SEO),单页面应用,按需加载,支持 PWA(无网络情况下照样能访问)
-  3. 为技术文档而优化内置 markdown 拓展
-  4. 在 md(Markdown) 中可以写 vue 组件,甚至写原生 `JS`,`Ts`,`HTML`,`CSS`,无任何压力阻碍,更加的灵活,可定制化
-  5. 可以自定义开发主题,任意修改,网站风格不在千篇一律
-  6. 支持 `PWA`(自动生成 Service Worker),像 app 应用一样添加到手机桌面上
-  7. 集成了 `Google Analytics` 集成,也支持百度统计
-  8. 基于 git 的最后上传更新时间
-  9. 支持国际化,多语言,只需配置一下就好
-  10. 响应式布局,手机端,PC 端网站友好的用户体验
-  11. 远不止于用来搭建博客,可以开发公司企业官网等网站应用,也可结合`boostrap`,`Element UI`等技术进行二次开发,构建更复杂的应用
+
+  ⒈ `Vue` 驱动,强大的插件生态系统,官方文档详细
+
+  ⒉ 支持搜索引擎优化(SEO),单页面应用,按需加载,支持 PWA(无网络情况下照样能访问)
+
+  ⒊ 为技术文档而优化内置 markdown 拓展
+
+  ⒋ 在 md(Markdown) 中可以写 vue 组件,甚至写原生 `JS`,`Ts`,`HTML`,`CSS`,无任何压力阻碍,更加的灵活,可定制化
+
+  ⒌ 可以自定义开发主题,任意修改,网站风格不在千篇一律
+
+  ⒍ 支持 `PWA`(自动生成 Service Worker),像 app 应用一样添加到手机桌面上
+
+  ⒎ 集成了 `Google Analytics` 集成,也支持百度统计
+
+  ⒏ 基于 git 的最后上传更新时间
+
+  ⒐. 支持国际化,多语言,只需配置一下就好
+
+  ⒑ 响应式布局,手机端,PC 端网站友好的用户体验
+
+  ⒒ 远不止于用来搭建博客,可以开发公司企业官网等网站应用,也可结合`boostrap`,`Element UI`等技术进行二次开发,构建更复杂的应用
+
   - ....
   - [vuepress 官方文档](https://www.vuepress.cn/)
-    :::
+
+:::
 
 ::: warning 注意
 
@@ -163,10 +176,13 @@ yarn global add vuepress # 或者:npm install -g vuepress 或者cnpm install -g 
 
 ::: warning 警告
 
-1. 若是使用 yarn 安装,需要先全局安装 `yarn(npm install -g yarn`),[yarn 使用官方文档](https://yarn.bootcss.com/)
-2. 若是使用 npm 全局安装,请确保你的 `Node.js 版本 >= 8`
-3. 如果你的现有项目依赖了 webpack 3.x，推荐使用 `Yarn`而不是`npm` 来安装 `VuePress。`因为在这种情形下，npm 会生成错误的依赖树
-   :::
+⒈ 若是使用 yarn 安装,需要先全局安装 `yarn(npm install -g yarn`),[yarn 使用官方文档](https://yarn.bootcss.com/)
+
+⒉ 若是使用 npm 全局安装,请确保你的 `Node.js 版本 >= 8`
+
+⒊ 如果你的现有项目依赖了 webpack 3.x，推荐使用 `Yarn`而不是`npm` 来安装 `VuePress。`因为在这种情形下，npm 会生成错误的依赖树
+
+:::
 
 ## 初始化项目
 
@@ -185,7 +201,7 @@ yarn init -y 或 npm init -y
 
 经过`yarn init -y`后,会生成一个`package.json`文件,内容如下所示
 
-```
+```js
 {
   "name": "itclan",
   "version": "1.0.0",
@@ -196,7 +212,7 @@ yarn init -y 或 npm init -y
 
 紧接着，在 `package.json`里加一些脚本,配置启动命令
 
-```
+```js
 "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
@@ -208,7 +224,7 @@ yarn init -y 或 npm init -y
 :::
 这个也可以简化成:
 
-```
+```js
 "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs"
@@ -226,13 +242,13 @@ yarn init -y 或 npm init -y
 
   在接着,创建`docs`目录, 这个`docs文件夹`主要用于放置我们写的`.md`类型的文章以及`.vuepress`相关的配置,这个文件夹的名字你可以任意,与你启动项目和构建项目时的配置保持一致就可以了的
 
-```
+```js
 mkdir docs
 ```
 
 进入`docs`文件夹中使用`mkdir`命令创建`.vuepress`文件夹,注意这个文件夹的名字时固定的,不要随便改变
 
-```
+```js
 cd docs
 mkdir .vuepress
 ```
@@ -269,8 +285,8 @@ module.exports = {
 ```
 
 如果这时在`itclan`根目录下的终端下,运行`npm run docs:dev`或者`yarn docs:dev`,会出现页面 404 页面,如下所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/start-project.png" alt="启动页面" />
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/404-page.png" alt="404页面" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607994240666-01-start-project.png" alt="启动页面" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607994330473-02-404-page.png" alt="404页面" />
 
 这是因为`vuepress`默认打开的是`docs` 下的 `README.md` 文件, 由于你没有创建,所以找到的是`vuepress` 默认提供的 `404`页面
 | 文件的相对路径 | 页面路由地址 |
@@ -280,7 +296,7 @@ module.exports = {
 | /config.md | /config.html |
 在`VuePress`中`README.md`文件,你可以把它视为`xxx.vue`文件,md 文件中既可以写`js`,`css`,`html`,如果你发现页面 404,排除下路由下是不是没有添加`README.md`文件的
 在`docs`目录下创建`README.md`文件, 再次`npm run dev`,就可以看到运行起来的效果, 如下图所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/start-success.png" alt="启动页面" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607994404436-03-start-success.png" alt="启动页面" />
 当然,您现在看到的页面是一片空白,那是因为`docs`根目录下的`README.md`中没有任何内容,但现在至少不是 404 了,离曙光又近了一步
 
 ## 设置封面启动页
@@ -289,7 +305,7 @@ module.exports = {
 
 在`vuepress`默认的主题中提供了一个首页（`Homepage`）的布局 (用于您网站的主页)。如果您想要使用它，需要在您项目的根级中`README.md`的`YAML front matter`指定 `home: true`,如下所示
 
-```
+```js
 ---
 home: true
 heroImage: /images/itclancoder.jpeg
@@ -309,23 +325,25 @@ footer: MIT Licensed | Copyright © 2020-present 随笔川迹
 ```
 
 效果如下所示:
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/home-config.png" alt="配置首页页面" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607994618811-04-home-config.png" alt="配置首页页面" />
 当然,您现在看到,网站上有图片没有正常的显示,那是因为没有添加图片造成的,网站上一些图片,logo 等静态资源可以放到`.vuepress`目录下的一个`public`目录下的
 
 这个`public`是自己创建的,`vuepress`并不会自动帮你生成,在`/.vuepress/public/images`中放入您想要的图片就可以了的
 
 ::: warning 警告
 
-1. 这个 public 目录文件夹的名称是固定的,就像`docs`目录下的`config.js`一样,名称是固定的
-2. 在引入图片时,直接`/所要引入的图片路径`目录就行,不用带`public`,它会自动的去找`public`下的静态资源文件
-3. `vuepress`中所有的**图片文件名,以及目录名不要带有中文**,应该使用英文状态下的格式,否则编译就报错,在您以后用 md 写文章时,同样引入图片时,图片的后缀名都不能带有中文字符
-   :::
+⒈ 这个 public 目录文件夹的名称是固定的,就像`docs`目录下的`config.js`一样,名称是固定的
+
+⒉ 在引入图片时,直接`/所要引入的图片路径`目录就行,不用带`public`,它会自动的去找`public`下的静态资源文件
+
+⒊ `vuepress`中所有的**图片文件名,以及目录名不要带有中文**,应该使用英文状态下的格式,否则编译就报错,在您以后用 md 写文章时,同样引入图片时,图片的后缀名都不能带有中文字符
+:::
 
 ## 配置导航栏
 
 导航栏中有页面标题、搜索框、 导航栏链接、多语言切换、仓库链接，它们都是可以直接通过配置出来的,在 config.js 中添加如下配置
 
-```
+```js
 // .vuepress/config.js
 module.exports = {
   title: 'itclanCoder网站',
@@ -349,11 +367,12 @@ module.exports = {
 :::
 
 配置完后,如下所示:
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/home.png" alt="首页" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607994760866-05-home.png" alt="首页" />
+
 当然,你如果现在点击导航栏,会发现是 404 页面,那是因为导航路由下面没有`README.md`文件
 目录树结构如下所示
 
-```
+```js
 ├─package.json
 ├─docs
 |  ├─README.md
@@ -374,12 +393,13 @@ module.exports = {
 ```
 
 与您的电脑上打开的是一一对应的,如下所示
-<img class="medium-zoom" src="../images/tools-article-imgs/vuepress-build-blog/nav-file.png" alt="文件结构" />
+<img class="medium-zoom" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607994898937-06-nav-file.png" alt="文件结构" />
+
 其中导航栏的链接分为三种:一级 nav,链接,二级下拉菜单,带标题的多级分类菜单
 
 - 一级 nav,直接带路由即可
 
-```
+```js
 themeConfig: {
    nav: [
      { text: '首页', link: '/' },
@@ -390,11 +410,12 @@ themeConfig: {
 ```
 
 配置完如下所示:
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/level-1-nav.png" alt="一级路由结构" />
+
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995030126-07-level-1-nav.png" alt="一级路由结构" />
 
 - 如果想 nav 直接是链接,即路由直接是链接地止即可
 
-```
+```js
 themeConfig: {
    nav: [
      { text: '首页', link: '/' },
@@ -406,7 +427,7 @@ themeConfig: {
 ```
 
 配置完,如下所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/nav-link.png" alt="导航栏链接" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995189075-08-nav-link.png" alt="导航栏链接" />
 
 - 如果想 nav 二级下拉菜单,如下配置,`link`的属性值带有链接,会直接是链接,若不是那就是路由,在`vuepress`中提供了一个`items`属性,配置二级导航如下所示
 
@@ -424,11 +445,11 @@ themeConfig:{
 ```
 
 配置完后,如下所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/leavel2-nav.png" alt="二级菜单导航" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995250844-09-leavel2-nav.png" alt="二级菜单导航" />
 
 - 如果你想要二级菜单带有标题,分类的菜单形式,如下配置
 
-```
+```js
 themeConfig:{
   nav: [{text: "主页", link: "/"      },
         { text: '网站', link: 'http://doc.itclan.cn' }, // 后面直接是链接
@@ -472,7 +493,7 @@ themeConfig:{
 ```
 
 配置完后,结果如下所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/leavel-3-nav.png" alt="带标题级菜单导航" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995356209-10-leavel-3-nav.png" alt="带标题级菜单导航" />
 你可以按照这个类似的结构,无限制的配置下去
 
 光有 nav 导航是不够的,下面来配置一下侧边栏,怎么配置侧边栏才是重中之重
@@ -483,36 +504,37 @@ themeConfig:{
 
 如果你希望自动生成当前页面标题的侧边栏, 可以在 config.js 中配置来进行配置启动
 
-```
+```js
 // .vuepress/config.js
 module.exports = {
-  themeConfig:{
+  themeConfig: {
     sidebar: 'auto',
-  }
-}
+  },
+};
 ```
 
 - [侧边栏配置地止](https://www.vuepress.cn/theme/default-theme-config.html#%E4%BE%A7%E8%BE%B9%E6%A0%8F)
-  ::: warning 警告
-  默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，您可以通过 `themeConfig.sidebarDepth` 来修改它的行为。
+
+::: warning 警告
+默认情况下，侧边栏会自动地显示由当前页面的标题（headers）组成的链接，并按照页面本身的结构进行嵌套，您可以通过 `themeConfig.sidebarDepth` 来修改它的行为。
 
 默认的深度是 1，它将提取到 h2 的标题，设置成 0 将会禁用标题（headers）链接，同时，最大的深度为 2，它将同时提取 h2 和 h3 标题,如果想要额外拓展,支持 h1~h6,在 markdown 配置拓展中`markdown.extractHeaders`,如下所示
 
-```
+```js
 module.exports = {
   markdown: {
-    extractHeaders: [ 'h2', 'h3', 'h4','h5','h6' ]
-  }
-}
+    extractHeaders: ['h2', 'h3', 'h4', 'h5', 'h6'],
+  },
+};
 ```
 
 :::
 
 ### 展示每个页面的侧边栏
 
-如果您希望为不同的页面组显示不同的侧边栏, 就和官网一样, 点击导航中的哪个 nav,对应就显示对应的的侧边栏,目前目录有 fontend \ interview \ minprogram 等, 这些目录下都存放着多个 md 文件,就是我们写的具体的文章
+如果您希望为不同的页面组显示不同的侧边栏, 就和官网一样, 点击导航中的哪个 nav,对应就显示对应的的侧边栏,目前目录有 `fontend \ interview \ minprogram` 等, 这些目录下都存放着多个 md 文件,就是我们写的具体的文章
 
-```
+```js
 module.exports = {
   themeConfig:{
     sidebar:{
@@ -539,10 +561,11 @@ module.exports = {
 ```
 
 配置完后,具体效果如下所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/slide-config.png" alt="配置侧边栏" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995462785-11-slide-config.png" alt="配置侧边栏" />
+
 目前的,项目目录结构如下所示
 
-```
+```js
 ├─package.json
 ├─docs
 |  ├─README.md
@@ -574,7 +597,7 @@ module.exports = {
 
 在拆分之前,你可以了解下`CommonjS`中模块化导入导出的规则就可以了,这里你只需要知道,在一个文件中导入一个文件使用`require`方式,而导出一个对象,变量,使用的是`module.exports`就可以了的
 
-```
+```js
 ├─config.js         // 主要入口配置文件
 ├─nav.js            // 导航栏配置
 ├─sidebar.js       // 侧边栏配置
@@ -587,31 +610,31 @@ module.exports = {
 
 具体如下示例:`nav.js`
 
-```
+```js
 const navs = [
   {
-    text: "首页",
-    link: "/"
+    text: '首页',
+    link: '/',
   },
 
   {
-    text: "前端",
+    text: '前端',
     items: [
-      { text: "CSS", link: "/fontend/css/" },
-      { text: "JavaScript", link: "/fontend/js/" },
-      { text: "开发工具", link: "/fontend/tools/" }
-    ]
+      { text: 'CSS', link: '/fontend/css/' },
+      { text: 'JavaScript', link: '/fontend/js/' },
+      { text: '开发工具', link: '/fontend/tools/' },
+    ],
   },
 
   {
-    text: "小程序",
+    text: '小程序',
     items: [
-      { text: "微信小程序", link: "/wechat/minprogram/" },
-      { text: "云开发", link: "/wechat/cloudev/" }
-    ]
+      { text: '微信小程序', link: '/wechat/minprogram/' },
+      { text: '云开发', link: '/wechat/cloudev/' },
+    ],
   },
 
-  { text: "关于我", link: "/about/" }
+  { text: '关于我', link: '/about/' },
 ];
 
 module.exports = navs;
@@ -619,7 +642,7 @@ module.exports = navs;
 
 而在`config.js`中,通过`require`的方式引入即可,如下所示
 
-```
+```js
 const sidebar =  require("./nav");  // 引入sidebar,后缀名xx.js可以省略
 module.exports = {
   themeConfig:{
@@ -630,6 +653,7 @@ module.exports = {
 其他,`head`,`plugin`,配置也是如此,代码与之前是没有任何改变的,只不过是对`config.js`进行了分割,进行了模块化管理的,导航的管理导航,侧边栏的管理侧边栏
 
 对于更多详细的默认主题的相关配置,可以查看官方文档:[默认主题相关配置](https://www.vuepress.cn/theme/default-theme-config.html),有首页,导航栏,侧边栏,搜索框,最后更新时间等配置,学会了一个配置,其他配置照着文档配置就好了的
+
 ::: tip 配置提醒
 每尝试配置一个 API,记得在命令行终端就重新启动`npm run docs:dev`一下,在浏览器查看一下配置效果,目前 vuepress 的热更新存在一些问题(以后官方肯定会修复),在对 vuepress 不是特别熟练的情况下,不要配置了很多选项和插件,到最后才来启动,一旦遇到一些奇葩的问题,报错,你就搞不清楚是在哪一个环节出现问题的
 :::
@@ -645,26 +669,28 @@ module.exports = {
 
 配置内置的全局 UI,首先需要在当前项目下使用`npm`或者`yarn`安装插件
 
-```
+```js
 // 回到顶部插件,推荐使用yarn安装插件,它安装比npm更快,不熟悉的,可以去了解下yarn的,包管理工具
 yarn add -D @vuepress/plugin-back-to-top
 ```
 
 然后在,config.js 中进行配置:
 
-```
+```js
 module.exports = {
-  plugins: ['@vuepress/back-to-top']
-}
+  plugins: ['@vuepress/back-to-top'],
+};
 ```
 
 ::: warning 警告
 
-1. 安装插件的版本需要与 vuepress 的版本保持一致,如果低版本的`back-to-top`,会出现不了,其他插件配置也是如此
-2. 凡是带有@开头的插件,都是官方维护的插件,需要与当前项目的 vuepress 版本保持一致
-3. 非@开头的插件,则是社区或者个人开发的插件,vuepress 版本每个一段时间,或许都会升级,以你自己的为准
+⒈ 安装插件的版本需要与 vuepress 的版本保持一致,如果低版本的`back-to-top`,会出现不了,其他插件配置也是如此
 
-```
+⒉ 凡是带有@开头的插件,都是官方维护的插件,需要与当前项目的 vuepress 版本保持一致
+
+⒊ 非@开头的插件,则是社区或者个人开发的插件,vuepress 版本每个一段时间,或许都会升级,以你自己的为准
+
+```js
 // 在package.json中就可以看到安装过的一些插件版本情况
 "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.5.0",
@@ -680,38 +706,37 @@ module.exports = {
 
 在`vuepress`提供的插件系统中,可以对插件进行一些额外的配置,进行控制,分别提供了`Babel 式`,`对象式`
 
-```
+```js
 module.exports = {
   plugins: [
-         [
-            "@vuepress/medium-zoom",
-            {
-              selector: ".medium-zoom", // 指定含有medium-zoom的类缩放,后面这个类名可自定义,markdown中的img的class类保持一致就可以了的,没有指明的图片类将不支持缩放
-              delay: 1000, // 延迟1秒
-              options: {
-                margin: 24,
-                scrollOffset: 0
-              }
-            }
+    [
+      '@vuepress/medium-zoom',
+      {
+        selector: '.medium-zoom', // 指定含有medium-zoom的类缩放,后面这个类名可自定义,markdown中的img的class类保持一致就可以了的,没有指明的图片类将不支持缩放
+        delay: 1000, // 延迟1秒
+        options: {
+          margin: 24,
+          scrollOffset: 0,
+        },
+      },
+    ],
+    [
+      'vuepress-plugin-auto-sidebar',
+      {
+        titleMode: 'titlecase', // 标题模式
+        collapsable: true, // 设置为true,开启折叠
+        // sidebarDepth: 0,    // 标题的深度
+        collapseList: [
+          // 折叠的路由列表
+          // "/frontend/css/"
         ],
-        [
-          "vuepress-plugin-auto-sidebar",
-            {
-              titleMode: "titlecase", // 标题模式
-              collapsable: true,     // 设置为true,开启折叠
-              // sidebarDepth: 0,    // 标题的深度
-              collapseList: [
-                // 折叠的路由列表
-                // "/frontend/css/"
-              ],
-              uncollapseList: [
-                // 不折叠的路由列表
-              ]
-            }
-      ],
-
-  ]
-}
+        uncollapseList: [
+          // 不折叠的路由列表
+        ],
+      },
+    ],
+  ],
+};
 ```
 
 有时候,当你看到网上一些博客,配置的选项,五花八门,各有不一的,其实无外乎就两种,`babel`与`对象式的`,两种方式都可以,取决于你自己,不过我个人比较倾向于`babel`式风格的,因为每个插件都集中在一块配置,内聚性高,后续修改或者删除之类的也容易,不容易出错,保持插件时可插播式的,互不干扰
@@ -724,25 +749,25 @@ module.exports = {
 
 ### 安装-pwa
 
-```
+```js
 yarn add -D @vuepress/plugin-pwa
 # OR npm install -D @vuepress/plugin-pwa
 ```
 
 在 config.js 中进行配置:
 
-```
+```js
 module.exports = {
   plugins: [
-     [
-      '@vuepress/pwa', {
-         serviceWorker: true,
-         updatePopup: true
-       }
-     ]
-  ]
-}
-
+    [
+      '@vuepress/pwa',
+      {
+        serviceWorker: true,
+        updatePopup: true,
+      },
+    ],
+  ],
+};
 ```
 
 ::: tip 注意
@@ -751,10 +776,12 @@ module.exports = {
 
 - 在`.vuepress/public` 提供 `Manifest` 和 `icons`
 - 在 `.vuepress/config.js`添加正确的 `head links`
-  :::
-  在`config.js`的`head`配置项中
 
-```
+:::
+
+在`config.js`的`head`配置项中
+
+```js
 // 配置
 module.exports = {
   head: [
@@ -762,13 +789,12 @@ module.exports = {
     //增加manifest.json
     ['link', { rel: 'manifest', href: '/manifest.json' }],
   ],
-}
-
+};
 ```
 
 `manifest.json`文件
 
-```
+```js
 {
   "name": "itclanCoder",
   "short_name": "itclanCoder",
@@ -818,16 +844,18 @@ module.exports = {
 
 ### 插件 Valine
 
-- 一款快速、简洁且高效的无后端评论系统
-- 官方文档:[valine](https://valine.js.org/)
+⒈ 一款快速、简洁且高效的无后端评论系统
+
+⒉ 官方文档:[valine](https://valine.js.org/)
 
 在使用 valine 之前,先前往[leancloud 注册账号](https://www.leancloud.cn/)
+
 然后创建应用, 获取`APP ID`和`APP KEY`
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/leancloud-get-appid-appkey.png" alt="获取appId" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995769714-12-leancloud-get-appid-appkey.png" alt="获取appId" />
 
 ### 安装-vuepress-plugin-comment
 
-```
+```js
 yarn add -D  vuepress-plugin-comment
 ```
 
@@ -835,7 +863,7 @@ yarn add -D  vuepress-plugin-comment
 
 在`.vuepress`下的`config.js`的`plugin`插件选项中进行配置
 
-```
+```js
 module.exports = {
   plugins: [
     [
@@ -846,23 +874,23 @@ module.exports = {
         options: {
           el: '#valine-vuepress-comment',
           appId: 'Your own appId',
-          appKey: 'Your own appKey'
-        }
-      }
-    ]
-  ]
-}
+          appKey: 'Your own appKey',
+        },
+      },
+    ],
+  ],
+};
 ```
 
 其中`appid`和`appkey`为你创建的应用的`APP ID` 和`APP Key`，把刚才获取到的秘钥复制过来即可,经过配置之后
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/valine-comment.png" alt="评论" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995911786-13-valine-comment.png" alt="评论" />
 
 ### 删除管理评论
 
 在`leancloud`后台管理里,在存储中,支持删除评论操作
 
 若有骚扰,或违反法律法规的评论,可以进行删除操作的,避免给自己带来不必要的麻烦
-<img class="medium-zoom" src="../images/tools-article-imgs/vuepress-build-blog/valine-comment-manner.png" alt="评论" />
+<img class="medium-zoom" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607995983101-14-valine-comment-manner.png" alt="评论" />
 
 ### valine-样式的修改-适配
 
@@ -879,7 +907,7 @@ module.exports = {
 
 打开 chrome 的控制台,审查元素,找到`valine`评论的 ID,在`index.styl`文件中,即可写入样式,进行更改,只要你想改主题中的样式,都可以通过这种方式,它会默认覆盖原有的样式
 
-```
+```js
 // .vuepress/public/styles/index.styl
 #valine-vuepress-comment {
   max-width: 750px;
@@ -902,7 +930,7 @@ module.exports = {
 
 你可以调整的颜色变量:
 
-```
+```js
 // 参考文档: https://vuepress.vuejs.org/zh/config/#patterns中 palette.styl配置
 // 用于重写默认颜色常量，或者设置新的 stylus 颜色常量
 
@@ -942,13 +970,12 @@ $mediumZoomZIndex = 10000
 除了上面一种覆盖默认样式的方式,还有另外一种方式,你可以在`.vuepress/public/`目录下创建一个`css`文件,`style.css`
 然后在`config.js`中的`head`配置属性中通过`link`的方式引入
 
-```
+```js
 module.exports = {
   head: [
-    ["link", { rel: "stylesheet", href: "/css/style.css" }], // 这种方式也可以覆盖默认样式
-  ]
-}
-
+    ['link', { rel: 'stylesheet', href: '/css/style.css' }], // 这种方式也可以覆盖默认样式
+  ],
+};
 ```
 
 ::: warning 注意
@@ -961,38 +988,36 @@ module.exports = {
 如何禁用？
 在`.vuepress/public/`目录下创建一个`js`文件夹,在这个`js`文件夹下创建一个`disable-user-zoom.js`,写一段`js`代码即可
 
-```
+```js
 window.onload = function() {
-  document.addEventListener("touchstart", function(event) {
+  document.addEventListener('touchstart', function(event) {
     if (event.touches.length > 1) {
       event.preventDefault();
     }
   });
-  document.addEventListener("gesturestart", function(event) {
+  document.addEventListener('gesturestart', function(event) {
     event.preventDefault();
   });
 };
-
 ```
 
 然后在`config.js`的`head`头部引入即可,同时也引入`meta`移动端禁止用户缩放的标签,禁止用户对屏幕进行方法和缩小
 
-```
+```js
 module.exports = {
   head: [
     [
-      "meta", // 移动端禁止用户缩放
+      'meta', // 移动端禁止用户缩放
       {
-        name: "viewport",
+        name: 'viewport',
         content:
-          "width=device-width,width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-      }
+          'width=device-width,width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no',
+      },
     ],
-    ["link", { rel: "stylesheet", href: "/css/style.css" }], //
-    ["script", { charset: "utf-8", src: "/js/disable-user-zoom.js" }] // 移动端,禁止用户缩放,引入你写的js
-  ]
-}
-
+    ['link', { rel: 'stylesheet', href: '/css/style.css' }], //
+    ['script', { charset: 'utf-8', src: '/js/disable-user-zoom.js' }], // 移动端,禁止用户缩放,引入你写的js
+  ],
+};
 ```
 
 ## 自动生成侧边栏
@@ -1018,7 +1043,7 @@ module.exports = {
 
 * 本地若没有安装`vuepress`非全局安装,`pwa`以及其他一些插件不会生效
 
-```
+```js
 {
   "scripts": {
     "docs:build": "vuepress build docs"
@@ -1036,19 +1061,23 @@ module.exports = {
 
 ::: details 为什么要创建两个代码仓库呢,一个仓库不是很好么?
 
-1. 一个仓库用于日常的开发,新增文章或者二次开发,不断迭代,注意不要往这个仓库里`push`构建出来`dist`文件
-2. 另一个仓库只用于线上预览,项目中最终构建 build 生成的`dist`目录文件推送到这个远程仓库当中
-3. 保持两个仓库的相互独立,互不干扰,如果全部放在一个仓库里,不易于后续维护和代码的管理
-4. 如果你想把代码静态资源部署到其他服务器上,你只需把`build`构建出来的`dist`文件放到你服务器根目录下就可以了的
-   :::
+⒈ 一个仓库用于日常的开发,新增文章或者二次开发,不断迭代,注意不要往这个仓库里`push`构建出来`dist`文件
+
+⒉ 另一个仓库只用于线上预览,项目中最终构建 build 生成的`dist`目录文件推送到这个远程仓库当中
+
+⒊ 保持两个仓库的相互独立,互不干扰,如果全部放在一个仓库里,不易于后续维护和代码的管理
+
+⒋ 如果你想把代码静态资源部署到其他服务器上,你只需把`build`构建出来的`dist`文件放到你服务器根目录下就可以了的
+
+:::
 
 ::: tip 提醒
 如果您的仓库不是放置在根目录下(就是`https://itclancode.github.io/blogcode/`这种形式,而非`https://itclancode.github.io/`),则在`config.js`的基础配置中需要更改`base`的路径,它默认是指向根路径的,可以省略
 
-```
+```js
 module.exports = {
-  base: "/blogcode/"
-}
+  base: '/blogcode/',
+};
 ```
 
 :::
@@ -1060,7 +1089,7 @@ module.exports = {
 
 在`itclan`(以你自己的为准)根目录下,创建一个如下的脚本文件`deploy.sh`
 
-```
+```js
 #!/usr/bin/env sh
 
 # 确保脚本抛出遇到的错误
@@ -1095,11 +1124,11 @@ cd -
 注意克隆到本地仓库代码的方式,默认是`https`方式,如果你克隆代码方式是`https` 方式,上面的提交地止,就换成`https`的,如果是 ssh 的方式的就换成 `ssh`方式,否则是会出现问题的
 
 若是 ssh 的方式,可以配置秘钥:这样不用每次提交代码,都输入用户名和密码的
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/deploy-github.png" alt="部署" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607999244376-39-deploy-github.png" alt="部署" />
 :::
 也可以通过在命令行终端输入`git remote -v`查看克隆下的远端仓库地止的,看得出是那种方式克隆下来的
 
-```
+```js
 git remote -v
 ```
 
@@ -1110,7 +1139,7 @@ git remote -v
 
 有时候,我们希望执行一行命令就可以完成自动化部署，那么您需要在`package.json`中的`scripts`中添加`deploy:bash deploy.sh`就可以了的,往后在命令行终端执行`npm run deploy`或者`yarn deploy`就可以自动执行该`deploy.sh`脚本了的
 
-```
+```js
 "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
@@ -1122,14 +1151,15 @@ git remote -v
 ::: tip 提示
 如果自动部署脚本不成功,可以尝试如下操作
 
-1. npm run docs:build,手动构建
-2. git push -f https://itclancode.github.io.git master
-   :::
+⒈ npm run docs:build,手动构建
+
+⒉ git push -f https://itclancode.github.io.git master
+:::
 
 当你`push`,完后,地止栏里输入`xxx.github.io`,如果能够访问成功,那说明部署已经成功了,如下所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/github-name.png" alt="github-name" />
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/home-config.png" alt="github-domain" />
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/github-pages-success.png" alt="github-success" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607996302728-15-github-name.png" alt="github-name" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607994618811-04-home-config.png" alt="github-domain" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607996514032-16-github-pages-success.png" alt="github-success" />
 
 ## 配置自定义域名
 
@@ -1140,9 +1170,9 @@ git remote -v
 ### 登录域名管理后台
 
 在这里我以阿里云为例:[阿里云控制台](https://dc.console.aliyun.com/)
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/domain-config0.png" alt="配置域名" />
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/domain-config1.png" alt="配置域名" />
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/domain-config3.png" alt="配置域名" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607996608390-17-domain-config0.png" alt="配置域名" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607996677592-18-domain-config1.png" alt="配置域名" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607996736235-19-domain-config3.png" alt="配置域名" />
 
 实现这一步相当于就是将自定义的域名指向`gihub pages`,当访问`https://itclancode.github.io/`与`doc.itclan.cn`指向同一个`IP`,相比于浏览器地止栏输入`xxx.github.io`,直接输入域名访问要方便得多
 
@@ -1150,7 +1180,7 @@ git remote -v
 
 可以在本地的命令行终端,进行`ping`一下的,如
 
-```
+```js
 C:\Users\itclancode>ping doc.itclan.cn
 
 正在 Ping itclancode.github.io [xxx.xxx.xxx.xxx] 具有 32 字节的数据:
@@ -1181,8 +1211,9 @@ xxx.xxx.xxx.xxx的 Ping 统计信息:
 如果能 ping 得通,说明配置没有问题的
 
 - [阿里云域名检测工具](https://zijian.aliyun.com/?spm=a2c4g.11186623.2.15.6db92da1C19ghl#/domainDetect)
-  如果遇到解析不成功:先仔细查看一下文档,按照文档指示一步一步的排查,官方文档很详细,但是就是不明显,得耐心一点的
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/watch-doc.png" alt="配置域名" />
+
+如果遇到解析不成功:先仔细查看一下文档,按照文档指示一步一步的排查,官方文档很详细,但是就是不明显,得耐心一点的
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607996871908-20-watch-doc.png" alt="配置域名" />
 
 ### 在仓库底下新建一个-CNAME-文件
 
@@ -1190,8 +1221,8 @@ xxx.xxx.xxx.xxx的 Ping 统计信息:
 
 这个文件也可以在远程仓库里创建,注意是在你那个要部署的仓库里
 
-```
-doc.itclan.cn
+```js
+doc.itclan.cn;
 ```
 
 在你推上去后,在代码仓库设置页面的`Custom domain`中应该就可以看到变化了的,最终测试是否成功
@@ -1221,29 +1252,29 @@ doc.itclan.cn
 <div align="center">
   <p><strong>step1:新建仓库</strong></p>
   <div>
-    <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/coding01.png" alt="新建仓库" />
+    <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607996983797-21-coding01.png" alt="新建仓库" />
   </div>
   <div>
   <p><strong>step2:选择DevOps模板</strong></p>
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/coding02.png" alt="新建仓库" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997050235-22-coding02.png" alt="新建仓库" />
   </div>
   <div>
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/coding03.png" alt="新建仓库" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997121313-23-coding03.png" alt="新建仓库" />
   </div>
   <p><strong>step3:选择静态网站</strong></p>
   <div>
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/coding04.png" alt="选择静态网站" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997224831-24-coding04.png" alt="选择静态网站" />
   </div>
   <p><strong>step4:修改静态网站配置</strong></p>
   <div>
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/coding05.png" alt="新建仓库" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997275137-25-coding05.png" alt="新建仓库" />
   </div>
    <p><strong>step5:设置自定义域名</strong></p>
    <div>
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/coding06.png" alt="新建仓库" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997332711-26-coding06.png" alt="新建仓库" />
   </div>
     <div>
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/coding07.png" alt="新建仓库" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997397539-27-coding07.png" alt="新建仓库" />
   </div>
 </div>
 
@@ -1252,9 +1283,11 @@ doc.itclan.cn
 ### 可能会遇到的问题
 
 - `coding`仓库底下上传了`dist`文件家,部署无效
-  ::: tip 解决办法
-  仓库根目录下上传 dist 目录下子文件内容即可解决
-  :::
+
+::: tip 解决办法
+仓库根目录下上传 dist 目录下子文件内容即可解决
+:::
+
 - 域名解析问题
 
   - 具体自定义域名解析问题可参考下方常见问题
@@ -1264,12 +1297,12 @@ doc.itclan.cn
 - 进入百度统计官方网址:[百度统计](https://tongji.baidu.com/)
 
 * 新增网站,填入你的网站信息即可
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/baidutongji-0.png" alt="配置域名" />
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/baidutongji1.png" alt="配置域名" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997509175-28-baidutongji-0.png" alt="配置域名" />
+  <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997584068-29-baidutongji1.png" alt="配置域名" />
 
-  - 在`.vuepress/config.js`的`head`中添加如下一段代码即可
+- 在`.vuepress/config.js`的`head`中添加如下一段代码即可
 
-```
+```js
 [
     // 添加百度统计代码
     "script",
@@ -1299,16 +1332,16 @@ doc.itclan.cn
 - 创建媒体资源,获取`ga`,格式是`UA-00000000-0`
 - 安装插件,并配置选项
 
- <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/google-alays-01.png" alt="谷歌分析" /> 
- <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/google-alays-02.png" alt="谷歌分析" /> 
- <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/google-alays-03.png" alt="谷歌分析" /> 
- <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/google-alays-04.png" alt="谷歌分析" />
+ <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997680591-30-google-alays-01.png" alt="谷歌分析" /> 
+ <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997748254-31-google-alays-02.png" alt="谷歌分析" /> 
+ <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607997970832-32-google-alays-03.png" alt="谷歌分析" /> 
+ <img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607998050820-33-google-alays-04.png" alt="谷歌分析" />
 
 ### 安装
 
 在当前项目目录下,使用`yarn`安装`@vuepress/plugin-google-analytics`,插件
 
-```
+```js
 yarn add -D @vuepress/plugin-google-analytics
 # OR npm install -D @vuepress/plugin-google-analytics
 ```
@@ -1319,7 +1352,7 @@ yarn add -D @vuepress/plugin-google-analytics
 
 ### 使用
 
-```
+```js
 module.exports = {
 plugins: [
   [
@@ -1361,11 +1394,11 @@ plugins: [
 ### 侧边栏显示的是文件路径，而非文件名
 
 当您的`md`文件没有任何内容时,就会显示文件路径,如`/read/lingdu/wanted.html`),如下所示
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/show-path.png" alt="文件名" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607998646760-34-show-path.png" alt="文件名" />
 
 这是由于你的 `md`文件中缺乏标题导致的，**标题的产生有两种方式**
 
-1. 添加 [Front Matter](https://v1.vuepress.vuejs.org/zh/guide/frontmatter.html#front-matter) 的 title 属性 <Badge type="warning" text="推荐使用"/>
+⒈ 添加 [Front Matter](https://v1.vuepress.vuejs.org/zh/guide/frontmatter.html#front-matter) 的 title 属性 <Badge type="warning" text="推荐使用"/>
 
 ```
 ---
@@ -1374,7 +1407,7 @@ title: 标题
 
 ```
 
-2， `markdown`语法中的添加标题
+⒉ `markdown`语法中的添加标题
 
 ```
 # 一级标题
@@ -1390,7 +1423,7 @@ title: 标题
 
 建议与文章相关的图片放置在同级目录下,而不要放置在`.vuepress/public/`目录中
 
-```
+```js
 ─README.md
 ├─fontend
 |    ├─tools      // 与工具相关的文章
@@ -1428,7 +1461,7 @@ title: 标题
 
 **解决**:在本地的`package.json`中检查`vuepress`是否有安装,若没有则用`npm install -D vuepress`安装一下
 
-```
+```js
 "devDependencies": {
   "@vuepress/plugin-back-to-top": "^1.5.0",
   "vuepress": "^1.5.0",
@@ -1442,7 +1475,7 @@ title: 标题
 
 **解决**:只需使用`npm`升级`vuepress`的版本即可,在`vuepress:^1.5.1`中此问题已经解决
 
-```
+```js
 npm install -D vuepress@next
 // 在当前项目的package.json中就会看到vuepress的最新版本
 "vuepress": "^1.0.0-rc.1",
@@ -1451,7 +1484,7 @@ npm install -D vuepress@next
 这个`rc`代表的是`（Release Candidate）`候选版本。系统平台上就是发行候选版本。`RC`版不会再加入新的功能了，主要着重于除错
 当然,网上也有说在`package.json`,添加如下代码也可以解决,可自行测试
 
-```
+```js
 resolutions: {
   "watchpack":"1.7.2"
 }
@@ -1460,37 +1493,44 @@ resolutions: {
 ### deploy-脚本部署失败
 
 当你在命令行终端执行`bash deploy.sh`,报如下错误
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/deploy-error.png" alt="部署失败" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607998813656-35-deploy-error.png" alt="部署失败" />
+
 单独执行`npm run docs:build`没有问题,但是一旦执行这个自动化部署脚本命令,就报这个错误,这个错误令人很奔溃
 把`deplpy.sh`中的`set -e`注释掉,重新在执行`bash deploy.sh`就可以了的
 
-```
+```js
 # set -e
 ```
 
 ### npm-安装某些包失败
 
 有时候,您在使用某些`cli`或者`命令`的时候,会报这个错误
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/install-fail.png" alt="安装包失败" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607998894653-36-install-fail.png" alt="安装包失败" />
+
 遇到此类问题可以尝试如下操作
 
-- 清除`npm`缓存,`npm cache clean -f`
-- 删掉本地的`node_modules`,重新使用`cnpm`或`yarn`重新安装
-- 将错误翻译出来,然后直接复制到浏览器,查看有没有同样遇到的问题的
-- 去错误日志文件内,看具体的报错信息
-- 根据错误信息去相应的目录下,把相应`npm`中的`node_modules`给删掉,重新在安装
-  <img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/solve-install-fail.png" alt="解决错误信息" />
-  ::: tip 提醒
-  推荐使用`yarn`进行安装某些插件和安装包,因为`npm`有时候,`npm` 会生成错误的依赖树,导致安装某些插件安装不上,即使安装上了,在执行`npm run dev`启动项目时,会报错,影响项目的启动
-  :::
+⒈ 清除`npm`缓存,`npm cache clean -f`
+
+⒉ 删掉本地的`node_modules`,重新使用`cnpm`或`yarn`重新安装
+
+⒊ 将错误翻译出来,然后直接复制到浏览器,查看有没有同样遇到的问题的
+
+⒋ 去错误日志文件内,看具体的报错信息
+
+⒌ 根据错误信息去相应的目录下,把相应`npm`中的`node_modules`给删掉,重新在安装
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607999011361-37-solve-install-fail.png" alt="解决错误信息" />
+
+::: tip 提醒
+推荐使用`yarn`进行安装某些插件和安装包,因为`npm`有时候,`npm` 会生成错误的依赖树,导致安装某些插件安装不上,即使安装上了,在执行`npm run dev`启动项目时,会报错,影响项目的启动
+:::
 
 ### 配置自定义域名不生效
 
 项目的根目录下是否缺少`CNAME`文件,并且里面的内容与自定义的域名不一致,该文件的名称必须是大写
-<img class="medium-zoom lazy" loading="lazy" src="../images/tools-article-imgs/vuepress-build-blog/CNAME-file.png" alt="CNAME" />
+<img class="medium-zoom lazy" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/vuepress-build-blog/1607999071051-38-CNAME-file.png" alt="CNAME" />
 
-```
-doc.itclan.cn
+```js
+doc.itclan.cn;
 ```
 
 ::: tip 提醒
