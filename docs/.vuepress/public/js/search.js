@@ -388,6 +388,15 @@ const type = {
       tip: '炫酷个性化的3d插图',
     },
   ],
+
+  designDraws: [
+    {
+      label: '可画',
+      name: '可画',
+      url: 'https://www.canva.cn/search/templates?q=',
+      tip: '可直接输入关键字，回车-寻找设计素材',
+    },
+  ],
 };
 
 module.exports = type;

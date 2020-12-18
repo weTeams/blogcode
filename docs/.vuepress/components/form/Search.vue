@@ -107,8 +107,8 @@
         </el-tabs>
       </el-tab-pane>
       <el-tab-pane label="图标搜索">
-        <ul class="servers">
-          <li v-for="item in services" :key="index">
+        <ul class="el-tab-ul">
+          <li v-for="item in iconAssets" :key="index">
             <el-tooltip
               class="item"
               effect="dark"
@@ -199,7 +199,7 @@
         </el-tabs>
       </el-tab-pane>
       <el-tab-pane label="服务器">
-        <ul class="servers">
+        <ul class="el-tab-ul">
           <li v-for="item in services" :key="index">
             <el-tooltip
               class="item"
@@ -228,7 +228,7 @@ export default {
       codeHostActiveName: "github",
       jobWantedActiveName: "lagou",
       pictureActiveName: "unsplash",
-      iconActiveName: "3dicons",
+      designActiveName: "可画",
       searchs: types.searchs,
       tools: types.tools,
       communitys: types.communitys,
@@ -237,6 +237,7 @@ export default {
       services: types.services,
       pictureAssets: types.pictureAssets,
       iconAssets: types.iconAssets,
+      designDraws: types.designDraws,
       inputVal: "",
     };
   },
@@ -286,7 +287,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.servers {
+.el-tab-ul {
   display: flex;
   justify-content: start;
   flex-wrap: wrap;
