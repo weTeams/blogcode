@@ -153,7 +153,7 @@ tcb login --apikeyId xxx --apiKey xxx
 
 ```js
 $ cd dist
-$ cloudbase hosting:deploy -e envId(此为坏境的ID,在自己的云坏境中可以查看到)
+$ cloudbase hosting deploy -e envId(此为坏境的ID,在自己的云坏境中可以查看到)
 ```
 
 当你执行这条命令时,可以部署成功,但会提示这条命令即将被废弃的,只需要按照提示
@@ -165,17 +165,17 @@ $ cloudbase hosting:deploy -e envId(此为坏境的ID,在自己的云坏境中�
 有时候,并不想要全量的部署,只需要上传某单个指定的文件,那么就可以使用下面的命令,当不指定`cloudPath`时,文件会上传到根目录
 
 ```js
-cloudbase hosting:deploy localPath(本地路径) cloudpath(云坏境目录的路径) -e envId
+cloudbase hosting deploy localPath(本地路径) cloudpath(云坏境目录的路径) -e envId
 ```
 
 如下示例所示
 
 ```js
-# 将 hosting 目录下的所有文件部署到根目录,如果不指明hosting本地目录,默认时上传当前目录下的所有文件
-cloudbase hosting:deploy hosting -e envId
+# 将当前目录的文件部署到根目录,即将 hosting 目录下的所有文件部署到根目录,如果不指明hosting本地目录,默认时上传当前目录下的所有文件
+cloudbase hosting deploy . -e envId
 
 # 将 static 目录下的 index.js 文件部署到 static/index.js
-cloudbase hosting:deploy ./static/index.js static/index.js -e envId
+cloudbase hosting deploy ./static/index.js static/index.js -e envId
 ```
 
 ::: warning 注意
@@ -188,7 +188,7 @@ cloudbase hosting:deploy ./static/index.js static/index.js -e envId
 使用下面的命令展示静态网站的状态,访问域名等信息
 
 ```js
-cloudbase hosting:detail -e envId
+cloudbase hosting detail -e envId
 ```
 
 ## 删除文件
@@ -196,7 +196,7 @@ cloudbase hosting:detail -e envId
 使用下面的命令可以删除静态网站的存储空间中的文件或文件夹
 
 ```js
-cloudbase hosting:delete cloudPath(云环境路径) -e envId
+cloudbase hosting delete cloudPath(云环境路径) -e envId
 ```
 
 ## 查看文件列表
@@ -204,7 +204,7 @@ cloudbase hosting:delete cloudPath(云环境路径) -e envId
 使用下面的命令部署展示静态网站存储空间中的文件
 
 ```js
-cloudbase hosting:list -e envId
+cloudbase hosting list -e envId
 ```
 
 ## 路径说明
@@ -240,7 +240,8 @@ Windows 系统中 `localPath` 为本地路径形式，是系统可以识别的�
 
 ## 相关参考文档
 
-- [静态网站托管](https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/tencent-cloud-website-host/1607483251946-03-push-code.png)
+- [静态网站托管](https://cloud.tencent.com/document/product/876/40270)
+- [使用 cli 静态网站托管](https://cloud.tencent.com/document/product/876/47142)
 
 <footer-FooterLink :isShareLink="true" :isDaShang="true" />
 <footer-FeedBack />

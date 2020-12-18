@@ -12,6 +12,7 @@ title: 目录
 ::: el-collapse-item title="离您最近的表示是最新的-点击即可查看"
 
 - [置顶-广告位接受投放](../adverent/)
+- [如何将网站代码部署到 netlify 上免费托管](../fontend/tools/netlify-hosting)
 - [如何将 github pages 代码一键部署到 vercel 上托管](../fontend/tools/vercel-hosting)
 - [如何将代码部署到腾讯云网站静态托管](../fontend/tools/tencent-cloud-website-host)
 - [如何迁移 coding 静态托管-将网站迁移到腾讯云管理](../fontend/tools/transfer-coding-to-tengxun)

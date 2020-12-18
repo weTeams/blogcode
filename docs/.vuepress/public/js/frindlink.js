@@ -15,6 +15,12 @@ friendLinkers = [
     url: 'https://reinness.com/',
     desc: '理想成为大牛的小陈同学',
   },
+
+  {
+    name: '山月行',
+    url: 'https://shanyue.tech/',
+    desc: '山月的琐碎博客记录',
+  },
 ];
 function getFriendsLink() {
   return friendLinkers;

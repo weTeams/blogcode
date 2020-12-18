@@ -858,12 +858,6 @@ function insert(child, parent, anchor) {
 
 ## 总结
 
-到这里我们这一节的学习也要结束啦，这节课我们主要分析了组件的渲染流程，从入口开始，一层层分析组件渲染。
+主要分析了组件的渲染流程，从入口开始，一层层分析组件渲染。
 
-你可能发现了，文中提到的很多技术点我会放在后面的章节去讲，这样做是为了让我们不跑题，重点放在理解组件的渲染流程上。下节课我将会带你具体分析一下组件的更新过程。
-
-这里，我用一张图来带你更加直观地感受下整个组件渲染流程
-
-<div align="center">
- <img class="medium-zoom lazy"  loading="lazy"  src="https://s0.lgstatic.com/i/image/M00/2E/0A/CgqCHl8EPLKAF8u5AAJHdNl56bM640.png" alt="OptionsAPI" />
-</div>
+你可能发现了，文中提到的很多技术点我会放在后面的章节去讲，这样做是为了让我们不跑题，重点放在理解组件的渲染流程上

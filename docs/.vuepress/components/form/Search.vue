@@ -106,10 +106,24 @@
           </el-tab-pane>
         </el-tabs>
       </el-tab-pane>
-      <el-tab-pane label="工具">
-        <el-tabs v-model="toolsActiveName">
+      <el-tab-pane label="图标搜索">
+        <ul class="servers">
+          <li v-for="item in services" :key="index">
+            <el-tooltip
+              class="item"
+              effect="dark"
+              :content="item.tip"
+              placement="top"
+            >
+              <a target="_blank" :href="item.url">{{ item.name }}</a>
+            </el-tooltip>
+          </li>
+        </ul>
+      </el-tab-pane>
+      <el-tab-pane label="设计作图">
+        <el-tabs v-model="designActiveName">
           <el-tab-pane
-            v-for="item in tools"
+            v-for="item in designDraws"
             :label="item.label"
             :name="item.name"
           >
@@ -214,6 +228,7 @@ export default {
       codeHostActiveName: "github",
       jobWantedActiveName: "lagou",
       pictureActiveName: "unsplash",
+      iconActiveName: "3dicons",
       searchs: types.searchs,
       tools: types.tools,
       communitys: types.communitys,
@@ -221,6 +236,7 @@ export default {
       jobwanteds: types.jobwanteds,
       services: types.services,
       pictureAssets: types.pictureAssets,
+      iconAssets: types.iconAssets,
       inputVal: "",
     };
   },

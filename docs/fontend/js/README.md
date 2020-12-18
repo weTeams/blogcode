@@ -19,7 +19,7 @@ title: 目录
 
 ## 设计模式
 
-- [什么时设计模式](./what-is-dedign-pattern)
+- [设计模式是什么](./what-is-dedign-pattern)
 - [创建型设计模式](./create-type-design-pattern)
 
 ## JS 实用正则表达式

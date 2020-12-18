@@ -14,8 +14,9 @@ title: 目录
 - [如何将网站代码部署到 netlify 上免费托管](./netlify-hosting)
 - [如何解决 vuepress 编译打包失败即 window/document is not defined 问题](./pack-fail-window-problem)
 - [如何在 vuepress 上添加博客导流公众号-即输入验证码解锁全站文章](./add-blog-guide)
-- [虚拟主机选择](./virtual-host-select)
-- [云服务器建站(1)](./cloud-server-build-site)
+  <!-- - [虚拟主机选择](./virtual-host-select) -->
+
+* [云服务器建站](./cloud-server-construction)
 
 ## 在线编码平台
 

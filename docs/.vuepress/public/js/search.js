@@ -374,6 +374,20 @@ const type = {
       tip: '免费托管前端服务应用',
     },
   ],
+
+  iconAssets: [
+    {
+      name: '3d-icons',
+      url: 'https://www.iconshock.com/',
+      tip: '3d图标',
+    },
+
+    {
+      name: '3d插图',
+      url: 'https://wannathis.one/',
+      tip: '炫酷个性化的3d插图',
+    },
+  ],
 };
 
 module.exports = type;
