@@ -8,7 +8,7 @@
  * @Date: 2020-05-29
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-07 01:05:24
+ * @LastEditTime: 2021-01-02 11:43:15
  * @Description: 头部navs导航配置文件,入口文件原本在config.js文件中,但抽离到了themeConfig.js中,该文件通过module.exports导出,在themeConfig.js中通过require方式引入
  * 集中配置管理头部nav导航栏
  * @docs: https://vuepress.docschina.org/default-theme-config/#%E5%AF%BC%E8%88%AA%E6%A0%8F-navbar
@@ -103,6 +103,7 @@ const navs = [
   },
   { text: '关于我', link: '/about/' },
   { text: '广告投放', link: '/adverent/' },
+  { text: '爱客来科技', link: 'https://itclan.cn' },
 ];
 
 module.exports = navs;

@@ -16,7 +16,6 @@
 //  (adsbygoogle = window.adsbygoogle || []).push({});
   export default {
     name: "googleBottomAd",
-
   }
 </script>
 

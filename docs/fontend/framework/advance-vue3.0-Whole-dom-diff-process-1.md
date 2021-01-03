@@ -628,3 +628,5 @@ const patchChildren = (n1, n2, container, anchor, parentComponent, parentSuspens
 如果新子节点是空，那么删除旧子节点即可；
 
 如果新子节点也是 vnode 数组，那么就需要做完整的 diff 新旧子节点了，这是最复杂的情况，内部运用了核心 diff 算法
+
+

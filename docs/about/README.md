@@ -116,6 +116,8 @@ title: 关于作者
 - 微信小程序:搜索`搞清亲戚称谓关系`
 - 微信小程序:搜索`佳豪瑞森装饰`
 - 微信小程序:搜索`轻记账`
+- [北京 itclan 爱客来科技网络](https://itclan.cn)
+- [佳豪瑞森装饰](https://jiahaoruisen.com)
 
   <div align="center">
   <img class="medium-zoom lazy" loading="lazy"  src="./images/jiahaoruisen-min-code.jpg" alt="佳豪瑞森装饰" width="200" height="200" />
@@ -125,7 +127,7 @@ title: 关于作者
   </div>
 
 * [itclanCoder 博客源码](https://github.com/itclanCode/blogcode)
-* [itclan 网站 http://itclan.cn](http://itclan.cn)
+* [itclan 爱客来科技网络 https://itclan.cn](https://itclan.cn)
 * [微信公众号: itclanCoder](https://mp.weixin.qq.com/s/EgSgGqMWoV4nrt7qPF9nzA)
 * [微信公众号: 人人领读(renrenlingdu)](https://mp.weixin.qq.com/s/2uEeANGSsixlTqDcJCnm6Q)
 * [诚意招募领读人](https://mp.weixin.qq.com/s/26gR8oixKW1hzOuE_PLCXQ)

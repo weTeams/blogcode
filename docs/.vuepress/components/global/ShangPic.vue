@@ -1,7 +1,15 @@
 <template>
   <div class="shang-wrap">
-    <a target="_blank" href="https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813">
-      <img height="80" v-if="shangeFlag" class="shange" src="/images/shang-pic.png" />
+    <a
+      target="_blank"
+      href="https://www.zhi12.cn/paycenter/reward/widget?entity=user&id=33813"
+    >
+      <img
+        height="80"
+        v-if="shangeFlag"
+        class="shange"
+        src="/images/shang-pic.png"
+      />
     </a>
   </div>
 </template>
@@ -11,7 +19,7 @@ export default {
   name: "ShangPic",
   data() {
     return {
-      shangeFlag: false
+      shangeFlag: false,
     };
   },
 
@@ -37,8 +45,8 @@ export default {
       } else {
         that.shangeFlag = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

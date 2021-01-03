@@ -102,4 +102,39 @@ npm install -g @vue/cli
 vue create projectName
 cd projectName
 vue add vue-next
-npm run serve -->
+npm run serve
+
+1. componsition API 和options API混合使用
+2. Componsition API 本质(组合API/注入API)
+3. setup执行时机
+beforeCreate:表示组件刚刚被创建出来,组件的data和methods还没有初始化好
+setup
+created:表示组件刚刚被创建出来,并且组件的data和methods已经初始化好
+4. setup注意点
+
+在setup中是不能直接使用data和methods的
+由于在执行setup函数的时候,还没有执行created生命周期方法
+
+所以在setup函数中,是无法使用data和methods的
+由于我们不能在setup函数中使用data和methods
+所以Vue为了避免错误的使用,直接将setup函数中this修改成了undefined
+setup函数只能是同步的,不能是异步的
+
+1. 什么是reactive
+   
+-reactive是vue3中提供的实现响应式数据的方法
+-在vue2中响应式数据是通过definedProperty来实现的
+而在vue3中响应式数据是通过Es6的proxy来实现的
+
+2. reactive注意点
+
+reactive参数必须是对象(json/arr)
+如果给reactive传递了其他对象
+默认情况下修改对象,界面不会自动更新
+如果想更新,可以通过重新赋值的方式
+
+创建一个响应式数据
+
+本质:就是将出入的数据包装成proxy对象
+
+-->

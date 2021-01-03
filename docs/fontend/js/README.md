@@ -21,6 +21,7 @@ title: 目录
 
 - [设计模式是什么](./what-is-dedign-pattern)
 - [创建型设计模式](./create-type-design-pattern)
+- [生成器模式](./generator-mode)
 
 ## JS 实用正则表达式
 
