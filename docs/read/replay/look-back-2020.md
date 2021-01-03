@@ -36,9 +36,13 @@ autoGroup-2: 生活思考
 经过这次疫情,也告诉我们几个道理
 
 ⒈ 有时间多陪陪家人,最重要的是和家人在一起
+
 ⒉ 手中"有粮",不慌,没事得广积粮
+
 ⒊ 努力尝试去做一个斜杠青年,让自己拥有更多的属性
+
 ⒋ 没有稳定的工作,只有稳定的能力,工作只是面对长期问题的一种暂时性解决办法
+
 ⒌ 多增加"睡后"收入渠道,越多越好,增加一些无形资产,即使不依赖上班,也能有个可观的收入
 ...
 
@@ -125,7 +129,9 @@ autoGroup-2: 生活思考
 <div align="center">
   <img class="medium-zoom lazy" hegiht="200" loading="lazy" src="https://cdn.jsdelivr.net/gh/itclancode/blogImgAssets@master/2020-replay-day/1609587082413-01-read.jpg" alt="" />
 </div>
+
 非技术类书籍:
+
 ⒈ 学会写作,自我进阶的高效方法
 
 ⒉ 运营之光:我的互联网运营方法
