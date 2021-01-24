@@ -1,5 +1,15 @@
 friendLinkers = [
   {
+    name: '站集网',
+    url: 'https://zhanji.itclan.cn',
+    desc: '让资源导航更简单,一个收录对你有用的网站',
+  },
+  {
+    name: '佳豪瑞森装饰',
+    url: 'https://jiahaoruisen.com',
+    desc: '一个专注家庭装修的网站',
+  },
+  {
     name: '小溪里',
     url: 'https://www.xiaoxili.com/',
     desc: 'HI头像-让头像更有趣一点',

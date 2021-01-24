@@ -36,10 +36,10 @@ export default {
       carouses: [
         {
           imgUrl:
-            "https://cdn.jsdelivr.net/gh/itclanCode/blogImgAssets/AdvertiSpace/1607499392207-ads.png",
-          text: "广告位招租",
+            "https://ae01.alicdn.com/kf/U03ca707a19b14bc9b69d157e35b282ceI.jpg",
+          text: "领取限量云产品优惠，今日限时秒杀",
           id: "1",
-          href: "javascript:;",
+          href: "https://www.aliyun.com/1111/new?userCode=icq59tjf",
         },
 
         {
