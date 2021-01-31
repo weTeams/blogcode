@@ -31,6 +31,12 @@ friendLinkers = [
     url: 'https://shanyue.tech/',
     desc: '山月的琐碎博客记录',
   },
+
+  {
+    name: '若川的博客',
+    url: 'https://lxchuan12.gitee.io',
+    desc: '源码分析小王子',
+  },
 ];
 function getFriendsLink() {
   return friendLinkers;

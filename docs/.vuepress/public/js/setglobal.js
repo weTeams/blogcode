@@ -21,15 +21,24 @@ document.addEventListener('copy', function(e) {
 });
 
 // 在线问答
-window.$crisp = [];
-window.CRISP_WEBSITE_ID = '571f33d1-0d49-4e29-a815-517a2c7b24c9';
-(function() {
-  d = document;
-  s = d.createElement('script');
-  s.src = 'https://client.crisp.chat/l.js';
-  s.async = 1;
-  d.getElementsByTagName('head')[0].appendChild(s);
-})();
+(function(y, o, u, k, e) {
+  if (y[k]) {
+    return;
+  }
+  y['YoukeInstance'] = k;
+  y[k] =
+    y[k] ||
+    function() {
+      (y[k].e = y[k].e || []).push(arguments);
+    };
+  e = o.createElement('script');
+  e.async = 1;
+  e.src = u;
+  o.currentScript
+    ? o.currentScript.parentNode.insertBefore(e, o.currentScript)
+    : o.body.appendChild(e);
+})(window, document, 'https://static.cdn.youke.co/js/widget.js', '$youke');
+$youke('load', '7JWIAnpAvIrCXwUH');
 
 // 浏览器控制台显示
 window.console &&

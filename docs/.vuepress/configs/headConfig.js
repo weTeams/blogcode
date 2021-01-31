@@ -8,7 +8,7 @@
  * @Date: 2020-06-02 07:29:20
  * @Version: xxx.v1.0
  * @LastEditors: 川川
- * @LastEditTime: 2020-11-26 21:54:02
+ * @LastEditTime: 2021-01-31 09:36:03
  * @Description:头部html中head需要引入的标签,当前文件通过module.exports导出,在config.js主入口文件中通过require导入
  */
 const baidu = require('./secretKey'); // 引入百度统计密钥ID
@@ -20,7 +20,7 @@ const headConfig = [
     {
       rel: 'keywords',
       content:
-        '随笔川迹,itclanCoder,itclanCoder的技术博客,coder.itclan.cn,itclan.cn前端开发,IT技术,网络技术,斜杠青年,itclan,川川,http://itclan.cn,https://coder.itclan.cn/',
+        '随笔川迹,itclanCoder,itclanCoder的技术博客,coder.itclan.cn,itclan.cn前端开发,IT技术,网络技术,斜杠青年,itclan,川川,https://itclan.cn,https://coder.itclan.cn/',
     },
   ],
   ['meta', { name: 'Author', content: '随笔川迹' }],
@@ -65,6 +65,7 @@ const headConfig = [
   [
     'meta',
     {
+      async: 'async',
       'http-equiv': 'Content-Security-Policy', // 自动将http的不安全请求升级为https
       content: 'upgrade-insecure-requests', // HTTPS 是 HTTP over Secure Socket Layer，以安全为目标的 HTTP 通道，所以在 HTTPS 承载的页面上不允许出现 http 请求，一旦出现就是提示或报错
     },
@@ -72,6 +73,7 @@ const headConfig = [
   [
     'meta', // 添加谷歌站点搜素
     {
+      async: 'async',
       name: 'google-site-verification',
       content: 'Lp5bo-dr1R5gCVE_3iUI6KXr8tNhN5pyUxPYYKCZkO4',
     },
@@ -93,9 +95,13 @@ const headConfig = [
   ['link', { rel: 'stylesheet', href: '/css/style.css' }], // 这种方式也可以覆盖默认样式
   [
     'script',
-    { charset: 'utf-8', src: 'https://my.openwrite.cn/js/readmore.js' },
+    {
+      charset: 'utf-8',
+      async: 'async',
+      src: 'https://my.openwrite.cn/js/readmore.js',
+    },
   ],
-  ['script', { charset: 'utf-8', src: '/js/setglobal.js' }],
+  ['script', { charset: 'utf-8', async: 'async', src: '/js/setglobal.js' }],
   [
     'script', // 插入谷歌广告
     {
@@ -111,12 +117,14 @@ const headConfig = [
     {
       charset: 'utf-8',
       src: '/js/shang.js',
+      async: 'async',
     },
   ],
   [
     'script',
     {
       charset: 'utf-8',
+      async: 'async',
       src:
         'http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=9bdd2044-a21a-48f4-8838-5aea07e583ab&amp;pophcol=2&amp;lang=zh',
     },
@@ -125,6 +133,7 @@ const headConfig = [
     'script',
     {
       charset: 'utf-8',
+      async: 'async',
       src: 'http://static.bshare.cn/b/bshareC0.js',
     },
   ],
