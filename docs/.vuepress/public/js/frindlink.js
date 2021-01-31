@@ -35,7 +35,7 @@ friendLinkers = [
   {
     name: '若川的博客',
     url: 'https://lxchuan12.gitee.io',
-    desc: '源码分析小王子',
+    desc: '《学习源码整体架构系列》作者',
   },
 ];
 function getFriendsLink() {
